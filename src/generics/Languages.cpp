@@ -1,6 +1,6 @@
 /**
- * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Tatoeba wiki  Wiki made with cppcms
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -16,11 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @category @PROJECT_NAME_HUMAN@
+ * @category Tatoeba wiki
  * @package  Singletons
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   Allan SIMON <allan.simon@supinfo.com> 
  * @license  Affero General Public License
- * @link     @PROJECT_WEBSITE@
+ * @link     https://github.com/sysko/tatowiki@
  */
 
 #include "Languages.h"

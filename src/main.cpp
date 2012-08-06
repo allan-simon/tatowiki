@@ -1,6 +1,6 @@
 /**
- * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Tatoeba wiki  Wiki made with cppcms
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -16,11 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @category @PROJECT_NAME_HUMAN@
+ * @category Tatoeba wiki
  * @package  Main
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   Allan SIMON <allan.simon@supinfo.com> 
  * @license  Affero General Public License
- * @link     @PROJECT_WEBSITE@
+ * @link     https://github.com/sysko/tatowiki@
  */
 
 
@@ -32,7 +32,7 @@
 #include <cppdb/frontend.h>
 #include <cppcms/json.h>
 
-#include "@PROJECT_NAME_CODE@.h"
+#include "tatowiki.h"
 
 #include "generics/Config.h"
 
@@ -48,7 +48,7 @@ int main(int argc,char ** argv)
     Config *conf = Config::get_instance();
 
     conf->sqlite3Path = app.settings().get<string>(
-        "@PROJECT_NAME_CODE@.sqlite3.path"
+        "tatowiki.sqlite3.path"
     );
         
     /*start the graph database*/
@@ -60,7 +60,7 @@ int main(int argc,char ** argv)
     //booster::intrusive_ptr<apps::Tatoeba> tatoApp = new apps::Tatoeba(app);
 
     app.applications_pool().mount(
-        cppcms::applications_factory<apps::Tatodetect>()
+        cppcms::applications_factory<apps::TatoWiki>()
     );
     /*launch it */
     cout << "[NOTICE] website launched" << endl;

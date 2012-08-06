@@ -1,6 +1,6 @@
 /**
- * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Tatoeba wiki  Wiki made with cppcms
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -16,11 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @category @PROJECT_NAME_HUMAN@
+ * @category Tatoeba wiki
  * @package  Apps
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   Allan SIMON <allan.simon@supinfo.com> 
  * @license  Affero General Public License
- * @link     @PROJECT_WEBSITE@
+ * @link     https://github.com/sysko/tatowiki@
  */
 
 
@@ -36,7 +36,7 @@
 
 
 
-#include "@PROJECT_NAME_CODE@.h"
+#include "tatowiki.h"
 #include "generics/Languages.h"
 
 #define DEFAULT_INTERFACE_LANG "en"
@@ -46,7 +46,7 @@ namespace apps {
 /**
  *
  */
-Tatodetect::Tatodetect(cppcms::service &serv) :
+TatoWiki::TatoWiki(cppcms::service &serv) :
     cppcms::application(serv),
     pages(serv)
 {
@@ -64,7 +64,7 @@ Tatodetect::Tatodetect(cppcms::service &serv) :
  */
 
 
-void @PROJECT_NAME_HUMAN@::main(std::string url) {
+void TatoWiki::main(std::string url) {
     
     std::string interfaceLang("");
     if (!session().is_set("interfaceLang")) {
@@ -87,7 +87,7 @@ void @PROJECT_NAME_HUMAN@::main(std::string url) {
 /**
  * 
  */
-std::string @PROJECT_NAME_HUMAN@::get_default_interface_lang() {
+std::string TatoWiki::get_default_interface_lang() {
     
     std::string acceptedLanguage = request().http_accept_language();
        

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(@PROJECT_NAME_CODE@)
+project(tatowiki)
 include_directories(
     src
 )
@@ -45,8 +45,8 @@ file(
 
 
 add_executable(
-    @PROJECT_NAME_CODE@
-    src/@PROJECT_NAME_CODE@.cpp
+    tatowiki
+    src/tatowiki.cpp
     src/main.cpp
     ${controllers_files}
     ${models_files}
@@ -57,7 +57,7 @@ add_executable(
 )
 
 target_link_libraries(
-    @PROJECT_NAME_CODE@
+    tatowiki
     cppcms
     cppdb
     booster

@@ -8,7 +8,7 @@
         "backend" : "thread_shared"
     },
 	"http" : {
-		"script_names" : ["/@PROJECT_NAME_CODE@"]
+		"script_names" : ["/tatowiki"]
 	},
 	"localization" : {
 		"encoding" : "utf-8",
@@ -26,7 +26,7 @@
             "storage" : "memory"
         }
     },
-	"@PROJECT_NAME_CODE@" : {
+	"tatowiki" : {
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
             ["fr"  , "fr_FR.UTF-8", "Français"]

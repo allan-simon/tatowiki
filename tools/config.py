@@ -1,11 +1,12 @@
 REPLACEMENT = { 
-    '@AUTHOR@' : 'your name',
-    '@EMAIL@': 'Your_email.com',
-    '@PROJECT_NAME_CODE@' : 'your_project_name',
-    '@PROJECT_NAME_HUMAN@': 'Your project name',
-    '@DESCRIPTION@' : 'Description of your project',
-    '@PROJECT_WEBSITE' : 'link to your project',
-    '@YEARS@' : 'copyright years'
+    '@AUTHOR@' : 'Allan SIMON',
+    '@EMAIL@': 'allan.simon@supinfo.com',
+    '@PROJECT_NAME_CODE@' : 'tatowiki',
+    '@PROJECT_NAME_HUMAN@': 'Tatoeba wiki',
+    '@MAIN_CLASS@' : 'TatoWiki',
+    '@DESCRIPTION@' : 'Wiki made with cppcms',
+    '@PROJECT_WEBSITE' : 'https://github.com/sysko/tatowiki',
+    '@YEARS@' : '2012'
 }
 
 
