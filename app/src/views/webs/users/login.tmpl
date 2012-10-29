@@ -1,0 +1,18 @@
+<% c++ #include "contents/Users.h" %>
+<% skin %>
+<% view users_login uses contents::users::Login extends master %>
+<% template title() %><% gt "TODO TITLE" %><% end template %>
+
+
+<% template body() %> 
+    Edit Me Users / Login
+    <form method="POST" action="<% url "/users/login_treat" %>" >
+        <% form as_p loginForm %>
+    </form>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+

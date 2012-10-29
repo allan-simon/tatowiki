@@ -1,0 +1,18 @@
+<% c++ #include "contents/Users.h" %>
+<% skin %>
+<% view users_register uses contents::users::Register extends master %>
+<% template title() %><% gt "TODO TITLE" %><% end template %>
+
+
+<% template body() %> 
+    Edit Me Users / Register
+    <form method="POST" action="<% url "/users/register_treat" %>" >
+        <% form as_p registerForm %>
+    </form>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+

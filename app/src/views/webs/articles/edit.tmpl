@@ -1,0 +1,18 @@
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view articles_edit uses contents::articles::Edit extends master %>
+<% template title() %><% gt "TODO TITLE" %><% end template %>
+
+
+<% template body() %> 
+    Edit Me Articles / Edit
+    <form method="POST" action="<% url "/articles/edit_treat" %>" >
+        <% form as_p editForm %>
+    </form>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+
