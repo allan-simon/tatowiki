@@ -58,17 +58,17 @@ ARCHITECTURE = {
 }
 
 
-REPLACEMENT = { 
+REPLACEMENTS = { 
     '@AUTHOR@' : 'Allan SIMON',
     '@EMAIL@': 'allan.simon@supinfo.com',
-    '@PROJECT_NAME_CODE@' : 'tatowiki',
+    '@PROJECT_NAME_CODE@' : 'TatoWiki',
     '@PROJECT_NAME_HUMAN@': 'Tatoeba wiki',
     '@MAIN_CLASS_HEADER@' : 'TATOWIKI',
     '@MAIN_CLASS@' : 'TatoWiki',
     '@DESCRIPTION@' : 'Wiki made with cppcmsskel',
     '@PROJECT_WEBSITE' : 'https://github.com/sysko/tatowiki',
     '@YEARS@' : '2012',
-    '    ' : 'your prefered indentation '
+    '    ' : '    '
 }
 
 
