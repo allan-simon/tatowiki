@@ -1,0 +1,1 @@
+/usr/local/share/cppcmsskel//tools/architecture.py
