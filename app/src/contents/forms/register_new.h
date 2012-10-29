@@ -24,8 +24,8 @@
  */
 
 
-#ifndef TatoWiki_REGISTER
-#define TatoWiki_REGISTER
+#ifndef TatoWiki_REGISTER_NEW
+#define TatoWiki_REGISTER_NEW
 
 
 #include <cppcms/form.h>
@@ -34,12 +34,12 @@ namespace forms{
 namespace users {
 
 /**
- * @struct register
+ * @struct RegisterNew
  * @brief  @TODO
  * @since  30 October 2012
  *
  */
-struct Register : public cppcms::form {
+struct RegisterNew : public cppcms::form {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
 
@@ -51,7 +51,7 @@ struct Register : public cppcms::form {
     /**
      * @brief Constructor
      */
-    Register() {
+    RegisterNew() {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
 

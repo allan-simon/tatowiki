@@ -23,6 +23,8 @@
  * @link     https://github.com/sysko/tatowiki@
  */
 
+#include <booster/log.h>
+
 #include <cppcms/session_interface.h>
 #include "Articles.h"
 
@@ -33,6 +35,26 @@
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
+#include "generics/markdown.h"
+
+//TODO move it somewhere else
+// HACK!
+
+std::string mymarkdown(std::string const &s)
+{
+    int flags = mkd::no_pants;
+    if(s.compare(0,10,"<!--toc-->")==0) {
+        flags |= mkd::toc;
+    }
+    std::string html = markdown_to_html(
+        s.c_str(),
+        s.size(),flags
+    );
+    return html;
+};
+
+
+
 namespace controllers {
 namespace webs {
 
@@ -40,13 +62,13 @@ Articles::Articles(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
 
-    dispatcher().assign("/delete", &Articles::delete, this);
-    dispatcher().assign("/show", &Articles::show, this);
+    dispatcher().assign("/remove", &Articles::remove, this);
+    dispatcher().assign("/show/(.*)", &Articles::show, this, 1);
 
     dispatcher().assign("/edit", &Articles::edit, this);
     dispatcher().assign("/edit_treat", &Articles::edit_treat, this);
 
-    dispatcher().assign("/create", &Articles::create, this);
+    dispatcher().assign("/create/(.*)", &Articles::create, this, 1);
     dispatcher().assign("/create_treat", &Articles::create_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
@@ -66,9 +88,9 @@ Articles::~Articles() {
 /**
  *
  */
-void Articles::delete() {
+void Articles::remove() {
 
-    contents::articles::Delete c;
+    contents::articles::Remove c;
     init_content(c);
 
 
@@ -78,11 +100,19 @@ void Articles::delete() {
 /**
  *
  */
-void Articles::show() {
+void Articles::show(std::string slug) {
 
     contents::articles::Show c;
     init_content(c);
-
+    c.markdown = mymarkdown;
+    c.article = articlesModel->get_from_lang_and_slug(
+        session()["interfaceLang"],
+        slug
+    );
+   
+    if (!c.article.exists()) {
+        std::cerr << "pouet" << std::endl;
+    }
 
     render("articles_show", c);
 }
@@ -118,7 +148,7 @@ void Articles::edit_treat() {
 /**
  *
  */
-void Articles::create() {
+void Articles::create(std::string slug) {
 
     contents::articles::Create c;
     init_content(c);

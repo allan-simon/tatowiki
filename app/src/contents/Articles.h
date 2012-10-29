@@ -24,14 +24,18 @@
  */
 
 
-#ifndef TATOEBACPP_CONTENTS_ARTICLES_H
-#define TATOEBACPP_CONTENTS_ARTICLES_H
+#ifndef TATOWIKI_CONTENTS_ARTICLES_H
+#define TATOWIKI_CONTENTS_ARTICLES_H
 
+
+#include <booster/function.h>
 #include "cppcms_skel/contents/content.h"
 
 #include "contents/forms/edit.h"
+#include "contents/forms/create.h"
 //%%%NEXT_CONTENT_FORM_MARKER%%%
 
+#include "results/Articles.h"
 namespace contents {
 namespace articles {
 
@@ -44,13 +48,13 @@ struct Articles : public BaseContent {
 };
 
 /**
- * @struct Delete
+ * @struct Remove
  * @since  30 October 2012
  * @brief 
  */
-struct Delete : public Articles {
+struct Remove : public Articles {
 
-    Delete() {
+    Remove() {
 
     }
 
@@ -63,8 +67,17 @@ struct Delete : public Articles {
  */
 struct Show : public Articles {
 
-    Show() {
+    booster::function<
+        std::string(
+            const std::string &
+        )
+    > markdown;
 
+
+
+    results::Article article;
+
+    Show() {
     }
 
 };
@@ -85,6 +98,7 @@ struct Edit : public Articles {
     }
 
 };
+
 
 /**
  * @struct Create

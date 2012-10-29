@@ -71,13 +71,17 @@ class Articles : public Controller {
          * @brief @TODO
          * @since 30 October 2012
          */
-        void delete();
+        void remove();
 
         /**
-         * @brief @TODO
+         * @brief Display an article
+         *
+         * @param string slug URL name of the article
+         *
          * @since 30 October 2012
+
          */
-        void show();
+        void show(std::string slug);
 
         /**
          * @brief @TODO
@@ -92,10 +96,13 @@ class Articles : public Controller {
         void edit_treat();
 
         /**
-         * @brief @TODO
+         * @brief Show a form to create a new page with a given slug
+         *
+         * @param string slug URL name that will be associated to the page
+         *
          * @since 30 October 2012
          */
-        void create();
+        void create(std::string slug);
 
         /**
          * @brief @TODO

@@ -32,7 +32,7 @@
             ["fr"  , "fr_FR.UTF-8", "Français"]
         ],
         "sqlite3" : {
-            "path" : "../data/sqlite3.db"
+            "path" : "../data/sqlite6.db"
         }
 	}
 }

@@ -62,11 +62,14 @@ void Pages::change_interface_lang_treat() {
  *
  */
 void Pages::homepage() {
-    contents::pages::Homepage c;
-    init_content(c);
 
+    // the homepage actually redirect to the
+    // main wiki page
 
-    render("homepage", c);
+    //TODO make it configurable from the config.js
+    response().set_redirect_header(
+        "/articles/show/main" 
+    );
 }
 
 

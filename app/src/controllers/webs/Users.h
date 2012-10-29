@@ -89,13 +89,13 @@ class Users : public Controller {
          * @brief @TODO
          * @since 30 October 2012
          */
-        void register();
+        void register_new();
 
         /**
          * @brief @TODO
          * @since 30 October 2012
          */
-        void register_treat();
+        void register_new_treat();
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

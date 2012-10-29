@@ -14,7 +14,7 @@ ARCHITECTURE = {
                 'logout' : {}
             },
             'forms' : {
-                'register' : {},
+                'register_new' : {},
                 'login' : {}
             }
         },
@@ -23,7 +23,7 @@ ARCHITECTURE = {
             'description': 'Module dealing with wiki pages that can be edited/added',
             'methods' : {
                'show' : {}, 
-               'delete' : {}
+               'remove' : {}
             },
             'forms' : {
                 'edit' : {},

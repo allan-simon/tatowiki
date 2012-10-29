@@ -44,6 +44,33 @@ Articles::Articles() :
 {
 }
 
+results::Article Articles::get_from_lang_and_slug(
+    const std::string &lang,
+    const std::string &slug
+) {
+    cppdb::statement getFromLangAndSlug = sqliteDb.prepare(
+        "SELECT * FROM articles "
+        "WHERE lang = ? AND slug = ? LIMIT 1"
+    );
+    getFromLangAndSlug.bind(lang);
+    getFromLangAndSlug.bind(slug);
+
+    cppdb::result res = getFromLangAndSlug.row();
+    results::Article article;
+
+    if (!res.empty()) {
+        article.id = res.get<int>("id");
+        article.lang = res.get<std::string>("lang");
+        article.content = res.get<std::string>("content");
+        article.slug = res.get<std::string>("slug");
+        article.title = res.get<std::string>("title");
+        article.isLocked = res.get<int>("locked");
+    } else {
+        article.id = 0;
+    }
+    getFromLangAndSlug.reset();
+    return article;
+}
 
 } // end namespace models
 

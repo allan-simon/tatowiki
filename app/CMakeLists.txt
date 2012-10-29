@@ -72,6 +72,7 @@ target_link_libraries(
     booster
     sqlite3
     cppcmsskel
+    markdown
 )
 
 

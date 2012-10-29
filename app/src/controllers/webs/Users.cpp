@@ -45,8 +45,8 @@ Users::Users(cppcms::service& serv) :
     dispatcher().assign("/login", &Users::login, this);
     dispatcher().assign("/login_treat", &Users::login_treat, this);
 
-    dispatcher().assign("/register", &Users::register, this);
-    dispatcher().assign("/register_treat", &Users::register_treat, this);
+    dispatcher().assign("/register-new", &Users::register_new, this);
+    dispatcher().assign("/register-new_treat", &Users::register_new_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -105,22 +105,22 @@ void Users::login_treat() {
 /**
  *
  */
-void Users::register() {
+void Users::register_new() {
 
-    contents::users::Register c;
+    contents::users::RegisterNew c;
     init_content(c);
 
 
-    render("users_register", c);
+    render("users_register_new", c);
 }
 
 
 /**
  *
  */
-void Users::register_treat() {
+void Users::register_new_treat() {
 
-    forms::users::Register form;
+    forms::users::RegisterNew form;
     form.load(context());
 
     if (!form.validate()) {

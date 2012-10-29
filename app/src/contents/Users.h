@@ -30,6 +30,7 @@
 #include "cppcms_skel/contents/content.h"
 
 #include "contents/forms/login.h"
+#include "contents/forms/register_new.h"
 //%%%NEXT_CONTENT_FORM_MARKER%%%
 
 namespace contents {
@@ -74,18 +75,18 @@ struct Login : public Users {
 };
 
 /**
- * @struct Register
+ * @struct RegisterNew
  * @since  30 October 2012
  * @brief 
  */
-struct Register : public Users {
+struct RegisterNew : public Users {
 
-    forms::users::Register registerForm;
+    forms::users::RegisterNew registerNewForm;
 
     /**
      * @brief Constructor
      */
-    Register() {
+    RegisterNew() {
     }
 
 };

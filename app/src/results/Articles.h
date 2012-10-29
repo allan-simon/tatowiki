@@ -16,57 +16,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @category Tatoeba wiki
- * @package  Models
+ * @package  Results
  * @author   Allan SIMON <allan.simon@supinfo.com> 
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki
  */
 
-#ifndef TatoWiki_ARTICLES
-#define TatoWiki_ARTICLES
+#ifndef TatoWiki_RESULTS_ARTICLES_H
+#define TatoWiki_RESULTS_ARTICLES_H
+namespace results {
 
-
-
-#include "cppcms_skel/models/SqliteModel.h"
-
-#include "results/Articles.h"
-namespace models {
-
-
-/**
- * @class Articles
- * 
- * @brief @TODO
- * @since 30 October 2012       
- *
- */
-class Articles : public SqliteModel {
-    public:
-        /**
-         * @brief Constructor
-         * @since 30 October 2012
-         */
-        Articles();
+    /**
+     * @struct Articles Structure to represent an article when doing
+     *                  models => constructor communication
+     *
+     * @since 30 October 2012
+     *
+     */
+    struct Article {
+        int id;
+        std::string lang;
+        std::string content;
+        std::string slug;
+        std::string title;
+        bool isLocked;
 
         /**
-         * @brief Retrieve an article using the couple (lang,slug)
-         *        that we extract from the URL
-         * 
-         * @param lang ISO code of the language in which the article
-         *             is written
-         * @param slug Slug of the article (i.e URL version of the
-         *             title)
+         * @brief test if article is an existing one or not
          *
-         * @return The article corresponding to the criteria
+         * @return bool True if it exists, false otherwise
          *
          * @since 30 October 2012
+         *
          */
-        results::Article get_from_lang_and_slug(
-            const std::string &lang,
-            const std::string &slug
-        );
-};
+        bool exists() {
+            return id > 0;
+        };
+    };
 
-} // end namespace models 
+}
 
 #endif

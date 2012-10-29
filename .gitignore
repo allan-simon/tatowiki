@@ -3,3 +3,4 @@
 *.pyc
 build/*
 *.back
+app/build/*
