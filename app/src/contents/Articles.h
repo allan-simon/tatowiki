@@ -67,6 +67,13 @@ struct Remove : public Articles {
  */
 struct Show : public Articles {
 
+    /**
+     * @brief placeholder for the function that will be called
+     *        when using  <%= varible | ext markdown %> in the
+     *        template
+     *
+     * @since  30 October 2012
+     */
     booster::function<
         std::string(
             const std::string &
@@ -74,9 +81,19 @@ struct Show : public Articles {
     > markdown;
 
 
-
+ 
+    /**
+     * @brief the article to display
+     *
+     * @since  30 October 2012
+     */
     results::Article article;
-
+ 
+    /**
+     * @brief Constructor
+     *
+     * @since  30 October 2012
+     */
     Show() {
     }
 
@@ -93,8 +110,14 @@ struct Edit : public Articles {
 
     /**
      * @brief Constructor
+     *
+     * @param article The article that we will use to fill the
+     *                edit form.
+     *
+     * @since  30 October 2012
+     *
      */
-    Edit() {
+    Edit(const results::Article &article): editForm(article) {
     }
 
 };

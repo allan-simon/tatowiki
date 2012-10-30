@@ -4,13 +4,23 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me Articles / Edit
-    <form method="POST" action="<% url "/articles/edit_treat" %>" >
+<% template main_content() %> 
+<div class="module" >
+    <form method="POST" action="/articles/edit_treat" >
         <% form as_p editForm %>
     </form>
+</div>
 <% end template %>
 
+<% template annexe_content() %>
+<div class="module" >
+    <h2><% gt "Note" %></h2>
+    
+    <p>
+        <%gt "This wiki uses the markdown syntax." %>
+    </p>
+</div>
+<% end template %>
 
 
 <% end view %>

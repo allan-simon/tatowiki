@@ -65,7 +65,7 @@ Articles::Articles(cppcms::service& serv) :
     dispatcher().assign("/remove", &Articles::remove, this);
     dispatcher().assign("/show/(.*)", &Articles::show, this, 1);
 
-    dispatcher().assign("/edit", &Articles::edit, this);
+    dispatcher().assign("/edit/(.*)", &Articles::edit, this, 1);
     dispatcher().assign("/edit_treat", &Articles::edit_treat, this);
 
     dispatcher().assign("/create/(.*)", &Articles::create, this, 1);
@@ -111,7 +111,7 @@ void Articles::show(std::string slug) {
     );
    
     if (!c.article.exists()) {
-        std::cerr << "pouet" << std::endl;
+        go_back_to_previous_page();
     }
 
     render("articles_show", c);
@@ -120,11 +120,20 @@ void Articles::show(std::string slug) {
 /**
  *
  */
-void Articles::edit() {
+void Articles::edit(const std::string slug) {
 
-    contents::articles::Edit c;
+
+    results::Article article = articlesModel->get_from_lang_and_slug(
+        session()["interfaceLang"],
+        slug
+    );
+    if (!article.exists()) {
+        go_back_to_previous_page();
+        return;
+    }
+
+    contents::articles::Edit c(article);
     init_content(c);
-
 
     render("articles_edit", c);
 }

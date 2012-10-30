@@ -84,13 +84,16 @@ class Articles : public Controller {
         void show(std::string slug);
 
         /**
-         * @brief @TODO
+         * @brief Edit a given article
+         *
+         * @param string slug URL name of the article
+         *
          * @since 30 October 2012
          */
-        void edit();
+        void edit(const std::string slug);
 
         /**
-         * @brief @TODO
+         * @brief Treat the form sent after editing an article
          * @since 30 October 2012
          */
         void edit_treat();
