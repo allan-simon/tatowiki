@@ -1,14 +1,28 @@
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
 <% view articles_show uses contents::articles::Show extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
+<% template title() %><%= article.title %><% end template %>
 
 
-<% template body() %> 
+<% template main_content() %> 
+<div class="module">
     <%= article.content | ext markdown %>
+</div>
 <% end template %>
 
-
+<% template annexe_content() %>
+<div class="module">
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="/articles/edit/<%= article.slug | urlencode %>">
+                <%gt "Edit" %>
+            </a>
+        </li>
+    </ul>
+</div>
+<% end template %>
 
 <% end view %>
 <% end skin %>

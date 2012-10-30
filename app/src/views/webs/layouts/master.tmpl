@@ -3,6 +3,10 @@
 <% c++ #include "cppcms_skel/contents/content.h" %>
 <% skin %>
 <% view master uses contents::BaseContent %>
+
+/**
+ *
+ */
 <% template render() %>
 <!DOCTYPE
     html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -13,30 +17,146 @@
     <% include header() %>
 </head>
 <body>
-    <% include body() %>
+    <% include top_menu() %>
+    <div id="container1">
+        <div id="header">
+            <a href="/">
+                <img
+                    src="http://flags.tatoeba.org/img/TatoebaProjectBeta.png"
+                    width="72"
+                    height="450"
+                    alt="TatoebaProjectBeta"
+                />
+            </a>
+        </div>
+        <div id="container">
+            <% include message() %>
+
+            <% include body() %>
+
+        </div>
+        <% include footer() %>
+    </div>
+    <div id="footer_container"></div>
 </body>
 </html>
 <% end template %>
 
+<% template top_menu() %>
+<div id="top_menu_container">
+    <div id="top_menu">
+        <% include navigation_menu() %>
+    </div>
+</div>
+<% end template %>
+
+
+/**
+ *
+ */
 <% template title() %>TODO: replace this<% end template %>
 
 
-<% template header() %>
-<title><% include title() %></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <% include css() %>
-<% end template %>
-
+/**
+ *
+ */
 <% template css() %>
 
 <% end template %>
 
 
-
-
-<% template body() %>
-    <% gt "Hello world" %>
+/**
+ * @brief Will be used to display a message to the user, to aknowledge
+ *        from the success or failure of an action he just made
+ * 
+ * @since 30 August 2011
+ */
+<% template message() %>
+    <% if not message.empty() %>
+        <div class="message" id="flashMessage">
+            <%= message | raw %>
+        </div>
+    <% end %>
 <% end template %>
+
+
+
+/**
+ *
+ */
+<% template header() %>
+<title><% include title() %></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link 
+    href="http://css.tatoeba.org/css/layouts/default.css"
+    rel="stylesheet"
+    type="text/css"
+/>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="http://css.tatoeba.org/css/pages/index.css"
+/>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="http://css.tatoeba.org/css/elements/navigation.css"
+/>
+    <% include css() %>
+
+
+<% end template %>
+
+
+/**
+ *
+ */
+<% template body() %>
+    <div id="annexe_content">
+        <% include annexe_content() %>
+    </div>
+    <div id="main_content">
+        <% include main_content()%>
+    </div>
+<% end %>
+
+
+<% template annexe_content() %>
+    <div class="module">
+        TODO: replace this by actual content
+    </div>
+<% end template %>
+
+
+<% template main_content() %>
+    <div class="module">
+        TODO replace this by actual content
+    </div>
+<% end template %>
+
+
+
+
+<% template navigation_menu() %>
+    <ul id="navigation_menu">
+        <li class="menuItem">
+            <a href="/" class="menuSection show">
+                <% gt "Home" %>
+            </a>
+        </li>
+    </ul>
+<% end template %>
+
+<% template footer() %>
+    <div id="footer">
+        <ul>
+            <li>
+                Beta
+            </li>
+        </ul>
+    </div>
+<% end template %>
+
 
 
 
