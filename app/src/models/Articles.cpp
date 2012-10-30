@@ -72,6 +72,41 @@ results::Article Articles::get_from_lang_and_slug(
     return article;
 }
 
+/**
+ *
+ */
+bool Articles::edit_from_lang_and_slug(
+    std::string lang,
+    std::string slug,
+    std::string title,
+    std::string content
+) {
+    cppdb::statement edit = sqliteDb.prepare(
+        "UPDATE articles "
+        "SET "
+        "   title = ? , "
+        "   content = ? "
+        "WHERE lang = ? AND slug = ?"
+    );
+    
+    edit.bind(title);
+    edit.bind(content);
+    edit.bind(lang);
+    edit.bind(slug);
+
+    try {
+        edit.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        edit.reset();
+        return false;
+    }
+    edit.reset();
+    return true;
+
+}
+
+
 } // end namespace models
 
 

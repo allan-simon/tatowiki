@@ -82,6 +82,7 @@ Articles::Articles(cppcms::service& serv) :
  *
  */
 Articles::~Articles() {
+    delete articlesModel;
     //%%%NEXT_DEL_MODEL_CTRL%%%
 }
 
@@ -149,8 +150,26 @@ void Articles::edit_treat() {
 
     if (!form.validate()) {
         go_back_to_previous_page();
+        return;
     }
+    articlesModel->edit_from_lang_and_slug(
+        session()["interfaceLang"],
+        form.slug.value(),
+        form.title.value(),
+        form.content.value()
+    );
 
+    if (form.saveAndView.value()) {
+        response().set_redirect_header(
+            "/articles/show/" + form.slug.value()
+        );
+    } else if (form.saveAndContinue.value()) {
+        response().set_redirect_header(
+            "/articles/edit/" + form.slug.value()
+        );
+    } else {
+        go_back_to_previous_page();
+    }
 }
 
 
@@ -178,6 +197,7 @@ void Articles::create_treat() {
     if (!form.validate()) {
         go_back_to_previous_page();
     }
+
 
 }
 
