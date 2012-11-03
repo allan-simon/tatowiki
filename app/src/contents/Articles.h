@@ -94,7 +94,7 @@ struct Show : public Articles {
      *
      * @since  30 October 2012
      */
-    Show() {
+    Show(): article() {
     }
 
 };
@@ -135,7 +135,7 @@ struct Create : public Articles {
     /**
      * @brief Constructor
      */
-    Create() {
+    Create(const std::string &slug = "") : createForm(slug) {
     }
 
 };

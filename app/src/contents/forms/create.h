@@ -24,44 +24,33 @@
  */
 
 
-#ifndef TatoWiki_CREATE
-#define TatoWiki_CREATE
-
+#ifndef TATOWIKI_CREATE
+#define TATOWIKI_CREATE
 
 #include <cppcms/form.h>
+#include "base_articles_form.h"
 
 namespace forms{
 namespace articles {
 
 /**
- * @struct create
- * @brief  @TODO
+ * @struct Create Structure representing a form to create a new article
  * @since  30 October 2012
  *
  */
-struct Create : public cppcms::form {
+struct Create : public BaseArticleForm {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
 
     /**
-     * @brief button to submit the form
-     */
-    cppcms::widgets::submit submit;
-
-    /**
      * @brief Constructor
      */
-    Create() {
-
-        //%%%NEXT_WIDGET_ADD_MARKER%%%
-
-        add(submit);
-        submit.name(
-            cppcms::locale::translate("submit")
-        );
-        submit.value("submit");
+    Create(const std::string &slugStr = "") {
+        init();
+        slug.value(slugStr);
     }
 
+    
 
 };
 

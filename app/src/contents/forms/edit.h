@@ -24,13 +24,14 @@
  */
 
 
-#ifndef TatoWiki_EDIT
-#define TatoWiki_EDIT
+#ifndef TATOWIKI_EDIT
+#define TATOWIKI_EDIT
 
 
 #include <cppcms/form.h>
 
 #include "results/Articles.h"
+#include "base_articles_form.h"
 
 namespace forms{
 namespace articles {
@@ -40,34 +41,9 @@ namespace articles {
  * @since  30 October 2012
  *
  */
-struct Edit : public cppcms::form {
+struct Edit : public BaseArticleForm { 
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
-
-    /**
-     * @brief Hidden field to store the slug of the article
-     *        (i.e it's URL representation)
-     *
-     * @since  30 October 2012
-     */
-    cppcms::widgets::hidden slug;
-
-    cppcms::widgets::text title;
-    cppcms::widgets::textarea content;
-    /**
-     * @brief button to save the article and view it
-     *
-     * @since  30 October 2012
-     */
-    cppcms::widgets::submit saveAndView;
-
-    /**
-     * @brief button to save the article and continue to edit it
-     *
-     * @since  30 October 2012
-     */
-    cppcms::widgets::submit saveAndContinue;
-
     /**
      * @brief Constructor
      *
@@ -91,43 +67,6 @@ struct Edit : public cppcms::form {
         content.value(article.content);
        
     };
-    
-    /**
-     * @brief Centralize the common instruction between the
-     *        constructors of this form
-     *
-     */
-    void init() {
-        //%%%NEXT_WIDGET_ADD_MARKER%%%
-        add(slug);
-
-        title.message(
-            cppcms::locale::translate("Title")
-        );
-        title.non_empty();
-        add(title);
-
-        content.message(
-            cppcms::locale::translate("Content")
-        );
-        content.non_empty();
-        add(content);
-
-        saveAndView.value(
-            cppcms::locale::translate("Save")
-        );
-        saveAndView.name("save_and_view");
-        add(saveAndView);
-
-        add(saveAndContinue);
-        saveAndContinue.value(
-            cppcms::locale::translate("save and continue")
-        );
-        saveAndContinue.name("save_and_continue");
-
-    };
-
-
 };
 
 

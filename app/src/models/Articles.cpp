@@ -106,6 +106,45 @@ bool Articles::edit_from_lang_and_slug(
 
 }
 
+/**
+ *
+ */
+bool Articles::create_from_lang_and_slug(
+    std::string lang,
+    std::string slug,
+    std::string title,
+    std::string content
+) {
+    cppdb::statement create = sqliteDb.prepare(
+        "INSERT INTO articles(title,content,lang,slug,locked) "
+        "VALUES ( "
+        "   ? ,"
+        "   ? ,"
+        "   ? ,"
+        "   ? ,"
+        "   0  "
+        ")"
+    );
+    
+    create.bind(title);
+    create.bind(content);
+    create.bind(lang);
+    create.bind(slug);
+
+    try {
+        create.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        create.reset();
+        return false;
+    }
+    create.reset();
+    return true;
+
+}
+
+
 
 } // end namespace models
 

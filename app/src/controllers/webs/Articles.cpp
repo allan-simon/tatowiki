@@ -111,8 +111,13 @@ void Articles::show(std::string slug) {
         slug
     );
    
+    // if the article does not exists we redirect to the
+    // page to create one
     if (!c.article.exists()) {
-        go_back_to_previous_page();
+        response().set_redirect_header(
+            "/articles/create/" + slug
+        );
+        return;
     }
 
     render("articles_show", c);
@@ -128,8 +133,13 @@ void Articles::edit(const std::string slug) {
         session()["interfaceLang"],
         slug
     );
+
+    // if the articles does not exist we load the "create" form rather
+    // than "edit" one
     if (!article.exists()) {
-        go_back_to_previous_page();
+        response().set_redirect_header(
+            "/articles/create/" + slug
+        );
         return;
     }
 
@@ -159,10 +169,14 @@ void Articles::edit_treat() {
         form.content.value()
     );
 
+    // we show the edit articles if the user wants to 
+    // save it
     if (form.saveAndView.value()) {
         response().set_redirect_header(
             "/articles/show/" + form.slug.value()
         );
+    // we continue in edit mode if the user wants to save and continue
+    // to edit
     } else if (form.saveAndContinue.value()) {
         response().set_redirect_header(
             "/articles/edit/" + form.slug.value()
@@ -178,9 +192,23 @@ void Articles::edit_treat() {
  */
 void Articles::create(std::string slug) {
 
-    contents::articles::Create c;
-    init_content(c);
+    results::Article article = articlesModel->get_from_lang_and_slug(
+        session()["interfaceLang"],
+        slug
+    );
 
+    // if the article exists there's no need to create it
+    // we display it directly instead
+    if (article.exists()) {
+        //TODO use mapper instead
+        response().set_redirect_header(
+            "/articles/show/" + form.slug.value()
+        )
+        return;
+    }
+
+    contents::articles::Create c(slug);
+    init_content(c);
 
     render("articles_create", c);
 }
@@ -195,6 +223,29 @@ void Articles::create_treat() {
     form.load(context());
 
     if (!form.validate()) {
+        go_back_to_previous_page();
+    }
+
+    // we save in database the articles
+    articlesModel->create_from_lang_and_slug(
+        session()["interfaceLang"],
+        form.slug.value(),
+        form.title.value(),
+        form.content.value()
+    );
+
+    // if save => display newly created articles
+    if (form.saveAndView.value()) {
+        response().set_redirect_header(
+            "/articles/show/" + form.slug.value()
+        );
+
+    // if save and continue => turn now in edit mode
+    } else if (form.saveAndContinue.value()) {
+        response().set_redirect_header(
+            "/articles/edit/" + form.slug.value()
+        );
+    } else {
         go_back_to_previous_page();
     }
 
