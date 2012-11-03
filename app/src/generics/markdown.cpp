@@ -29,11 +29,10 @@ std::string markdown_to_html(char const *str,int len,int flags)
 	char *content_ptr = 0;
 	int content_size = 0;
 	char *toc_ptr = 0;
-	int toc_size = 0;
 
 	content_size = mkd_document(doc,&content_ptr);
 	if(flags & mkd::toc) {
-		toc_size = mkd_toc(doc,&toc_ptr);
+		int toc_size = mkd_toc(doc,&toc_ptr);
 		result.assign(toc_ptr,toc_size);
 	}
 	result.append(content_ptr,content_size);
