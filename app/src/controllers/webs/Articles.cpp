@@ -32,6 +32,7 @@
 #include "contents/Articles.h"
 
 #include "models/Articles.h"
+#include "models/History.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -75,6 +76,7 @@ Articles::Articles(cppcms::service& serv) :
 
 
     articlesModel = new models::Articles();
+    historyModel = new models::History();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 
@@ -83,7 +85,8 @@ Articles::Articles(cppcms::service& serv) :
  */
 Articles::~Articles() {
     delete articlesModel;
-    //%%%NEXT_DEL_MODEL_CTRL%%%
+    delete historyModel;
+    //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
 }
 
 /**
@@ -162,11 +165,24 @@ void Articles::edit_treat() {
         go_back_to_previous_page();
         return;
     }
+    
+    const std::string lang = session()["interfaceLang"];
+    const std::string slug = form.slug.value();
+    const std::string title = form.title.value();
+    const std::string content = form.content.value();
     articlesModel->edit_from_lang_and_slug(
-        session()["interfaceLang"],
-        form.slug.value(),
-        form.title.value(),
-        form.content.value()
+        lang,
+        slug,
+        title,
+        content
+    );
+
+    historyModel->add_version(
+        lang,
+        slug,
+        title,
+        content,
+        "" // TODO add something for the summary
     );
 
     // we show the edit articles if the user wants to 
@@ -202,8 +218,8 @@ void Articles::create(std::string slug) {
     if (article.exists()) {
         //TODO use mapper instead
         response().set_redirect_header(
-            "/articles/show/" + form.slug.value()
-        )
+            "/articles/show/" + slug
+        );
         return;
     }
 
@@ -225,14 +241,27 @@ void Articles::create_treat() {
     if (!form.validate()) {
         go_back_to_previous_page();
     }
-
+    
+    const std::string lang = session()["interfaceLang"];
+    const std::string slug = form.slug.value();
+    const std::string title = form.title.value();
+    const std::string content = form.content.value();
     // we save in database the articles
     articlesModel->create_from_lang_and_slug(
-        session()["interfaceLang"],
-        form.slug.value(),
-        form.title.value(),
-        form.content.value()
+        lang,
+        slug,
+        title,
+        content
     );
+
+    historyModel->add_version(
+        lang,
+        slug,
+        title,
+        content,
+        "" // TODO add something for the summary
+    );
+
 
     // if save => display newly created articles
     if (form.saveAndView.value()) {

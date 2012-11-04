@@ -30,9 +30,12 @@
 
 
 //needed to avoid to include models directly here,
-//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+//which would have the side effects to require to recompile the
+// controller every time we modify a model. even though it does
+// not affect the controller
 namespace models {
     class Articles;
+    class History;
     // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
 }
 
@@ -63,7 +66,12 @@ class Articles : public Controller {
          * @since %%MODEL_CTRL_TODAY%%
          */
         models::Articles *articlesModel;
-
+        
+        /**
+         * @brief Use to access to the history features 
+         * @since 04 November 2012
+         */
+        models::History *historyModel;
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
     
 
