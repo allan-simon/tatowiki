@@ -77,16 +77,16 @@ class Articles : public SqliteModel {
          * @param title   The title of the article
          * @param content The main content of the article
          *
-         * @return The article corresponding to the criteria
+         * @return bool If the article has been correctly edited
          *
          * @since 30 October 2012
          */
 
         bool edit_from_lang_and_slug(
-            std::string lang,
-            std::string slug,
-            std::string title,
-            std::string content
+            const std::string &lang,
+            const std::string &slug,
+            const std::string &title,
+            const std::string &content
         );
 
         /**
@@ -104,10 +104,10 @@ class Articles : public SqliteModel {
          * @since 4 November 2012
          */
         bool create_from_lang_and_slug(
-            std::string lang,
-            std::string slug,
-            std::string title,
-            std::string content
+            const std::string &lang,
+            const std::string &slug,
+            const std::string &title,
+            const std::string &content
         );
 
 

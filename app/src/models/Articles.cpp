@@ -76,10 +76,10 @@ results::Article Articles::get_from_lang_and_slug(
  *
  */
 bool Articles::edit_from_lang_and_slug(
-    std::string lang,
-    std::string slug,
-    std::string title,
-    std::string content
+    const std::string &lang,
+    const std::string &slug,
+    const std::string &title,
+    const std::string &content
 ) {
     cppdb::statement edit = sqliteDb.prepare(
         "UPDATE articles "
@@ -110,10 +110,10 @@ bool Articles::edit_from_lang_and_slug(
  *
  */
 bool Articles::create_from_lang_and_slug(
-    std::string lang,
-    std::string slug,
-    std::string title,
-    std::string content
+    const std::string &lang,
+    const std::string &slug,
+    const std::string &title,
+    const std::string &content
 ) {
     cppdb::statement create = sqliteDb.prepare(
         "INSERT INTO articles(title,content,lang,slug,locked) "
