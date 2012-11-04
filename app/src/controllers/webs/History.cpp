@@ -45,6 +45,7 @@ History::History(cppcms::service& serv) :
 
     dispatcher().assign("/diff-between", &History::diff_between, this);
     dispatcher().assign("/diff-between_treat", &History::diff_between_treat, this);
+    dispatcher().assign("/all-versions-of/(.*)", &History::all_versions_of, this, 1);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -56,6 +57,7 @@ History::History(cppcms::service& serv) :
  *
  */
 History::~History() {
+    delete historyModel;
     //%%%NEXT_DEL_MODEL_CTRL%%%
 }
 
@@ -110,6 +112,18 @@ void History::diff_between_treat() {
 
 }
 
+
+/**
+ *
+ */
+void History::all_versions_of(const std::string slug) {
+
+    contents::history::AllVersionsOf c;
+    init_content(c);
+
+
+    render("history_all_versions_of", c);
+}
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

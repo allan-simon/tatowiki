@@ -91,6 +91,16 @@ class History : public Controller {
          */
         void diff_between_treat();
 
+        /**
+         * @brief Show all the version of a given article
+         * 
+         * @param string slug The url name of the article, will be used in
+         *                    combination with the lang to identify the article
+         *
+         * @since 04 November 2012
+         */
+        void all_versions_of(const std::string slug);
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

@@ -86,6 +86,19 @@ struct DiffBetween : public History {
 
 };
 
+/**
+ * @struct AllVersionsOf
+ * @since  04 November 2012
+ * @brief 
+ */
+struct AllVersionsOf : public History {
+
+    AllVersionsOf() {
+
+    }
+
+};
+
 //%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace history
