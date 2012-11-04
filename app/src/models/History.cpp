@@ -45,6 +45,63 @@ History::History() :
 }
 
 
+/**
+ *
+ */
+
+bool History::add_version(
+    const std::string &lang,
+    const std::string &slug,
+    const std::string &title,
+    const std::string &content,
+    const std::string &summary = ""
+) {
+    cppdb::statement addVersion = sqliteDb.prepare(
+        "INSERT INTO history("
+        "    title,"
+        "    content,"
+        "    lang,"
+        "    slug,"
+        "    summary,"
+        "    version"
+        ") VALUES ("
+        "    ?,"
+        "    ?,"
+        "    ?,"
+        "    ?,"
+        "    ?,"
+        // COALESCE = either we do version = version + 1 or
+        // version = 1 (1+0) if no previous version
+        "    1 + COALESCE("
+        "       (SELECT version FROM history WHERE lang = ? and slug = ?),"
+        "       0"
+        "    )"
+        ")"
+    );
+    // insert part
+    addVersion.bind(title);
+    addVersion.bind(content);
+    addVersion.bind(lang);
+    addVersion.bind(slug);
+    addVersion.bind(summary);
+
+    //coaelsce part
+    addVersion.bind(lang);
+    addVersion.bind(slug);
+    
+    try {
+        addVersion.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        addVersion.reset();
+        return false;
+    }
+    addVersion.reset();
+    return true;
+}
+
+
 } // end namespace models
 
 

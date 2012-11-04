@@ -46,6 +46,28 @@ class History : public SqliteModel {
          */
         History();
 
+        /**
+         * @brief Save a new version of an article
+         * 
+         * @param lang    ISO code of the language in which the article
+         *                is written
+         * @param slug    Slug of the article (i.e URL version of the
+         *                title)
+         * @param title   The title of the article
+         * @param content The main content of the article
+         * @param summary A description of the change
+         *
+         * @return bool If the article historic version has been added
+         *
+         * @since 04 November 2012
+         */
+        bool add_version(
+            const std::string &lang,
+            const std::string &slug,
+            const std::string &title,
+            const std::string &content,
+            const std::string &summary
+        );
 };
 
 } // end namespace models 
