@@ -31,6 +31,7 @@
 #include <limits>
 #include <cppdb/frontend.h>
 
+
 #include "models/History.h"
 
 
@@ -48,7 +49,6 @@ History::History() :
 /**
  *
  */
-
 bool History::add_version(
     const std::string &lang,
     const std::string &slug,
@@ -73,7 +73,7 @@ bool History::add_version(
         // COALESCE = either we do version = version + 1 or
         // version = 1 (1+0) if no previous version
         "    1 + COALESCE("
-        "       (SELECT version FROM history WHERE lang = ? and slug = ?),"
+        "       (SELECT max(version) FROM history WHERE lang = ? and slug = ?),"
         "       0"
         "    )"
         ")"
@@ -99,6 +99,43 @@ bool History::add_version(
     }
     addVersion.reset();
     return true;
+}
+
+/**
+ *
+ */
+results::Changes History::all_versions_of(
+    const std::string &lang,
+    const std::string &slug
+) {
+
+    cppdb::statement allVersionOf = sqliteDb.prepare(
+        "SELECT "
+        "   version, "
+        "   edit_time, "
+        "   summary "
+        "FROM history "
+        "WHERE "
+        "   lang = ? "
+        "   AND slug = ?"  
+        "ORDER BY edit_time"
+    );
+    allVersionOf.bind(lang);
+    allVersionOf.bind(slug);
+
+    cppdb::result res = allVersionOf.query();
+    results::Changes changes;
+    while (res.next()) {
+        results::Change tmpChange(
+            res.get<int>("version"),
+            res.get<unsigned int>("edit_time"),
+            res.get<std::string>("summary")
+        );
+        changes.push_back(tmpChange);
+    }
+    allVersionOf.reset();
+    return changes;
+
 }
 
 

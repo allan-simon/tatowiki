@@ -120,7 +120,12 @@ void History::all_versions_of(const std::string slug) {
 
     contents::history::AllVersionsOf c;
     init_content(c);
-
+    c.slug = slug;
+    //TODO test if article exists
+    c.changes = historyModel->all_versions_of(
+        session()["interfaceLang"],
+        slug
+    );
 
     render("history_all_versions_of", c);
 }

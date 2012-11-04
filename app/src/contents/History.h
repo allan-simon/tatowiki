@@ -30,6 +30,7 @@
 #include "cppcms_skel/contents/content.h"
 
 #include "contents/forms/diff_between.h"
+#include "results/History.h"
 //%%%NEXT_CONTENT_FORM_MARKER%%%
 
 namespace contents {
@@ -93,8 +94,22 @@ struct DiffBetween : public History {
  */
 struct AllVersionsOf : public History {
 
-    AllVersionsOf() {
+    /**
+     * @brief changes List of modification that has been made on the article
+     *
+     * @since 04 November 2012
+     */
+    results::Changes changes;
 
+    /**
+     * @brief slug Url name of the article 
+     *
+     * @since 04 November 2012
+     */
+
+    std::string slug;
+
+    AllVersionsOf() {
     }
 
 };

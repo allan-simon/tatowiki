@@ -4,8 +4,22 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me History / AllVersionsOf
+<% template main_content() %> 
+    <div class="module"> 
+        <% foreach change in changes %>
+        <ul>
+            <% item %>
+            <li>    
+                <%gt "changed at <span class='time'>{1,dt=s}</span>" using change.editTime %>
+                <!-- TODO use < url %> instead -->
+                <a href="/history/show-version/<%= slug %>/<%= change.version %>">
+                    <% gt "Show" %>
+                </a>
+            </li>
+            <% end %>
+        </ul>
+        <% end foreach %>
+    </div>
 <% end template %>
 
 

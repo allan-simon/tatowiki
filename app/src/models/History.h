@@ -26,8 +26,9 @@
 #define TatoWiki_HISTORY
 
 
-
 #include "cppcms_skel/models/SqliteModel.h"
+
+#include "results/History.h"
 namespace models {
 
 
@@ -67,6 +68,25 @@ class History : public SqliteModel {
             const std::string &title,
             const std::string &content,
             const std::string &summary
+        );
+
+        /**
+         * @brief Retrieve the list of changes made on an article
+         * 
+         * @param lang ISO code of the language in which the article
+         *             is written
+         * @param slug Slug of the article (i.e URL version of the
+         *             title)
+         *
+         * @return Changes The list of changes made on the given
+         *                 article
+         *
+         * @since 04 November 2012
+         *
+         */
+        results::Changes all_versions_of(
+            const std::string &lang,
+            const std::string &slug
         );
 };
 
