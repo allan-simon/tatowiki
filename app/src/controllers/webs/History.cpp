@@ -31,6 +31,7 @@
 #include "contents/History.h"
 
 #include "models/History.h"
+#include "models/Articles.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -41,7 +42,7 @@ History::History(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
 
-    dispatcher().assign("/revert-to-version", &History::revert_to_version, this);
+    dispatcher().assign("/revert-to-version/(.*)/(\\w+)", &History::revert_to_version, this, 1, 2);
     dispatcher().assign("/show-version/.*/(\\w+)", &History::show_version, this, 1);
 
     dispatcher().assign("/diff-between", &History::diff_between, this);
@@ -51,6 +52,7 @@ History::History(cppcms::service& serv) :
 
 
     historyModel = new models::History();
+    articlesModel = new models::Articles();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 
@@ -59,19 +61,55 @@ History::History(cppcms::service& serv) :
  */
 History::~History() {
     delete historyModel;
+    delete articlesModel;
     //%%%NEXT_DEL_MODEL_CTRL%%%
 }
 
 /**
  *
  */
-void History::revert_to_version() {
+void History::revert_to_version(
+    const std::string slug,
+    const std::string versionStr 
+) {
 
-    contents::history::RevertToVersion c;
-    init_content(c);
+
+    const int version = std::stoi(versionStr); 
+    results::ArticleVersion articleVersion = historyModel->get_version(
+        version
+    );
+
+    if (articleVersion.exists()) {
+
+        articlesModel->edit_from_lang_and_slug(
+            articleVersion.article.lang,
+            slug,
+            articleVersion.article.title,
+            articleVersion.article.content
+        );
+
+        const std::string summary = (cppcms::locale::format(
+            cppcms::locale::translate(
+                "Revert article to version {1}" 
+            )
+        ) % version).str();
+
+        historyModel->add_version(
+            articleVersion.article.lang,
+            slug,
+            articleVersion.article.title,
+            articleVersion.article.content,
+            summary
+        );
 
 
-    render("history_revert_to_version", c);
+    }
+
+    //TODO: add a message to say if the revert has been done 
+    //      or not
+    response().set_redirect_header(
+        "/articles/show/" + slug
+    );
 }
 
 /**

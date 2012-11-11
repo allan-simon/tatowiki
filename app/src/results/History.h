@@ -89,6 +89,18 @@ namespace results {
     struct ArticleVersion {
         results::Article article;
         results::Change change;
+
+        /**
+         * @brief test if article's version is an existing one or not
+         *
+         * @return bool True if it exists, false otherwise
+         *
+         * @since 11 November 2012
+         *
+         */
+        bool exists() {
+            return change.version > 0;
+        };
     };
 
     /**
