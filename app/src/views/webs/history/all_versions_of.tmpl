@@ -23,6 +23,21 @@
 <% end template %>
 
 
+<% template annexe_content() %>
+<div class="module">
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="/articles/show/<%= slug | urlencode %>">
+                <%gt "Go back to article's page" %>
+            </a>
+        </li>
+    </ul>
+</div>
+<% end template %>
+
+
 
 <% end view %>
 <% end skin %>

@@ -29,6 +29,11 @@
                 <%gt "History" %>
             </a>
         </li>
+        <li>
+            <a href="/articles/show/<%= articleVersion.article.slug | urlencode %>">
+                <%gt "Go back to article's page" %>
+            </a>
+        </li>
     </ul>
 </div>
 <% end template %>
