@@ -134,6 +134,42 @@ results::Changes History::all_versions_of(
 
 }
 
+/**
+ *
+ */
+results::ArticleVersion History::get_version(const int version) {
+
+    cppdb::statement getVersion = sqliteDb.prepare(
+        "SELECT "
+        "    title,"
+        "    content,"
+        "    lang,"
+        "    slug,"
+        "    summary,"
+        "    version "
+        "FROM history "
+        "WHERE version = ?;"
+    );
+    getVersion.bind(version); 
+
+    cppdb::result res = getVersion.row();
+    results::ArticleVersion articleVersion;
+
+    if (!res.empty()) {
+        articleVersion.article.title = res.get<std::string>("title");
+        articleVersion.article.content = res.get<std::string>("content");
+        articleVersion.article.lang = res.get<std::string>("lang");
+        articleVersion.article.slug = res.get<std::string>("slug");
+
+        articleVersion.change.summary = res.get<std::string>("summary");
+        articleVersion.change.version = res.get<int>("version");
+    } else {
+        articleVersion.change.version = 0;
+    }
+    getVersion.reset();
+    return articleVersion;
+}
+
 
 } // end namespace models
 

@@ -74,10 +74,11 @@ class History : public Controller {
         void revert_to_version();
 
         /**
-         * @brief @TODO
+         * @brief Display the given version of an article
+         * @param string versionStr The version number as a string
          * @since 30 October 2012
          */
-        void show_version();
+        void show_version(const std::string versionStr);
 
         /**
          * @brief @TODO

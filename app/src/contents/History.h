@@ -58,11 +58,32 @@ struct RevertToVersion : public History {
 };
 
 /**
- * @struct ShowVersion
+ * @struct ShowVersion Content that will be used by History::show_version
  * @since  30 October 2012
  * @brief 
  */
 struct ShowVersion : public History {
+
+    //TODO factorize with Show from Articles.h
+    /**
+     * @brief placeholder for the function that will be called
+     *        when using  <%= varible | ext markdown %> in the
+     *        template
+     *
+     * @since  30 October 2012
+     */
+    booster::function<
+        std::string(
+            const std::string &
+        )
+    > markdown;
+
+
+    /**
+     * @brief Represent a given version of a wiki Article
+     * @since 11 November 2012
+     */
+    results::ArticleVersion articleVersion;
 
     ShowVersion() {
 

@@ -88,6 +88,22 @@ class History : public SqliteModel {
             const std::string &lang,
             const std::string &slug
         );
+
+
+        /**
+         * @brief Retrieve a given version of an article
+         * 
+         * @param int Version The version number
+
+         * @return ArticleVersion The article as it was at that time
+         *                        And information related to the edit
+         *
+         * @since 11 November 2012
+         *
+         */
+        results::ArticleVersion get_version(
+            const int version
+        );
 };
 
 } // end namespace models 

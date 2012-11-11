@@ -26,6 +26,7 @@
 #include <cppcms/session_interface.h>
 #include "History.h"
 
+#include "generics/markdown.h"
 
 #include "contents/History.h"
 
@@ -41,7 +42,7 @@ History::History(cppcms::service& serv) :
 {
 
     dispatcher().assign("/revert-to-version", &History::revert_to_version, this);
-    dispatcher().assign("/show-version", &History::show_version, this);
+    dispatcher().assign("/show-version/.*/(\\w+)", &History::show_version, this, 1);
 
     dispatcher().assign("/diff-between", &History::diff_between, this);
     dispatcher().assign("/diff-between_treat", &History::diff_between_treat, this);
@@ -76,10 +77,15 @@ void History::revert_to_version() {
 /**
  *
  */
-void History::show_version() {
+void History::show_version(const std::string versionStr) {
 
     contents::history::ShowVersion c;
     init_content(c);
+
+    const int version = std::stoi(versionStr); 
+    
+    c.markdown = mymarkdown;
+    c.articleVersion = historyModel->get_version(version);
 
 
     render("history_show_version", c);
@@ -92,7 +98,6 @@ void History::diff_between() {
 
     contents::history::DiffBetween c;
     init_content(c);
-
 
     render("history_diff_between", c);
 }

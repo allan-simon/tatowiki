@@ -27,6 +27,7 @@
 
 
 #include <vector>
+#include "Articles.h"
 
 namespace results {
 
@@ -64,6 +65,8 @@ namespace results {
         std::string summary;
 
         public:
+            Change(){};
+
             Change(
                 int version,
                 unsigned int editTime,
@@ -77,13 +80,24 @@ namespace results {
     };
 
     /**
+     * @struct ArticleVersion Structure used to represent the previous state
+     *                        Of an article and information related to this
+     *                        state
+     *
+     * @since 11 November 2012
+     */
+    struct ArticleVersion {
+        results::Article article;
+        results::Change change;
+    };
+
+    /**
      * @class Changes Represent a list of change
      *
      * @since 04 November 2012
      *
      */
-    typedef std::vector<Change> Changes;
-
+    typedef std::vector<results::Change> Changes;
 } // end of namespace results
 
 

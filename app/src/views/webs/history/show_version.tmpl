@@ -1,12 +1,39 @@
 <% c++ #include "contents/History.h" %>
 <% skin %>
 <% view history_show_version uses contents::history::ShowVersion extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
+//TODO
+<% template title() %><% gt "Previous version" %><% end template %>
 
+<% template main_content() %> 
 
-<% template body() %> 
-    Edit Me History / ShowVersion
+<div class=module>
+    <h1><% gt "Notice" %></h1>
+    <% gt "This page show a previous version of the article" %>
+</div>
+
+<div class="module">
+    <%= articleVersion.article.content | ext markdown %>
+</div>
 <% end template %>
+
+
+<% template annexe_content() %>
+<div class="module">
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a
+                href="/history/all-versions-of/<%= articleVersion.article.slug | urlencode %>"
+            >
+                <%gt "History" %>
+            </a>
+        </li>
+    </ul>
+</div>
+<% end template %>
+
+
 
 
 
