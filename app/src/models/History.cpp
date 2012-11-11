@@ -73,7 +73,7 @@ bool History::add_version(
         // COALESCE = either we do version = version + 1 or
         // version = 1 (1+0) if no previous version
         "    1 + COALESCE("
-        "       (SELECT max(version) FROM history)"
+        "       (SELECT max(version) FROM history),"
         "       0"
         "    )"
         ")"
