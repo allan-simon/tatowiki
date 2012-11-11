@@ -27,16 +27,13 @@ begin;
     -- table storing the different version of the articles 
     -- TODO storing user_id so that we know who did the change
     create table history (
-        id integer primary key autoincrement not null, 
+        version integer primary key autoincrement not null default 1, 
         lang text not null,
         slug text not null,
         title text not null,
         content text not null,
-        version integer not null default 1,                 -- version of the article
         edit_time timestamp default (strftime('%s', 'now')),-- when the edition has been made
         summary text not null,                              -- text to explain what has been done
-        -- user_id integer, not used yet
-        unique (version,lang,slug)                          -- an article can only have one "version number X"
 
     );
 

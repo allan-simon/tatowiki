@@ -73,7 +73,7 @@ bool History::add_version(
         // COALESCE = either we do version = version + 1 or
         // version = 1 (1+0) if no previous version
         "    1 + COALESCE("
-        "       (SELECT max(version) FROM history WHERE lang = ? and slug = ?),"
+        "       (SELECT max(version) FROM history)"
         "       0"
         "    )"
         ")"
@@ -85,10 +85,6 @@ bool History::add_version(
     addVersion.bind(slug);
     addVersion.bind(summary);
 
-    //coaelsce part
-    addVersion.bind(lang);
-    addVersion.bind(slug);
-    
     try {
         addVersion.exec();
     } catch (cppdb::cppdb_error const &e) {
