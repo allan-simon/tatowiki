@@ -24,11 +24,11 @@
  */
 
 #include <cppcms/session_interface.h>
+#include <cppcms_skel/contents/forms/change_interface_langs.h>
 #include "Pages.h"
 
 #include "contents/Pages.h"
 
-#include "cppcms_skel/contents/forms/change_interface_langs.h"
 
 
 

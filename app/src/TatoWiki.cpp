@@ -35,9 +35,9 @@
 #include <cppcms/session_interface.h>
 
 
+#include <cppcms_skel/generics/Languages.h>
 
 #include "TatoWiki.h"
-#include "cppcms_skel/generics/Languages.h"
 
 
 // @TODO move the default language in the configuration

@@ -31,10 +31,10 @@
 #include <cppcms/applications_pool.h>
 #include <cppdb/frontend.h>
 #include <cppcms/json.h>
+#include <cppcms_skel/generics/Config.h>
 
 #include "TatoWiki.h"
 
-#include "cppcms_skel/generics/Config.h"
 
 using namespace std;
 using namespace cppcms;

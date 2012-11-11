@@ -36,7 +36,7 @@
 #ifndef CPPCMS_SKEL_CONTENTS_PAGES_H
 #define CPPCMS_SKEL_CONTENTS_PAGES_H
 
-#include "cppcms_skel/contents/content.h"
+#include <cppcms_skel/contents/content.h>
 
 namespace contents {
 namespace pages {

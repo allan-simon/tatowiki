@@ -27,7 +27,7 @@
 #ifndef TATOEBACPP_CONTENTS_USERS_H
 #define TATOEBACPP_CONTENTS_USERS_H
 
-#include "cppcms_skel/contents/content.h"
+#include <cppcms_skel/contents/content.h>
 
 #include "contents/forms/login.h"
 #include "contents/forms/register_new.h"

@@ -26,7 +26,7 @@
 #define TatoWiki_HISTORY
 
 
-#include "cppcms_skel/models/SqliteModel.h"
+#include <cppcms_skel/models/SqliteModel.h>
 
 #include "results/History.h"
 namespace models {

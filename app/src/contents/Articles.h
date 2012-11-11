@@ -29,7 +29,7 @@
 
 
 #include <booster/function.h>
-#include "cppcms_skel/contents/content.h"
+#include <cppcms_skel/contents/content.h>
 
 #include "contents/forms/edit.h"
 #include "contents/forms/create.h"

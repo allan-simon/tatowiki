@@ -27,7 +27,7 @@
 
 
 
-#include "cppcms_skel/models/SqliteModel.h"
+#include <cppcms_skel/models/SqliteModel.h>
 namespace models {
 
 

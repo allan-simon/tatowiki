@@ -27,7 +27,7 @@
 #ifndef TATOEBACPP_CONTENTS_HISTORY_H
 #define TATOEBACPP_CONTENTS_HISTORY_H
 
-#include "cppcms_skel/contents/content.h"
+#include <cppcms_skel/contents/content.h>
 
 #include "contents/forms/diff_between.h"
 #include "results/History.h"

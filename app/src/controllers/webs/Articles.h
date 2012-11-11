@@ -26,7 +26,7 @@
 #ifndef CONTROLLERS_WEBS_ARTICLES_H
 #define CONTROLLERS_WEBS_ARTICLES_H
 
-#include "cppcms_skel/controllers/webs/Controller.h"
+#include <cppcms_skel/controllers/webs/Controller.h>
 
 
 //needed to avoid to include models directly here,
