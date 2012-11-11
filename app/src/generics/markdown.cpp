@@ -74,3 +74,22 @@ std::string markdown_format_for_highlighting(std::string const &input,std::strin
 	}
 	return result;
 }
+
+//TODO move it somewhere else
+// HACK!
+
+std::string mymarkdown(std::string const &s)
+{
+    int flags = mkd::no_pants;
+    if(s.compare(0,10,"<!--toc-->")==0) {
+        flags |= mkd::toc;
+    }
+    std::string html = markdown_to_html(
+        s.c_str(),
+        s.size(),flags
+    );
+    return html;
+};
+
+
+

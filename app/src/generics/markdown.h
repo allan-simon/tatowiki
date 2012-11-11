@@ -33,6 +33,8 @@ namespace mkd {
 std::string markdown_to_html(char const *str,int len,int flags);
 std::string markdown_format_for_highlighting(std::string const &,std::string const &html_class);
 
+std::string mymarkdown(std::string const &s);
+
 #endif
 
 
