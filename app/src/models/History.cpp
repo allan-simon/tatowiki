@@ -118,7 +118,7 @@ results::Changes History::all_versions_of(
         "WHERE "
         "   lang = ? "
         "   AND slug = ?"  
-        "ORDER BY edit_time"
+        "ORDER BY edit_time DESC"
     );
     allVersionOf.bind(lang);
     allVersionOf.bind(slug);
