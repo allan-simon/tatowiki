@@ -72,7 +72,7 @@ void History::revert_to_version(
     const std::string slug,
     const std::string versionStr 
 ) {
-
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     const int version = std::stoi(versionStr); 
     results::ArticleVersion articleVersion = historyModel->get_version(

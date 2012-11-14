@@ -113,7 +113,7 @@ void Articles::show(std::string slug) {
  *
  */
 void Articles::edit(const std::string slug) {
-
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     results::Article article = articlesModel->get_from_lang_and_slug(
         session()["interfaceLang"],
@@ -140,6 +140,8 @@ void Articles::edit(const std::string slug) {
  *
  */
 void Articles::edit_treat() {
+    TREAT_PAGE();
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     forms::articles::Edit form;
     form.load(context());
@@ -190,6 +192,7 @@ void Articles::edit_treat() {
  *
  */
 void Articles::create(std::string slug) {
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     results::Article article = articlesModel->get_from_lang_and_slug(
         session()["interfaceLang"],
@@ -217,6 +220,8 @@ void Articles::create(std::string slug) {
  *
  */
 void Articles::create_treat() {
+    TREAT_PAGE();
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     forms::articles::Create form;
     form.load(context());
