@@ -30,9 +30,13 @@
 #include <algorithm>
 #include <limits>
 #include <cppdb/frontend.h>
+#include <cppcms/util.h>
+#include <cppcms/crypto.h>
+#include <booster/posix_time.h>
 
 #include "models/Users.h"
 
+using namespace cppcms::crypto;
 
 namespace models {
 
@@ -43,6 +47,71 @@ Users::Users() :
     SqliteModel()
 {
 }
+
+
+/**
+ *
+ */
+bool Users::is_login_correct(
+    const std::string &login,
+    const std::string &pass
+) {
+    
+    cppdb::statement checkPasswd = sqliteDb.prepare(
+        "SELECT 1 FROM users "
+        "WHERE username = ? AND password = ? LIMIT 1"
+    );
+    const std::string passHashed = cppcms::util::md5hex(pass);
+    checkPasswd.bind(login);
+    checkPasswd.bind(passHashed);
+    cppdb::result res = checkPasswd.row();
+    int checkresult = 0;
+    res.fetch(0,checkresult);
+
+    // Don't forget to reset statement
+    checkPasswd.reset();
+
+    if (checkresult == 1 ) {
+        return true;
+    }
+    return false;
+
+}
+
+/**
+ *
+ */
+bool Users::add(
+    const std::string &login,
+    const std::string &pass,
+    const std::string &email
+) {       
+
+    
+    cppdb::statement addUser = sqliteDb.prepare(
+        "INSERT INTO users(username, password, email, since)"
+        "VALUES(?,?,?,?)"
+    );
+
+    const std::string passHashed = cppcms::util::md5hex(pass);
+    addUser.bind(login);
+    addUser.bind(passHashed);
+    std::cout << cppcms::util::md5hex(pass) << std::endl;
+    addUser.bind(email);
+    addUser.bind(
+        booster::ptime::now().get_seconds()
+    );
+          
+    try {
+        addUser.exec();    
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        addUser.reset();
+        return false;
+    }
+    addUser.reset();
+    return true;
+}     
 
 
 } // end namespace models

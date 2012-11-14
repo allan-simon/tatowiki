@@ -59,6 +59,7 @@ Users::Users(cppcms::service& serv) :
  *
  */
 Users::~Users() {
+    delete usersModel;
     //%%%NEXT_DEL_MODEL_CTRL%%%
 }
 
@@ -66,12 +67,10 @@ Users::~Users() {
  *
  */
 void Users::logout() {
+    current_user_logout();
+    set_message(_("Logout"));
+    go_back_to_previous_page();
 
-    contents::users::Logout c;
-    init_content(c);
-
-
-    render("users_logout", c);
 }
 
 /**
@@ -82,6 +81,19 @@ void Users::login() {
     contents::users::Login c;
     init_content(c);
 
+    // we store in the hidden field of the login form
+    // the page we wanted to access
+    // in order to be able to redirect on it after login
+
+    std::string wantedPage = request().get("from"); 
+    if(wantedPage.empty()) {
+        //TODO replace / by APPLICATION_ROOT
+        wantedPage = "/";
+    }
+
+    c.loginForm.previousUrl.value(
+        wantedPage
+    );
 
     render("users_login", c);
 }
@@ -91,13 +103,42 @@ void Users::login() {
  *
  */
 void Users::login_treat() {
+    TREAT_PAGE();
 
     forms::users::Login form;
     form.load(context());
+    
+    const std::string username = form.username.value();
 
+    // TODO maybe move that in the validate function of the form?
     if (!form.validate()) {
+        set_message("Form didn't validate");
         go_back_to_previous_page();
+        return;
     }
+
+    if (
+        usersModel->is_login_correct(
+            username,
+            form.password.value()
+        )
+    ) {
+        set_current_username_and_id(
+            username,
+            usersModel->get_id_from_name<int>(username)
+        );
+        // we redirect to the page the user was before going
+        // on the login page
+        // TODO the message is not displayed try to see why
+        // certainly due to successive redirection
+        set_message("Login");
+        redirect(
+            "/"
+        );
+    } else {
+        set_message("Password incorrect");
+        go_back_to_previous_page();
+    } 
 
 }
 
@@ -117,8 +158,11 @@ void Users::register_new() {
 
 /**
  *
+        // we redirect to the page the user was before going
+        // on the login page
  */
 void Users::register_new_treat() {
+    TREAT_PAGE();
 
     forms::users::RegisterNew form;
     form.load(context());
@@ -127,6 +171,20 @@ void Users::register_new_treat() {
         go_back_to_previous_page();
     }
 
+    const std::string username = form.username.value();
+    if (
+        usersModel->add(
+            username,
+            form.password.value(),
+            form.email.value()
+        )
+    ) {
+        //TODO add should return the id of the newly created user
+        //     or -1 if not created
+        set_current_username(username);
+        //TODO replace / by "ROOT_APPLICATION"
+        redirect("/");
+    }
 }
 
 

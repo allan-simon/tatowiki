@@ -4,11 +4,13 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me Users / RegisterNew
-    <form method="POST" action="<% url "/users/register_new_treat" %>" >
-        <% form as_p registerNewForm %>
-    </form>
+<% template main_content() %> 
+    <div class="module">
+        <h1><% gt "Register a new user" %></h1>
+        <form method="POST" action="/users/register-new_treat" >
+            <% form as_p registerNewForm %>
+        </form>
+    </div>
 <% end template %>
 
 

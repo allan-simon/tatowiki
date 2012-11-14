@@ -58,9 +58,8 @@ struct Logout : public Users {
 };
 
 /**
- * @struct Login
+ * @struct Login Form to log in
  * @since  30 October 2012
- * @brief 
  */
 struct Login : public Users {
 

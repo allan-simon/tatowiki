@@ -2,13 +2,18 @@ begin;
     drop table if exists articles;
     drop table if exists users;
 
-
     -- table representing a user 
-    create table users (
-        id integer primary key autoincrement not null,
-        username text unique not null,                  -- name of the user
-        password text not null                          -- his password, hashed (or not)
+    CREATE TABLE users (
+        "id"          integer primary key autoincrement not null , 
+        "username"    text    not null unique,             -- his nickname 
+        "email"       text    not null unique,             -- his email address
+        "image"       text    not null default "unknown" , -- his personnal image 
+        "password"    text    not null,                    -- his password hashed
+        "since"       integer not null,                    -- his registering date
+        "homepage"    text    default "",                  -- his personnal webpage/website
+        "description" text    default ""                   -- his self-written description
     );
+    CREATE INDEX users_username_idx ON users (username);
 
     -- table representing an article (i.e a page of the wiki)
     -- TODO maybe have something to do a more precise restriction (for example authorizing only some kind of users
@@ -33,7 +38,7 @@ begin;
         title text not null,
         content text not null,
         edit_time timestamp default (strftime('%s', 'now')),-- when the edition has been made
-        summary text not null,                              -- text to explain what has been done
+        summary text not null                              -- text to explain what has been done
 
     );
 

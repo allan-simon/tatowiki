@@ -4,11 +4,13 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me Users / Login
-    <form method="POST" action="<% url "/users/login_treat" %>" >
+<% template main_content() %> 
+<div class="module">
+    <h1><% gt "Login" %></h1>
+    <form method="POST" action="/users/login_treat" >
         <% form as_p loginForm %>
     </form>
+</div>
 <% end template %>
 
 

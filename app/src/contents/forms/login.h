@@ -27,6 +27,7 @@
 #ifndef TatoWiki_LOGIN
 #define TatoWiki_LOGIN
 
+#define _(X) cppcms::locale::translate((X))
 
 #include <cppcms/form.h>
 
@@ -42,25 +43,73 @@ namespace users {
 struct Login : public cppcms::form {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
-
     /**
-     * @brief button to submit the form
+     * @brief To keep trace of the url we were in before
+     *        landing on the login page
+     *
+     * @since 13 November 2012
+     */
+    cppcms::widgets::hidden previousUrl;
+    
+    /**
+     * @brief The username with which we want to log in
+     * @since 13 November 2012
+     */
+    cppcms::widgets::text username;
+    
+    /**
+     * TODO write the doc
+     * @since 13 November 2012
+     */
+    cppcms::widgets::password password;
+    
+    /**
+     * TODO write the doc
+     * @since 13 November 2012
+     */
+    cppcms::widgets::checkbox rememberMe;
+    
+    /**
+     * TODO write the doc
+     * @since 13 November 2012
      */
     cppcms::widgets::submit submit;
+    
 
     /**
-     * @brief Constructor
+     * @brief Default constructor add all the fields to the form
+     * define their names etc.
      */
     Login() {
-
         //%%%NEXT_WIDGET_ADD_MARKER%%%
+        previousUrl.name("previousurl");
+        previousUrl.value("");
+        add(previousUrl);
 
+        username.name("username");
+        username.message(_("Username : "));
+        username.attributes_string("class=\"input text\"");
+        username.non_empty();
+        add(username);
+
+        password.name("password");
+        password.message(_("Password : "));
+        add(password);
+
+        rememberMe.name("rememberMe");
+        rememberMe.message(_("Remember Me"));
+        add(rememberMe);
+        
+
+        submit.name("submit");
+        submit.value(_("submit"));
         add(submit);
-        submit.name(
-            cppcms::locale::translate("submit")
-        );
-        submit.value("submit");
+
+
+        password.non_empty();
     }
+    
+
 
 
 };

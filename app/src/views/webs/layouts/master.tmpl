@@ -30,7 +30,6 @@
             </a>
         </div>
         <div id="container">
-            <% include message() %>
 
             <% include body() %>
 
@@ -46,9 +45,38 @@
 <div id="top_menu_container">
     <div id="top_menu">
         <% include navigation_menu() %>
+        <% include user_menu() %>
     </div>
 </div>
 <% end template %>
+
+
+<% template user_menu() %>
+		<div id="user_menu">
+            <ul>
+            <% if not currentUserHelper.is_logged() %>
+                <!-- TODO put here the fancy login box -->
+                    <li class="menuSection" >
+                        <a href="/users/register-new" >
+                            <% gt "Register" %>
+                        </a>
+                    </li>
+
+                    <li class="menuSection" >
+                        <a href="/users/login" >
+                            <% gt "Login" %>
+                        </a>
+            <% else %>
+                    <li class="menuSection" >
+                        <a href="/users/logout" >
+                            <% gt "Logout" %>
+                        </a>
+                    </li>
+            <% end %>
+            </ul>
+		</div>
+<% end template %>
+
 
 
 /**
@@ -73,8 +101,10 @@
  */
 <% template message() %>
     <% if not message.empty() %>
-        <div class="message" id="flashMessage">
-            <%= message | raw %>
+        <div class="module">
+            <div class="message" id="flashMessage">
+                <%= message | raw %>
+            </div>
         </div>
     <% end %>
 <% end template %>
@@ -116,6 +146,7 @@
         <% include annexe_content() %>
     </div>
     <div id="main_content">
+        <% include message() %>
         <% include main_content()%>
     </div>
 <% end %>
