@@ -277,7 +277,7 @@ void Articles::remove(const std::string slug) {
     } else {
         set_message(_("A problem occured while trying to remove"));
     }
-    go_back_to_previous_page();
+    go_to_main_page();
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
