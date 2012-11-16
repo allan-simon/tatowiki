@@ -1,14 +1,15 @@
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
 <% view articles_create uses contents::articles::Create extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
+<% template title() %><% gt "Create a new article" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me Articles / Create
+<% template main_content() %> 
+<div class="module">
     <form method="POST" action="/articles/create_treat" >
         <% form as_p createForm %>
     </form>
+</div>
 <% end template %>
 
 
