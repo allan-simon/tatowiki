@@ -133,7 +133,7 @@ void Users::login_treat() {
         // certainly due to successive redirection
         set_message("Login");
         redirect(
-            "/"
+            form.previousUrl.value()
         );
     } else {
         set_message("Password incorrect");
