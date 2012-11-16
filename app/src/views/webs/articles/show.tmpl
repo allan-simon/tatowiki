@@ -24,6 +24,11 @@
             <a href="/history/all-versions-of/<%= article.slug | urlencode %>">
                 <%gt "History" %>
             </a>
+        </li> 
+        <li>
+            <a href="/articles/remove/<%= article.slug | urlencode %>">
+                <%gt "Remove" %>
+            </a>
         </li>
     </ul>
 </div>

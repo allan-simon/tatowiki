@@ -76,12 +76,6 @@ class Articles : public Controller {
     
 
         /**
-         * @brief @TODO
-         * @since 30 October 2012
-         */
-        void remove();
-
-        /**
          * @brief Display an article
          *
          * @param string slug URL name of the article
@@ -120,6 +114,15 @@ class Articles : public Controller {
          * @since 30 October 2012
          */
         void create_treat();
+
+        /**
+         * @brief Remove a given article from the list of viewable articles
+         *
+         * @param string slug URL name of the article we want to remove
+         *
+         * @since 16 November 2012
+         */
+        void remove(const std::string slug);
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

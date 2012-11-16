@@ -46,7 +46,7 @@ Articles::Articles(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
 
-    dispatcher().assign("/remove", &Articles::remove, this);
+    dispatcher().assign("/remove/(.*)", &Articles::remove, this, 1);
     dispatcher().assign("/show/(.*)", &Articles::show, this, 1);
 
     dispatcher().assign("/edit/(.*)", &Articles::edit, this, 1);
@@ -72,17 +72,6 @@ Articles::~Articles() {
     //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
 }
 
-/**
- *
- */
-void Articles::remove() {
-
-    contents::articles::Remove c;
-    init_content(c);
-
-
-    render("articles_delete", c);
-}
 
 /**
  *
@@ -269,6 +258,14 @@ void Articles::create_treat() {
 
 }
 
+
+/**
+ *
+ */
+void Articles::remove(const std::string slug) {
+    set_message("remove");
+    go_back_to_previous_page();
+}
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

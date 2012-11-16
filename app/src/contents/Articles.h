@@ -47,18 +47,6 @@ namespace articles {
 struct Articles : public BaseContent {
 };
 
-/**
- * @struct Remove
- * @since  30 October 2012
- * @brief 
- */
-struct Remove : public Articles {
-
-    Remove() {
-
-    }
-
-};
 
 /**
  * @struct Show
