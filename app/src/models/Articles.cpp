@@ -155,7 +155,7 @@ bool Articles::remove(
     
     // first we copy the articles to the list of deleted articles
     cppdb::statement moveToDeleted = sqliteDb.prepare(
-        "INSERT INTO deleted_articles "
+        "INSERT OR REPLACE INTO deleted_articles "
         "SELECT * FROM articles  "
         "WHERE "
         "    lang = ? AND "
