@@ -99,7 +99,7 @@ class Articles : public SqliteModel {
          * @param title   The title of the article
          * @param content The main content of the article
          *
-         * @return The article corresponding to the criteria
+         * @return bool True if the articles as been created correctly
          *
          * @since 4 November 2012
          */
