@@ -25,7 +25,6 @@
 
 #include <booster/log.h>
 
-#include <cppcms/session_interface.h>
 #include "Articles.h"
 
 
@@ -84,7 +83,7 @@ void Articles::show(std::string slug) {
     init_content(c);
     c.markdown = mymarkdown;
     c.article = articlesModel->get_from_lang_and_slug(
-        session()["interfaceLang"],
+        get_interface_lang(),
         slug
     );
    
@@ -107,7 +106,7 @@ void Articles::edit(const std::string slug) {
     CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     results::Article article = articlesModel->get_from_lang_and_slug(
-        session()["interfaceLang"],
+        get_interface_lang(),
         slug
     );
 
@@ -142,7 +141,7 @@ void Articles::edit_treat() {
         return;
     }
     
-    const std::string lang = session()["interfaceLang"];
+    const std::string lang = get_interface_lang();
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
     const std::string content = form.content.value();

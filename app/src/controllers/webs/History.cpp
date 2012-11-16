@@ -23,7 +23,6 @@
  * @link     https://github.com/sysko/tatowiki@
  */
 
-#include <cppcms/session_interface.h>
 #include "History.h"
 
 #include "generics/markdown.h"
@@ -166,7 +165,7 @@ void History::all_versions_of(const std::string slug) {
     c.slug = slug;
     //TODO test if article exists
     c.changes = historyModel->all_versions_of(
-        session()["interfaceLang"],
+        get_interface_lang(),
         slug
     );
 
