@@ -29,6 +29,20 @@ begin;
         unique (lang,slug)                             -- in order to not have several articles on the same url
     );
 
+    -- table to represent a deleted article
+    -- we don't delete them totally in case we need to revert them back
+    create table deleted_articles (
+        id integer primary key autoincrement not null,
+        lang text not null,                            -- code iso 639-3 alpha 3 in which the articles is written
+        slug text not null,                            -- "url" name of the article 
+        title text not null,                           -- title of the article 
+        content text not null,                         -- the content of the article itself
+        locked boolean,                                -- if the articles can be edited or not
+        unique (lang,slug)                             -- in order to not have several articles on the same url
+    );
+
+
+
     -- table storing the different version of the articles 
     -- TODO storing user_id so that we know who did the change
     create table history (

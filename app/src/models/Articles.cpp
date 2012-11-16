@@ -144,6 +144,61 @@ bool Articles::create_from_lang_and_slug(
 
 }
 
+/**
+ *
+ */
+bool Articles::remove(
+    const std::string &lang,
+    const std::string &slug
+) {
+
+    
+    // first we copy the articles to the list of deleted articles
+    cppdb::statement moveToDeleted = sqliteDb.prepare(
+        "INSERT INTO deleted_articles "
+        "SELECT * FROM articles  "
+        "WHERE "
+        "    lang = ? AND "
+        "    slug = ?; "
+    );
+
+    moveToDeleted.bind(lang);
+    moveToDeleted.bind(slug);
+
+    try {
+        moveToDeleted.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        moveToDeleted.reset();
+        return false;
+    }
+    moveToDeleted.reset();
+
+    // then we remove it from the list of actual articles
+    cppdb::statement remove = sqliteDb.prepare(
+        "DELETE FROM articles "
+        "WHERE "
+        "    lang = ? AND "
+        "    slug = ?; "
+    );
+
+    remove.bind(lang);
+    remove.bind(slug);
+
+    try {
+        remove.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        remove.reset();
+        return false;
+    }
+    remove.reset();
+    return true;
+
+}
+
 
 
 } // end namespace models

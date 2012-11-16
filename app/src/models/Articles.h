@@ -110,6 +110,25 @@ class Articles : public SqliteModel {
             const std::string &content
         );
 
+        /**
+         * @brief Remove an article from the list of viewable article
+         *        it is actually not deleted totally in order to be able
+         *        to revert it in case of error/vandalism
+         * 
+         * @param lang    ISO code of the language in which the article
+         *                is written
+         * @param slug    Slug of the article (i.e URL version of the
+         *                title)
+         * 
+         * @return bool True if the articles as been removed correctly
+         *
+         * @since 16 November 2012
+         *
+         */
+        bool remove(
+            const std::string &lang,
+            const std::string &slug
+        );
 
 };
 

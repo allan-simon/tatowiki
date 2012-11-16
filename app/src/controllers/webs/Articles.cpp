@@ -38,6 +38,8 @@
 
 #include "generics/markdown.h"
 
+//TODO certainly move this somewhere else
+#define _(X) cppcms::locale::translate((X))
 
 namespace controllers {
 namespace webs {
@@ -263,7 +265,19 @@ void Articles::create_treat() {
  *
  */
 void Articles::remove(const std::string slug) {
-    set_message("remove");
+
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+
+    const bool success = articlesModel->remove(
+        get_interface_lang(),
+        slug
+    );
+    
+    if (success) {
+        set_message(_("The article has been removed"));
+    } else {
+        set_message(_("A problem occured while trying to remove"));
+    }
     go_back_to_previous_page();
 }
 
