@@ -124,6 +124,12 @@ class Articles : public Controller {
          */
         void remove(const std::string slug);
 
+        /**
+         * @brief Page that will display the articles
+         * @since 17 November 2012
+         */
+        void show_all();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

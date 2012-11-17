@@ -55,6 +55,7 @@ Articles::Articles(cppcms::service& serv) :
 
     dispatcher().assign("/create/(.*)", &Articles::create, this, 1);
     dispatcher().assign("/create_treat", &Articles::create_treat, this);
+    dispatcher().assign("/show-all", &Articles::show_all, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -278,6 +279,19 @@ void Articles::remove(const std::string slug) {
         set_message(_("A problem occured while trying to remove"));
     }
     go_to_main_page();
+}
+
+/**
+ *
+ */
+void Articles::show_all() {
+
+    contents::articles::ShowAll c;
+    init_content(c);
+
+
+
+    render("articles_show_all", c);
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete

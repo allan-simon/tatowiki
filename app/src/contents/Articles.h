@@ -128,6 +128,19 @@ struct Create : public Articles {
 
 };
 
+/**
+ * @struct ShowAll
+ * @since  17 November 2012
+ * @brief 
+ */
+struct ShowAll : public Articles {
+
+    ShowAll() {
+
+    }
+
+};
+
 //%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace articles
