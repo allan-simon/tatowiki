@@ -31,7 +31,7 @@
 
 #include "contents/forms/diff_between.h"
 #include "results/History.h"
-//%%%NEXT_CONTENT_FORM_MARKER%%%
+//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
 namespace history {

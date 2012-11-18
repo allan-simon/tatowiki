@@ -33,7 +33,7 @@
 
 #include "contents/forms/edit.h"
 #include "contents/forms/create.h"
-//%%%NEXT_CONTENT_FORM_MARKER%%%
+//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 #include "results/Articles.h"
 namespace contents {
