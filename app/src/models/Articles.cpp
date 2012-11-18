@@ -199,7 +199,33 @@ bool Articles::remove(
 
 }
 
+/**
+ *
+ */
+results::Articles Articles::get_all() {
+    cppdb::statement allArticles = sqliteDb.prepare(
+        "SELECT "
+        "   lang, "
+        "   slug, "
+        "   title "
+        "FROM articles "
+        "ORDER BY title"
+    );
 
+    cppdb::result res = allArticles .query();
+    results::Articles articles;
+    while (res.next()) {
+        results::Article tmpArticle(
+            res.get<std::string>("lang"),
+            res.get<std::string>("slug"),
+            res.get<std::string>("title")
+        );
+        articles.push_back(tmpArticle);
+    }
+    allArticles.reset();
+    return articles;
+
+}
 
 } // end namespace models
 

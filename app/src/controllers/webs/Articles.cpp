@@ -285,11 +285,11 @@ void Articles::remove(const std::string slug) {
  *
  */
 void Articles::show_all() {
-
+    //TODO in the future would be better if paginated
     contents::articles::ShowAll c;
     init_content(c);
 
-
+    c.articles = articlesModel->get_all();
 
     render("articles_show_all", c);
 }

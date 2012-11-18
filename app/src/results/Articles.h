@@ -24,6 +24,9 @@
 
 #ifndef TatoWiki_RESULTS_ARTICLES_H
 #define TatoWiki_RESULTS_ARTICLES_H
+
+#include <vector>
+
 namespace results {
 
     /**
@@ -36,9 +39,9 @@ namespace results {
     struct Article {
         int id;
         std::string lang;
-        std::string content;
         std::string slug;
         std::string title;
+        std::string content;
         bool isLocked;
 
         /**
@@ -52,7 +55,24 @@ namespace results {
         bool exists() {
             return id > 0;
         };
+
+        Article() {};
+        Article(
+            const std::string &lang,
+            const std::string &slug,
+            const std::string &title
+        ) :
+            id(1),//TODO replace
+            lang(lang),
+            slug(slug),
+            title(title),
+            content(""),
+            isLocked(false)
+        {
+        };
     };
+
+    typedef std::vector<results::Article> Articles;
 
 }
 

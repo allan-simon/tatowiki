@@ -130,6 +130,14 @@ class Articles : public SqliteModel {
             const std::string &slug
         );
 
+        /**
+         * @brief Retrieve the complit list of Articles (only the "title" part)
+         *
+         * @return Articles List of articles
+         *
+         * @since 18 November 2012
+         */
+        results::Articles get_all();
 };
 
 } // end namespace models 

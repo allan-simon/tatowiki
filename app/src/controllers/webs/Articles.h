@@ -125,7 +125,7 @@ class Articles : public Controller {
         void remove(const std::string slug);
 
         /**
-         * @brief Page that will display the articles
+         * @brief Page that will display all the articles
          * @since 17 November 2012
          */
         void show_all();

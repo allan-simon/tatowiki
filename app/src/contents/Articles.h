@@ -135,6 +135,13 @@ struct Create : public Articles {
  */
 struct ShowAll : public Articles {
 
+    /**
+     * @brief contains all the articles titles and url to access to it
+     * 
+     * @since 17 November 2012
+     */
+    results::Articles articles;
+
     ShowAll() {
 
     }

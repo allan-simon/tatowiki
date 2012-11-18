@@ -4,11 +4,39 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
-    Edit Me Articles / ShowAll
+<% template main_content() %> 
+<div class="module">
+    <h1><% gt "All articles" %></h1>
+    <% foreach article in articles %>
+    <ul>
+        <% item %>
+        <li>    
+            <!-- TODO use < url %> instead -->
+            <a href="/articles/show/<%= article.slug | urlencode %>">
+                <%= article.title  %>
+            </a>
+        </li>
+        <% end %>
+    </ul>
+    <% end foreach %>
+</div>
 <% end template %>
 
+<% template annexe_content() %>
+<div class="module">
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <!-- TODO replace by application root !-->
+            <a href="/">
+                <%gt "Go back to main page" %>
+            </a>
+        </li>
+    </ul>
+</div>
 
+<% end template %>
 
 <% end view %>
 <% end skin %>
