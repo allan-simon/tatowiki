@@ -22,8 +22,8 @@
  * @link     https://github.com/sysko/tatowiki@
  */
 
-#ifndef TatoWiki_%%MODEL_INCLUDE%%
-#define TatoWiki_%%MODEL_INCLUDE%%
+#ifndef TATOWIKI_%%MODEL_INCLUDE%%
+#define TATOWIKI_%%MODEL_INCLUDE%%
 
 
 

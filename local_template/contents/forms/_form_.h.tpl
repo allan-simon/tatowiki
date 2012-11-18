@@ -24,8 +24,8 @@
  */
 
 
-#ifndef TatoWiki_%%FORM_INCLUDE%%
-#define TatoWiki_%%FORM_INCLUDE%%
+#ifndef TATOWIKI_%%FORM_INCLUDE%%
+#define TATOWIKI_%%FORM_INCLUDE%%
 
 
 #include <cppcms/form.h>
