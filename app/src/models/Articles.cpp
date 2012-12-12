@@ -267,6 +267,118 @@ int Articles::get_id_from_lang_and_slug(
 
     return id;
 }
+
+/**
+ *
+ */
+int Articles::translate_from_lang_and_slug(
+    const std::string &origLang,
+    const std::string &origSlug,
+    const std::string &lang,
+    const std::string &slug,
+    const std::string &title,
+    const std::string &content
+) {
+    cppdb::transaction guard(sqliteDb);
+
+    // GET id of the article 
+    const int articleId = get_id_from_lang_and_slug(
+        origLang,
+        origSlug
+    );
+    if(articleId <= 0) { // TODO test if article exists
+        return ARTICLE_DOESNT_EXIST_ERROR;
+    }
+    // test if articles already has a translation in that lang
+    if (is_translated_in(articleId,lang)) {
+        return ARTICLE_ALREADY_TRANSLATED_ERROR;
+    }
+
+    // save translation 
+    // TODO need to change create_from_lang to return an ID
+    // if ID < 0 => error 
+    const int translationId = create_from_lang_and_slug(
+        lang,
+        slug,
+        title,
+        content
+    );
+    if (translationId <= 0) {
+        return ARTICLE_CREATE_TRANSLATION_ERROR;
+    }
+    const int linksAdded = add_translation_link(
+        articleId,
+        translationId
+    );
+    // add translation link
+    if (linksAdded < 0) {
+        return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
+    }
+    
+    guard.commit();
+    return translationId;
+
+}
+
+int Articles::is_translated_in(
+    const int articleId,
+    const std::string &lang
+) {
+    
+    cppdb::statement checkTransExists = sqliteDb.prepare(
+        "SELECT 1 "
+        "FROM articles_translations at "
+        "JOIN articles t ON"
+        "   (at.translation_id = t.id) "
+        "WHERE "
+        "   at.article_id = ? AND "
+        "   t.lang = ? "
+        "LIMIT 1"
+    );
+    checkTransExists.bind(articleId);
+    checkTransExists.bind(lang);
+    cppdb::result res = checkTransExists.row();
+    int checkresult = 0;
+    res.fetch(0,checkresult);
+
+    // Don't forget to reset statement
+    checkTransExists.reset();
+
+    if (checkresult == 1 ) {
+        return true;
+    }
+    return false;
+}
+
+int Articles::add_translation_link(
+    const int articleId,
+    const int translationId
+) {
+    
+    cppdb::statement insertTransLink = sqliteDb.prepare(
+        "INSERT INTO articles_translations "
+        "VALUES ("
+        "   ?,"
+        "   ? "
+        ")"
+    );
+    insertTransLink.bind(articleId);
+    insertTransLink.bind(translationId);
+
+    try {
+        insertTransLink.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        insertTransLink.reset();
+        return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
+    }
+    insertTransLink.reset();
+    return 1;
+
+
+}
+
 } // end namespace models
 
 

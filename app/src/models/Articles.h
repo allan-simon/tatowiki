@@ -147,6 +147,30 @@ class Articles : public SqliteModel {
         results::Articles get_all();
 
         /**
+         * @brief Translate an article in an other language 
+         * 
+         * @param lang    ISO code of the language in which the article
+         *                is written
+         * @param slug    Slug of the article (i.e URL version of the
+         *                title)
+         * @param title   The title of the article
+         * @param content The main content of the article
+         *
+         * @return Id of the translation, or a negative number
+         *         if something wrong happens
+         *
+         * @since 4 November 2012
+         */
+        int translate_from_lang_and_slug(
+            const std::string &origLang,
+            const std::string &origSlug,
+            const std::string &lang,
+            const std::string &slug,
+            const std::string &title,
+            const std::string &content
+        );
+
+        /**
          * @brief Retrieve the id of an article based on its
          *        Lang and URL name
          *
@@ -163,6 +187,25 @@ class Articles : public SqliteModel {
             const std::string &lang,
             const std::string &slug
         );
+        
+        /**
+         * @brief add a "translation" link between two articles
+         *        Note: it does not any test beforehand, so
+         *        be sure the two ids exists etc.
+         * 
+         * @param articleId
+         * @param translationId
+         */
+        int add_translation_link(
+            const int articleId,
+            const int translationId
+        );
+        
+        int is_translated_in(
+            const int articleId,
+            const std::string &lang
+        );
+
     //end public 
 };
 
