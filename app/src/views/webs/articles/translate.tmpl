@@ -1,0 +1,17 @@
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view articles_translate uses contents::articles::Translate extends master %>
+<% template title() %><% gt "Translate article" %><% end template %>
+
+
+<% template body() %> 
+    <form method="POST" action="/articles/translate_treat" >
+        <% form as_p translateForm %>
+    </form>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+

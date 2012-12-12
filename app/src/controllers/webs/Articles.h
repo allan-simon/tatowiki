@@ -130,6 +130,21 @@ class Articles : public Controller {
          */
         void show_all();
 
+        /**
+         * @brief @TODO add a description
+         * 
+         * @param slug URL name of the article to translate
+         * 
+         * @since 18 November 2012
+         */
+        void translate(const std::string slug);
+
+        /**
+         * @brief @TODO add a description
+         * @since 18 November 2012
+         */
+        void translate_treat();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

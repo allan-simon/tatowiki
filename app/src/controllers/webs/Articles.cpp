@@ -56,7 +56,11 @@ Articles::Articles(cppcms::service& serv) :
     dispatcher().assign("/create/(.*)", &Articles::create, this, 1);
     dispatcher().assign("/create_treat", &Articles::create_treat, this);
     dispatcher().assign("/show-all", &Articles::show_all, this);
+
+    dispatcher().assign("/translate/(.*)", &Articles::translate, this, 1);
+    dispatcher().assign("/translate_treat", &Articles::translate_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
+
 
 
 
@@ -302,6 +306,71 @@ void Articles::show_all() {
 
     render("articles_show_all", c);
 }
+
+/**
+ *
+ */
+void Articles::translate(const std::string slug) {
+
+    contents::articles::Translate c(slug);
+    init_content(c);
+
+
+    render("articles_translate", c);
+}
+
+
+/**
+ *
+ */
+void Articles::translate_treat() {
+
+    forms::articles::Translate form;
+    form.load(context());
+    if (!form.validate()) {
+        set_message(_("The form you've submitted is not valid"));
+        go_back_to_previous_page();
+    }
+
+    
+    const std::string origLang = get_interface_lang();
+    const std::string origSlug = form.slug.value();
+    const std::string translationSlug = form.translationSlug.value();
+    const std::string translationLang = form.transLang.selected_id();
+    const std::string title = form.title.value();
+    const std::string content = form.content.value();
+
+
+    int resultCode = articlesModel->translate_from_lang_and_slug(
+       origLang,
+       origSlug,
+       translationLang,
+       translationSlug,
+       title,
+       content
+    );
+    std::cout << resultCode << std::endl;
+
+    // TODO add something to say that the article
+    // as been created (and not simply that a "version"
+    // has been added
+    // TODO also add something to keep trace of the
+    //      translation link in the history 
+    if (resultCode <= 0) {
+        set_message(_("Error while trying to translate"));
+        go_back_to_previous_page();
+        return;
+    }
+    historyModel->add_version(
+        translationLang,
+        translationSlug,
+        title,
+        content,
+        // TODO add something for the summary
+        "translated from " + origLang + ":" + origSlug  
+    );
+}
+
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
