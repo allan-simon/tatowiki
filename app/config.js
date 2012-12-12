@@ -31,6 +31,11 @@
             ["en"  , "en_GB.UTF-8", "English"],
             ["fr"  , "fr_FR.UTF-8", "Français"]
         ],
+        "languages" : [
+            ["en" , "English"],
+            ["fr" , "French"],
+            ["de" , "German"]
+        ],
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         }
