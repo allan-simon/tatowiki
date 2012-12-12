@@ -61,7 +61,7 @@ struct Edit : public BaseArticleForm {
      */
     Edit(const results::Article &article) {
         
-        init();
+        init_and_add();
         slug.value(article.slug);
         title.value(article.title);
         content.value(article.content);

@@ -71,39 +71,51 @@ struct BaseArticleForm : public cppcms::form {
     
     /**
      * @brief Centralize the common instruction between the
-     *        constructors of this form
+     *        constructors of this form, without adding them
      *
      * @since around 30 October 2012
      */
     void init() {
         //%%%NEXT_WIDGET_ADD_MARKER%%%
-        add(slug);
+        slug.non_empty();
 
         title.message(
             cppcms::locale::translate("Title")
         );
         title.non_empty();
-        add(title);
 
         content.message(
             cppcms::locale::translate("Content")
         );
         content.non_empty();
-        add(content);
 
         saveAndView.value(
             cppcms::locale::translate("Save")
         );
         saveAndView.name("save_and_view");
-        add(saveAndView);
 
-        add(saveAndContinue);
         saveAndContinue.value(
             cppcms::locale::translate("save and continue")
         );
         saveAndContinue.name("save_and_continue");
 
     };
+
+    /**
+     * @brief Centralize the common instruction between the
+     *        constructors of this form, and add them
+     *
+     * @since around 13 December 2012
+     */
+
+    void init_and_add() {
+        init();
+        add(slug);
+        add(title);
+        add(content);
+        add(saveAndView);
+        add(saveAndContinue);
+    }
 
 
 };

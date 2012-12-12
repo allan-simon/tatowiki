@@ -46,7 +46,7 @@ struct Create : public BaseArticleForm {
      * @brief Constructor
      */
     Create(const std::string &slugStr = "") {
-        init();
+        init_and_add();
         slug.value(slugStr);
     }
 
