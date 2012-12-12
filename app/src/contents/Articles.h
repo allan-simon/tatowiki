@@ -33,6 +33,7 @@
 
 #include "contents/forms/edit.h"
 #include "contents/forms/create.h"
+#include "contents/forms/translate.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 #include "results/Articles.h"
@@ -144,6 +145,24 @@ struct ShowAll : public Articles {
 
     ShowAll() {
 
+    }
+
+};
+
+/**
+ * @struct Translate Content used for the rendering the "articles/translate"
+ *         pages.
+ * @since  18 November 2012
+ *
+ */
+struct Translate : public Articles {
+
+    forms::articles::Translate translateForm;
+
+    /**
+     * @brief Constructor
+     */
+    Translate(const std::string &slug) : translateForm(slug) {
     }
 
 };
