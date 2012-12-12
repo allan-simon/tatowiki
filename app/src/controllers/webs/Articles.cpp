@@ -186,7 +186,7 @@ void Articles::create(std::string slug) {
     CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     results::Article article = articlesModel->get_from_lang_and_slug(
-        session()["interfaceLang"],
+        get_interface_lang(),
         slug
     );
 
@@ -221,18 +221,27 @@ void Articles::create_treat() {
         go_back_to_previous_page();
     }
     
-    const std::string lang = session()["interfaceLang"];
+    const std::string lang = get_interface_lang();
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
     const std::string content = form.content.value();
     // we save in database the articles
-    articlesModel->create_from_lang_and_slug(
+    int articleId = articlesModel->create_from_lang_and_slug(
         lang,
         slug,
         title,
         content
     );
 
+    if (articleId <= 0) {
+        set_message(_("Error while trying to add the article"));
+        go_back_to_previous_page();
+        return;
+    }
+
+    // TODO add something to say that the article
+    // as been created (and not simply that a "version"
+    // has been added
     historyModel->add_version(
         lang,
         slug,
