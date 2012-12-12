@@ -26,10 +26,16 @@
 #define TatoWiki_ARTICLES
 
 
-
 #include <cppcms_skel/models/SqliteModel.h>
 
 #include "results/Articles.h"
+
+#define ARTICLE_CREATION_ERROR -1
+#define ARTICLE_DOESNT_EXIST_ERROR -2
+#define ARTICLE_ALREADY_TRANSLATED_ERROR -3
+#define ARTICLE_CREATE_TRANSLATION_ERROR -4
+#define ARTICLE_ADD_TRANSLATION_LINK_ERROR -5
+
 namespace models {
 
 
@@ -99,11 +105,12 @@ class Articles : public SqliteModel {
          * @param title   The title of the article
          * @param content The main content of the article
          *
-         * @return bool True if the articles as been created correctly
+         * @return Id of the article that has been created
+         *         or a negative value in case of errors
          *
          * @since 4 November 2012
          */
-        bool create_from_lang_and_slug(
+        int create_from_lang_and_slug(
             const std::string &lang,
             const std::string &slug,
             const std::string &title,
@@ -138,6 +145,25 @@ class Articles : public SqliteModel {
          * @since 18 November 2012
          */
         results::Articles get_all();
+
+        /**
+         * @brief Retrieve the id of an article based on its
+         *        Lang and URL name
+         *
+         * @param lang Lang in which the article is
+         * @param slug URL name of the article
+         *
+         * @return Id of the article, or a negative number
+         *         if the articles does not exists or other
+         *         kind of problems happen
+         *
+         * @since 28 November 2012
+         */
+        int get_id_from_lang_and_slug(
+            const std::string &lang,
+            const std::string &slug
+        );
+    //end public 
 };
 
 } // end namespace models 

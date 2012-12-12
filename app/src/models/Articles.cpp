@@ -109,14 +109,20 @@ bool Articles::edit_from_lang_and_slug(
 /**
  *
  */
-bool Articles::create_from_lang_and_slug(
+int Articles::create_from_lang_and_slug(
     const std::string &lang,
     const std::string &slug,
     const std::string &title,
     const std::string &content
 ) {
     cppdb::statement create = sqliteDb.prepare(
-        "INSERT INTO articles(title,content,lang,slug,locked) "
+        "INSERT INTO articles("
+        "    title,"
+        "    content,"
+        "    lang,"
+        "    slug,"
+        "    locked"
+        ") "
         "VALUES ( "
         "   ? ,"
         "   ? ,"
@@ -137,10 +143,18 @@ bool Articles::create_from_lang_and_slug(
         //TODO log it
         std::cerr << e.what();
         create.reset();
-        return false;
+        return ARTICLE_CREATION_ERROR;
     }
+
+    //TODO sqlite provide something better to get
+    // the last inserted ID
+    const int id = get_id_from_lang_and_slug(
+        lang,
+        slug
+    );
+
     create.reset();
-    return true;
+    return id;
 
 }
 
@@ -227,6 +241,32 @@ results::Articles Articles::get_all() {
 
 }
 
+int Articles::get_id_from_lang_and_slug(
+    const std::string &lang,
+    const std::string &slug
+) {
+    std::cout << "search for " << lang << ":" << slug << std::endl;
+    cppdb::statement getIdFromLangAndSlug = sqliteDb.prepare(
+        "SELECT id "
+        "FROM articles "
+        "WHERE "
+        "   lang = ? AND"
+        "   slug = ? "
+        "LIMIT 1"
+    );
+    getIdFromLangAndSlug.bind(lang);
+    getIdFromLangAndSlug.bind(slug);
+
+    cppdb::result res = getIdFromLangAndSlug.row();
+
+    int id = ARTICLE_DOESNT_EXIST_ERROR;
+    if (!res.empty()) {
+        id = res.get<int>("id");
+    }
+    getIdFromLangAndSlug.reset();
+
+    return id;
+}
 } // end namespace models
 
 
