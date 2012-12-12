@@ -32,6 +32,7 @@
 #include <cppdb/frontend.h>
 #include <cppcms/json.h>
 #include <cppcms_skel/generics/Config.h>
+#include <cppcms_skel/generics/Languages.h>
 
 #include "TatoWiki.h"
 
@@ -50,9 +51,13 @@ int main(int argc,char ** argv)
     conf->sqlite3Path = app.settings().get<string>(
         "TatoWiki.sqlite3.path"
     );
+    /*load the languages*/
+    Languages::get_instance();
+    Languages::get_instance()->init(
+        app.settings().at("TatoWiki.languages").array(),
+        app.settings().at("TatoWiki.interfacelangs").array()
+    );
         
-    /*start the graph database*/
-
     //singletons::ActionId::get_instance();
     /*instantiate the website application*/
     cout << "[NOTICE] website to be launched" << endl;
