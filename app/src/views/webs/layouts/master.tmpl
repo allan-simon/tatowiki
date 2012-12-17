@@ -142,13 +142,15 @@
  *
  */
 <% template body() %>
-    <div id="annexe_content">
-        <% include annexe_content() %>
-    </div>
-    <div id="main_content">
+    <!-- TODO HACK move this in the CSS -->
+    <div id="main_content" style="float: left; width: 550px; margin-right: 0px;">
         <% include message() %>
         <% include main_content()%>
     </div>
+    <div id="annexe_content">
+        <% include annexe_content() %>
+    </div>
+
 <% end %>
 
 
