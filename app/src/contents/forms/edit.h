@@ -50,7 +50,7 @@ struct Edit : public BaseArticleForm {
      * @since  30 October 2012
      */
     Edit() {
-        init();
+        init_and_add();
     };
 
     /**
