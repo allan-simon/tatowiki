@@ -106,7 +106,7 @@ void History::revert_to_version(
 
     //TODO: add a message to say if the revert has been done 
     //      or not
-    response().set_redirect_header(
+    redirect(
         "/articles/show/" + slug
     );
 }

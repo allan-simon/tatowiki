@@ -95,7 +95,7 @@ void Articles::show(std::string slug) {
     // if the article does not exists we redirect to the
     // page to create one
     if (!c.article.exists()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/create/" + slug
         );
         return;
@@ -118,7 +118,7 @@ void Articles::edit(const std::string slug) {
     // if the articles does not exist we load the "create" form rather
     // than "edit" one
     if (!article.exists()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/create/" + slug
         );
         return;
@@ -168,13 +168,13 @@ void Articles::edit_treat() {
     // we show the edit articles if the user wants to 
     // save it
     if (form.saveAndView.value()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/show/" + form.slug.value()
         );
     // we continue in edit mode if the user wants to save and continue
     // to edit
     } else if (form.saveAndContinue.value()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/edit/" + form.slug.value()
         );
     } else {
@@ -198,7 +198,7 @@ void Articles::create(std::string slug) {
     // we display it directly instead
     if (article.exists()) {
         //TODO use mapper instead
-        response().set_redirect_header(
+        redirect(
             "/articles/show/" + slug
         );
         return;
@@ -257,13 +257,13 @@ void Articles::create_treat() {
 
     // if save => display newly created articles
     if (form.saveAndView.value()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/show/" + form.slug.value()
         );
 
     // if save and continue => turn now in edit mode
     } else if (form.saveAndContinue.value()) {
-        response().set_redirect_header(
+        redirect(
             "/articles/edit/" + form.slug.value()
         );
     } else {
@@ -349,7 +349,6 @@ void Articles::translate_treat() {
        title,
        content
     );
-    std::cout << resultCode << std::endl;
 
     // TODO add something to say that the article
     // as been created (and not simply that a "version"

@@ -67,7 +67,7 @@ void Pages::homepage() {
     // main wiki page
 
     //TODO make it configurable from the config.js
-    response().set_redirect_header(
+    redirect(
         "/articles/show/main" 
     );
 }
