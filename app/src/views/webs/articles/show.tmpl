@@ -21,6 +21,11 @@
             </a>
         </li>
         <li>
+            <a href="/articles/translate/<%= article.slug | urlencode %>">
+                <%gt "Translate" %>
+            </a>
+        </li>
+        <li>
             <a href="/history/all-versions-of/<%= article.slug | urlencode %>">
                 <%gt "History" %>
             </a>
