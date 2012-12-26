@@ -1,3 +1,4 @@
+<% c++ #include <cppcms_skel/generics/Languages.h> %>
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
 <% view articles_show uses contents::articles::Show extends master %>
@@ -37,6 +38,24 @@
         </li>
     </ul>
 </div>
+
+<div class="module">
+    <h2><%gt "Translated in:" %></h2>
+
+        <% foreach code in translatedIn %>
+        <ul>
+            <% item %>
+            <li>
+                <% c++ out() << Languages::get_instance()->get_interface_lang_from_code(code); %>
+            </li>
+            <% end %>
+        </ul>
+        <% end foreach %>
+ 
+    <ul>
+
+</div>
+
 <% end template %>
 
 <% end view %>

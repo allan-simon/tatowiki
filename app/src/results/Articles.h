@@ -26,8 +26,16 @@
 #define TatoWiki_RESULTS_ARTICLES_H
 
 #include <vector>
+#include <string>
 
 namespace results {
+
+    /**
+     * @brief Typedef to represent a set of languages
+     *
+     * @since 27 December 2012
+     */
+    typedef std::vector<std::string> TranslatedIn;
 
     /**
      * @struct Articles Structure to represent an article when doing

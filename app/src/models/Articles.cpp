@@ -323,7 +323,7 @@ int Articles::translate_from_lang_and_slug(
 /**
  *
  */
-int Articles::is_translated_in(
+bool Articles::is_translated_in(
     const int articleId,
     const std::string &lang
 ) {
