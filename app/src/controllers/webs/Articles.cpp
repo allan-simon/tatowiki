@@ -91,6 +91,9 @@ void Articles::show(std::string slug) {
         get_interface_lang(),
         slug
     );
+    c.translatedIn = articlesModel->get_translated_in(
+        c.article.id
+    );
    
     // if the article does not exists we redirect to the
     // page to create one

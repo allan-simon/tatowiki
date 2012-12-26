@@ -201,9 +201,35 @@ class Articles : public SqliteModel {
             const int translationId
         );
         
-        int is_translated_in(
+        /**
+         * @brief Use to know if a given article is translated in a given
+         *        language
+         *
+         * @param articleId The id of the original article
+         * @param lang      The code of the language
+         *
+         * @return True if the article is already translated in that language
+         *         False otherwise
+         *
+         * @since December 2012
+         */
+        bool is_translated_in(
             const int articleId,
             const std::string &lang
+        );
+
+        /**
+         * @brief Get the list of languages in which a given article
+         *        is translated
+         *
+         * @param articleId The id of the original article
+         * 
+         * @return A list of languages
+         *
+         * @since 27 December 2012
+         */
+        results::TranslatedIn get_translated_in(
+            const int articleId
         );
 
     //end public 

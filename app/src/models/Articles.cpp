@@ -320,6 +320,9 @@ int Articles::translate_from_lang_and_slug(
 
 }
 
+/**
+ *
+ */
 int Articles::is_translated_in(
     const int articleId,
     const std::string &lang
@@ -350,6 +353,9 @@ int Articles::is_translated_in(
     return false;
 }
 
+/**
+ *
+ */
 int Articles::add_translation_link(
     const int articleId,
     const int translationId
@@ -376,6 +382,37 @@ int Articles::add_translation_link(
     insertTransLink.reset();
     return 1;
 
+
+}
+
+/**
+ *
+ */
+results::TranslatedIn Articles::get_translated_in(
+    const int id
+) {
+    
+    cppdb::statement request = sqliteDb.prepare(
+        "SELECT t.lang as tlang "
+        "FROM articles_translations at "
+        "JOIN articles t ON"
+        "   (at.translation_id = t.id) "
+        "WHERE "
+        "   at.article_id = ? "
+    );
+    request.bind(id);
+
+    cppdb::result res = request.query();
+
+    results::TranslatedIn translatedIn;
+    while (res.next()) {
+
+        translatedIn.push_back(
+            res.get<std::string>("tlang")
+        );
+    }
+    request.reset();
+    return translatedIn;
 
 }
 

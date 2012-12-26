@@ -77,6 +77,12 @@ struct Show : public Articles {
      * @since  30 October 2012
      */
     results::Article article;
+
+    /**
+     * @brief The languages in which the article is available 
+     * @since 27 December 2012
+     */
+    results::TranslatedIn translatedIn;
  
     /**
      * @brief Constructor

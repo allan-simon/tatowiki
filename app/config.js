@@ -11,7 +11,7 @@
 		"script_names" : ["/TatoWiki"]
 	},
 	"localization" : {
-		"encoding" : "utf-8",
+        "disable_charset_in_content_type": true,
 		"messages" : {
 			"paths" : [ "../locale" ],
 			"domains" : [ "hello" ]
@@ -29,7 +29,8 @@
 	"TatoWiki" : {
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
-            ["fr"  , "fr_FR.UTF-8", "Français"]
+            ["fr"  , "fr_FR.UTF-8", "Français"],
+            ["de"  , "de_DE.UTF-8", "Deutsh"]
         ],
         "languages" : [
             ["en" , "English"],
