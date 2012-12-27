@@ -11,7 +11,6 @@
 		"script_names" : ["/TatoWiki"]
 	},
 	"localization" : {
-        "disable_charset_in_content_type": true,
 		"messages" : {
 			"paths" : [ "../locale" ],
 			"domains" : [ "hello" ]
