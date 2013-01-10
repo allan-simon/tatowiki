@@ -314,6 +314,7 @@ void Articles::show_all() {
  *
  */
 void Articles::translate(const std::string slug) {
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     contents::articles::Translate c(slug);
     init_content(c);
@@ -327,6 +328,8 @@ void Articles::translate(const std::string slug) {
  *
  */
 void Articles::translate_treat() {
+    TREAT_PAGE();
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     forms::articles::Translate form;
     form.load(context());
@@ -371,6 +374,14 @@ void Articles::translate_treat() {
         // TODO add something for the summary
         "translated from " + origLang + ":" + origSlug  
     );
+    // we redirect to the article we've just added
+    redirect(
+        "http://" +
+        translationLang +
+        request().http_host() +
+        "/articles/show/" + translationSlug
+    );
+
 }
 
 
