@@ -49,10 +49,21 @@ namespace models {
 class Articles : public SqliteModel {
     public:
         /**
-         * @brief Constructor
+         * @brief Constructor, load the article model and link it
+         *        with the database given by the config.js file
          * @since 30 October 2012
          */
         Articles();
+
+        /**
+         * @brief Load the article models and link it with the database
+         *        precised in parameters
+         *
+         * @param The database file path to link the model with
+         *
+         * @since 4 January 2013
+         */
+        Articles(const std::string &dbPath);
 
         /**
          * @brief Retrieve an article using the couple (lang,slug)

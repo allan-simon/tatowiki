@@ -44,6 +44,14 @@ Articles::Articles() :
 {
 }
 
+/**
+ *
+ */
+Articles::Articles(const std::string &dbPath) :
+    SqliteModel(dbPath)
+{
+}
+
 results::Article Articles::get_from_lang_and_slug(
     const std::string &lang,
     const std::string &slug
