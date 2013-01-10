@@ -26,16 +26,17 @@
 #define TatoWiki_RESULTS_ARTICLES_H
 
 #include <vector>
+#include <map>
 #include <string>
 
 namespace results {
 
     /**
-     * @brief Typedef to represent a set of languages
+     * @brief Typedef to represent a set of languages and the associated slug
      *
      * @since 27 December 2012
      */
-    typedef std::vector<std::string> TranslatedIn;
+    typedef std::map<std::string,std::string> TranslatedIn;
 
     /**
      * @struct Articles Structure to represent an article when doing

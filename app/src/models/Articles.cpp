@@ -369,15 +369,65 @@ int Articles::add_translation_link(
     const int translationId
 ) {
     
+    // if we want to translate a  by  b ...
     cppdb::statement insertTransLink = sqliteDb.prepare(
         "INSERT INTO articles_translations "
-        "VALUES ("
+        // ... we insert the link  a -> b 
+        "SELECT "
         "   ?,"
         "   ? "
-        ")"
+
+        "UNION "
+        // ... then the link  b -> a 
+        "SELECT "
+        "   ?,"
+        "   ?"
+
+        "UNION "
+        // ... then the linkS b -> all the things linked to  a
+        "SELECT "
+        "    ?, "
+        "    (SELECT "
+        "       translation_id "
+        "    FROM "
+        "       articles_translations "
+        "    WHERE "
+        "       article_id = ? "
+        "    ) "
+
+        "UNION "
+
+        // ..  and the linkS  all the things linked to  a -> b
+        "SELECT "
+        "   (SELECT "
+        "       article_id "
+        "   FROM "
+        "       articles_translations "
+        "   WHERE "
+        "       translation_id = ? "
+        "   ),"
+        "   ?"
+
+        ";"
     );
+
+    // ... we insert the link  a -> b 
     insertTransLink.bind(articleId);
     insertTransLink.bind(translationId);
+
+    // ... then the link  b -> a 
+    insertTransLink.bind(translationId);
+    insertTransLink.bind(articleId);
+
+    // ... then the linkS b -> all the things linked to  a
+    insertTransLink.bind(translationId);
+    insertTransLink.bind(articleId);
+
+    // ..  and the linkS  all the things linked to  a -> b
+    insertTransLink.bind(articleId);
+    insertTransLink.bind(translationId);
+
+
 
     try {
         insertTransLink.exec();
@@ -401,7 +451,8 @@ results::TranslatedIn Articles::get_translated_in(
 ) {
     
     cppdb::statement request = sqliteDb.prepare(
-        "SELECT t.lang as tlang "
+        "SELECT "
+        "    t.lang as tlang, t.slug as tslug "
         "FROM articles_translations at "
         "JOIN articles t ON"
         "   (at.translation_id = t.id) "
@@ -414,10 +465,10 @@ results::TranslatedIn Articles::get_translated_in(
 
     results::TranslatedIn translatedIn;
     while (res.next()) {
+        std::string translationLang = res.get<std::string>("tlang");
+        std::string translationSlug = res.get<std::string>("tslug");
 
-        translatedIn.push_back(
-            res.get<std::string>("tlang")
-        );
+        translatedIn[translationLang] = translationSlug;
     }
     request.reset();
     return translatedIn;
