@@ -85,19 +85,40 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
 void TatoWiki::main(std::string url) {
     
     std::string interfaceLang("");
-    if (!session().is_set("interfaceLang")) {
-        interfaceLang = get_default_interface_lang();
-        session()["interfaceLang"] = interfaceLang;
+
+    std::string serverName = request().http_host();
+    std::string subdomain = serverName.substr(
+        0,
+        serverName.find('.')
+    );
+    
+
+    // NextGen url "lang.wiki.tatoeba.org/url"
+    // at the difference of tatoeba, here it's more likely that if someone share
+    // with you en.wiki.tatoeba.org/something that he wanted you to see it in that
+    // version, so the language in the URL is the one kept
+    if (Languages::get_instance()->is_interface_lang(subdomain)) {
+        interfaceLang = subdomain;
+        session()["interfaceLang"] = interfaceLang ;
+        // we set the locale in which the page will be generated
+        context().locale(
+            Languages::get_instance()->get_locale_from_lang(interfaceLang)
+        );
+
+        // and we call the appropriate controller
+        application::main(url);
+
+    // if no language set in the URL we take the default one using various
+    // methods and we redirect
     } else {
-        interfaceLang = session()["interfaceLang"]; 
+        interfaceLang = get_default_interface_lang();
+        response().set_redirect_header(
+            "http://" + interfaceLang + "." +
+            serverName +
+            url
+        );
     }
 
-    // we set the locale in which the page will be generated
-    context().locale(
-        Languages::get_instance()->get_locale_from_lang(interfaceLang)
-    );
-    // and we call the appropriate controller
-    application::main(url);
 
     
 }

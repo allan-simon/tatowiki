@@ -48,8 +48,14 @@ int main(int argc,char ** argv)
     /*load some conf defined variables*/
     Config *conf = Config::get_instance();
 
+
     conf->sqlite3Path = app.settings().get<string>(
         "TatoWiki.sqlite3.path"
+    );
+    Config::set_base_host(
+        app.settings().get<string>(
+            "TatoWiki.baseHost"
+        )
     );
     /*load the languages*/
     Languages::get_instance();
