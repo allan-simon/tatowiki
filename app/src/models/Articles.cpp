@@ -287,7 +287,7 @@ int Articles::translate_from_lang_and_slug(
     const std::string &title,
     const std::string &content
 ) {
-    cppdb::transaction guard(sqliteDb);
+    //cppdb::transaction guard(sqliteDb);
 
     // GET id of the article 
     const int articleId = get_id_from_lang_and_slug(
@@ -323,7 +323,7 @@ int Articles::translate_from_lang_and_slug(
         return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
     }
     
-    guard.commit();
+    //guard.commit();
     return translationId;
 
 }
