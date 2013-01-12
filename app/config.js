@@ -38,7 +38,6 @@
         ],
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
-            "source" : "../app/sql/sqlite3.sql"
         },
         "baseHost" : "tatolocal:8080"
 	}
