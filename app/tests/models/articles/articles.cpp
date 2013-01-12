@@ -17,13 +17,13 @@ int main () {
         articlesModels.import_sql_file(DB_SQL_FILE_PATH),
         noTestFailed
     );
-    /*
+    
     TEST_RESULT_SHOULD_WORK(
         "Check articles table fields all there ... " ,
         articlesModels.import_sql_file(SQL_TABLE_STRUCTURE_CHECK),
         noTestFailed
     );
-    */
+    
 
     if (noTestFailed) {
         return 0;
