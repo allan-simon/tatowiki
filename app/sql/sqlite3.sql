@@ -1,8 +1,12 @@
+pragma foreign_keys = off; -- required for import from C++ to work
 begin;
     drop table if exists articles;
     drop table if exists users;
+    drop table if exists articles_translations;
+    drop table if exists deleted_articles;
+    drop table if exists history;
 
-    -- table representing a user 
+    -- table representing a user
     CREATE TABLE users (
         "id"          integer primary key autoincrement not null , 
         "username"    text    not null unique,             -- his nickname 
