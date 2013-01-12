@@ -97,6 +97,8 @@ add_custom_command(
 set(
     ARTICLES_MODEL_TESTS
     articles
+    get_from_lang_and_slug
+    create_from_lang_and_slug
     add_translation_link
 )
 
