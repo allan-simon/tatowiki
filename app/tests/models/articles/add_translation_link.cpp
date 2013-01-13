@@ -34,7 +34,41 @@ int main () {
         articlesModels.import_sql_file(SQL_FILL_ARTICLES),
         noTestFailed
     );
+
+    // now we try to add a link between the german article
+    // and the french one
     
+    // first we retrieve the id of the articles
+    int frId = articlesModels.get_id_from_lang_and_slug(
+        TEST_ARTICLE_LANG_FRENCH,
+        TEST_ARTICLE_SLUG_FRENCH
+    );
+
+    int deId = articlesModels.get_id_from_lang_and_slug(
+        TEST_ARTICLE_LANG_GERMAN,
+        TEST_ARTICLE_SLUG_GERMAN
+    );
+
+    int enId = articlesModels.get_id_from_lang_and_slug(
+        TEST_ARTICLE_LANG_ENGLISH,
+        TEST_ARTICLE_SLUG_ENGLISH
+    );
+
+    std::cout << "Try add a link between two articles with no links"
+        << " to other articles, so it should add only one link ... ";
+
+    int result = articlesModels.add_translation_link(
+        frId,
+        deId
+    );
+    if (result == ARTICLE_ADD_TRANSLATION_LINK_ERROR) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
     
     if (noTestFailed) {
         return 0;
