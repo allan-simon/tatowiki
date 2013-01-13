@@ -28,11 +28,31 @@ int main() {
     
     // now we check if we can retrieve them
 
+    std::cout << "We now test get_from_lang_slug itself ... ";
     results::Article firstArticle = articlesModels.get_from_lang_and_slug(
         "fr",
         "page_principale"
     );
-
+    if ( 
+        (!firstArticle.exists()) ||
+        (firstArticle.lang.compare("fr") != 0) ||
+        (firstArticle.slug.compare("page_principale") != 0) ||
+        (firstArticle.title.compare("Page Principale") != 0) ||
+        (firstArticle.content.compare(u8"Juste pour voir si ça marche") != 0) ||
+        (firstArticle.isLocked != false)
+    ) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+    
+    if (noTestFailed) {
+        return 0;
+    } else {
+        return 1;
+    }
 
 
 }
