@@ -40,6 +40,25 @@ int main() {
         std::cout << " [fail]" << std::endl;
         noTestFailed = false;
     }
+
+    // try to add the same article should fail
+
+    std::cout << "Adding the same article twice should be forbidden ... " ;
+
+    result = articlesModels.create_from_lang_and_slug(
+        TEST_ARTICLE_LANG,
+        TEST_ARTICLE_SLUG,
+        TEST_ARTICLE_TITLE,
+        TEST_ARTICLE_CONTENT
+    );
+    if (result == ARTICLE_CREATION_ERROR) {
+        std::cout << " [ok]" << std::endl;
+    } else {
+        std::cout << " [fail]" << std::endl;
+        noTestFailed = false;
+    }
+
+
     
     
  
