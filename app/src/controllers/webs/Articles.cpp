@@ -24,6 +24,7 @@
  */
 
 #include <booster/log.h>
+#include <cppcms_skel/generics/Config.h>
 
 #include "Articles.h"
 
@@ -378,7 +379,8 @@ void Articles::translate_treat() {
     redirect(
         "http://" +
         translationLang +
-        request().http_host() +
+        "." +
+        Config::get_base_host() +
         "/articles/show/" + translationSlug
     );
 
