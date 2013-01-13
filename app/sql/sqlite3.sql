@@ -29,7 +29,7 @@ begin;
         slug text not null,                            -- "url" name of the article 
         title text not null,                           -- title of the article 
         content text not null,                         -- the content of the article itself
-        locked boolean,                                -- if the articles can be edited or not
+        locked boolean default false not null,         -- if the articles can be edited or not
         unique (lang,slug)                             -- in order to not have several articles on the same url
     );
 
