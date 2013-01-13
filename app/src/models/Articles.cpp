@@ -128,15 +128,13 @@ int Articles::create_from_lang_and_slug(
         "    title,"
         "    content,"
         "    lang,"
-        "    slug,"
-        "    locked"
+        "    slug"
         ") "
         "VALUES ( "
         "   ? ,"
         "   ? ,"
         "   ? ,"
-        "   ? ,"
-        "   0  "
+        "   ? "
         ")"
     );
     
