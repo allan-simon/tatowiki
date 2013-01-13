@@ -26,6 +26,15 @@ int main() {
         noTestFailed
     );
     
+    // load them again should not work as it will not met
+    // the unique(lang,slug) constraint 
+    TEST_RESULT_SHOULD_NOT_WORK(
+        "Load them again should not work ... " ,
+        articlesModels.import_sql_file(SQL_FILL_ARTICLES),
+        noTestFailed
+    );
+ 
+    
     // now we check if we can retrieve them
 
     std::cout << "We now test get_from_lang_slug itself ... ";
