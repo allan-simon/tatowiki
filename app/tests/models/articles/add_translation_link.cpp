@@ -69,6 +69,46 @@ int main () {
         std::cout << " [ok]" << std::endl; 
     }
 
+    // we try to add a link between A and B 
+    // with A already linked to C 
+    std::cout << "Try add a link between two articles that already have some links ... ";
+
+    result = articlesModels.add_translation_link(
+        frId,
+        enId
+    );
+
+    if (result == ARTICLE_ADD_TRANSLATION_LINK_ERROR) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+
+    // We want that if A and B are linked, that if we link B and C, that
+    // automatically A is linked to C
+    std::cout << "Test if all articles at the end are interlinked ... ";
+    if (
+        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_ENGLISH) &&
+        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_ENGLISH)
+    ) {
+    
+        std::cout << " [ok]" << std::endl; 
+
+    } else {
+
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    }
+
+
+
     
     if (noTestFailed) {
         return 0;
