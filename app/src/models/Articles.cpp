@@ -391,7 +391,9 @@ int Articles::add_translation_link(
         "       articles_translations "
         "    WHERE "
         "       article_id = ? "
-        "    ) "
+        "    ) AS t_id  "
+        // the WHERE is to avoid doing a SELECT 1, NULL
+        "WHERE t_id NOT NULL "
 
         "UNION "
 
@@ -403,9 +405,10 @@ int Articles::add_translation_link(
         "       articles_translations "
         "   WHERE "
         "       translation_id = ? "
-        "   ),"
-        "   ?"
-
+        "   ) AS a_id,"
+        "   ? "
+        // the WHERE is to avoid doing a SELECT  NULL, 1 
+        "WHERE a_id NOT NULL" 
         ";"
     );
 
