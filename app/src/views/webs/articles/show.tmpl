@@ -1,5 +1,5 @@
 <% c++ #include <cppcms_skel/generics/Languages.h> %>
-<% c++ #include <cppcms_skel/generics/Config.h> %>
+<% c++ #include "generics/Config.h" %>
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
 <% view articles_show uses contents::articles::Show extends master %>
@@ -70,7 +70,7 @@
  */
 <% template link_to_translation(std::string lang, std::string slug) %>
     <a
-        href="http://<%= lang %>.<% c++ out() << Config::get_base_host(); %>/articles/show/<%= slug %>" 
+        href="<% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %>"
     >
         <% c++ out() << Languages::get_instance()->get_interface_lang_from_code(lang); %>
     </a>

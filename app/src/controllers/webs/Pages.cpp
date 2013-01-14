@@ -28,6 +28,7 @@
 #include "Pages.h"
 
 #include "contents/Pages.h"
+#include "generics/Config.h"
 
 
 
@@ -66,9 +67,10 @@ void Pages::homepage() {
     // the homepage actually redirect to the
     // main wiki page
 
-    //TODO make it configurable from the config.js
     redirect(
-        "/articles/show/main" 
+        tatowiki::Config::main_url_from_lang(
+            get_interface_lang()
+        )
     );
 }
 
