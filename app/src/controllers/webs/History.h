@@ -30,7 +30,9 @@
 
 
 //needed to avoid to include models directly here,
-//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+//which would have the side effects to require to recompile the
+//controller every time we modify a model. even though it does
+// not affect the controller
 namespace models {
     class History;
     class Articles;
