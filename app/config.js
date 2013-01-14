@@ -36,6 +36,11 @@
             ["fr" , "French"],
             ["de" , "German"]
         ],
+        "mainPages" : [
+            ["en" , "main" ],
+            ["fr" , "page-principale"],
+            ["de" , "main-de"]
+        ],
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         },
