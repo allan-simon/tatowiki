@@ -34,6 +34,7 @@
 #include <cppcms_skel/generics/Config.h>
 #include <cppcms_skel/generics/Languages.h>
 
+#include "generics/Config.h"
 #include "TatoWiki.h"
 
 
@@ -52,10 +53,14 @@ int main(int argc,char ** argv)
     conf->sqlite3Path = app.settings().get<string>(
         "TatoWiki.sqlite3.path"
     );
+
     Config::set_base_host(
         app.settings().get<string>(
             "TatoWiki.baseHost"
         )
+    );
+    tatowiki::Config::set_lang_to_main_pages(
+        app.settings().at("TatoWiki.mainPages").array()
     );
     /*load the languages*/
     Languages::get_instance();
@@ -70,6 +75,7 @@ int main(int argc,char ** argv)
 
     //booster::intrusive_ptr<apps::Tatoeba> tatoApp = new apps::Tatoeba(app);
 
+
     app.applications_pool().mount(
         cppcms::applications_factory<apps::TatoWiki>()
     );
@@ -80,6 +86,8 @@ int main(int argc,char ** argv)
 
     /*time to destroy all the singletons*/
     //SearchEngine::kill();
+    Languages::kill();
     Config::kill();
+    tatowiki::Config::kill();
 }
 
