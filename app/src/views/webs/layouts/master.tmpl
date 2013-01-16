@@ -191,7 +191,48 @@
 <% end template %>
 
 
+/**
+ *
+ */
+<% template markdown_help() %>
+<div class="module" >
+    <h2><% gt "Note" %></h2>
+    
+    <p>
+        <%gt "This wiki uses the markdown syntax." %>
+    </p>
+</div>
 
+<div class="module"> 
+    <h2><% gt "How to format text" %></h2>
+    <ul>
+        <li>
+            <% gt "#Big title" %>
+        </li>
+        <li>
+            <% gt "##Smaller title" %>
+        </li>
+
+        <li>
+            <% gt "[text](http://example.com)" %>
+        </li>
+
+        <li>
+            <% gt "[text](/other-article)" %>
+        </li>
+
+        <li>
+            <% gt "**bold**" %>
+        </li>
+
+        <li>
+            <% gt "*italic*" %>
+        </li>
+
+    </ul>
+
+</div>
+<% end template %>
 
 <% end view %>
 <% end skin %>
