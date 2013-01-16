@@ -36,6 +36,7 @@
 
 #include "generics/Config.h"
 #include "TatoWiki.h"
+#include "models/Articles.h"
 
 
 using namespace std;
@@ -62,6 +63,13 @@ int main(int argc,char ** argv)
     tatowiki::Config::set_lang_to_main_pages(
         app.settings().at("TatoWiki.mainPages").array()
     );
+
+    /* we generate the main pages of the wiki if they're not there */
+    models::Articles articlesModel;
+    articlesModel.generate_main_pages(
+        tatowiki::Config::get_lang_to_main_pages()
+    );
+
     /*load the languages*/
     Languages::get_instance();
     Languages::get_instance()->init(
