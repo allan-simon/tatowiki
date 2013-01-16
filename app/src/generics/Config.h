@@ -134,22 +134,6 @@ namespace tatowiki {
 } // end of namespace tatowiki
 
 
-
-#endif
-
-
-             *
-             * @since 14 January 2013
-             *
-             */
-            static std::map<std::string, std::string> get_lang_to_main_pages();
-    };
-
-
-} // end of namespace tatowiki
-
-
-
 #endif
 
 
