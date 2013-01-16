@@ -243,6 +243,20 @@ class Articles : public SqliteModel {
             const int articleId
         );
 
+        /**
+         * @brief Generate and interlink the main pages of each language
+         *
+         * @param lang2MainPages A map containing the languages supported
+         *                       and the slug of their main page
+         *
+         * @return A number, always 0 for the moment
+         *
+         * @since 17 January 2013
+         */
+        int generate_main_pages(
+            std::map<std::string,std::string> lang2MainPages
+        );
+
     //end public 
 };
 

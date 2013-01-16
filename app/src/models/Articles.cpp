@@ -27,12 +27,14 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <algorithm>
-#include <limits>
+#include <vector>
 #include <cppdb/frontend.h>
+#include <cppcms/localization.h>
 
 #include "models/Articles.h"
 
+
+#define _(X) cppcms::locale::translate((X))
 
 namespace models {
 
@@ -251,7 +253,6 @@ int Articles::get_id_from_lang_and_slug(
     const std::string &lang,
     const std::string &slug
 ) {
-    std::cout << "search for " << lang << ":" << slug << std::endl;
     cppdb::statement getIdFromLangAndSlug = sqliteDb.prepare(
         "SELECT id "
         "FROM articles "
@@ -366,6 +367,9 @@ int Articles::add_translation_link(
     const int articleId,
     const int translationId
 ) {
+    if (articleId == translationId) {
+        return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
+    }
     
     // if we want to translate a  by  b ...
     cppdb::statement insertTransLink = sqliteDb.prepare(
@@ -474,6 +478,54 @@ results::TranslatedIn Articles::get_translated_in(
     request.reset();
     return translatedIn;
 
+}
+
+/**
+ *
+ */
+int Articles::generate_main_pages(
+    std::map<std::string,std::string> lang2MainPages
+) {
+
+    
+
+    // will be used to store 
+    std::vector<int> articleIds;
+    for (auto lang2MainPage : lang2MainPages) {
+
+        std::string lang = lang2MainPage.first;
+        std::string slug = lang2MainPage.second;
+
+        int result = get_id_from_lang_and_slug(
+            lang,
+            slug
+        );
+        if (result ==  ARTICLE_DOESNT_EXIST_ERROR) {
+            result = create_from_lang_and_slug(
+                lang,
+                slug,
+                _("Main Page"),
+                _(
+                    "This is the default main page, you can edit it by"
+                    "clicking on the button on the right panel"
+                )
+            );
+        }
+        if (result >= 0) {
+            articleIds.push_back(result);
+     
+            if (!is_translated_in(articleIds[0],lang)) {
+                add_translation_link(
+                    articleIds[0],
+                    result
+                );
+            }
+
+        }
+             
+    }
+
+    return 0;
 }
 
 } // end namespace models
