@@ -6,7 +6,7 @@
 
 <% template main_content() %> 
 <div class="module">
-    <h1><% gt "Login" %></h1>
+    <h2><% gt "Login" %></h2>
     <form
         method="POST"
         action="/users/login_treat"
@@ -15,7 +15,7 @@
         <% form as_p loginForm %>
     </form>
 
-    
+    <h2><% gt "No account yet?" %></h2> 
     <div id="ClickHereToRegister">
         <a href="/users/register-new" class="registerButton"><% gt "Register" %></a>
     </div>
@@ -27,7 +27,7 @@
  */
 <% template annexe_content() %>
 <div class="module">
-    <h1><% gt "Note:" %></h1>
+    <h2><% gt "Note:" %></h2>
     <p>
         <% gt "For the moment there's no automatic 'password forgotten' mechanism, instead send an email to the administrators" %>
     </p>
