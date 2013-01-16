@@ -118,6 +118,31 @@ namespace tatowiki {
             static void set_lang_to_main_pages(
                 cppcms::json::array lang2MainPagesJson
             );
+
+            /**
+             * @brief Get the map lang->main page's slug
+             *
+             * @return The map lang->main page's slug
+             *
+             * @since 17 January 2013
+             *
+             */
+            static std::map<std::string, std::string> get_lang_to_main_pages();
+    };
+
+
+} // end of namespace tatowiki
+
+
+
+#endif
+
+
+             *
+             * @since 14 January 2013
+             *
+             */
+            static std::map<std::string, std::string> get_lang_to_main_pages();
     };
 
 

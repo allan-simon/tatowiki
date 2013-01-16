@@ -39,6 +39,14 @@ Config::Config() {
 /**
  *
  */
+std::map<std::string, std::string> Config::get_lang_to_main_pages() {
+    return Config::get_instance()->lang2MainPages;
+};
+
+
+/**
+ *
+ */
 void Config::set_lang_to_main_pages(
     cppcms::json::array lang2MainPagesJson
 ) {
