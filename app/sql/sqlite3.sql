@@ -63,6 +63,7 @@ begin;
         slug text not null,
         title text not null,
         content text not null,
+        user_id integer not null,
         edit_time timestamp default (strftime('%s', 'now')),-- when the edition has been made
         summary text not null                              -- text to explain what has been done
 
