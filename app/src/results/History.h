@@ -64,17 +64,37 @@ namespace results {
          */
         std::string summary;
 
+
+        /**
+         * @brief Name of the user who has made this change
+         *
+         * @since 18 January 2013
+         */
+        std::string byUserName;
+
+        /**
+         * @brief Id of the user who has made this change
+         *
+         * @since 18 January 2013
+         */
+        int byUserId;
+
+
         public:
             Change(){};
 
             Change(
                 int version,
                 unsigned int editTime,
-                const std::string &summary
+                const std::string &summary,
+                const std::string &byUserName,
+                const int byUserId
             ):
             version(version),
             editTime(editTime),
-            summary(summary) {
+            summary(summary),
+            byUserName(byUserName),
+            byUserId(byUserId) {
                 //Nothing yet except initialization of the struct fields
             }
     };

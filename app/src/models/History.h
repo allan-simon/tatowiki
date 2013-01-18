@@ -56,6 +56,7 @@ class History : public SqliteModel {
          *                title)
          * @param title   The title of the article
          * @param content The main content of the article
+         * @param userId  Id of the user who has added this version
          * @param summary A description of the change
          *
          * @return bool If the article historic version has been added
@@ -67,6 +68,7 @@ class History : public SqliteModel {
             const std::string &slug,
             const std::string &title,
             const std::string &content,
+            const int userId,
             const std::string &summary
         );
 
@@ -104,6 +106,7 @@ class History : public SqliteModel {
         results::ArticleVersion get_version(
             const int version
         );
+
 };
 
 } // end namespace models 

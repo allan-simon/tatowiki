@@ -54,7 +54,9 @@ bool History::add_version(
     const std::string &slug,
     const std::string &title,
     const std::string &content,
+    const int userId,
     const std::string &summary = ""
+
 ) {
     cppdb::statement addVersion = sqliteDb.prepare(
         "INSERT INTO history("
@@ -62,9 +64,11 @@ bool History::add_version(
         "    content,"
         "    lang,"
         "    slug,"
+        "    user_id,"
         "    summary,"
         "    version"
         ") VALUES ("
+        "    ?,"
         "    ?,"
         "    ?,"
         "    ?,"
@@ -83,6 +87,7 @@ bool History::add_version(
     addVersion.bind(content);
     addVersion.bind(lang);
     addVersion.bind(slug);
+    addVersion.bind(userId);
     addVersion.bind(summary);
 
     try {
@@ -109,8 +114,11 @@ results::Changes History::all_versions_of(
         "SELECT "
         "   version, "
         "   edit_time, "
-        "   summary "
+        "   summary, "
+        "   user_id, "
+        "   username "
         "FROM history "
+        "JOIN users ON (history.user_id = users.id) "
         "WHERE "
         "   lang = ? "
         "   AND slug = ?"  
@@ -125,7 +133,9 @@ results::Changes History::all_versions_of(
         results::Change tmpChange(
             res.get<int>("version"),
             res.get<unsigned int>("edit_time"),
-            res.get<std::string>("summary")
+            res.get<std::string>("summary"),
+            res.get<std::string>("username"),
+            res.get<int>("user_id")
         );
         changes.push_back(tmpChange);
     }
@@ -169,6 +179,10 @@ results::ArticleVersion History::get_version(const int version) {
     getVersion.reset();
     return articleVersion;
 }
+
+/**
+ *
+ */
 
 
 } // end namespace models
