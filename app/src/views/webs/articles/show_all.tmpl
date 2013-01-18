@@ -1,4 +1,5 @@
 <% c++ #include "contents/Articles.h" %>
+<% c++ #include "generics/Config.h" %>
 <% skin %>
 <% view articles_show_all uses contents::articles::ShowAll extends master %>
 <% template title() %><% gt "TODO TITLE" %><% end template %>
@@ -12,7 +13,7 @@
         <% item %>
         <li>    
             <!-- TODO use < url %> instead -->
-            <a href="/articles/show/<%= article.slug | urlencode %>">
+            <a href="<% include article_url(article.lang,article.slug) %>">
                 <%= article.title  %>
             </a>
         </li>
