@@ -166,6 +166,7 @@ void Articles::edit_treat() {
         slug,
         title,
         content,
+        get_current_user_id(),
         "" // TODO add something for the summary
     );
 
@@ -255,6 +256,7 @@ void Articles::create_treat() {
         slug,
         title,
         content,
+        get_current_user_id(),
         "" // TODO add something for the summary
     );
 
@@ -372,6 +374,7 @@ void Articles::translate_treat() {
         translationSlug,
         title,
         content,
+        get_current_user_id(),
         // TODO add something for the summary
         "translated from " + origLang + ":" + origSlug  
     );

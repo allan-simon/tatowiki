@@ -98,6 +98,7 @@ void History::revert_to_version(
             slug,
             articleVersion.article.title,
             articleVersion.article.content,
+            get_current_user_id(),
             summary
         );
 
