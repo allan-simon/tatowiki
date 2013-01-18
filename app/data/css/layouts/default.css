@@ -1,0 +1,434 @@
+/**
+ * Tatoeba Project, free collaborative creation of multilingual corpuses project
+ * Copyright (C) 2010  HO Ngoc Phuong Trang <tranglich@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
+ */
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Trebuchet MS, sans;
+    color: #222222;
+    background: #e5e3da;
+}
+
+a img {
+    border: none;
+}
+
+a {
+    color: #849684;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #EAA315;
+}
+
+
+h2, h3, h4 {
+    font-variant: small-caps;
+}
+
+
+h3 {
+    border-bottom: 1px dotted;
+    color: #555;
+    padding-left: 10px;
+    font-size: 1.3em;
+    margin-top: 30px;
+}
+
+h4 {
+    margin: 10px 0px 5px 20px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+}
+
+dt {
+    font-weight: bold;
+}
+
+/* User Menu : Main Menu */
+
+#top_menu_container {
+    background-color: #414141;
+    border-bottom: 1px solid #000000;
+}
+
+#top_menu {
+    height: 30px;
+    width: 960px;
+    margin: auto;
+    font-size: 0.9em;
+    overflow: hidden;
+}
+
+#top_menu .whatsNewItem {
+    font-weight: bold;
+    color: #FFCC00;
+}
+
+#top_menu a {
+    color: #FFFFFF;
+}
+
+#top_menu a:hover {
+    color: #FB6B10;
+}
+
+
+/*
+ * Menu (Home, Browse, etc)
+ */
+#top_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#top_menu li {
+    float: left;
+    padding: 0px;
+}
+
+#top_menu .menuSection{
+    display:block;
+    line-height:30px;
+    margin:0px;
+    padding:0px 10px;
+    text-align:center;
+    text-decoration:none;
+}
+
+#top_menu li a:hover, #top_menu ul li:hover a{
+    text-decoration:none;
+}
+
+#top_menu li ul{
+    background:#414141;
+    display:none;
+    height:auto;
+    padding:0px;
+    margin:0px;
+    border:0px;
+    position:absolute;
+    width:225px;
+    z-index:200;
+}
+
+#top_menu li:hover ul{
+    display:block;
+}
+
+#top_menu li li {
+    border-top: 1px solid #555;
+    display:block;
+    float:none;
+    margin:0px;
+    padding:0px;
+    width:225px;
+}
+
+#top_menu li:hover li a {
+    background:none;
+}
+
+#top_menu li ul a {
+    display:block;
+    margin:0px;
+    padding:7px 10px;
+    text-align:left;
+}
+
+#top_menu li ul a:hover, #top_menu li ul li:hover a {
+    border:0px;
+    text-decoration:none;
+}
+
+#top_menu .show {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.menuItem img {
+    margin-left: 2px;
+}
+
+
+/* 
+ * Interface Language Selector
+ */
+#languageSelectionContainer {
+    padding-top: 2px;
+    float: right;
+}
+
+#languageSelection {
+    margin-left: 10px;
+    margin-top: 2px;
+    height: 20px; /* need to specify height otherwise in Firefox and Opera it's too big */
+}
+
+/* 
+ * User Menu 
+ */
+#user_menu {
+    float: right;
+}
+
+#profile img {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+
+#log_out img {
+    position: relative;
+    top: 2px;
+}
+
+#inbox img {
+    position: relative;
+    top: 3px;
+}
+
+.newMessage {
+    font-weight: bold;
+}
+
+
+
+/* HEADER */
+
+#header {
+    text-align: right;
+    float: left;
+    padding: 10px;
+}
+
+
+/* Container */
+
+#container1 {
+    width: 960px;
+    margin: auto;
+    padding: 0px 10px;
+    background: url(/img/bg_main.png) repeat-y;
+}
+
+#container {
+    width: 850px;
+    margin-left: 100px;
+    background: #FFFFFF;
+    min-height: 550px;
+}
+
+/* Content : when a page is not split into 2 parts*/
+
+#content {
+    font-size: 0.8em;
+    /* border: 1px dotted #D1D1D1; */
+}
+
+/* Module : when a page is split into 2 main parts */
+
+#annexe_content {
+    float: right;
+    width: 250px;
+    font-size: 0.8em;
+}
+
+#main_content {
+    margin-left: 10px;
+    margin-right: 260px;
+    font-size: 0.8em;
+}
+
+.module {
+    padding: 10px 10px 5px 10px;
+    margin: 0px 0px 20px 0px;
+    background: url(/img/module_background.png) repeat-x bottom left;
+    overflow: hidden;
+}
+#annexe_content .module {
+    margin-left: 5px;
+}
+
+.module h2 {
+    background: url(/img/title.png) no-repeat top left;
+    padding-left: 28px;
+    margin: 0 0 15px -8px;
+    font-size: 1.5em;
+    color: #000;
+}
+
+.module h2 .annexe {
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.main_module {
+    font-size: 1.25em;
+    padding: 10px 10px 5px 10px;
+    background: url(/img/module_background.png) repeat-x bottom left;
+    margin-bottom: 20px;
+}
+
+.main_module h2 {
+    background: url(/img/title_main.png) no-repeat top left;
+    padding-left: 32px;
+    font-size: 1.5em;
+    border-bottom: none;
+    margin: 0 0 0 -8px;
+}
+
+
+#annexe_content ul {
+    margin: 5px 0px;
+    padding-left: 20px;
+}
+
+#annexe_content ul li {
+    list-style-type: none;
+}
+
+
+/*
+ * Footer 
+ */
+#footer {
+    background: #e3e0d6;
+    height: 18px;
+    clear: both;
+}
+
+#footer_container {
+    background: url(/img/bg_footer.png) bottom left;
+    width: 960px;
+    height: 24px;
+    margin: auto;
+    padding: 0px 10px;
+}
+
+#footer a {
+    color: #3d3d3d;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#footer ul {
+    margin: 0;
+    display: block;
+    float: right;
+    font-size: 80%;
+}
+
+#footer li {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/*
+ * HTML Elements
+ */
+.more_link {
+    text-align: right;
+}
+
+
+/*
+ * ">>"
+ */
+.ToLanguage {
+    font-family: Arial, Sans-serif;
+    font-size: 1.3em;
+    margin: 0 5px;
+}
+
+/*
+ * Flash message
+ */
+#flashMessage, #authMessage {
+    margin: 20px 10px;
+    padding: 10px;
+    color: #E05900;
+    background: #EDE0B8;
+    text-align: center;
+}
+
+/*
+ * Warning
+ */
+.warning {
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px 0px;
+    border: 1px solid #FFC1B5;
+    background-color: #FFDDD6; 
+    color: #D1523C;
+}
+
+/* 
+ * Important 
+ */
+.important {
+    color: red;
+}
+
+#session_expired {
+    color: red;
+    padding: 10px;
+    background-color: #F1F1F1;
+    border: #E1E1E1 1px solid;
+}
+
+
+/*
+ * Other
+ */
+.annexeMenu {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.annexeMenu .item {
+    margin: 5px 0px;
+}
+
+.annexeMenu .item:before {
+    content: "\00BB \0020";
+}
+

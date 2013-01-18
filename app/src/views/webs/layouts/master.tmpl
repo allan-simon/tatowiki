@@ -1,5 +1,6 @@
 <% c++ #ifndef LAYOUT_MASTER %>
 <% c++ #define LAYOUT_MASTER %>
+<% c++ #include <cppcms_skel/generics/Config.h> %>
 <% c++ #include "cppcms_skel/contents/content.h" %>
 <% c++ #include "generics/Config.h" %>
 <% skin %>
@@ -8,12 +9,8 @@
 /**
  *
  */
-<% template render() %>
-<!DOCTYPE
-    html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<% template render() %><!DOCTYPE html>
+<html>
 <head>
     <% include header() %>
 </head>
@@ -22,18 +19,11 @@
     <div id="container1">
         <div id="header">
             <a href="/">
-                <img
-                    src="http://flags.tatoeba.org/img/TatoebaProjectBeta.png"
-                    width="72"
-                    height="450"
-                    alt="TatoebaProjectBeta"
-                />
+                <% include img_tag("logo.png", 72, 450, "Tatowiki's logo") %>
             </a>
         </div>
         <div id="container">
-
             <% include body() %>
-
         </div>
         <% include footer() %>
     </div>
@@ -86,12 +76,38 @@
 <% template title() %>TODO: replace this<% end template %>
 
 
+<% template css_link(std::string const& cssFile) %><link 
+    href="<% c++ out() << Config::get_css_path(); %><%= cssFile %>"
+    rel="stylesheet"
+    type="text/css"
+/><% end template %>
+
+<% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
+    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
+    width="<%= width %>"
+    height="<%= height %>"
+    alt="<%= alt %>"
+/><%end template %>
+
+
+
+/**
+ * @brief Include all the css, overide this method if you want to include
+ *        ONLY your css
+ *
+ * @since 18 January
+ */
+<% template main_css() %>
+    <% include css_link("layouts/default.css") %>
+    <% include css() %>
+<% end template %>
+
+
+
 /**
  *
  */
-<% template css() %>
-
-<% end template %>
+<% template css() %><% end template %>
 
 
 /**
@@ -118,24 +134,7 @@
 <% template header() %>
 <title><% include title() %></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link 
-    href="http://css.tatoeba.org/css/layouts/default.css"
-    rel="stylesheet"
-    type="text/css"
-/>
-<link
-    rel="stylesheet"
-    type="text/css"
-    href="http://css.tatoeba.org/css/pages/index.css"
-/>
-<link
-    rel="stylesheet"
-    type="text/css"
-    href="http://css.tatoeba.org/css/elements/navigation.css"
-/>
-    <% include css() %>
-
-
+<% include main_css() %>
 <% end template %>
 
 
@@ -151,7 +150,6 @@
     <div id="annexe_content">
         <% include annexe_content() %>
     </div>
-
 <% end %>
 
 
@@ -172,36 +170,34 @@
 
 
 <% template navigation_menu() %>
-    <ul id="navigation_menu">
-        <li class="menuItem">
-            <a href="/" class="menuSection show">
-                <% gt "Home" %>
-            </a>
-        </li>
-        <li class="menuItem">
-            <a href="/history/recent-changes" class="menuSection">
-                <% gt "Recent changes" %>
-            </a>
-        </li>
-    </ul>
+<ul id="navigation_menu">
+    <li class="menuItem">
+        <a href="/" class="menuSection show">
+            <% gt "Home" %>
+        </a>
+    </li>
+    <li class="menuItem">
+        <a href="/history/recent-changes" class="menuSection">
+            <% gt "Recent changes" %>
+        </a>
+    </li>
+</ul>
 <% end template %>
 
 <% template footer() %>
-    <div id="footer">
-        <ul>
-            <li>
-                Beta
-            </li>
-        </ul>
-    </div>
+<div id="footer">
+    <ul>
+        <li>
+            Beta
+        </li>
+    </ul>
+</div>
 <% end template %>
 
 /**
  *
  */
-<% template article_url(std::string lang, std::string slug) %>
-<% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %>
-<% end template %>
+<% template article_url( std::string const& lang, std::string const& slug) %><% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %><% end template %>
 
 /**
  *

@@ -48,10 +48,8 @@ int main(int argc,char ** argv)
 
     service app(argc, argv);
     /*load some conf defined variables*/
-    Config *conf = Config::get_instance();
 
-
-    conf->sqlite3Path = app.settings().get<string>(
+    Config::get_instance()->sqlite3Path = app.settings().get<string>(
         "TatoWiki.sqlite3.path"
     );
 
@@ -60,11 +58,41 @@ int main(int argc,char ** argv)
             "TatoWiki.baseHost"
         )
     );
+
+    Config::set_css_path(
+        app.settings().get<string>(
+            "TatoWiki.cssPath"
+        )
+    );
+
+    Config::set_img_path(
+        app.settings().get<string>(
+            "TatoWiki.imgPath"
+        )
+    );
+
+
+
+    Config::set_inner_css_folder(
+        app.settings().get<string>(
+            "TatoWiki.innerCssFolder"
+        )
+    );
+
+    Config::set_inner_img_folder(
+        app.settings().get<string>(
+            "TatoWiki.innerImgFolder"
+        )
+    );
+
+
+
     tatowiki::Config::set_lang_to_main_pages(
         app.settings().at("TatoWiki.mainPages").array()
     );
 
     /* we generate the main pages of the wiki if they're not there */
+    cout << "[NOTICE] database check" << endl;
     models::Articles articlesModel;
     articlesModel.generate_main_pages(
         tatowiki::Config::get_lang_to_main_pages()

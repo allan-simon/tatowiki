@@ -44,6 +44,10 @@
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         },
-        "baseHost" : "tatolocal:8080"
+        "baseHost" : "tatolocal:8080",
+        "innerCssFolder" : "../data/css/",
+        "innerImgFolder" : "../data/img/",
+        "imgPath" : "/img/",
+        "cssPath" : "/css/"
 	}
 }
