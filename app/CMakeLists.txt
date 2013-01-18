@@ -7,6 +7,7 @@ enable_testing()
 
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_FLAGS "-std=c++11")
+#set(CMAKE_CXX_FLAGS "-std=c++0x")
 
 include_directories(
     src

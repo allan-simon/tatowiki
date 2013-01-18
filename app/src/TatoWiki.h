@@ -35,11 +35,11 @@
 #include <cppcms/application.h>
 #include <cppdb/frontend.h>
 
+#include <cppcms_skel/controllers/webs/Img.h>
+#include <cppcms_skel/controllers/webs/Css.h>
 #include "controllers/webs/Articles.h"
 #include "controllers/webs/Users.h"
 #include "controllers/webs/History.h"
-#include "controllers/webs/Css.h"
-#include "controllers/webs/Img.h"
 //%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%, do not delete
 #include "controllers/webs/Pages.h"
 
