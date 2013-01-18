@@ -130,6 +130,12 @@ namespace results {
      *
      */
     typedef std::vector<results::Change> Changes;
+
+    /**
+     * @class ArticlesVersions Represent of list of article versions
+     * @since 18 January 2013
+     */
+    typedef std::vector<ArticleVersion> ArticlesVersions;
 } // end of namespace results
 
 

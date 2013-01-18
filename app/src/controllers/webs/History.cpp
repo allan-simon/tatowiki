@@ -47,6 +47,7 @@ History::History(cppcms::service& serv) :
     dispatcher().assign("/diff-between", &History::diff_between, this);
     dispatcher().assign("/diff-between_treat", &History::diff_between_treat, this);
     dispatcher().assign("/all-versions-of/(.*)", &History::all_versions_of, this, 1);
+    dispatcher().assign("/recent-changes", &History::recent_changes, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -171,6 +172,18 @@ void History::all_versions_of(const std::string slug) {
     );
 
     render("history_all_versions_of", c);
+}
+
+/**
+ *
+ */
+void History::recent_changes() {
+
+    contents::history::RecentChanges c;
+    init_content(c);
+    c.articlesVersions = historyModel->recent_changes();
+
+    render("history_recent_changes", c);
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete

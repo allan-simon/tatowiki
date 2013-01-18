@@ -183,6 +183,50 @@ results::ArticleVersion History::get_version(const int version) {
 /**
  *
  */
+results::ArticlesVersions History::recent_changes(
+    const int number
+) {
+
+    cppdb::statement recentChanges = sqliteDb.prepare(
+        "SELECT "
+        "   lang, "
+        "   slug, "
+        "   title,"
+        "   version, "
+        "   edit_time, "
+        "   summary, "
+        "   user_id, "
+        "   username "
+        "FROM history "
+        "JOIN users ON (history.user_id = users.id) "
+        "ORDER BY edit_time DESC"
+    );
+
+    cppdb::result res = recentChanges.query();
+    results::ArticlesVersions articlesVersions;
+    while (res.next()) {
+        results::ArticleVersion tmpArticleVersion;
+        
+        tmpArticleVersion.change = results::Change(
+            res.get<int>("version"),
+            res.get<unsigned int>("edit_time"),
+            res.get<std::string>("summary"),
+            res.get<std::string>("username"),
+            res.get<int>("user_id")
+        );
+        tmpArticleVersion.article = results::Article(
+            res.get<std::string>("lang"),
+            res.get<std::string>("slug"),
+            res.get<std::string>("title")
+        );
+
+        articlesVersions.push_back(tmpArticleVersion);
+    }
+    recentChanges.reset();
+    return articlesVersions;
+
+
+}
 
 
 } // end namespace models

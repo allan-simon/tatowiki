@@ -135,6 +135,27 @@ struct AllVersionsOf : public History {
 
 };
 
+/**
+ * @struct RecentChanges Content used by the page history/recent-changes
+ * @since  18 January 2013
+ */
+struct RecentChanges : public History {
+
+    /**
+     * @brief changes List of modifications made on the wiki
+     *
+     * @since 18 January 2013
+     */
+    results::ArticlesVersions articlesVersions;
+
+
+
+    RecentChanges() {
+
+    }
+
+};
+
 //%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace history

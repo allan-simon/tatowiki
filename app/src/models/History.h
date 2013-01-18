@@ -35,7 +35,6 @@ namespace models {
 /**
  * @class History
  * 
- * @brief @TODO
  * @since 30 October 2012       
  *
  */
@@ -105,6 +104,22 @@ class History : public SqliteModel {
          */
         results::ArticleVersion get_version(
             const int version
+        );
+
+
+        /**
+         * @brief Get a summary of the last modifications made 
+         *        on the wiki
+         *
+         * @param number Will return the numberTh last modifications
+         *
+         * @return A list of modification
+         *
+         * @since 18 January 2013
+         */
+
+        results::ArticlesVersions recent_changes(
+            const int number = 100
         );
 
 };

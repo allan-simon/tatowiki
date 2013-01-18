@@ -123,6 +123,12 @@ class History : public Controller {
          */
         void all_versions_of(const std::string slug);
 
+        /**
+         * @brief Show the last modifications made on the wiki
+         * @since 18 January 2013
+         */
+        void recent_changes();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

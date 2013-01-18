@@ -1,0 +1,31 @@
+<% c++ #include "contents/History.h" %>
+<% skin %>
+<% view history_recent_changes uses contents::history::RecentChanges extends master %>
+<% template title() %><% gt "Recent changes" %><% end template %>
+
+
+<% template main_content() %>
+<div class="module"> 
+    <% foreach version in articlesVersions %>
+
+    <ul>
+        <% item %>
+        <li>    
+            <%gt "'{1}' changed at <span class='time'>{2,dt=s}</span> by {3}" using version.article.title, version.change.editTime, version.change.byUserName %>
+            <!-- TODO use < url %> instead -->
+            <a href="<% include article_url(version.article.lang,version.article.slug) %>">
+                <% gt "Show" %>
+            </a>
+            <br/>
+            <% gt "summary: " %>
+            <span class="summary"><%= version.change.summary %></span>
+        </li>
+        <% end %>
+    </ul>
+    <% end foreach %>
+</div>
+<% end template %>
+
+
+<% end view %>
+<% end skin %>
