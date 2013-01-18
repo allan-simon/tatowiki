@@ -38,6 +38,8 @@
 #include "controllers/webs/Articles.h"
 #include "controllers/webs/Users.h"
 #include "controllers/webs/History.h"
+#include "controllers/webs/Css.h"
+#include "controllers/webs/Img.h"
 //%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%, do not delete
 #include "controllers/webs/Pages.h"
 
@@ -55,6 +57,8 @@ class TatoWiki : public cppcms::application {
 
 private:
     //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
+    controllers::webs::Img img;
+    controllers::webs::Css css;
     controllers::webs::History history;
     controllers::webs::Users users;
     controllers::webs::Articles articles;

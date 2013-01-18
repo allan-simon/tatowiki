@@ -53,6 +53,10 @@ namespace apps {
 TatoWiki::TatoWiki(cppcms::service &serv) :
     cppcms::application(serv),
     //%%%NEXT_MAIN_APP_CTRL_CONSTRUCT_MARKER%%%
+    img(serv),
+    
+    css(serv),
+    
     history(serv),
     
     users(serv),
@@ -71,6 +75,8 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
     add(articles,"^/articles(.*)",1);
     add(users,"^/users(.*)",1);
     add(history,"^/history(.*)",1);
+    add(css,"^/css(.*)",1);
+    add(img,"^/img(.*)",1);
     //%%%NEXT_CONTROLLER_DISPATCHER_MARKER%%%, do not delete
     add(pages, "/(.*)", 1);
 
