@@ -5,21 +5,21 @@
 
 
 <% template main_content() %> 
-    <div class="module"> 
-        <% foreach change in changes %>
-        <ul>
-            <% item %>
-            <li>    
-                <%gt "changed at <span class='time'>{1,dt=s}</span> by {2}" using change.editTime, change.byUserName %>
-                <!-- TODO use < url %> instead -->
-                <a href="/history/show-version/<%= slug %>/<%= change.version %>">
-                    <% gt "Show" %>
-                </a>
-            </li>
-            <% end %>
-        </ul>
-        <% end foreach %>
-    </div>
+<div class="module"> 
+    <% foreach change in changes %>
+    <ul>
+        <% item %>
+        <li>    
+            <%gt "changed at <span class='time'>{1,dt=s}</span> by {2}" using change.editTime, change.byUserName %>
+            <!-- TODO use < url %> instead -->
+            <a href="/history/show-version/<%= slug %>/<%= change.version %>">
+                <% gt "Show" %>
+            </a>
+        </li>
+        <% end %>
+    </ul>
+    <% end foreach %>
+</div>
 <% end template %>
 
 
