@@ -506,7 +506,7 @@ int Articles::generate_main_pages(
                 slug,
                 _("Main Page"),
                 _(
-                    "This is the default main page, you can edit it by"
+                    "This is the default main page, you can edit it by "
                     "clicking on the button on the right panel"
                 )
             );

@@ -94,7 +94,7 @@ struct RegisterNew : public cppcms::form {
         add(quiz);
 
         termsOfUse.name("termsofuse");
-        termsOfUse.message(_("I have read and accepted the term of use."));
+        termsOfUse.message(_("I have read and accepted the terms of use."));
         add(termsOfUse);
         
 
