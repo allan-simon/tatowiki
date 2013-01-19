@@ -262,8 +262,10 @@ dt {
 }
 
 #main_content {
+    float: left;
+    width: 550px;
+    margin-right: 0px;
     margin-left: 10px;
-    margin-right: 260px;
     font-size: 0.8em;
 }
 
