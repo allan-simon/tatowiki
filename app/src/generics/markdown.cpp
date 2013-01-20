@@ -60,6 +60,7 @@ cppcms::xss::rules const &xss_filter() {
     r.add_property("pre","class",booster::regex("\\w+"));
     r.add_tag("a",rules::opening_and_closing);
     r.add_uri_property("a","href");
+    r.add_property("a","name",cl_id);
     r.add_tag("hr",rules::stand_alone);
     r.add_tag("br",rules::stand_alone);
     r.add_tag("img",rules::stand_alone);
