@@ -3,19 +3,53 @@
 <% view users_register_new uses contents::users::RegisterNew extends master %>
 <% template title() %><% gt "Register a new user" %><% end template %>
 
+<% template css() %><% include css_link("users/register-new.css") %><% end template%>
+
 
 <% template main_content() %> 
     <div class="module">
-        <h1><% gt "Register a new user" %></h1>
-        <form method="POST" action="/users/register-new_treat" >
-            <% form as_p registerNewForm %>
+        <h2><% gt "Register a new user" %></h2>
+        <form id="UsersRegisterForm" method="POST" action="/users/register-new_treat" >
+            <table>
+                <tr>
+                    <td><%= registerNewForm.username.message() %></td>
+                    <td><% form input registerNewForm.username %></td>
+                </tr>
+                <tr>
+                    <td><%= registerNewForm.password.message() %></td>
+                    <td><% form input registerNewForm.password %></td>
+                </tr>
+                <tr>
+                    <td><%= registerNewForm.email.message() %></td>
+                    <td><% form input registerNewForm.email%></td>
+                </tr>
+            </table>
+            <div id="quiz">
+                <% gt "We need to make sure you are human." %>
+                <label for="<%= registerNewForm.quiz.name()">
+                    <%= registerNewForm.quiz.message() %>
+                </label>
+                <p>
+                    <% form input registerNewForm.quiz %>
+                </p>
+                <% gt "For instance, if your email is me12345@example.com, the answer is \"me123\"." %>
+            </div>
+            <div id="termsOfUse">
+                <% form input registerNewForm.termsOfUse %>
+                <label for="<%= registerNewForm.termsOfUse.name()">
+                   <%= registerNewForm.termsOfUse.message() %>
+                <label> 
+            </div>
+            <div class="submit">
+                <% form input registerNewForm.submit %>
+            </div>
         </form>
     </div>
 <% end template %>
 
 <% template annexe_content() %>
 <div class="module">
-    <h1><% gt "Note:" %></h1>
+    <h2><% gt "Note:" %></h2>
     <p>
         <% gt "Your email address will never be given or sold to third services. It will only be used internally to send you automatic notification or in case you lose your password." %>
     </p>

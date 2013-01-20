@@ -75,26 +75,26 @@ struct RegisterNew : public cppcms::form {
     RegisterNew() {
         //%%%NEXT_WIDGET_ADD_MARKER%%%
         username.name("username");
-        username.message(_("Username : "));
+        username.message(_("Username :"));
         username.non_empty();
         add(username);
 
         password.name("password");
-        password.message(_("Password : "));
+        password.message(_("Password :"));
         password.non_empty();
         add(password); 
 
         email.name("email");
-        email.message(_("Email : "));
+        email.message(_("Email :"));
         add(email);
 
-        quiz.message(_("Quizz : "));
-        quiz.message(_("What's the first 4 letters of your email?"));
+        quiz.message(_("Quizz :"));
+        quiz.message(_("What are the first five letters of your email?"));
         quiz.name("quiz");
         add(quiz);
 
         termsOfUse.name("termsofuse");
-        termsOfUse.message(_("I have read and accepted the terms of use."));
+        termsOfUse.message(_("I accept the terms of use."));
         add(termsOfUse);
         
 
@@ -114,7 +114,7 @@ struct RegisterNew : public cppcms::form {
             termsOfUse.value() && //should have check the terms of use
             // the "captcha" test is to input the first four letters of 
             // the email so we test if it's correct
-            email.value().substr(0,4).compare(quiz.value()) == 0; 
+            email.value().substr(0,5).compare(quiz.value()) == 0; 
     }
 };
 
