@@ -126,38 +126,6 @@ std::string markdown_to_html(char const *str,int len,int flags)
 }
 
 
-std::string markdown_format_for_highlighting(std::string const &input,std::string const &html_class)
-{
-	enum { part_a , part_b } state = part_a;
-	std::string repla = "<pre name=\"code\" class=\"" + html_class + "\">";
-	std::string replb = "</pre>";
-	std::string origa="<pre><code>";
-	std::string origb="</code></pre>";
-	std::string result;
-	result.reserve(input.size());
-	size_t pos = 0;
-	while(pos < input.size()) {
-		std::string const &orig = state == part_a ? origa : origb;
-		std::string const &repl = state == part_a ? repla : replb;
-		size_t next = input.find(orig,pos);
-		if(next == std::string::npos)
-			next = input.size();
-		result.append(input.data() + pos, next - pos);
-		if(next < input.size()) {
-			result.append(repl);
-			pos = next + orig.size();
-			if(state == part_a)
-				state = part_b;
-			else
-				state = part_a;
-		}
-		else {
-			pos = next;
-		}
-	}
-	return result;
-}
-
 //TODO move it somewhere else
 // HACK!
 
