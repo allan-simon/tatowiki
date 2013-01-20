@@ -3,6 +3,10 @@
 <% view users_login uses contents::users::Login extends master %>
 <% template title() %><% gt "Login" %><% end template %>
 
+<% template css() %>
+    <% include css_link("users/login.css") %>
+<% end template %>
+
 
 <% template main_content() %> 
 <div class="module">

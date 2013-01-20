@@ -45,8 +45,8 @@
             "path" : "../data/sqlite6.db"
         },
         "baseHost" : "tatolocal:8080",
-        "innerCssFolder" : "../data/css/",
-        "innerImgFolder" : "../data/img/",
+        "innerCssFolder" : "../resources/css/",
+        "innerImgFolder" : "../resources/img/",
         "imgPath" : "/img/",
         "cssPath" : "/css/"
 	}
