@@ -16,6 +16,7 @@
         action="/users/login_treat"
         id="UserLoginForm"
     >
+        <% form input loginForm.previousUrl %>
         <div>
             <label for="<%= loginForm.username.name() %>">
                 <%= loginForm.username.message() %>
