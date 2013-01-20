@@ -87,22 +87,22 @@ struct Login : public cppcms::form {
         add(previousUrl);
 
         username.name("username");
-        username.message(_("Username : "));
+        username.message(_("Username :"));
         username.attributes_string("class=\"input text\"");
         username.non_empty();
         add(username);
 
         password.name("password");
-        password.message(_("Password : "));
+        password.message(_("Password :"));
         add(password);
 
         rememberMe.name("rememberMe");
-        rememberMe.message(_("Remember Me"));
+        rememberMe.message(_("Remember me"));
         add(rememberMe);
         
 
         submit.name("submit");
-        submit.value(_("submit"));
+        submit.value(_("Log in"));
         add(submit);
 
 

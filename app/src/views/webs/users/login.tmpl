@@ -16,7 +16,29 @@
         action="/users/login_treat"
         id="UserLoginForm"
     >
-        <% form as_p loginForm %>
+        <div>
+            <label for="<%= loginForm.username.name() %>">
+                <%= loginForm.username.message() %>
+            </label>
+            <% form input loginForm.username %>
+        </div>
+        <div>
+            <label for="<%= loginForm.password.name() %>">
+                <%= loginForm.password.message() %>
+            </label>
+            <% form input loginForm.password %>
+        </div>
+        <div>
+            <label for="<%= loginForm.rememberMe.name() %>">
+                <%= loginForm.rememberMe.message() %>
+            </label>
+            <% form input loginForm.rememberMe %>
+        </div>
+
+        <div class="submit">
+            <% form input loginForm.submit %>
+        </div>
+
     </form>
 
     <h2><% gt "No account yet?" %></h2> 
