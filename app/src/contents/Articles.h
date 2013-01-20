@@ -70,6 +70,14 @@ struct Show : public Articles {
     > markdown;
 
 
+    /**
+     * @brief key used for caching the article section of the web
+     *        page
+     *
+     * @since 20 January 2013
+     *
+     */
+    std::string cacheKey;
  
     /**
      * @brief the article to display

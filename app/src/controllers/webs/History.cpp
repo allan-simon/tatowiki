@@ -102,7 +102,10 @@ void History::revert_to_version(
             get_current_user_id(),
             summary
         );
-
+        // we invalidate the cache for this article
+        cache().rise(
+            articleVersion.article.lang + slug
+        );
 
     }
 

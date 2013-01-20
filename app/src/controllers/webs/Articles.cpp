@@ -88,12 +88,14 @@ void Articles::show(std::string slug) {
     contents::articles::Show c;
     init_content(c);
     c.markdown = mymarkdown;
+
+    std::string lang = get_interface_lang();
+
+    c.cacheKey = lang + slug;
+    
     c.article = articlesModel->get_from_lang_and_slug(
-        get_interface_lang(),
+        lang,
         slug
-    );
-    c.translatedIn = articlesModel->get_translated_in(
-        c.article.id
     );
    
     // if the article does not exists we redirect to the
@@ -105,6 +107,10 @@ void Articles::show(std::string slug) {
         return;
     }
 
+
+    c.translatedIn = articlesModel->get_translated_in(
+        c.article.id
+    );
     render("articles_show", c);
 }
 
@@ -113,6 +119,7 @@ void Articles::show(std::string slug) {
  */
 void Articles::edit(const std::string slug) {
     CHECK_PERMISSION_OR_GO_TO_LOGIN();
+
 
     results::Article article = articlesModel->get_from_lang_and_slug(
         get_interface_lang(),
@@ -169,6 +176,9 @@ void Articles::edit_treat() {
         get_current_user_id(),
         "" // TODO add something for the summary
     );
+
+    // we invalidate the cache for this article
+    cache().rise(lang+slug);
 
     // we show the edit articles if the user wants to 
     // save it

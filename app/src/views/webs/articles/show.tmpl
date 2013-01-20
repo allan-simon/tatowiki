@@ -6,9 +6,11 @@
 
 
 <% template main_content() %> 
+<% cache cacheKey %>
 <div class="module">
     <%= article.content | ext markdown %>
 </div>
+<%end cache %>
 <% end template %>
 
 <% template annexe_content() %>
