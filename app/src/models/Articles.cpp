@@ -286,6 +286,9 @@ int Articles::translate_from_lang_and_slug(
     const std::string &title,
     const std::string &content
 ) {
+    if (origLang == lang) {
+        return ARTICLE_SAME_TRANSLATION_LANGUAGE_ERROR;
+    }
     //cppdb::transaction guard(sqliteDb);
 
     // GET id of the article 
