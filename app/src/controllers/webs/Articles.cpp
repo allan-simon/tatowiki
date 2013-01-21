@@ -48,17 +48,17 @@ Articles::Articles(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
 
-    dispatcher().assign("/remove/(.*)", &Articles::remove, this, 1);
-    dispatcher().assign("/show/(.*)", &Articles::show, this, 1);
+    dispatcher().assign("/remove/(.+)", &Articles::remove, this, 1);
+    dispatcher().assign("/show/(.+)", &Articles::show, this, 1);
 
-    dispatcher().assign("/edit/(.*)", &Articles::edit, this, 1);
+    dispatcher().assign("/edit/(.+)", &Articles::edit, this, 1);
     dispatcher().assign("/edit_treat", &Articles::edit_treat, this);
 
-    dispatcher().assign("/create/(.*)", &Articles::create, this, 1);
+    dispatcher().assign("/create/(.+)", &Articles::create, this, 1);
     dispatcher().assign("/create_treat", &Articles::create_treat, this);
     dispatcher().assign("/show-all", &Articles::show_all, this);
 
-    dispatcher().assign("/translate/(.*)", &Articles::translate, this, 1);
+    dispatcher().assign("/translate/(.+)", &Articles::translate, this, 1);
     dispatcher().assign("/translate_treat", &Articles::translate_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
