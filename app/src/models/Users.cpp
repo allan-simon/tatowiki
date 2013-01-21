@@ -33,6 +33,7 @@
 #include <cppcms/util.h>
 #include <cppcms/crypto.h>
 #include <booster/posix_time.h>
+#include <booster/log.h>
 
 #include "models/Users.h"
 
@@ -78,6 +79,60 @@ bool Users::is_login_correct(
 
 }
 
+
+/**
+ * 
+ */
+bool Users::username_exists(
+    const std::string &username
+) {
+    cppdb::statement usernameExists = sqliteDb.prepare(
+        "SELECT 1 FROM users "
+        "WHERE username = ? "
+    );
+    usernameExists.bind(username);
+    cppdb::result res = usernameExists.row();
+    int checkresult = 0;
+    res.fetch(0,checkresult);
+
+    // Don't forget to reset statement
+    usernameExists.reset();
+
+    if (checkresult == 1 ) {
+        return true;
+    }
+    return false;
+
+}
+
+/**
+ * 
+ */
+bool Users::email_exists(
+    const std::string &email
+) {
+    cppdb::statement emailExists = sqliteDb.prepare(
+        "SELECT 1 FROM users "
+        "WHERE email = ? "
+    );
+    emailExists.bind(email);
+    cppdb::result res = emailExists.row();
+    int checkresult = 0;
+    res.fetch(0,checkresult);
+
+    // Don't forget to reset statement
+    emailExists.reset();
+
+    if (checkresult == 1 ) {
+        return true;
+    }
+    return false;
+
+}
+
+
+
+
 /**
  *
  */
@@ -106,6 +161,7 @@ bool Users::add(
         addUser.exec();    
     } catch (cppdb::cppdb_error const &e) {
         //TODO log it
+        BOOSTER_ERROR("cppcms") << e.what();
         addUser.reset();
         return false;
     }

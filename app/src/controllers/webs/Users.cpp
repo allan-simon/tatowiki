@@ -172,11 +172,31 @@ void Users::register_new_treat() {
     }
 
     const std::string username = form.username.value();
+    const std::string email = form.email.value();
+
+    if (usersModel->username_exists(username)) {
+        set_message(
+            _("Username already taken")
+        );
+        go_back_to_previous_page();
+        return;
+    }
+
+    if (usersModel->email_exists(email)) {
+        set_message(
+            _("Email already taken")
+        );
+        go_back_to_previous_page();
+        return;
+    }
+
+
+
     if (
         usersModel->add(
             username,
             form.password.value(),
-            form.email.value()
+            email 
         )
     ) {
         //TODO add should return the id of the newly created user
@@ -184,6 +204,11 @@ void Users::register_new_treat() {
         set_current_username(username);
         //TODO replace / by "ROOT_APPLICATION"
         redirect("/");
+    } else {
+        set_message(
+            _("Unknown error")
+        );
+        go_back_to_previous_page();
     }
 }
 

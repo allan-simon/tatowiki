@@ -74,6 +74,32 @@ class Users : public SqliteModel {
             const std::string &pass
         );         
  
+        /**
+         * @brief Check if a username is already taken or not
+         *
+         * @param username The user name to check
+         *
+         * @return True if it's already taken, false otherwise
+         *
+         * @since 21 January 2013
+         */
+        bool username_exists(
+            const std::string &username
+        );
+ 
+        /**
+         * @brief Check if a email is already taken or not
+         *
+         * @param email The email to check
+         *
+         * @return True if it's already taken, false otherwise
+         *
+         * @since 21 January 2013
+         */
+        bool email_exists(
+            const std::string &email
+        );
+ 
                    
         /**        
          * @brief Add a new user with the given login/pass/mail
