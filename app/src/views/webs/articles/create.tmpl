@@ -3,11 +3,17 @@
 <% view articles_create uses contents::articles::Create extends master %>
 <% template title() %><% gt "Create a new article" %><% end template %>
 
+<% template css() %>
+    <% include css_link("articles/create.css") %>
+<% end template %>
+
 
 <% template main_content() %> 
 <div class="module">
     <form method="POST" action="/articles/create_treat" >
-        <% form as_p createForm %>
+    <table>
+        <% form as_table createForm %>
+    </table>
     </form>
 </div>
 <% end template %>
