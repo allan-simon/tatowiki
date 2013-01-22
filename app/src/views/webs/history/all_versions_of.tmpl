@@ -12,7 +12,7 @@
         <li>    
             <%gt "changed at <span class='time'>{1,dt=s}</span> by {2}" using change.editTime, change.byUserName %>
             <!-- TODO use < url %> instead -->
-            <a href="/history/show-version/<%= slug %>/<%= change.version %>">
+            <a href="/history/show-version/<%= change.version %>">
                 <% gt "Show" %>
             </a>
         </li>

@@ -44,7 +44,7 @@ History::History(cppcms::service& serv) :
 {
 
     dispatcher().assign("/revert-to-version/(.*)/(\\w+)", &History::revert_to_version, this, 1, 2);
-    dispatcher().assign("/show-version/.*/(\\w+)", &History::show_version, this, 1);
+    dispatcher().assign("/show-version/(\\w+)", &History::show_version, this, 1);
 
     dispatcher().assign("/diff-between", &History::diff_between, this);
     dispatcher().assign("/diff-between_treat", &History::diff_between_treat, this);
