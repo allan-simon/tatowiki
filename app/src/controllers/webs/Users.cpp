@@ -192,16 +192,18 @@ void Users::register_new_treat() {
 
 
 
-    if (
-        usersModel->add(
-            username,
-            form.password.value(),
-            email 
-        )
-    ) {
+    int userId = usersModel->add(
+        username,
+        form.password.value(),
+        email 
+    );
+    if (userId >= 0) {
         //TODO add should return the id of the newly created user
         //     or -1 if not created
-        set_current_username(username);
+        set_current_username_and_id (
+            username,
+            userId
+        );
         //TODO replace / by "ROOT_APPLICATION"
         redirect("/");
     } else {

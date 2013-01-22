@@ -28,6 +28,8 @@
 
 
 #include <cppcms_skel/models/SqliteModel.h>
+
+#define USERS_NOT_ADDED_ERROR -1
 namespace models {
 
 
@@ -108,12 +110,13 @@ class Users : public SqliteModel {
          * @param string pass  His password
          * @param string email His email address
          *
-         * @return bool False if the user can't be added
-         *              (login already taken etc.)
+         * @return int negative number if the user can't be added,
+         *             id of the user if successful
+         *              
          *
          * @since 13 November 2012
          */        
-        bool add(
+        int add(
             const std::string &login,
             const std::string &pass,
             const std::string &email

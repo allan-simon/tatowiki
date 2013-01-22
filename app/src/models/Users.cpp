@@ -136,7 +136,7 @@ bool Users::email_exists(
 /**
  *
  */
-bool Users::add(
+int Users::add(
     const std::string &login,
     const std::string &pass,
     const std::string &email
@@ -163,10 +163,11 @@ bool Users::add(
         //TODO log it
         BOOSTER_ERROR("cppcms") << e.what();
         addUser.reset();
-        return false;
+        return USERS_NOT_ADDED_ERROR;
     }
+    int userId = addUser.last_insert_id();
     addUser.reset();
-    return true;
+    return userId;
 }     
 
 
