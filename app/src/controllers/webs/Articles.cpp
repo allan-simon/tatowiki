@@ -329,6 +329,17 @@ void Articles::show_all() {
 void Articles::translate(const std::string slug) {
     CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
+    int articleToTranslateId = articlesModel->get_id_from_lang_and_slug(
+        get_interface_lang(),
+        slug
+    );
+
+    if (articleToTranslateId == ARTICLE_DOESNT_EXIST_ERROR) {
+        set_message(_("The article you try to translate does not exist."));
+        go_back_to_previous_page();
+        return;
+    }
+
     contents::articles::Translate c(slug);
     init_content(c);
 
