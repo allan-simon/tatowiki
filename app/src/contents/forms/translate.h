@@ -27,9 +27,12 @@
 #ifndef TATOWIKI_TRANSLATE
 #define TATOWIKI_TRANSLATE
 
+
 #include <cppcms/form.h>
 #include <cppcms_skel/generics/Languages.h>
 #include "base_articles_form.h"
+
+#define _(X) cppcms::locale::translate((X))
 
 namespace forms{
 namespace articles {
@@ -43,8 +46,6 @@ namespace articles {
 struct Translate : public BaseArticleForm {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
-    //TODO slug of translation
-    //TODO lang of translation
 
     /**
      * @brief use to select the lang in which we're translating
@@ -67,9 +68,10 @@ struct Translate : public BaseArticleForm {
         Languages::get_instance()->fill_form_select(transLang);
 
         slug.value(slugStr);
+        transLang.message(_("Language of the translation:"));
 
         translationSlug.name("translationSlug");
-        translationSlug.message("URL name of this article's translation:");
+        translationSlug.message(_("URL name of this article's translation:"));
         translationSlug.non_empty();
 
         add(slug);

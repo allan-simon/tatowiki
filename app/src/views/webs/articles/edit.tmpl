@@ -4,10 +4,19 @@
 <% template title() %><% gt "Edit article" %><% end template %>
 
 
+<% template css() %>
+    <% include css_link("articles/create.css") %>
+<% end template %>
+
+
+
 <% template main_content() %> 
 <div class="module" >
+    <h2><% gt "Edit article" %></h2>
     <form method="POST" action="/articles/edit_treat" >
-        <% form as_p editForm %>
+    <table>
+        <% form as_table editForm %>
+    </table>
     </form>
 </div>
 <% end template %>

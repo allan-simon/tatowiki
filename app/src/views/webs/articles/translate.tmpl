@@ -3,11 +3,21 @@
 <% view articles_translate uses contents::articles::Translate extends master %>
 <% template title() %><% gt "Translate article" %><% end template %>
 
+<% template css() %>
+    <% include css_link("articles/create.css") %>
+<% end template %>
+
+
 
 <% template main_content() %> 
+<div class="module">
+    <h2><% gt "Translate article" %></h2>
     <form method="POST" action="/articles/translate_treat" >
-        <% form as_p translateForm %>
+    <table>
+        <% form as_table translateForm %>
+    </table>
     </form>
+</div>
 <% end template %>
 
 /**
