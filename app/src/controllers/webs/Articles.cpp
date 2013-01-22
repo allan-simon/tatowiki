@@ -375,7 +375,13 @@ void Articles::translate_treat() {
     // TODO also add something to keep trace of the
     //      translation link in the history 
     if (resultCode <= 0) {
-        set_message(_("Error while trying to translate"));
+        if (resultCode == ARTICLE_ALREADY_TRANSLATED_ERROR) {
+            set_message(_("This article has already a translation in that language."));
+        } else if (resultCode == ARTICLE_SAME_TRANSLATION_LANGUAGE_ERROR) {
+            set_message(_("You can't translate an article in the same language."));
+        } else {
+            set_message(_("Error while trying to translate."));
+        }
         go_back_to_previous_page();
         return;
     }
