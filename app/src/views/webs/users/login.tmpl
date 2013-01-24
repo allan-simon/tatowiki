@@ -17,24 +17,38 @@
         id="UserLoginForm"
     >
         <% form input loginForm.previousUrl %>
-        <div>
-            <label for="<%= loginForm.username.name() %>">
-                <%= loginForm.username.message() %>
-            </label>
-            <% form input loginForm.username %>
-        </div>
-        <div>
-            <label for="<%= loginForm.password.name() %>">
-                <%= loginForm.password.message() %>
-            </label>
-            <% form input loginForm.password %>
-        </div>
-        <div>
+        <table class='input'>
+        <tr>
+            <td>
+                <label for="<%= loginForm.username.name() %>">
+                    <%= loginForm.username.message() %>
+                </label>
+            </td>
+            <td>
+                <% form input loginForm.username %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="<%= loginForm.password.name() %>">
+                    <%= loginForm.password.message() %>
+                </label>
+            </td>
+            <td>
+                <% form input loginForm.password %>
+            </td>
+        </tr>
+        <tr>
+            <td>
             <label for="<%= loginForm.rememberMe.name() %>">
                 <%= loginForm.rememberMe.message() %>
             </label>
+            </td>
+            <td>
             <% form input loginForm.rememberMe %>
-        </div>
+            </td>
+        </tr>
+        </table>
 
         <div class="submit">
             <% form input loginForm.submit %>
