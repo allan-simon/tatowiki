@@ -1,7 +1,8 @@
 {
 	"service" : {
 		"api" : "http",
-		"port" : 8080
+		"port" : 8080,
+        "ip" : "0.0.0.0"
 	},
 
     "cache" : {
@@ -21,6 +22,13 @@
         "expire" : "renew",
         "timeout" : 604800,
         "location" : "server",
+        "cookies" : {
+            //replace this value by your own domain
+            //note: the . at the beginning is important
+            //if you want to stay log in between the different language
+            //of your wiki
+            "domain" : ".sysko.fr" 
+        },
         "server" : {
             "storage" : "memory"
         }
@@ -44,7 +52,7 @@
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         },
-        "baseHost" : "tatolocal:8080",
+        "baseHost" : "sysko.fr:8080",
         "innerCssFolder" : "../resources/css/",
         "innerImgFolder" : "../resources/img/",
         "imgPath" : "/img/",
