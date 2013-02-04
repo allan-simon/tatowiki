@@ -14,7 +14,7 @@
 	"localization" : {
 		"messages" : {
 			"paths" : [ "../locale" ],
-			"domains" : [ "hello" ]
+			"domains" : [ "messages" ]
 		},
 		"locales" : [ "en_GB.UTF-8", "fr_FR.UTF-8" ]
 	},

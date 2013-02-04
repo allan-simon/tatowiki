@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-04 17:57+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:52
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:61
+#: ../src/contents/forms/register_new.h:102
+msgid "Register"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:58
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:13
+msgid "Login"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:63
+#: ../src/controllers/webs/Users.cpp:71
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:175
+msgid "Home"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:180
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:4
+msgid "Recent changes"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:206
+msgid "Note"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:209
+msgid "This wiki uses the markdown syntax."
+msgstr "Ce wiki utilise la syntaxe markdown"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:214
+msgid "How to format text"
+msgstr "Comment formatter le texte"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:217
+msgid "#Big title"
+msgstr "#Gros titre"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:220
+msgid "##Smaller title"
+msgstr "##Titre plus petit"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:224
+msgid "[text](http://example.com)"
+msgstr "[texte](http://example.com)"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:228
+msgid "[text](other-article)"
+msgstr "[texte](autre-article)"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:232
+msgid "**bold**"
+msgstr "**gras**"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:236
+msgid "*italic*"
+msgstr "*italique*"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/create.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/create.tmpl:13
+msgid "Create a new article"
+msgstr "Créer un nouvel article"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/edit.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/edit.tmpl:15
+msgid "Edit article"
+msgstr "Éditer cet article"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:18
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:28
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:28
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:22
+msgid "Actions"
+msgstr "Actions"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:23
+msgid "Edit"
+msgstr "Éditer"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:28
+msgid "Translate"
+msgstr "Traduire"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:33
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:29
+msgid "History"
+msgstr "Historique"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:38
+msgid "Remove"
+msgstr "Supprimer"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:45
+msgid "Translated in:"
+msgstr "Traduit en :"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:5
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:10
+msgid "All articles"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:34
+msgid "Go back to main page"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:14
+msgid "Translate article"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:4
+msgid "Article's history"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:13
+msgid "changed at <span class='time'>{1,dt=s}</span> by {2}"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:16
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:17
+msgid "Show"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:33
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:41
+msgid "Go back to article's page"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/diff_between.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/history/revert_to_version.tmpl:4
+msgid "TODO TITLE"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:14
+msgid "'{1}' changed at <span class='time'>{2,dt=s}</span> by {3}"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:20
+msgid "summary: "
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:5
+msgid "Previous version"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:10
+msgid "Notice"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:11
+msgid "This page show a previous version of the article"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:36
+msgid "Revert"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:59
+msgid "No account yet?"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:71
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:52
+msgid "Note:"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:73
+msgid ""
+"For the moment there's no automatic 'password forgotten' mechanism, instead "
+"send an email to the administrators"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:11
+msgid "Register a new user"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:28
+msgid "We need to make sure you are human."
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:35
+msgid ""
+"For instance, if your email is me12345@example.com, the answer is \"me123\"."
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:54
+msgid ""
+"Your email address will never be given or sold to third services. It will "
+"only be used internally to send you automatic notification or in case you "
+"lose your password."
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:256
+msgid "Error while trying to add the article"
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:306
+msgid "The article has been removed"
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:308
+msgid "A problem occured while trying to remove"
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:338
+msgid "The article you try to translate does not exist."
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:361
+msgid "The form you've submitted is not valid"
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:390
+msgid "This article has already a translation in that language."
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:392
+msgid "You can't translate an article in the same language."
+msgstr ""
+
+#: ../src/controllers/webs/Articles.cpp:394
+msgid "Error while trying to translate."
+msgstr ""
+
+#: ../src/controllers/webs/History.cpp:95
+msgid "Revert article to version {1}"
+msgstr ""
+
+#: ../src/controllers/webs/History.cpp:176
+msgid ""
+"You can't see the history of this article, because this article does not "
+"exist."
+msgstr ""
+
+#: ../src/controllers/webs/Users.cpp:179
+msgid "Username already taken"
+msgstr ""
+
+#: ../src/controllers/webs/Users.cpp:187
+msgid "Email already taken"
+msgstr ""
+
+#: ../src/controllers/webs/Users.cpp:211
+msgid "Unknown error"
+msgstr ""
+
+#: ../src/contents/forms/base_articles_form.h:83
+msgid "Title"
+msgstr ""
+
+#: ../src/contents/forms/base_articles_form.h:88
+msgid "Content"
+msgstr ""
+
+#: ../src/contents/forms/base_articles_form.h:93
+msgid "Save"
+msgstr ""
+
+#: ../src/contents/forms/base_articles_form.h:98
+msgid "save and continue"
+msgstr ""
+
+#: ../src/contents/forms/diff_between.h:60
+msgid "submit"
+msgstr ""
+
+#: ../src/contents/forms/login.h:90 ../src/contents/forms/register_new.h:78
+msgid "Username :"
+msgstr ""
+
+#: ../src/contents/forms/login.h:96 ../src/contents/forms/register_new.h:83
+msgid "Password :"
+msgstr ""
+
+#: ../src/contents/forms/login.h:100
+msgid "Remember me"
+msgstr ""
+
+#: ../src/contents/forms/login.h:105
+msgid "Log in"
+msgstr ""
+
+#: ../src/contents/forms/register_new.h:88
+msgid "Email :"
+msgstr ""
+
+#: ../src/contents/forms/register_new.h:91
+msgid "Quizz :"
+msgstr ""
+
+#: ../src/contents/forms/register_new.h:92
+msgid "What are the first five letters of your email?"
+msgstr ""
+
+#: ../src/contents/forms/register_new.h:97
+msgid "I accept the terms of use."
+msgstr ""
+
+#: ../src/contents/forms/translate.h:71
+msgid "Language of the translation:"
+msgstr ""
+
+#: ../src/contents/forms/translate.h:74
+msgid "URL name of this article's translation:"
+msgstr ""
