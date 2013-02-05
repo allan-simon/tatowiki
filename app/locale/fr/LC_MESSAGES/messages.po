@@ -36,7 +36,7 @@ msgstr "Se déconnecter"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:175
 msgid "Home"
-msgstr "Acceuil"
+msgstr "Accueil"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:180
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:4
