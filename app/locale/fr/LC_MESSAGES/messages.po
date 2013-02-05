@@ -21,13 +21,13 @@ msgstr ""
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:61
 #: ../src/contents/forms/register_new.h:102
 msgid "Register"
-msgstr ""
+msgstr "S'enregistrer"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:58
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:13
 msgid "Login"
-msgstr ""
+msgstr "Se connecter"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:63
 #: ../src/controllers/webs/Users.cpp:71
@@ -36,16 +36,16 @@ msgstr "Se déconnecter"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:175
 msgid "Home"
-msgstr ""
+msgstr "Acceuil"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:180
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:4
 msgid "Recent changes"
-msgstr ""
+msgstr "Modifications récentes"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:206
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:209
 msgid "This wiki uses the markdown syntax."
@@ -120,34 +120,34 @@ msgstr "Traduit en :"
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:5
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:10
 msgid "All articles"
-msgstr ""
+msgstr "Tous les articles"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:34
 msgid "Go back to main page"
-msgstr ""
+msgstr "Retourner à la page principale"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:14
 msgid "Translate article"
-msgstr ""
+msgstr "Traduire cet article"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:4
 msgid "Article's history"
-msgstr ""
+msgstr "Historique de cet article"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:13
 msgid "changed at <span class='time'>{1,dt=s}</span> by {2}"
-msgstr ""
+msgstr "Changé le <span class='time'>{1,dt=s}</span> par {2}"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:16
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:17
 msgid "Show"
-msgstr ""
+msgstr "Montrer"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:33
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:41
 msgid "Go back to article's page"
-msgstr ""
+msgstr "Retourner à la page de l'article"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/diff_between.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/history/revert_to_version.tmpl:4
@@ -156,56 +156,56 @@ msgstr ""
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:14
 msgid "'{1}' changed at <span class='time'>{2,dt=s}</span> by {3}"
-msgstr ""
+msgstr "'{1}' changé le <span ckass='time'>{2,dt=s}</span> par {3}"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:20
 msgid "summary: "
-msgstr ""
+msgstr "résumé :"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:5
 msgid "Previous version"
-msgstr ""
+msgstr "Version précédente"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:10
 msgid "Notice"
-msgstr ""
+msgstr "Information"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:11
 msgid "This page show a previous version of the article"
-msgstr ""
+msgstr "Cette page montre une version antérieur de cet article"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:36
 msgid "Revert"
-msgstr ""
+msgstr "Rétablir"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:59
 msgid "No account yet?"
-msgstr ""
+msgstr "Pas encore de compte ?"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:71
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:52
 msgid "Note:"
-msgstr ""
+msgstr "Note :"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:73
 msgid ""
 "For the moment there's no automatic 'password forgotten' mechanism, instead "
 "send an email to the administrators"
-msgstr ""
+msgstr "Pour le moment il n'y a pas encore de méchanisme 'mot de passe oublié', à la place envoyez un email aux administrateurs."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:11
 msgid "Register a new user"
-msgstr ""
+msgstr "Enregistrer un nouvel utilisateur"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:28
 msgid "We need to make sure you are human."
-msgstr ""
+msgstr "Nous devons vérifier que vous êtes bien un humain."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:35
 msgid ""
 "For instance, if your email is me12345@example.com, the answer is \"me123\"."
-msgstr ""
+msgstr "Par exemple, si votre e-mail est me12345@example.com, la réponse est \"me123\"."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:54
 msgid ""
@@ -216,114 +216,114 @@ msgstr ""
 
 #: ../src/controllers/webs/Articles.cpp:256
 msgid "Error while trying to add the article"
-msgstr ""
+msgstr "Erreur lors de l'ajout de l'article"
 
 #: ../src/controllers/webs/Articles.cpp:306
 msgid "The article has been removed"
-msgstr ""
+msgstr "L'article a été supprimé"
 
 #: ../src/controllers/webs/Articles.cpp:308
 msgid "A problem occured while trying to remove"
-msgstr ""
+msgstr "Une erreur s'est produite lors de la tentative de suppression"
 
 #: ../src/controllers/webs/Articles.cpp:338
 msgid "The article you try to translate does not exist."
-msgstr ""
+msgstr "L'article que vous essayez de traduire n'existe pas."
 
 #: ../src/controllers/webs/Articles.cpp:361
 msgid "The form you've submitted is not valid"
-msgstr ""
+msgstr "Le formulaire que vous avez soumis n'est pas valide"
 
 #: ../src/controllers/webs/Articles.cpp:390
 msgid "This article has already a translation in that language."
-msgstr ""
+msgstr "Cet article a déjà une traduction dans cette langue."
 
 #: ../src/controllers/webs/Articles.cpp:392
 msgid "You can't translate an article in the same language."
-msgstr ""
+msgstr "Vous ne pouvez pas traduire un article dans la même langue."
 
 #: ../src/controllers/webs/Articles.cpp:394
 msgid "Error while trying to translate."
-msgstr ""
+msgstr "Une erreur s'est produite lors de la tentative de traduction."
 
 #: ../src/controllers/webs/History.cpp:95
 msgid "Revert article to version {1}"
-msgstr ""
+msgstr "Rétablir l'article à la version {1}"
 
 #: ../src/controllers/webs/History.cpp:176
 msgid ""
 "You can't see the history of this article, because this article does not "
 "exist."
-msgstr ""
+msgstr "Vous ne pouvez voir l'historique de cet article car celui-ci n'existe pas."
 
 #: ../src/controllers/webs/Users.cpp:179
 msgid "Username already taken"
-msgstr ""
+msgstr "Nom d'utilisateur déjà pris"
 
 #: ../src/controllers/webs/Users.cpp:187
 msgid "Email already taken"
-msgstr ""
+msgstr "E-mail déjà pris"
 
 #: ../src/controllers/webs/Users.cpp:211
 msgid "Unknown error"
-msgstr ""
+msgstr "Erreur inconnue"
 
 #: ../src/contents/forms/base_articles_form.h:83
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: ../src/contents/forms/base_articles_form.h:88
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 #: ../src/contents/forms/base_articles_form.h:93
 msgid "Save"
-msgstr ""
+msgstr "Sauvegarder"
 
 #: ../src/contents/forms/base_articles_form.h:98
 msgid "save and continue"
-msgstr ""
+msgstr "sauvegarder et continuer"
 
 #: ../src/contents/forms/diff_between.h:60
 msgid "submit"
-msgstr ""
+msgstr "soumettre"
 
 #: ../src/contents/forms/login.h:90 ../src/contents/forms/register_new.h:78
 msgid "Username :"
-msgstr ""
+msgstr "Nom d'utilisateur :"
 
 #: ../src/contents/forms/login.h:96 ../src/contents/forms/register_new.h:83
 msgid "Password :"
-msgstr ""
+msgstr "Mot de passe :"
 
 #: ../src/contents/forms/login.h:100
 msgid "Remember me"
-msgstr ""
+msgstr "Se souvenir de moi"
 
 #: ../src/contents/forms/login.h:105
 msgid "Log in"
-msgstr ""
+msgstr "Se connecter"
 
 #: ../src/contents/forms/register_new.h:88
 msgid "Email :"
-msgstr ""
+msgstr "E-mail :"
 
 #: ../src/contents/forms/register_new.h:91
 msgid "Quizz :"
-msgstr ""
+msgstr "Quizz :"
 
 #: ../src/contents/forms/register_new.h:92
 msgid "What are the first five letters of your email?"
-msgstr ""
+msgstr "Quels sont les cinq premièrs caractères votre e-mail ?"
 
 #: ../src/contents/forms/register_new.h:97
 msgid "I accept the terms of use."
-msgstr ""
+msgstr "J'accepte les conditions d'utilisations."
 
 #: ../src/contents/forms/translate.h:71
 msgid "Language of the translation:"
-msgstr ""
+msgstr "Langue de la traduction :"
 
 #: ../src/contents/forms/translate.h:74
 msgid "URL name of this article's translation:"
-msgstr ""
+msgstr "Nom de l'url de la traduction de cet article :"
