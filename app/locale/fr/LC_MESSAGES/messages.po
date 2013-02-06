@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 17:57+0800\n"
+"POT-Creation-Date: 2013-02-06 23:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,7 +191,9 @@ msgstr "Note :"
 msgid ""
 "For the moment there's no automatic 'password forgotten' mechanism, instead "
 "send an email to the administrators"
-msgstr "Pour le moment il n'y a pas encore de méchanisme 'mot de passe oublié', à la place envoyez un email aux administrateurs."
+msgstr ""
+"Pour le moment il n'y a pas encore de méchanisme 'mot de passe oublié', à la "
+"place envoyez un email aux administrateurs."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:11
@@ -205,7 +207,9 @@ msgstr "Nous devons vérifier que vous êtes bien un humain."
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:35
 msgid ""
 "For instance, if your email is me12345@example.com, the answer is \"me123\"."
-msgstr "Par exemple, si votre e-mail est me12345@example.com, la réponse est \"me123\"."
+msgstr ""
+"Par exemple, si votre e-mail est me12345@example.com, la réponse est "
+"\"me123\"."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/users/register_new.tmpl:54
 msgid ""
@@ -254,7 +258,8 @@ msgstr "Rétablir l'article à la version {1}"
 msgid ""
 "You can't see the history of this article, because this article does not "
 "exist."
-msgstr "Vous ne pouvez voir l'historique de cet article car celui-ci n'existe pas."
+msgstr ""
+"Vous ne pouvez voir l'historique de cet article car celui-ci n'existe pas."
 
 #: ../src/controllers/webs/Users.cpp:179
 msgid "Username already taken"
@@ -327,3 +332,13 @@ msgstr "Langue de la traduction :"
 #: ../src/contents/forms/translate.h:74
 msgid "URL name of this article's translation:"
 msgstr "Nom de l'url de la traduction de cet article :"
+
+#: ../src/models/Articles.cpp:510
+msgid "Main Page"
+msgstr "Page Principale"
+
+#: ../src/models/Articles.cpp:512
+msgid ""
+"This is the default main page, you can edit it by clicking on the button on "
+"the right panel"
+msgstr "Ceci est la page principale par défaut, vous pouvez l'éditer en cliquant sur le lien dans le panneau de droite."
