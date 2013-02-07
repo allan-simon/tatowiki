@@ -44,3 +44,28 @@ INSERT INTO articles(
     "Simply to test if it works in German"
 );
 
+INSERT INTO articles(
+    lang,
+    slug,
+    title,
+    content
+) VALUES(
+    "zh",
+    "main_page_zh",
+    "Main Page in 中文",
+    "Simply to test if it works in 中文"
+);
+
+
+INSERT INTO articles(
+    lang,
+    slug,
+    title,
+    content
+) VALUES(
+    "pl",
+    "main_page_pl",
+    "Main Page in polish",
+    "Simply to test if it works in polish"
+);
+

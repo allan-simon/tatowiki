@@ -8,12 +8,19 @@
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
 #define SQL_FILL_ARTICLES "../tests/models/articles/fill_articles.sql"
 
+
+
+
 #define TEST_ARTICLE_LANG_FRENCH "fr"
 #define TEST_ARTICLE_LANG_GERMAN "de"
+#define TEST_ARTICLE_LANG_CHINESE "zh"
+#define TEST_ARTICLE_LANG_POLISH "pl"
 #define TEST_ARTICLE_LANG_ENGLISH "en"
 
 #define TEST_ARTICLE_SLUG_FRENCH "page_principale"
 #define TEST_ARTICLE_SLUG_GERMAN "main_page_de"
+#define TEST_ARTICLE_SLUG_CHINESE "main_page_zh"
+#define TEST_ARTICLE_SLUG_POLISH "main_page_pl"
 #define TEST_ARTICLE_SLUG_ENGLISH "main_page"
 
 int main () {
@@ -37,7 +44,6 @@ int main () {
 
     // now we try to add a link between the german article
     // and the french one
-    
     // first we retrieve the id of the articles
     int frId = articlesModels.get_id_from_lang_and_slug(
         TEST_ARTICLE_LANG_FRENCH,
@@ -53,6 +59,20 @@ int main () {
         TEST_ARTICLE_LANG_ENGLISH,
         TEST_ARTICLE_SLUG_ENGLISH
     );
+    
+    int zhId = articlesModels.get_id_from_lang_and_slug(
+        TEST_ARTICLE_LANG_CHINESE,
+        TEST_ARTICLE_SLUG_CHINESE
+    );
+        
+    int plId = articlesModels.get_id_from_lang_and_slug(
+        TEST_ARTICLE_LANG_POLISH,
+        TEST_ARTICLE_SLUG_POLISH
+    );
+
+
+
+
 
     std::cout << "Try add a link between two articles with no links"
         << " to other articles, so it should add only one link ... ";
@@ -93,9 +113,27 @@ int main () {
     if (
         articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_FRENCH) &&
         articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_GERMAN) &&
-        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_CHINESE) &&
+        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_POLISH) &&
+        
         articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_ENGLISH) &&
+        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_CHINESE) &&
+        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_POLISH) &&
+        
+        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_CHINESE) &&
+        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_ENGLISH) &&
+        
+        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_POLISH) &&
+        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_ENGLISH) &&
+
         articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_CHINESE) &&
+        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_POLISH) &&
         articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_ENGLISH)
     ) {
     
