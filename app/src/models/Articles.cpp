@@ -70,6 +70,7 @@ results::Article Articles::get_from_lang_and_slug(
 
     if (!res.empty()) {
         article.id = res.get<int>("id");
+        article.groupId = res.get<int>("group_id");
         article.lang = res.get<std::string>("lang");
         article.content = res.get<std::string>("content");
         article.slug = res.get<std::string>("slug");
@@ -160,6 +161,10 @@ int Articles::create_from_lang_and_slug(
         lang,
         slug
     );
+    add_to_group(
+        id,
+        id
+    );
 
     create.reset();
     return id;
@@ -249,6 +254,34 @@ results::Articles Articles::get_all() {
 
 }
 
+int Articles::get_group_id_from_lang_and_slug(
+    const std::string &lang,
+    const std::string &slug
+) {
+    cppdb::statement getGroupIdFromLangAndSlug = sqliteDb.prepare(
+        "SELECT group_id "
+        "FROM articles "
+        "WHERE "
+        "   lang = ? AND"
+        "   slug = ? "
+        "LIMIT 1"
+    );
+    getGroupIdFromLangAndSlug.bind(lang);
+    getGroupIdFromLangAndSlug.bind(slug);
+
+    cppdb::result res = getGroupIdFromLangAndSlug.row();
+
+    int groupId = ARTICLE_DOESNT_EXIST_ERROR;
+    if (!res.empty()) {
+        groupId = res.get<int>("group_id");
+    }
+    getGroupIdFromLangAndSlug.reset();
+
+    return groupId;
+}
+
+
+
 int Articles::get_id_from_lang_and_slug(
     const std::string &lang,
     const std::string &slug
@@ -291,16 +324,16 @@ int Articles::translate_from_lang_and_slug(
     }
     //cppdb::transaction guard(sqliteDb);
 
-    // GET id of the article 
-    const int articleId = get_id_from_lang_and_slug(
+    // GET group id of the article 
+    const int groupId = get_group_id_from_lang_and_slug(
         origLang,
         origSlug
     );
-    if(articleId <= 0) { // TODO test if article exists
+    if(groupId <= 0) { // TODO test if article exists
         return ARTICLE_DOESNT_EXIST_ERROR;
     }
     // test if articles already has a translation in that lang
-    if (is_translated_in(articleId,lang)) {
+    if (group_contains_lang(groupId,lang)) {
         return ARTICLE_ALREADY_TRANSLATED_ERROR;
     }
 
@@ -316,8 +349,8 @@ int Articles::translate_from_lang_and_slug(
     if (translationId <= 0) {
         return ARTICLE_CREATE_TRANSLATION_ERROR;
     }
-    const int linksAdded = add_translation_link(
-        articleId,
+    const int linksAdded = add_to_group(
+        groupId,
         translationId
     );
     // add translation link
@@ -333,22 +366,20 @@ int Articles::translate_from_lang_and_slug(
 /**
  *
  */
-bool Articles::is_translated_in(
-    const int articleId,
+bool Articles::group_contains_lang(
+    const int groupId,
     const std::string &lang
 ) {
     
     cppdb::statement checkTransExists = sqliteDb.prepare(
         "SELECT 1 "
-        "FROM articles_translations at "
-        "JOIN articles t ON"
-        "   (at.translation_id = t.id) "
+        "FROM articles "
         "WHERE "
-        "   at.article_id = ? AND "
-        "   t.lang = ? "
+        "   group_id = ? AND "
+        "   lang = ? "
         "LIMIT 1"
     );
-    checkTransExists.bind(articleId);
+    checkTransExists.bind(groupId);
     checkTransExists.bind(lang);
     cppdb::result res = checkTransExists.row();
     int checkresult = 0;
@@ -366,86 +397,32 @@ bool Articles::is_translated_in(
 /**
  *
  */
-int Articles::add_translation_link(
-    const int articleId,
+int Articles::add_to_group(
+    const int groupId,
     const int translationId
 ) {
-    if (articleId == translationId) {
-        return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
-    }
     
     // if we want to translate a  by  b ...
-    cppdb::statement insertTransLink = sqliteDb.prepare(
-        "INSERT INTO articles_translations "
-        // ... we insert the link  a -> b 
-        "SELECT "
-        "   ?,"
-        "   ? "
-
-        "UNION "
-        // ... then the link  b -> a 
-        "SELECT "
-        "   ?,"
-        "   ?"
-
-        "UNION "
-        // ... then the linkS b -> all the things linked to  a
-        "SELECT "
-        "    ?, "
-        "    (SELECT "
-        "       translation_id "
-        "    FROM "
-        "       articles_translations "
-        "    WHERE "
-        "       article_id = ? "
-        "    ) AS t_id  "
-        // the WHERE is to avoid doing a SELECT 1, NULL
-        "WHERE t_id NOT NULL "
-
-        "UNION "
-
-        // ..  and the linkS  all the things linked to  a -> b
-        "SELECT "
-        "   (SELECT "
-        "       article_id "
-        "   FROM "
-        "       articles_translations "
-        "   WHERE "
-        "       translation_id = ? "
-        "   ) AS a_id,"
-        "   ? "
-        // the WHERE is to avoid doing a SELECT  NULL, 1 
-        "WHERE a_id NOT NULL" 
-        ";"
+    cppdb::statement addToGroup = sqliteDb.prepare(
+        "UPDATE articles "
+        "SET  "
+        "   group_id = ? "
+        "WHERE id = ?"
     );
 
-    // ... we insert the link  a -> b 
-    insertTransLink.bind(articleId);
-    insertTransLink.bind(translationId);
-
-    // ... then the link  b -> a 
-    insertTransLink.bind(translationId);
-    insertTransLink.bind(articleId);
-
-    // ... then the linkS b -> all the things linked to  a
-    insertTransLink.bind(translationId);
-    insertTransLink.bind(articleId);
-
-    // ..  and the linkS  all the things linked to  a -> b
-    insertTransLink.bind(articleId);
-    insertTransLink.bind(translationId);
-
+    addToGroup.bind(groupId);
+    addToGroup.bind(translationId);
 
 
     try {
-        insertTransLink.exec();
+        addToGroup.exec();
     } catch (cppdb::cppdb_error const &e) {
         //TODO log it
         std::cerr << e.what();
-        insertTransLink.reset();
+        addToGroup.reset();
         return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
     }
-    insertTransLink.reset();
+    addToGroup.reset();
     return 1;
 
 
@@ -454,27 +431,29 @@ int Articles::add_translation_link(
 /**
  *
  */
-results::TranslatedIn Articles::get_translated_in(
-    const int id
+results::TranslatedIn Articles::get_group_of(
+    const int articleId,
+    const int groupId
 ) {
     
     cppdb::statement request = sqliteDb.prepare(
         "SELECT "
-        "    t.lang as tlang, t.slug as tslug "
-        "FROM articles_translations at "
-        "JOIN articles t ON"
-        "   (at.translation_id = t.id) "
+        "    lang, "
+        "    slug  "
+        "FROM articles "
         "WHERE "
-        "   at.article_id = ? "
+        "   group_id = ? AND "
+        "   id != ?"
     );
-    request.bind(id);
+    request.bind(groupId);
+    request.bind(articleId);
 
     cppdb::result res = request.query();
 
     results::TranslatedIn translatedIn;
     while (res.next()) {
-        std::string translationLang = res.get<std::string>("tlang");
-        std::string translationSlug = res.get<std::string>("tslug");
+        std::string translationLang = res.get<std::string>("lang");
+        std::string translationSlug = res.get<std::string>("slug");
 
         translatedIn[translationLang] = translationSlug;
     }
@@ -517,8 +496,12 @@ int Articles::generate_main_pages(
         if (result >= 0) {
             articleIds.push_back(result);
      
-            if (!is_translated_in(articleIds[0],lang)) {
-                add_translation_link(
+            if (!group_contains_lang(articleIds[0],lang)) {
+                // TODO find a better to do this
+                // HACK it's highly possible (always?) that the id of the first
+                // article we get is also the group id of the main articles
+                // should be the case if people don't change the order in config.js
+                add_to_group(
                     articleIds[0],
                     result
                 );

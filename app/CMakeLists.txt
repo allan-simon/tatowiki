@@ -12,6 +12,7 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
+
 enable_testing()
 
 
@@ -109,7 +110,7 @@ set(
     articles
     get_from_lang_and_slug
     create_from_lang_and_slug
-    add_translation_link
+    add_to_group
 )
 
 foreach(TEST ${ARTICLES_MODEL_TESTS})

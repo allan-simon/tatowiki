@@ -201,47 +201,71 @@ class Articles : public SqliteModel {
         );
         
         /**
-         * @brief add a "translation" link between two articles
+         * @brief Retrieve the group id of an article based on its
+         *        Lang and URL name
+         *
+         * @param lang Lang in which the article is
+         * @param slug URL name of the article
+         *
+         * @return Group id of the article, or a negative number
+         *         if the articles does not exists or other
+         *         kind of problems happen
+         *
+         * @since  03 March 2013
+         */
+        int get_group_id_from_lang_and_slug(
+            const std::string &lang,
+            const std::string &slug
+        );
+  
+        
+        /**
+         * @brief Add an article to a group of articles in other
+         *        languages but about the same subject
          *        Note: it does not any test beforehand, so
          *        be sure the two ids exists etc.
          * 
-         * @param articleId
-         * @param translationId
+         * @param groupId        Id of the group you want to add an article to
+         * @param translationId  Id of the article to add to the group
+         *
+         * @since 03 March 2013
          */
-        int add_translation_link(
-            const int articleId,
+        int add_to_group(
+            const int groupId,
             const int translationId
         );
         
         /**
-         * @brief Use to know if a given article is translated in a given
+         * @brief Use to know if a group of article contains a certain
          *        language
          *
-         * @param articleId The id of the original article
+         * @param groupId   Id of the group to check  
          * @param lang      The code of the language
          *
-         * @return True if the article is already translated in that language
+         * @return True if the group is already translated in that language
          *         False otherwise
          *
-         * @since December 2012
+         * @since 03 March 2013
          */
-        bool is_translated_in(
-            const int articleId,
+        bool group_contains_lang(
+            const int groupId,
             const std::string &lang
         );
 
         /**
-         * @brief Get the list of languages in which a given article
-         *        is translated
+         * @brief Get the list of language:slug of the other articles 
+         *        belonging to the same group than an article
          *
-         * @param articleId The id of the original article
+         * @param articleId The id of article
+         * @paran groupId   Group to which the article belongs
          * 
-         * @return A list of languages
+         * @return A list of languages:slugs
          *
          * @since 27 December 2012
          */
-        results::TranslatedIn get_translated_in(
-            const int articleId
+        results::TranslatedIn get_group_of(
+            const int articleId,
+            const int groupId
         );
 
         /**

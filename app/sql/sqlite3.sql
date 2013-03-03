@@ -25,6 +25,7 @@ begin;
     -- TODO same things for the visibility 
     create table articles (
         id integer primary key autoincrement not null,
+        group_id  integer   not null default 0, 
         lang text not null,                            -- code iso 639-3 alpha 3 in which the articles is written
         slug text not null,                            -- "url" name of the article 
         title text not null,                           -- title of the article 
@@ -32,14 +33,8 @@ begin;
         locked boolean default false not null,         -- if the articles can be edited or not
         unique (lang,slug)                             -- in order to not have several articles on the same url
     );
+    CREATE INDEX articles_group_id_idx ON articles(group_id);
 
-    -- table to represent the translation links between articles
-    -- @since 18 November 2012
-    create table articles_translations (
-        article_id integer not null,                  -- id of the "source" article
-        translation_id integer not null,              -- id of the article that is a translation of it
-        unique(article_id,translation_id)
-    );
 
     -- table to represent a deleted article
     -- we don't delete them totally in case we need to revert them back

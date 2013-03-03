@@ -2,7 +2,7 @@
 #include "models/Articles.h"
 #include "test.h"
 
-#define TEST_NAME "models_articles_add_translation_link_test"
+#define TEST_NAME "models_articles_add_to_group_test"
 
 
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
@@ -72,12 +72,10 @@ int main () {
 
 
 
-
-
     std::cout << "Try add a link between two articles with no links"
         << " to other articles, so it should add only one link ... ";
 
-    int result = articlesModels.add_translation_link(
+    int result = articlesModels.add_to_group(
         frId,
         deId
     );
@@ -93,7 +91,7 @@ int main () {
     // with A already linked to C 
     std::cout << "Try add a link between two articles that already have some links ... ";
 
-    result = articlesModels.add_translation_link(
+    result = articlesModels.add_to_group (
         frId,
         enId
     );
@@ -105,36 +103,47 @@ int main () {
     } else {
         std::cout << " [ok]" << std::endl; 
     }
+    //  
+    result = articlesModels.add_to_group(
+        frId,
+        plId
+    );
+
+    if (result == ARTICLE_ADD_TRANSLATION_LINK_ERROR) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+    //  
+    result = articlesModels.add_to_group(
+        frId,
+        zhId
+    );
+
+    if (result == ARTICLE_ADD_TRANSLATION_LINK_ERROR) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+
+
 
 
     // We want that if A and B are linked, that if we link B and C, that
     // automatically A is linked to C
     std::cout << "Test if all articles at the end are interlinked ... ";
     if (
-        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_FRENCH) &&
-        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_GERMAN) &&
-        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_CHINESE) &&
-        articlesModels.is_translated_in(enId, TEST_ARTICLE_LANG_POLISH) &&
         
-        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_ENGLISH) &&
-        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_GERMAN) &&
-        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_CHINESE) &&
-        articlesModels.is_translated_in(frId, TEST_ARTICLE_LANG_POLISH) &&
-        
-        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_FRENCH) &&
-        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_GERMAN) &&
-        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_CHINESE) &&
-        articlesModels.is_translated_in(plId, TEST_ARTICLE_LANG_ENGLISH) &&
-        
-        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_FRENCH) &&
-        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_GERMAN) &&
-        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_POLISH) &&
-        articlesModels.is_translated_in(zhId, TEST_ARTICLE_LANG_ENGLISH) &&
-
-        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_FRENCH) &&
-        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_CHINESE) &&
-        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_POLISH) &&
-        articlesModels.is_translated_in(deId, TEST_ARTICLE_LANG_ENGLISH)
+        articlesModels.group_contains_lang(frId, TEST_ARTICLE_LANG_FRENCH) &&
+        articlesModels.group_contains_lang(frId, TEST_ARTICLE_LANG_ENGLISH) &&
+        articlesModels.group_contains_lang(frId, TEST_ARTICLE_LANG_GERMAN) &&
+        articlesModels.group_contains_lang(frId, TEST_ARTICLE_LANG_CHINESE) &&
+        articlesModels.group_contains_lang(frId, TEST_ARTICLE_LANG_POLISH) 
     ) {
     
         std::cout << " [ok]" << std::endl; 

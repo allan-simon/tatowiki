@@ -47,6 +47,7 @@ namespace results {
      */
     struct Article {
         int id;
+        int groupId;
         std::string lang;
         std::string slug;
         std::string title;

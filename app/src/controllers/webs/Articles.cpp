@@ -108,8 +108,9 @@ void Articles::show(std::string slug) {
     }
 
 
-    c.translatedIn = articlesModel->get_translated_in(
-        c.article.id
+    c.translatedIn = articlesModel->get_group_of(
+        c.article.id,
+        c.article.groupId
     );
     render("articles_show", c);
 }
