@@ -1,0 +1,1 @@
+Here is contained some python script to automatically test the repetitive tasks that can't be done with simple unit test, i.e testing that we can register a new user, that the html is correctly formatted etc. etc.
