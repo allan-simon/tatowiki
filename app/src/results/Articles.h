@@ -70,13 +70,15 @@ namespace results {
         Article(
             const std::string &lang,
             const std::string &slug,
-            const std::string &title
+            const std::string &title,
+            const std::string &content = "",
+            const int id = 1
         ) :
-            id(1),//TODO replace
+            id(id),//TODO replace
             lang(lang),
             slug(slug),
             title(title),
-            content(""),
+            content(content),
             isLocked(false)
         {
         };

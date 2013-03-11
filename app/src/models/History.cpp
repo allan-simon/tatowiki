@@ -50,16 +50,14 @@ History::History() :
  *
  */
 bool History::add_version(
-    const std::string &lang,
-    const std::string &slug,
-    const std::string &title,
-    const std::string &content,
+    const results::Article &article,
     const int userId,
     const std::string &summary = ""
 
 ) {
     cppdb::statement addVersion = sqliteDb.prepare(
         "INSERT INTO history("
+        "    article_id"
         "    title,"
         "    content,"
         "    lang,"
@@ -68,6 +66,7 @@ bool History::add_version(
         "    summary,"
         "    version"
         ") VALUES ("
+        "    ?,"
         "    ?,"
         "    ?,"
         "    ?,"
@@ -83,10 +82,11 @@ bool History::add_version(
         ")"
     );
     // insert part
-    addVersion.bind(title);
-    addVersion.bind(content);
-    addVersion.bind(lang);
-    addVersion.bind(slug);
+    addVersion.bind(article.id);
+    addVersion.bind(article.title);
+    addVersion.bind(article.content);
+    addVersion.bind(article.lang);
+    addVersion.bind(article.slug);
     addVersion.bind(userId);
     addVersion.bind(summary);
 

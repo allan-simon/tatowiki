@@ -97,10 +97,7 @@ void History::revert_to_version(
         ) % version).str();
 
         historyModel->add_version(
-            articleVersion.article.lang,
-            slug,
-            articleVersion.article.title,
-            articleVersion.article.content,
+            articleVersion.article,
             get_current_user_id(),
             summary
         );

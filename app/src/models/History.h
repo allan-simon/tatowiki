@@ -49,24 +49,16 @@ class History : public SqliteModel {
         /**
          * @brief Save a new version of an article
          * 
-         * @param lang    ISO code of the language in which the article
-         *                is written
-         * @param slug    Slug of the article (i.e URL version of the
-         *                title)
-         * @param title   The title of the article
-         * @param content The main content of the article
+         * @param article The article's version to save
          * @param userId  Id of the user who has added this version
          * @param summary A description of the change
          *
          * @return bool If the article historic version has been added
          *
-         * @since 04 November 2012
+         * @since 06 March 2013
          */
         bool add_version(
-            const std::string &lang,
-            const std::string &slug,
-            const std::string &title,
-            const std::string &content,
+            const results::Article &article,
             const int userId,
             const std::string &summary
         );

@@ -338,7 +338,6 @@ int Articles::translate_from_lang_and_slug(
     }
 
     // save translation 
-    // TODO need to change create_from_lang to return an ID
     // if ID < 0 => error 
     const int translationId = create_from_lang_and_slug(
         lang,

@@ -53,6 +53,7 @@ begin;
     -- table storing the different version of the articles 
     -- TODO storing user_id so that we know who did the change
     create table history (
+        article_id integer key not null default 0,                      -- id of the article
         version integer primary key autoincrement not null default 1, 
         lang text not null,
         slug text not null,

@@ -168,12 +168,25 @@ void Articles::edit_treat() {
         title,
         content
     );
-
-    historyModel->add_version(
+    
+    // TODO maybe replace this by storing the id in an hidden 
+    // field of the form
+    int articleId = articlesModel->get_id_from_lang_and_slug(
+        lang,
+        slug
+    );
+    
+    results::Article article(
         lang,
         slug,
         title,
         content,
+        articleId
+    );
+        
+
+    historyModel->add_version(
+        article,
         get_current_user_id(),
         "" // TODO add something for the summary
     );
@@ -258,15 +271,20 @@ void Articles::create_treat() {
         go_back_to_previous_page();
         return;
     }
+    
+    results::Article article(
+        lang,
+        slug,
+        title,
+        content,
+        articleId
+    );
 
     // TODO add something to say that the article
     // as been created (and not simply that a "version"
     // has been added
     historyModel->add_version(
-        lang,
-        slug,
-        title,
-        content,
+        article,
         get_current_user_id(),
         "" // TODO add something for the summary
     );
@@ -397,11 +415,20 @@ void Articles::translate_treat() {
         go_back_to_previous_page();
         return;
     }
-    historyModel->add_version(
+    
+    // simply here for readability 
+    int translationId = resultCode;
+    
+    results::Article translationArticle(
         translationLang,
         translationSlug,
         title,
         content,
+        translationId
+    );
+
+    historyModel->add_version(
+        translationArticle,
         get_current_user_id(),
         // TODO add something for the summary
         "translated from " + origLang + ":" + origSlug  
