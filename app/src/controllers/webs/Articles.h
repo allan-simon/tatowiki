@@ -161,6 +161,16 @@ class Articles : public Controller {
          */
         void translate_treat();
 
+        /**
+         * @brief Page to display the non-applied edition of an article
+         *        when an a conflict between two editions appears
+         *
+         * @param conflictIdStr The conflict id as a string
+         *
+         * @since 14 March 2013
+         */
+        void show_conflict(std::string conflictIdStr);
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

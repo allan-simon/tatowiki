@@ -110,7 +110,7 @@ struct Show : public Articles {
 struct Edit : public Articles {
 
     forms::articles::Edit editForm;
-
+    
     /**
      * @brief Constructor
      *
@@ -181,6 +181,18 @@ struct Translate : public Articles {
      * @brief Constructor
      */
     Translate(const std::string &slug) : translateForm(slug) {
+    }
+
+};
+
+/**
+ * @struct ShowConflict
+ * @since  14 March 2013
+ */
+struct ShowConflict : public Articles {
+
+    ShowConflict() {
+
     }
 
 };

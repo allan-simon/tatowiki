@@ -60,6 +60,7 @@ Articles::Articles(cppcms::service& serv) :
 
     dispatcher().assign("/translate/(.+)", &Articles::translate, this, 1);
     dispatcher().assign("/translate_treat", &Articles::translate_treat, this);
+    dispatcher().assign("/show-conflict/(\\d+)", &Articles::show_conflict, this, 1);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -540,6 +541,20 @@ void Articles::translate_treat() {
     );
 
 }
+
+
+/**
+ *
+ */
+void Articles::show_conflict(std::string conflictIdStr) {
+    int conflictId = std::stoi(conflictIdStr);
+    contents::articles::ShowConflict c;
+    init_content(c);
+
+
+    render("articles_show_conflict", c);
+}
+
 
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
