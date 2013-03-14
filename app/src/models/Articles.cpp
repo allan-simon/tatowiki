@@ -461,57 +461,7 @@ results::TranslatedIn Articles::get_group_of(
 
 }
 
-/**
- *
- */
-int Articles::generate_main_pages(
-    std::map<std::string,std::string> lang2MainPages
-) {
 
-    
-
-    // will be used to store 
-    std::vector<int> articleIds;
-    for (auto lang2MainPage : lang2MainPages) {
-
-        std::string lang = lang2MainPage.first;
-        std::string slug = lang2MainPage.second;
-
-        int result = get_id_from_lang_and_slug(
-            lang,
-            slug
-        );
-        if (result ==  ARTICLE_DOESNT_EXIST_ERROR) {
-            result = create_from_lang_and_slug(
-                lang,
-                slug,
-                _("Main Page"),
-                _(
-                    "This is the default main page, you can edit it by "
-                    "clicking on the button on the right panel"
-                )
-            );
-        }
-        if (result >= 0) {
-            articleIds.push_back(result);
-     
-            if (!group_contains_lang(articleIds[0],lang)) {
-                // TODO find a better to do this
-                // HACK it's highly possible (always?) that the id of the first
-                // article we get is also the group id of the main articles
-                // should be the case if people don't change the order in config.js
-                add_to_group(
-                    articleIds[0],
-                    result
-                );
-            }
-
-        }
-             
-    }
-
-    return 0;
-}
 
 } // end namespace models
 

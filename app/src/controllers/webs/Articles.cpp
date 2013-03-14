@@ -345,6 +345,80 @@ void Articles::show_all() {
 /**
  *
  */
+void Articles::generate_main_pages(
+    std::map<std::string,std::string> lang2MainPages
+) {
+
+    models::Articles articlesModel;
+    models::History historyModel;
+    // will be used to store 
+    std::vector<int> articleIds;
+    for (auto lang2MainPage : lang2MainPages) {
+
+        std::string lang = lang2MainPage.first;
+        std::string slug = lang2MainPage.second;
+        std::string title = _("Main Page");
+        std::string content = _(
+            "This is the default main page, you can edit it by "
+            "clicking on the button on the right panel"
+        );
+        
+        int result = articlesModel.get_id_from_lang_and_slug(
+            lang,
+            slug
+        );
+
+        if (result ==  ARTICLE_DOESNT_EXIST_ERROR) {
+            result = articlesModel.create_from_lang_and_slug(
+                lang,
+                slug,
+                title,
+                content
+            );
+            
+            results::Article article(
+                lang,
+                slug,
+                title,
+                content,
+                result
+            );
+
+            // TODO add something to say that the article
+            // as been created (and not simply that a "version"
+            // has been added
+            historyModel.add_version(
+                article,
+                0,
+                _("Page generated automatically")
+            );
+        }
+        if (result >= 0) {
+            articleIds.push_back(result);
+     
+            if (!articlesModel.group_contains_lang(articleIds[0],lang)) {
+                // TODO find a better to do this
+                // HACK it's highly possible (always?) that the id of the first
+                // article we get is also the group id of the main articles
+                // should be the case if people don't change the order in config.js
+                articlesModel.add_to_group(
+                    articleIds[0],
+                    result
+                );
+            }
+
+        }
+             
+    }
+
+    return ;
+}
+
+
+
+/**
+ *
+ */
 void Articles::translate(const std::string slug) {
     CHECK_PERMISSION_OR_GO_TO_LOGIN();
 

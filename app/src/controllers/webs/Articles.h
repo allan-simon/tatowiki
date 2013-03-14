@@ -60,6 +60,22 @@ class Articles : public Controller {
          */
         ~Articles();
 
+        /**
+         * @brief Generate and interlink the main pages of each language
+         *
+         * @param lang2MainPages A map containing the languages supported
+         *                       and the slug of their main page
+         *
+         * @return Nothing for the moment 
+         *
+         * @since 15 March 2013
+         */
+        static void generate_main_pages(
+            std::map<std::string,std::string> lang2MainPages
+        );
+
+
+
     private:
         /**
          * @brief TODO

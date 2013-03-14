@@ -36,7 +36,7 @@
 
 #include "generics/Config.h"
 #include "TatoWiki.h"
-#include "models/Articles.h"
+#include "controllers/webs/Articles.h"
 
 
 using namespace std;
@@ -93,8 +93,7 @@ int main(int argc,char ** argv)
 
     /* we generate the main pages of the wiki if they're not there */
     cout << "[NOTICE] database check" << endl;
-    models::Articles articlesModel;
-    articlesModel.generate_main_pages(
+    controllers::webs::Articles::generate_main_pages(
         tatowiki::Config::get_lang_to_main_pages()
     );
 
