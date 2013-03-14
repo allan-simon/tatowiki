@@ -57,7 +57,7 @@ bool History::add_version(
 ) {
     cppdb::statement addVersion = sqliteDb.prepare(
         "INSERT INTO history("
-        "    article_id"
+        "    article_id,"
         "    title,"
         "    content,"
         "    lang,"
