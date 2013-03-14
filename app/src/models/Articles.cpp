@@ -461,6 +461,79 @@ results::TranslatedIn Articles::get_group_of(
 
 }
 
+/**
+ *
+ */
+int Articles::save_conflict(
+    const results::Article &article
+) {
+    cppdb::statement create = sqliteDb.prepare(
+        "INSERT INTO conflicts("
+        "    article_id,"
+        "    title,"
+        "    content,"
+        "    lang,"
+        "    slug"
+        ") "
+        "VALUES ( "
+        "   ? ,"
+        "   ? ,"
+        "   ? ,"
+        "   ? ,"
+        "   ? "
+        ")"
+    );
+    
+    create.bind(article.id);
+    create.bind(article.title);
+    create.bind(article.content);
+    create.bind(article.lang);
+    create.bind(article.slug);
+
+    try {
+        create.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        std::cerr << e.what();
+        create.reset();
+        return CONFLICT_CREATION_ERROR;
+    }
+
+    // the last inserted ID
+    const int conflictId = create.last_insert_id();
+    create.reset();
+    return conflictId;
+
+}
+
+/**
+ *
+ */
+results::Article Articles::get_article_from_conflict(
+    const int conflictId
+) {
+    cppdb::statement getFromLangAndSlug = sqliteDb.prepare(
+        "SELECT * FROM conflitcs"
+        "WHERE id = ? LIMIT 1"
+    );
+    getFromLangAndSlug.bind(conflictId);
+
+    cppdb::result res = getFromLangAndSlug.row();
+    results::Article article;
+
+    if (!res.empty()) {
+        article.id = res.get<int>("article_id");
+        article.lang = res.get<std::string>("lang");
+        article.content = res.get<std::string>("content");
+        article.slug = res.get<std::string>("slug");
+        article.title = res.get<std::string>("title");
+    } else {
+        article.id = 0;
+    }
+    getFromLangAndSlug.reset();
+    return article;
+}
+
 
 
 } // end namespace models

@@ -36,6 +36,7 @@
 #define ARTICLE_CREATE_TRANSLATION_ERROR -4
 #define ARTICLE_ADD_TRANSLATION_LINK_ERROR -5
 #define ARTICLE_SAME_TRANSLATION_LANGUAGE_ERROR -6
+#define CONFLICT_CREATION_ERROR -7
 
 namespace models {
 
@@ -267,7 +268,35 @@ class Articles : public SqliteModel {
             const int articleId,
             const int groupId
         );
+        
+        /**
+         * @brief Get an article which is the article as it should have been
+         *        if the edition that generated a conflict was applied 
+         *
+         * @param conflictId The id of this conflict
+         *
+         * @return The article, as this conflict was trying to change it
+         *
+         * @since 14 March 2013
+         */
+        results::Article get_article_from_conflict(
+            const int conflictId
+        );
+        
+        /**
+         * @brief Save an article which is the article as it should have been
+         *        if the edition that generated a conflict was applied 
+         *
+         * @param article The article, as this conflict was trying to change it
+         *
+         * @return The id of this conflict
+         *
+         * @since 14 March 2013
+         */
 
+        int save_conflict(
+           const results::Article &article 
+        );
 
     //end public 
 };

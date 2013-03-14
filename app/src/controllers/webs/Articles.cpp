@@ -195,6 +195,7 @@ void Articles::edit_treat() {
             "Error, someone has edited the article while you"
             "were also editing it"
         ));
+        articlesModel->save_conflict(article);
         go_back_to_previous_page();
         return;
     }
