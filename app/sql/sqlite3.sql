@@ -5,6 +5,7 @@ begin;
     drop table if exists articles_translations;
     drop table if exists deleted_articles;
     drop table if exists history;
+    drop table if exists conflicts;
 
     -- table representing a user
     CREATE TABLE users (
@@ -48,6 +49,16 @@ begin;
         unique (lang,slug)                             -- in order to not have several articles on the same url
     );
 
+    -- table to store the conflicts when someone has modified an article while
+    -- someone else was already editing it
+    create table conflicts (
+        id integer primary key autoincrement not null,
+        article_id integer not null default 0,
+        lang text not null,                            -- code iso 639-3 alpha 3 in which the articles is written
+        slug text not null,                            -- "url" name of the article 
+        title text not null,                           -- title of the article 
+        content text not null                          -- the content of the article itself
+    );
 
 
     -- table storing the different version of the articles 
