@@ -29,6 +29,8 @@
 #include <cppcms_skel/models/SqliteModel.h>
 
 #include "results/History.h"
+
+#define NO_HISTORY_FOR_ARTICLE_ERROR -2
 namespace models {
 
 
@@ -112,6 +114,19 @@ class History : public SqliteModel {
 
         results::ArticlesVersions recent_changes(
             const int number = 100
+        );
+        
+        /**
+         * @brief Get the last revision number of an article
+         *
+         * @param articleId The id of the article
+         *
+         * @return The most recent revision number of that article
+         *
+         * @since 15 March 2013
+         */
+        int get_last_version_id_of(
+            const int articleId
         );
 
 };

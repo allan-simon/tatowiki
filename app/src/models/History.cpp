@@ -105,6 +105,33 @@ bool History::add_version(
 /**
  *
  */
+int History::get_last_version_id_of(
+    const int articleId
+) {
+    cppdb::statement statement = sqliteDb.prepare(
+        "SELECT "
+        "   MAX(version) as last_version "
+        "FROM history "
+        "WHERE "
+        "   article_id = ?"
+    );
+    statement.bind(articleId);
+   
+    cppdb::result res = statement.row();
+
+    int lastVersion = NO_HISTORY_FOR_ARTICLE_ERROR;
+    if (!res.empty()) {
+        lastVersion = res.get<int>("last_version");
+    }
+    statement.reset();
+
+    return lastVersion; 
+
+}
+
+/**
+ *
+ */
 results::Changes History::all_versions_of(
     const std::string &lang,
     const std::string &slug

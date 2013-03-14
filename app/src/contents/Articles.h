@@ -120,7 +120,11 @@ struct Edit : public Articles {
      * @since  30 October 2012
      *
      */
-    Edit(const results::Article &article): editForm(article) {
+    Edit(
+        const results::Article &article,
+        const int lastVersionId
+        
+    ): editForm(article,lastVersionId) {
     }
 
 };

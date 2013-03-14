@@ -135,9 +135,14 @@ void Articles::edit(const std::string slug) {
         );
         return;
     }
+    int lastVersionId = historyModel->get_last_version_id_of(
+        article.id
+    );
 
-    contents::articles::Edit c(article);
+    contents::articles::Edit c(article,lastVersionId);
     init_content(c);
+    //TODO get last_version_id of the article and
+    // add it to the content
 
     render("articles_edit", c);
 }
@@ -154,28 +159,28 @@ void Articles::edit_treat() {
     form.load(context());
 
     if (!form.validate()) {
+        //TODO add in a flash message
+        // why the form didn't validate
         go_back_to_previous_page();
         return;
     }
+
+    //TODO check if the last_version_id the form send us
+    // is different from what we have in database
+    // if so , error message and redirect 
+    const int lastVersionId = std::stoi(form.lastVersion.value());
     
     const std::string lang = get_interface_lang();
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
     const std::string content = form.content.value();
-    articlesModel->edit_from_lang_and_slug(
-        lang,
-        slug,
-        title,
-        content
-    );
-    
+
     // TODO maybe replace this by storing the id in an hidden 
-    // field of the form
     int articleId = articlesModel->get_id_from_lang_and_slug(
         lang,
         slug
     );
-    
+ 
     results::Article article(
         lang,
         slug,
@@ -183,7 +188,24 @@ void Articles::edit_treat() {
         content,
         articleId
     );
-        
+ 
+ 
+    if (lastVersionId != historyModel->get_last_version_id_of(articleId)) {
+        set_message(_(
+            "Error, someone has edited the article while you"
+            "were also editing it"
+        ));
+        go_back_to_previous_page();
+        return;
+    }
+
+    articlesModel->edit_from_lang_and_slug(
+        lang,
+        slug,
+        title,
+        content
+    );
+       
 
     historyModel->add_version(
         article,

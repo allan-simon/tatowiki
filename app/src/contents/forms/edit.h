@@ -44,6 +44,8 @@ namespace articles {
 struct Edit : public BaseArticleForm { 
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
+    
+    cppcms::widgets::hidden lastVersion;
     /**
      * @brief Constructor
      *
@@ -51,6 +53,7 @@ struct Edit : public BaseArticleForm {
      */
     Edit() {
         init_and_add();
+        add(lastVersion);
     };
 
     /**
@@ -59,12 +62,16 @@ struct Edit : public BaseArticleForm {
      *
      * @since  30 October 2012
      */
-    Edit(const results::Article &article) {
-        
+    Edit(
+        const results::Article &article,
+        const int lastVersionId
+    ) {
         init_and_add();
         slug.value(article.slug);
         title.value(article.title);
         content.value(article.content);
+        lastVersion.value(std::to_string(lastVersionId));
+        add(lastVersion);
        
     };
 };
