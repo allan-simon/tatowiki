@@ -97,6 +97,22 @@ class Users : public Controller {
          */
         void register_new_treat();
 
+        /**
+         * @brief Display a page that permits the user to change
+         *        his password 
+         *
+         * @since 15 March 2013
+         */
+        void change_password();
+
+        /**
+         * @brief Treat the form that permits the user to change
+         *        his pasword
+         *
+         * @since 15 March 2013
+         */
+        void change_password_treat();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

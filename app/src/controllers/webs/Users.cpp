@@ -47,7 +47,11 @@ Users::Users(cppcms::service& serv) :
 
     dispatcher().assign("/register-new", &Users::register_new, this);
     dispatcher().assign("/register-new_treat", &Users::register_new_treat, this);
+
+    dispatcher().assign("/change-password", &Users::change_password, this);
+    dispatcher().assign("/change-password_treat", &Users::change_password_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
+
 
 
 
@@ -212,6 +216,34 @@ void Users::register_new_treat() {
         );
         go_back_to_previous_page();
     }
+}
+
+
+/**
+ *
+ */
+void Users::change_password() {
+
+    contents::users::ChangePassword c;
+    init_content(c);
+
+
+    render("users_change_password", c);
+}
+
+
+/**
+ *
+ */
+void Users::change_password_treat() {
+
+    forms::users::ChangePassword form;
+    form.load(context());
+
+    if (!form.validate()) {
+        go_back_to_previous_page();
+    }
+
 }
 
 

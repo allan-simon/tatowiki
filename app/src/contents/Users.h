@@ -31,6 +31,7 @@
 
 #include "contents/forms/login.h"
 #include "contents/forms/register_new.h"
+#include "contents/forms/change_password.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
@@ -86,6 +87,23 @@ struct RegisterNew : public Users {
      * @brief Constructor
      */
     RegisterNew() {
+    }
+
+};
+
+/**
+ * @struct ChangePassword
+ * @since  15 March 2013
+ * @brief 
+ */
+struct ChangePassword : public Users {
+
+    forms::users::ChangePassword changePasswordForm;
+
+    /**
+     * @brief Constructor
+     */
+    ChangePassword() {
     }
 
 };
