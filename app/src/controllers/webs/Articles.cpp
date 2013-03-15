@@ -387,13 +387,13 @@ void Articles::generate_main_pages(
             "clicking on the button on the right panel"
         );
         
-        int result = articlesModel.get_id_from_lang_and_slug(
+        int resultId = articlesModel.get_id_from_lang_and_slug(
             lang,
             slug
         );
 
-        if (result ==  ARTICLE_DOESNT_EXIST_ERROR) {
-            result = articlesModel.create_from_lang_and_slug(
+        if (resultId ==  ARTICLE_DOESNT_EXIST_ERROR) {
+            resultId = articlesModel.create_from_lang_and_slug(
                 lang,
                 slug,
                 title,
@@ -405,7 +405,7 @@ void Articles::generate_main_pages(
                 slug,
                 title,
                 content,
-                result
+                resultId
             );
 
             // TODO add something to say that the article
@@ -417,8 +417,8 @@ void Articles::generate_main_pages(
                 _("Page generated automatically")
             );
         }
-        if (result >= 0) {
-            articleIds.push_back(result);
+        if (resultId >= 0) {
+            articleIds.push_back(resultId);
      
             if (!articlesModel.group_contains_lang(articleIds[0],lang)) {
                 // TODO find a better to do this
@@ -427,7 +427,7 @@ void Articles::generate_main_pages(
                 // should be the case if people don't change the order in config.js
                 articlesModel.add_to_group(
                     articleIds[0],
-                    result
+                    resultId
                 );
             }
 
