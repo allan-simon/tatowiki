@@ -31,7 +31,7 @@
 
 #include "contents/forms/login.h"
 #include "contents/forms/register_new.h"
-//%%%NEXT_CONTENT_FORM_MARKER%%%
+//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
 namespace users {
