@@ -513,7 +513,7 @@ results::Article Articles::get_article_from_conflict(
     const int conflictId
 ) {
     cppdb::statement getFromLangAndSlug = sqliteDb.prepare(
-        "SELECT * FROM conflitcs"
+        "SELECT * FROM conflicts "
         "WHERE id = ? LIMIT 1"
     );
     getFromLangAndSlug.bind(conflictId);
