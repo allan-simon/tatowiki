@@ -224,6 +224,8 @@ void Users::register_new_treat() {
  */
 void Users::change_password() {
 
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+
     contents::users::ChangePassword c;
     init_content(c);
 
@@ -237,12 +239,50 @@ void Users::change_password() {
  */
 void Users::change_password_treat() {
 
+    TREAT_PAGE();
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+
     forms::users::ChangePassword form;
     form.load(context());
 
+    // we  check that there's no empty field
     if (!form.validate()) {
+        set_message(_("Your form is not valid")); 
         go_back_to_previous_page();
+        return;
     }
+    
+    // we check that the old password is correct
+    const std::string username = get_current_username();
+    bool oldPasswordCorrect = usersModel->is_login_correct(
+        username,
+        form.oldPassword.value()
+    );
+    if (!oldPasswordCorrect) {
+        set_message(_("Your previous password is not correct.")); 
+        go_back_to_previous_page();
+        return;
+    }
+    // we check that the user has entered the same new password twice
+    const std::string newPassword = form.newPassword.value();
+    const std::string newPasswordTwice = form.newPasswordTwice.value();
+    if (newPassword != newPasswordTwice) {
+        set_message(_("You haven't entered twice the same new password.")); 
+        go_back_to_previous_page();
+        return;
+    }
+    
+    const bool changed = usersModel->change_password(
+       username,
+       newPassword
+    );
+    if (!changed) {
+        set_message(_("Error while trying to update your password.")); 
+        go_back_to_previous_page();
+        return;
+    } 
+    set_message(_("Password updated successfully."));
+    go_back_to_previous_page();
 
 }
 

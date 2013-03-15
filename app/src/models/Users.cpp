@@ -148,6 +148,8 @@ int Users::add(
         "VALUES(?,?,?,?)"
     );
 
+
+    //TODO replace md5 by sha1 + salt
     const std::string passHashed = cppcms::util::md5hex(pass);
     addUser.bind(login);
     addUser.bind(passHashed);
@@ -169,6 +171,38 @@ int Users::add(
     addUser.reset();
     return userId;
 }     
+
+/**
+ *
+ */
+bool Users::change_password(
+    const std::string &login,
+    const std::string &newPassword
+) {
+    cppdb::statement request = sqliteDb.prepare(
+        "UPDATE users "
+        "SET "
+        "   password = ?  "
+        "WHERE username =  ?"
+    );
+    
+    //TODO replace md5 by sha1 + salt
+    const std::string passHashed = cppcms::util::md5hex(newPassword);
+    request.bind(passHashed);
+    request.bind(login);
+
+    try {
+        request.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        //TODO log it
+        request.reset();
+        return false;
+    }
+    request.reset();
+    return true;
+
+
+}
 
 
 } // end namespace models

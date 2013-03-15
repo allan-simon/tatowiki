@@ -122,6 +122,20 @@ class Users : public SqliteModel {
             const std::string &email
         );         
                    
+        /**
+         * @brief Update the password of a user
+         *
+         * @param login       The username that we're updating
+         * @param newPassword The new password in clear 
+         *
+         * @return bool True if everythign went smoothly,false otherwise
+         *
+         * @since 15 March 2013
+         */
+        bool change_password(
+            const std::string &login,
+            const std::string &newPassword
+        );
 
 
 };

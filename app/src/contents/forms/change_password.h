@@ -42,6 +42,23 @@ namespace users {
 struct ChangePassword : public cppcms::form {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
+    /**
+     * @brief The old password to change
+     */
+    cppcms::widgets::password oldPassword;
+
+    /**
+     * @brief The new password a first time
+     */
+    cppcms::widgets::password newPassword;
+
+    /**
+     * @brief The new password a second time
+     */
+    cppcms::widgets::password newPasswordTwice;
+
+
+
 
     /**
      * @brief button to submit the form
@@ -54,13 +71,28 @@ struct ChangePassword : public cppcms::form {
     ChangePassword() {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
+        
+        oldPassword.name("oldPassword");
+        oldPassword.message(_("Old password"));
+        oldPassword.non_empty();
+        add(oldPassword); 
+                
+        newPassword.name("newPassword");
+        newPassword.message(_("New password"));
+        newPassword.non_empty();
+        add(newPassword); 
+                        
+        newPasswordTwice.name("newPasswordTwice");
+        newPasswordTwice.message(_("New password again"));
+        newPasswordTwice.non_empty();
+        add(newPasswordTwice); 
 
         add(submit);
-        submit.name(
-            cppcms::locale::translate("submit")
-        );
+        submit.name(_("Change password"));
         submit.value("submit");
     }
+    
+
 
 
 };
