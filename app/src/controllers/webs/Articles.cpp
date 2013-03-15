@@ -196,8 +196,10 @@ void Articles::edit_treat() {
             "Error, someone has edited the article while you"
             "were also editing it"
         ));
-        articlesModel->save_conflict(article);
-        go_back_to_previous_page();
+        int conflictId = articlesModel->save_conflict(article);
+        redirect(
+            "/articles/show-conflict/" + std::to_string(conflictId)
+        );
         return;
     }
 
@@ -549,8 +551,22 @@ void Articles::translate_treat() {
 void Articles::show_conflict(std::string conflictIdStr) {
     int conflictId = std::stoi(conflictIdStr);
     contents::articles::ShowConflict c;
+    
+    results::Article article = articlesModel->get_article_from_conflict(
+        conflictId
+    );
+    
+    if (article.id == 0) {
+        set_message(_(
+            "This conflict does not exists"
+        ));
+        go_back_to_previous_page();
+        return;
+    }
+    
     init_content(c);
-
+    c.markdown = mymarkdown;
+    c.article = article;
 
     render("articles_show_conflict", c);
 }

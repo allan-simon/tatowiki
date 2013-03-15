@@ -189,8 +189,8 @@ struct Translate : public Articles {
  * @struct ShowConflict
  * @since  14 March 2013
  */
-struct ShowConflict : public Articles {
-
+struct ShowConflict : public Show {
+ 
     ShowConflict() {
 
     }
