@@ -75,20 +75,20 @@ struct RegisterNew : public cppcms::form {
     RegisterNew() {
         //%%%NEXT_WIDGET_ADD_MARKER%%%
         username.name("username");
-        username.message(_("Username :"));
+        username.message(_("Username:"));
         username.non_empty();
         add(username);
 
         password.name("password");
-        password.message(_("Password :"));
+        password.message(_("Password:"));
         password.non_empty();
         add(password); 
 
         email.name("email");
-        email.message(_("Email :"));
+        email.message(_("Email:"));
         add(email);
 
-        quiz.message(_("Quizz :"));
+        quiz.message(_("Quizz:"));
         quiz.message(_("What are the first five letters of your email?"));
         quiz.name("quiz");
         add(quiz);

@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-06 23:17+0800\n"
+"POT-Creation-Date: 2013-03-17 15:26+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:52
@@ -30,52 +30,58 @@ msgid "Login"
 msgstr "Se connecter"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:63
-#: ../src/controllers/webs/Users.cpp:71
+#: ../src/controllers/webs/Users.cpp:75
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:175
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:68
+#: /home/allan/git/tatowiki/app/src/views/webs/users/change_password.tmpl:4
+#: ../src/contents/forms/change_password.h:91
+msgid "Change password"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:181
 msgid "Home"
 msgstr "Accueil"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:180
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:186
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:4
 msgid "Recent changes"
 msgstr "Modifications récentes"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:206
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:212
 msgid "Note"
 msgstr "Note"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:209
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:215
 msgid "This wiki uses the markdown syntax."
 msgstr "Ce wiki utilise la syntaxe markdown"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:214
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:220
 msgid "How to format text"
 msgstr "Comment formatter le texte"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:217
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:223
 msgid "#Big title"
 msgstr "#Gros titre"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:220
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:226
 msgid "##Smaller title"
 msgstr "##Titre plus petit"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:224
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:230
 msgid "[text](http://example.com)"
 msgstr "[texte](http://example.com)"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:228
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:234
 msgid "[text](other-article)"
 msgstr "[texte](autre-article)"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:232
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:238
 msgid "**bold**"
 msgstr "**gras**"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:236
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:242
 msgid "*italic*"
 msgstr "*italique*"
 
@@ -114,8 +120,8 @@ msgid "Remove"
 msgstr "Supprimer"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:45
-msgid "Translated in:"
-msgstr "Traduit en :"
+msgid "Article available in:"
+msgstr "Article disponible en :"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:5
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:10
@@ -125,6 +131,36 @@ msgstr "Tous les articles"
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:34
 msgid "Go back to main page"
 msgstr "Retourner à la page principale"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_conflict.tmpl:4
+msgid "Show conflict"
+msgstr "Voir le conflit"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_conflict.tmpl:9
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:10
+msgid "Notice"
+msgstr "Information"
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_conflict.tmpl:10
+msgid ""
+"You're seeing this page because someone has saved a modified version while "
+"you were edidting."
+msgstr ""
+"Vous voyez cette page car quelqu'un a sauvegardé une version modifée pendant "
+"que vous étiez en train d'éditer."
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_conflict.tmpl:11
+msgid "In order to prevent conflicts, your version has been saved there."
+msgstr "Afin de prévenir des conflits, votre version a été sauvegardée ici."
+
+#: /home/allan/git/tatowiki/app/src/views/webs/articles/show_conflict.tmpl:12
+msgid ""
+"Note that for the moment unfortunately we don't provide tools to resolve it "
+"automatically, so you may need to transpose your changes manually."
+msgstr ""
+"Notez que malheureusement pour le moment nous ne fournissons pas d'outil pour "
+"le résoudre automatiquement, donc vous devrez certainement transposer vos "
+"changement manuellement."
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/translate.tmpl:14
@@ -165,10 +201,6 @@ msgstr "résumé :"
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:5
 msgid "Previous version"
 msgstr "Version précédente"
-
-#: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:10
-msgid "Notice"
-msgstr "Information"
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:11
 msgid "This page show a previous version of the article"
@@ -217,61 +249,108 @@ msgid ""
 "only be used internally to send you automatic notification or in case you "
 "lose your password."
 msgstr ""
+"Votre addresse e-mail ne sera jamais donné ou vendu à des services "
+"tiers. Il ne sera utilisé qu'en interne afin de vous envoyer des "
+"notifications automatiques ou au cas où vous ayez oubliez votre mot de passe."
 
-#: ../src/controllers/webs/Articles.cpp:256
+#: ../src/controllers/webs/Articles.cpp:196
+msgid "Error, someone has edited the article while youwere also editing it"
+msgstr "Erreur, quelqu'un a édité l'article pendant que vous l'éditiez aussi"
+
+#: ../src/controllers/webs/Articles.cpp:296
 msgid "Error while trying to add the article"
 msgstr "Erreur lors de l'ajout de l'article"
 
-#: ../src/controllers/webs/Articles.cpp:306
+#: ../src/controllers/webs/Articles.cpp:351
 msgid "The article has been removed"
 msgstr "L'article a été supprimé"
 
-#: ../src/controllers/webs/Articles.cpp:308
+#: ../src/controllers/webs/Articles.cpp:353
 msgid "A problem occured while trying to remove"
 msgstr "Une erreur s'est produite lors de la tentative de suppression"
 
-#: ../src/controllers/webs/Articles.cpp:338
+#: ../src/controllers/webs/Articles.cpp:386
+msgid "Main Page"
+msgstr "Page Principale"
+
+#: ../src/controllers/webs/Articles.cpp:388
+msgid ""
+"This is the default main page, you can edit it by clicking on the button on "
+"the right panel"
+msgstr ""
+"Ceci est la page principale par défaut, vous pouvez l'éditer en cliquant sur "
+"le lien dans le panneau de droite."
+
+#: ../src/controllers/webs/Articles.cpp:419
+msgid "Page generated automatically"
+msgstr "Page généré automatiquement"
+
+#: ../src/controllers/webs/Articles.cpp:457
 msgid "The article you try to translate does not exist."
 msgstr "L'article que vous essayez de traduire n'existe pas."
 
-#: ../src/controllers/webs/Articles.cpp:361
+#: ../src/controllers/webs/Articles.cpp:480
 msgid "The form you've submitted is not valid"
 msgstr "Le formulaire que vous avez soumis n'est pas valide"
 
-#: ../src/controllers/webs/Articles.cpp:390
+#: ../src/controllers/webs/Articles.cpp:509
 msgid "This article has already a translation in that language."
 msgstr "Cet article a déjà une traduction dans cette langue."
 
-#: ../src/controllers/webs/Articles.cpp:392
+#: ../src/controllers/webs/Articles.cpp:511
 msgid "You can't translate an article in the same language."
 msgstr "Vous ne pouvez pas traduire un article dans la même langue."
 
-#: ../src/controllers/webs/Articles.cpp:394
+#: ../src/controllers/webs/Articles.cpp:513
 msgid "Error while trying to translate."
 msgstr "Une erreur s'est produite lors de la tentative de traduction."
+
+#: ../src/controllers/webs/Articles.cpp:561
+msgid "This conflict does not exists"
+msgstr "Ce conflit n'existe pas"
 
 #: ../src/controllers/webs/History.cpp:95
 msgid "Revert article to version {1}"
 msgstr "Rétablir l'article à la version {1}"
 
-#: ../src/controllers/webs/History.cpp:176
+#: ../src/controllers/webs/History.cpp:173
 msgid ""
 "You can't see the history of this article, because this article does not "
 "exist."
 msgstr ""
 "Vous ne pouvez voir l'historique de cet article car celui-ci n'existe pas."
 
-#: ../src/controllers/webs/Users.cpp:179
+#: ../src/controllers/webs/Users.cpp:183
 msgid "Username already taken"
 msgstr "Nom d'utilisateur déjà pris"
 
-#: ../src/controllers/webs/Users.cpp:187
+#: ../src/controllers/webs/Users.cpp:191
 msgid "Email already taken"
 msgstr "E-mail déjà pris"
 
-#: ../src/controllers/webs/Users.cpp:211
+#: ../src/controllers/webs/Users.cpp:215
 msgid "Unknown error"
 msgstr "Erreur inconnue"
+
+#: ../src/controllers/webs/Users.cpp:250
+msgid "Your form is not valid"
+msgstr "Le formulaire que vous avez soumis n'est pas valide"
+
+#: ../src/controllers/webs/Users.cpp:262
+msgid "Your previous password is not correct."
+msgstr "Votre ancien mot de passe n'est pas correct."
+
+#: ../src/controllers/webs/Users.cpp:270
+msgid "You haven't entered twice the same new password."
+msgstr "Vous n'avez pas entrez deux fois le même nouveau mot de passe."
+
+#: ../src/controllers/webs/Users.cpp:280
+msgid "Error while trying to update your password."
+msgstr "Erreur lors de la mise à jour de votre mot de passe."
+
+#: ../src/controllers/webs/Users.cpp:284
+msgid "Password updated successfully."
+msgstr "Mot de passe mis à jour avec succès."
 
 #: ../src/contents/forms/base_articles_form.h:83
 msgid "Title"
@@ -289,15 +368,27 @@ msgstr "Sauvegarder"
 msgid "save and continue"
 msgstr "sauvegarder et continuer"
 
+#: ../src/contents/forms/change_password.h:76
+msgid "Old password"
+msgstr "Ancien mot de passe"
+
+#: ../src/contents/forms/change_password.h:81
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: ../src/contents/forms/change_password.h:86
+msgid "New password again"
+msgstr "Nouveau mot de passe, de nouveau"
+
 #: ../src/contents/forms/diff_between.h:60
 msgid "submit"
 msgstr "soumettre"
 
-#: ../src/contents/forms/login.h:90 ../src/contents/forms/register_new.h:78
+#: ../src/contents/forms/login.h:90
 msgid "Username :"
 msgstr "Nom d'utilisateur :"
 
-#: ../src/contents/forms/login.h:96 ../src/contents/forms/register_new.h:83
+#: ../src/contents/forms/login.h:96
 msgid "Password :"
 msgstr "Mot de passe :"
 
@@ -309,12 +400,20 @@ msgstr "Se souvenir de moi"
 msgid "Log in"
 msgstr "Se connecter"
 
+#: ../src/contents/forms/register_new.h:78
+msgid "Username:"
+msgstr "Nom d'utilisateur :"
+
+#: ../src/contents/forms/register_new.h:83
+msgid "Password:"
+msgstr "Mot de passe :"
+
 #: ../src/contents/forms/register_new.h:88
-msgid "Email :"
+msgid "Email:"
 msgstr "E-mail :"
 
 #: ../src/contents/forms/register_new.h:91
-msgid "Quizz :"
+msgid "Quizz:"
 msgstr "Quizz :"
 
 #: ../src/contents/forms/register_new.h:92
@@ -333,12 +432,5 @@ msgstr "Langue de la traduction :"
 msgid "URL name of this article's translation:"
 msgstr "Nom de l'url de la traduction de cet article :"
 
-#: ../src/models/Articles.cpp:510
-msgid "Main Page"
-msgstr "Page Principale"
-
-#: ../src/models/Articles.cpp:512
-msgid ""
-"This is the default main page, you can edit it by clicking on the button on "
-"the right panel"
-msgstr "Ceci est la page principale par défaut, vous pouvez l'éditer en cliquant sur le lien dans le panneau de droite."
+#~ msgid "Translated in:"
+#~ msgstr "Traduit en :"
