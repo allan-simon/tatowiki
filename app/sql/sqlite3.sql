@@ -6,6 +6,7 @@ begin;
     drop table if exists deleted_articles;
     drop table if exists history;
     drop table if exists conflicts;
+    drop table if exists salt;
 
     -- table representing a user
     CREATE TABLE users (
@@ -76,6 +77,10 @@ begin;
 
     );
 
+    -- table to store the salt used for the password encryption
+    create table salt(
+        value text not null 
+    );
 
 
 commit ;

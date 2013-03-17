@@ -35,7 +35,10 @@
 #include <booster/posix_time.h>
 #include <booster/log.h>
 
+
 #include "models/Users.h"
+
+#define SALT_SIZE 6
 
 using namespace cppcms::crypto;
 
@@ -62,7 +65,7 @@ bool Users::is_login_correct(
         "SELECT 1 FROM users "
         "WHERE username = ? AND password = ? LIMIT 1"
     );
-    const std::string passHashed = cppcms::util::md5hex(pass);
+    const std::string passHashed = hash_password(pass);
     checkPasswd.bind(login);
     checkPasswd.bind(passHashed);
     cppdb::result res = checkPasswd.row();
@@ -150,10 +153,9 @@ int Users::add(
 
 
     //TODO replace md5 by sha1 + salt
-    const std::string passHashed = cppcms::util::md5hex(pass);
+    const std::string passHashed = hash_password(pass);
     addUser.bind(login);
     addUser.bind(passHashed);
-    std::cout << cppcms::util::md5hex(pass) << std::endl;
     addUser.bind(email);
     addUser.bind(
         booster::ptime::now().get_seconds()
@@ -186,8 +188,7 @@ bool Users::change_password(
         "WHERE username =  ?"
     );
     
-    //TODO replace md5 by sha1 + salt
-    const std::string passHashed = cppcms::util::md5hex(newPassword);
+    const std::string passHashed = hash_password(newPassword);
     request.bind(passHashed);
     request.bind(login);
 
@@ -202,6 +203,104 @@ bool Users::change_password(
     return true;
 
 
+}
+
+/**
+ *
+ */
+std::string Users::sha1hex(
+    const std::string &in
+) {
+    using namespace cppcms::crypto;
+    std::unique_ptr<message_digest> digest(message_digest::sha1());
+    unsigned char buf[256];
+    digest->append(in.c_str(),in.size());
+    unsigned digestSize =digest->digest_size();
+    digest->readout(buf);
+
+    std::string res;
+    for(unsigned i=0; i<digestSize ;i++) {
+        char tmpBuf[3];
+        sprintf(tmpBuf,"%02x",buf[i]);
+        res+=tmpBuf;
+    }
+    return res;
+}
+
+/**
+ *
+ */
+std::string Users::hash_password(
+    const std::string &password
+) {
+    
+    return sha1hex(password + get_salt());
+}
+
+/**
+ *
+ */
+std::string Users::get_salt() {
+    cppdb::statement getSalt = sqliteDb.prepare(
+        "SELECT value FROM salt "
+        "LIMIT 1 "
+    );
+    cppdb::result res = getSalt.row();
+    std::string salt = "";
+    res.fetch(0,salt);
+
+    // Don't forget to reset statement
+    getSalt.reset();
+
+    if (salt != "" ) {
+        return salt;
+    }
+    salt = random_string(SALT_SIZE);
+    save_salt(salt);
+    return salt;
+}
+
+/**
+ *
+ */
+bool Users::save_salt(const std::string &salt) {
+    cppdb::statement save = sqliteDb.prepare(
+        "INSERT INTO salt(value)"
+        "VALUES(?)"
+    );
+    save.bind(salt);
+    try {
+        save.exec();    
+    } catch (cppdb::cppdb_error const &e) {
+        BOOSTER_ERROR("cppcms") << e.what();
+        save.reset();
+        return false;
+    }
+    save.reset();
+    return true;
+}
+
+/**
+ *
+ *
+ */
+std::string Users::random_string(
+    const size_t length
+) {
+    srand(time(NULL));
+
+    auto randchar = []() -> char {
+        const char charset[] =
+            "0123456789"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            "abcdefghijklmnopqrstuvwxyz";
+        const size_t maxIndex = (sizeof(charset) - 1);
+        return charset[ rand() % maxIndex ];
+    };
+
+    std::string randomString(length,0);
+    std::generate_n( randomString.begin(), length, randchar );
+    return randomString;
 }
 
 

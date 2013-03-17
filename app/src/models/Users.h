@@ -41,6 +41,65 @@ namespace models {
  *
  */
 class Users : public SqliteModel {
+    private:
+    
+        /**
+         * @brief Hash a string using sha1
+         *
+         * @param in The string to hash
+         *
+         * @return A string representing the hexadecimal value of the hash
+         *
+         * @since 17 March 2013
+         */
+        std::string sha1hex(
+            const std::string &in
+        );
+        
+        /**
+         * @brief Hash a password (currently use sha1 + salt) 
+         *
+         * @param password The password to hash
+         *
+         * @return The hexadecimal string of the hash 
+         *
+         * @since 17 March 2013
+         */
+        std::string hash_password(
+            const std::string &password
+        );
+         
+        /**
+         * @brief Get the salt used for the hash functions
+         *
+         * @return The string representation of the hash 
+         *
+         * @since 17 March 2013
+         */
+        std::string get_salt();
+        
+        /**
+         * @brief Save a new salt used for the hash functions
+         *
+         * @param salt The salt to save
+         *
+         * @return True if everything went smoothly, false otherwise
+         *
+         * @since 17 March 2013
+         */
+        bool save_salt(const std::string &salt);
+
+        /**
+         * @brief Generate a random string of a given size
+         *
+         * @param length How long the string will be
+         *
+         * @return A random string
+         *
+         * @since 17 March 2013
+         */
+        std::string random_string(const size_t length);
+
     public:
         /**
          * @brief Constructor
