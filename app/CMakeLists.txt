@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(TatoWiki)
+project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.5.4")
+set(PROJECT_VERSION "0.5.6")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -65,7 +65,7 @@ file(
 
 
 add_executable(
-    TatoWiki
+    tatowiki
     src/TatoWiki.cpp
     src/main.cpp
     ${controllers_files}
@@ -88,7 +88,7 @@ set(
 
 
 target_link_libraries(
-    TatoWiki
+    tatowiki
     ${TATOWIKI_LIBS}
 )
 
