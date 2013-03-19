@@ -178,6 +178,7 @@ results::ArticleVersion History::get_version(const int version) {
 
     cppdb::statement getVersion = sqliteDb.prepare(
         "SELECT "
+        "    article_id,"
         "    title,"
         "    content,"
         "    lang,"
@@ -193,6 +194,7 @@ results::ArticleVersion History::get_version(const int version) {
     results::ArticleVersion articleVersion;
 
     if (!res.empty()) {
+        articleVersion.article.id = res.get<int>("article_id");
         articleVersion.article.title = res.get<std::string>("title");
         articleVersion.article.content = res.get<std::string>("content");
         articleVersion.article.lang = res.get<std::string>("lang");
