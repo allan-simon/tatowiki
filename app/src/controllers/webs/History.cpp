@@ -165,12 +165,15 @@ void History::diff_between_treat() {
 void History::all_versions_of(const std::string slug) {
 
 
-    int articleToTranslateId = articlesModel->get_id_from_lang_and_slug(
+    int articleId = articlesModel->get_id_from_lang_and_slug(
         get_interface_lang(),
         slug
     );
-    if (articleToTranslateId == ARTICLE_DOESNT_EXIST_ERROR) {
-        set_message(_("You can't see the history of this article, because this article does not exist."));
+    if (articleId == ARTICLE_DOESNT_EXIST_ERROR) {
+        set_message(_(
+            "You can't see the history of this article, "
+            "because this article does not exist."
+        ));
         go_back_to_previous_page();
         return;
     }
