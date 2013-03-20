@@ -215,6 +215,16 @@
  */
 <% template article_url( std::string const& lang, std::string const& slug) %><% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %><% end template %>
 
+
+/**
+ * @brief Return the raw url to view the diff between two versions of
+ *        an article
+ *        Note : this template is on one line to avoid unwanted space/new line
+ *
+ * @since 20 March 2013
+ */
+<% template diff_url( int articleId, int oldVersion, int newVersion) %>/history/show-diff-between/<%= articleId %>/<%= oldVersion %>/<%= newVersion %><% end template %>
+
 /**
  *
  */

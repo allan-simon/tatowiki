@@ -178,8 +178,8 @@ void History::all_versions_of(const std::string slug) {
 
     contents::history::AllVersionsOf c;
     init_content(c);
+    c.articleId = articleId;
     c.slug = slug;
-    //TODO test if article exists
     c.changes = historyModel->all_versions_of(
         get_interface_lang(),
         slug

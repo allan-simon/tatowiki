@@ -154,16 +154,38 @@ results::Changes History::all_versions_of(
     allVersionOf.bind(lang);
     allVersionOf.bind(slug);
 
-    cppdb::result res = allVersionOf.query();
+
     results::Changes changes;
+    changes.newestId = -1;
+    changes.oldestId = -1;
+    
+    cppdb::result res = allVersionOf.query();
     while (res.next()) {
+    
+        int version = res.get<int>("version");
+
         results::Change tmpChange(
-            res.get<int>("version"),
+            version,
             res.get<unsigned int>("edit_time"),
             res.get<std::string>("summary"),
             res.get<std::string>("username"),
-            res.get<int>("user_id")
+            res.get<int>("user_id"),
+            changes.oldestId
         );
+
+        // we change newestId only one time
+        if (changes.newestId == -1) {
+           changes.newestId = version; 
+        }
+        // we set oldest to the last known version
+        changes.oldestId = version;
+        
+        // we set the "previoustVersion" of the change we've 
+        // added at the previous iteration to the current version
+        if (!changes.empty()) {
+            changes.back().previousVersion = version;
+        }
+        
         changes.push_back(tmpChange);
     }
     allVersionOf.reset();

@@ -10,11 +10,29 @@
     <ul>
         <% item %>
         <li>    
-            <%gt "changed at <span class='time'>{1,dt=s}</span> by {2}" using change.editTime, change.byUserName %>
-            <!-- TODO use < url %> instead -->
-            <a href="/history/show-version/<%= change.version %>">
-                <% gt "Show" %>
-            </a>
+            <% gt "version {1}: " using change.version %>
+
+
+            <% if (change.nextVersion != -1) %>
+                <a href="/history/show-version/<%= change.version %>">
+                    <% gt "Show that version" %>
+                </a>
+            <% else %>
+                <% gt "Current version" %>
+            <% end %>
+            
+            <% if (change.previousVersion != -1) %>
+                <a href="<% include diff_url(articleId,change.previousVersion,change.version) %>" >
+                    <% gt "Show diff with previous version" %>
+                </a>
+            <% else %>
+                <% gt "First version" %>
+            <% end %>
+            <% gt "<span class='time'>{2,dt=s}</span>" using change.editTime %>
+            <% gt "by {1}" using change.byUserName  %>
+            <br/>
+            <% gt "summary: " %>
+            <span class="summary"><%= change.summary %></span>
         </li>
         <% end %>
     </ul>

@@ -79,6 +79,23 @@ namespace results {
          */
         int byUserId;
 
+        /**
+         * @brief Id of the changed made before (in the past) the current one
+         *        -1 if the current change is the first one
+         *
+         * @since 20 March 2013
+         */
+        int previousVersion;
+        
+        /**
+         * @brief Id of the changed made after (in the future) the current one
+         *        -1 if the current change is the last one
+         *
+         * @since 20 March 2013
+         */
+
+        int nextVersion;
+
 
         public:
             Change(){};
@@ -88,13 +105,17 @@ namespace results {
                 unsigned int editTime,
                 const std::string &summary,
                 const std::string &byUserName,
-                const int byUserId
+                const int byUserId,
+                const int nextVersion = -1,
+                const int previousVersion = -1
             ):
             version(version),
             editTime(editTime),
             summary(summary),
             byUserName(byUserName),
-            byUserId(byUserId) {
+            byUserId(byUserId),
+            nextVersion(nextVersion),
+            previousVersion(previousVersion) {
                 //Nothing yet except initialization of the struct fields
             }
     };
@@ -129,7 +150,23 @@ namespace results {
      * @since 04 November 2012
      *
      */
-    typedef std::vector<results::Change> Changes;
+    struct Changes : public std::vector<results::Change> {
+        public:
+            /**
+             * @brief Id of the first change made on this article
+             *        (creation included)
+             *
+             * @since 20 March 2013
+             */
+            int oldestId;
+            /**
+             * @brief Id of the last change made on this article
+             *        (deletion included)
+             *
+             * @since 20 March 2013
+             */
+            int newestId; 
+    };
 
     /**
      * @class ArticlesVersions Represent of list of article versions

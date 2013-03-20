@@ -129,6 +129,13 @@ struct AllVersionsOf : public History {
      */
 
     std::string slug;
+    
+    /**
+     * @brief Id of the article
+     *
+     * @since 20 March 2013
+     */
+    int articleId;
 
     AllVersionsOf() {
     }
