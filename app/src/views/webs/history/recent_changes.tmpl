@@ -3,18 +3,44 @@
 <% view history_recent_changes uses contents::history::RecentChanges extends master %>
 <% template title() %><% gt "Recent changes" %><% end template %>
 
+/**
+ *
+ */
+<% template history_of_url( std::string const& slug) %>/history/all-versions-of/<%= slug %><% end template %>
+
+
+/**
+ *
+ */
+<% template diff_with_previous_of_url( int const& articleId, int const& version) %>/history/diff-with-previous-version-of/<%= articleId %>/<%= version %><% end template %>
+
+
+
 
 <% template main_content() %>
 <div class="module"> 
-    <% foreach version in articlesVersions %>
+    <h2><% gt "Recent changes" %></h2>
 
+    <% foreach version in articlesVersions %>
     <ul>
         <% item %>
         <li>    
-            <%gt "'{1}' changed at <span class='time'>{2,dt=s}</span> by {3}" using version.article.title, version.change.editTime, version.change.byUserName %>
+            (
+            <a href="<% include diff_with_previous_of_url(version.article.id,version.change.version) %>">
+                <% gt "diff" %>
+            </a>
+            |
+            <a href="<% include history_of_url(version.article.slug) %>">
+                <% gt "history " %>
+            </a>
+            ) .. 
+            <% gt "version {1}: " using version.change.version %>
+            <%= version.article.title %>
+            <% gt "<span class='time'>{2,dt=s}</span>" using version.change.editTime %>
+            <% gt "by {1}" using version.change.byUserName  %>
             <!-- TODO use < url %> instead -->
             <a href="<% include article_url(version.article.lang,version.article.slug) %>">
-                <% gt "Show" %>
+                <% gt "Show current article." %>
             </a>
             <br/>
             <% gt "summary: " %>
@@ -24,6 +50,12 @@
     </ul>
     <% end foreach %>
 </div>
+<% end template %>
+
+/**
+ * @brief TODO maybe put some texts there
+ */
+<% template annexe_content() %>
 <% end template %>
 
 
