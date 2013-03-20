@@ -13,14 +13,16 @@ function diffUsingJS() {
     var diffoutputdiv = document.getElementById("showDiff");
     contextSize = null;
 
+    var baseTitle = document.getElementById("nameOld").innerHTML;
+    var newTextTitle = document.getElementById("nameNew").innerHTML;
     // build the diff view and add it to the current DOM
     var table = diffview.buildView({
         baseTextLines: base,
         newTextLines: newtxt,
         opcodes: opcodes,
         // set the display titles for each resource
-        baseTextName: "Base Text",
-        newTextName: "New Text",
+        baseTextName: baseTitle,
+        newTextName: newTextTitle,
         contextSize: contextSize,
         viewType:  1
     });
@@ -29,7 +31,7 @@ function diffUsingJS() {
     diffoutputdiv.innerHTML = wrap.innerHTML;
 
     // scroll down to the diff view window.
-    location = document.URL + "#showDiff";
+    location = document.URL;
 }
 
 window.onload =diffUsingJS();
