@@ -218,6 +218,7 @@ results::ArticlesVersions History::recent_changes(
 
     cppdb::statement recentChanges = sqliteDb.prepare(
         "SELECT "
+        "   article_id,"
         "   lang, "
         "   slug, "
         "   title,"
@@ -244,6 +245,7 @@ results::ArticlesVersions History::recent_changes(
             res.get<int>("user_id")
         );
         tmpArticleVersion.article = results::Article(
+            res.get<int>("article_id"),
             res.get<std::string>("lang"),
             res.get<std::string>("slug"),
             res.get<std::string>("title")

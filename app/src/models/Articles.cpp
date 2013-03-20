@@ -232,6 +232,7 @@ bool Articles::remove(
 results::Articles Articles::get_all() {
     cppdb::statement allArticles = sqliteDb.prepare(
         "SELECT "
+        "   id,   "
         "   lang, "
         "   slug, "
         "   title "
@@ -243,6 +244,7 @@ results::Articles Articles::get_all() {
     results::Articles articles;
     while (res.next()) {
         results::Article tmpArticle(
+            res.get<int>("id"),
             res.get<std::string>("lang"),
             res.get<std::string>("slug"),
             res.get<std::string>("title")

@@ -183,11 +183,11 @@ void Articles::edit_treat() {
     );
  
     results::Article article(
+        articleId,
         lang,
         slug,
         title,
-        content,
-        articleId
+        content
     );
  
  
@@ -299,11 +299,11 @@ void Articles::create_treat() {
     }
     
     results::Article article(
+        articleId,
         lang,
         slug,
         title,
-        content,
-        articleId
+        content
     );
 
     // TODO add something to say that the article
@@ -403,11 +403,11 @@ void Articles::generate_main_pages(
             );
             
             results::Article article(
+                resultId,
                 lang,
                 slug,
                 title,
-                content,
-                resultId
+                content
             );
 
             // TODO add something to say that the article
@@ -520,11 +520,11 @@ void Articles::translate_treat() {
     int translationId = resultCode;
     
     results::Article translationArticle(
+        translationId,
         translationLang,
         translationSlug,
         title,
-        content,
-        translationId
+        content
     );
 
     historyModel->add_version(

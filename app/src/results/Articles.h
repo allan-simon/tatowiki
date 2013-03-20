@@ -68,11 +68,11 @@ namespace results {
 
         Article() {};
         Article(
+            const int id,
             const std::string &lang,
             const std::string &slug,
             const std::string &title,
-            const std::string &content = "",
-            const int id = 1
+            const std::string &content = ""
         ) :
             id(id),//TODO replace
             lang(lang),
