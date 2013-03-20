@@ -202,6 +202,19 @@ class Articles : public SqliteModel {
         );
         
         /**
+         * @brief Retrieve an article using the couple its id
+         * 
+         * @param id Id of the article
+         *
+         * @return The article corresponding to the criteria
+         *
+         * @since 20 March 2013
+         */
+        results::Article get_from_id(
+            const int id
+        );
+        
+        /**
          * @brief Retrieve the group id of an article based on its
          *        Lang and URL name
          *
@@ -299,6 +312,20 @@ class Articles : public SqliteModel {
         );
 
     //end public 
+    private:
+        /**
+         * @brief get a complete article out of a cppdb result
+         *
+         * @param res A cppdb result that was given after executing a query
+         *
+         * @return An article with every field filled
+         *
+         * @since 20 March 2013
+         */
+        results::Article get_from_result(
+            cppdb::result &res
+        );
+    
 };
 
 } // end namespace models 

@@ -231,6 +231,7 @@ void History::show_diff_between(
 
     contents::history::ShowDiffBetween c;
     init_content(c);
+    c.slug = articlesModel->get_from_id(articleId).slug;
     c.diff = diff; 
     c.oldVersion = oldVersion;
     c.newVersion = newVersion;

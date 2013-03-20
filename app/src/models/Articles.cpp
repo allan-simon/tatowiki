@@ -54,34 +54,48 @@ Articles::Articles(const std::string &dbPath) :
 {
 }
 
+/**
+ *
+ */
 results::Article Articles::get_from_lang_and_slug(
     const std::string &lang,
     const std::string &slug
 ) {
     cppdb::statement getFromLangAndSlug = sqliteDb.prepare(
-        "SELECT * FROM articles "
+        "SELECT id as article_id, * FROM articles "
         "WHERE lang = ? AND slug = ? LIMIT 1"
     );
     getFromLangAndSlug.bind(lang);
     getFromLangAndSlug.bind(slug);
 
     cppdb::result res = getFromLangAndSlug.row();
-    results::Article article;
-
-    if (!res.empty()) {
-        article.id = res.get<int>("id");
-        article.groupId = res.get<int>("group_id");
-        article.lang = res.get<std::string>("lang");
-        article.content = res.get<std::string>("content");
-        article.slug = res.get<std::string>("slug");
-        article.title = res.get<std::string>("title");
-        article.isLocked = res.get<int>("locked") == true;
-    } else {
-        article.id = 0;
-    }
+    results::Article article = get_from_result(res);
+    
     getFromLangAndSlug.reset();
     return article;
 }
+
+
+/**
+ *
+ */
+results::Article Articles::get_from_id(
+    const int id
+) {
+    cppdb::statement statement = sqliteDb.prepare(
+        "SELECT id as article_id, * FROM articles "
+        "WHERE id = ? LIMIT 1"
+    );
+    statement.bind(id);
+
+    cppdb::result res = statement.row();
+    results::Article article = get_from_result(res);
+    
+    statement.reset();
+    return article;
+}
+
+
 
 /**
  *
@@ -521,8 +535,20 @@ results::Article Articles::get_article_from_conflict(
     getFromLangAndSlug.bind(conflictId);
 
     cppdb::result res = getFromLangAndSlug.row();
-    results::Article article;
+    results::Article article = get_from_result(res);
 
+    getFromLangAndSlug.reset();
+    return article;
+}
+
+/**
+ *
+ */
+results::Article Articles::get_from_result(
+    cppdb::result &res
+) {
+    results::Article article;
+    
     if (!res.empty()) {
         article.id = res.get<int>("article_id");
         article.lang = res.get<std::string>("lang");
@@ -532,9 +558,9 @@ results::Article Articles::get_article_from_conflict(
     } else {
         article.id = 0;
     }
-    getFromLangAndSlug.reset();
     return article;
 }
+
 
 
 

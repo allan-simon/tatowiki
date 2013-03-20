@@ -172,6 +172,7 @@ struct ShowDiffBetween : public History {
     results::Diff diff;
     int oldVersion;
     int newVersion;
+    std::string slug;
 
     ShowDiffBetween() {
 
