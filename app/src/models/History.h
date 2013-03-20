@@ -31,6 +31,7 @@
 #include "results/History.h"
 
 #define NO_HISTORY_FOR_ARTICLE_ERROR -2
+#define HISTORY_UNKOWN_ERROR -3
 namespace models {
 
 
@@ -145,6 +146,23 @@ class History : public SqliteModel {
             const int oldVersion,
             const int newVersion
         );
+        
+        /**
+         * @brief Return the id of the change change that happened just
+         *               before the one given on parameter on a given article
+         *
+         * @param articleId The id of the article we're interested in
+         * @param version Id of the version we want to get the previous change
+         * 
+         * @param The id of the change preceding the one given in parameter
+         *
+         * @since 20 March 2013
+         */
+        int get_version_of_before(
+            const int articleId,
+            const int version
+        );
+            
         
 };
 

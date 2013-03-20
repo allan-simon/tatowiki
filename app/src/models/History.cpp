@@ -317,6 +317,40 @@ results::Diff History::diff(
 
 }
 
+/**
+ *
+ */
+int History::get_version_of_before(
+    const int articleId,
+    const int version
+) {
+    cppdb::statement statement = sqliteDb.prepare(
+        "SELECT "
+        "  version "
+        "FROM history "
+        "WHERE "
+        "   article_id = ? AND"
+        "   version < ? "
+        "ORDER BY version DESC "
+        "LIMIT 1"
+    );
+    statement.bind(articleId);
+    statement.bind(version);
+   
+    cppdb::result res = statement.row();
+
+    int versionBefore = HISTORY_UNKOWN_ERROR;
+    if (!res.empty()) {
+        versionBefore= res.get<int>("version");
+    }
+    statement.reset();
+
+    return versionBefore; 
+
+}
+
+
+
 
 
 } // end namespace models

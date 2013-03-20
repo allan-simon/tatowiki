@@ -51,6 +51,7 @@ History::History(cppcms::service& serv) :
     dispatcher().assign("/all-versions-of/(.*)", &History::all_versions_of, this, 1);
     dispatcher().assign("/recent-changes", &History::recent_changes, this);
     dispatcher().assign("/show-diff-between/(\\d+)/(\\d+)/(\\d+)", &History::show_diff_between, this,1,2,3);
+    dispatcher().assign("/diff-with-previous-version-of/(\\d+)/(\\d+)", &History::diff_with_previous_version_of, this, 1,2);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -210,7 +211,6 @@ void History::show_diff_between(
     const std::string articleIdStr,
     const std::string oldVersionStr,
     const std::string newVersionStr
-
 ) {
 
     const int articleId = std::stoi(articleIdStr);
@@ -240,6 +240,35 @@ void History::show_diff_between(
     c.newVersion = newVersion;
 
     render("history_show_diff_between", c);
+}
+
+/**
+ *
+ */
+void History::diff_with_previous_version_of(
+    const std::string articleIdStr,
+    const std::string versionStr
+) {
+    const int articleId = std::stoi(articleIdStr);
+    const int version = std::stoi(versionStr);
+    
+    const int previousVersion = historyModel->get_version_of_before(
+        articleId,
+        version
+    );
+   
+    if (previousVersion == HISTORY_UNKOWN_ERROR) {
+        set_message(_("Unknown error"));
+        go_back_to_previous_page();
+        return;
+    }
+    
+    redirect(
+        "/history/show-diff-between/" + articleIdStr +
+        "/" + std::to_string(previousVersion) +
+        "/" + versionStr
+    );
+
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete

@@ -147,6 +147,18 @@ class History : public Controller {
             const std::string newVersionStr
         );
 
+        /**
+         * @brief Will redirector to the page 
+         *        showing the difference between this version of an article
+         *        and the version just before 
+         *
+         * @since 20 March 2013
+         */
+        void diff_with_previous_version_of(
+            const std::string articleIdStr,
+            const std::string versionStr
+        );
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };
