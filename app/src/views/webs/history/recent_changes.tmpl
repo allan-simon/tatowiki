@@ -35,7 +35,7 @@
             </a>
             ) .. 
             <%= version.article.title %>
-            <% gt "<span class='time'>{2,dt=s}</span>" using version.change.editTime %>
+            <% gt "<span class='time'>{1,dt=s}</span>" using version.change.editTime %>
             <% gt "by {1}" using version.change.byUserName  %>
             <!-- TODO use < url %> instead -->
             <a href="<% include article_url(version.article.lang,version.article.slug) %>">

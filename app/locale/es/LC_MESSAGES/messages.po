@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-17 15:26+0800\n"
+"POT-Creation-Date: 2013-03-21 03:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,71 +17,73 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:52
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:53
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:61
 #: ../src/contents/forms/register_new.h:102
 msgid "Register"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:58
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:59
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:4
 #: /home/allan/git/tatowiki/app/src/views/webs/users/login.tmpl:13
 msgid "Login"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:63
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:64
 #: ../src/controllers/webs/Users.cpp:75
 msgid "Logout"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:68
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:69
 #: /home/allan/git/tatowiki/app/src/views/webs/users/change_password.tmpl:4
 #: ../src/contents/forms/change_password.h:91
 msgid "Change password"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:181
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:192
 msgid "Home"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:186
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:197
 #: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:4
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:22
 msgid "Recent changes"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:212
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:233
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:23
 msgid "Note"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:215
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:236
 msgid "This wiki uses the markdown syntax."
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:220
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:241
 msgid "How to format text"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:223
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:244
 msgid "#Big title"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:226
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:247
 msgid "##Smaller title"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:230
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:251
 msgid "[text](http://example.com)"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:234
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:255
 msgid "[text](other-article)"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:238
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:259
 msgid "**bold**"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:242
+#: /home/allan/git/tatowiki/app/src/views/webs/layouts/master.tmpl:263
 msgid "*italic*"
 msgstr ""
 
@@ -97,7 +99,8 @@ msgstr ""
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:18
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show_all.tmpl:28
-#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:28
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:46
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:30
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:22
 msgid "Actions"
 msgstr ""
@@ -111,6 +114,7 @@ msgid "Translate"
 msgstr ""
 
 #: /home/allan/git/tatowiki/app/src/views/webs/articles/show.tmpl:33
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:37
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:29
 msgid "History"
 msgstr ""
@@ -167,15 +171,42 @@ msgid "Article's history"
 msgstr ""
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:13
-msgid "changed at <span class='time'>{1,dt=s}</span> by {2}"
+msgid "version {1}: "
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:16
-#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:17
-msgid "Show"
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:18
+msgid "Show that version"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:33
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:21
+msgid "Current version"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:26
+msgid "Show diff with previous version"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:29
+msgid "First version"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:31
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:38
+msgid "<span class='time'>{1,dt=s}</span>"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:32
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:39
+msgid "by {1}"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:34
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:45
+msgid "summary: "
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/all_versions_of.tmpl:51
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:49
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:41
 msgid "Go back to article's page"
 msgstr ""
@@ -185,12 +216,38 @@ msgstr ""
 msgid "TODO TITLE"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:14
-msgid "'{1}' changed at <span class='time'>{2,dt=s}</span> by {3}"
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:30
+msgid "diff"
 msgstr ""
 
-#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:20
-msgid "summary: "
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:34
+msgid "history "
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/recent_changes.tmpl:42
+msgid "Show current article."
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:4
+msgid "Difference between version {1} and {2} "
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:12
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:14
+msgid "Version {1}"
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:25
+msgid ""
+"The lines in green are the lines that have been added in the new version."
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:26
+msgid "The lines in red are those that have been removed."
+msgstr ""
+
+#: /home/allan/git/tatowiki/app/src/views/webs/history/show_diff_between.tmpl:44
+msgid "Revert to version {1}"
 msgstr ""
 
 #: /home/allan/git/tatowiki/app/src/views/webs/history/show_version.tmpl:5
@@ -295,14 +352,25 @@ msgstr ""
 msgid "This conflict does not exists"
 msgstr ""
 
-#: ../src/controllers/webs/History.cpp:95
+#: ../src/controllers/webs/History.cpp:96
 msgid "Revert article to version {1}"
 msgstr ""
 
-#: ../src/controllers/webs/History.cpp:173
+#: ../src/controllers/webs/History.cpp:175
 msgid ""
 "You can't see the history of this article, because this article does not "
 "exist."
+msgstr ""
+
+#: ../src/controllers/webs/History.cpp:228
+msgid ""
+"One of this two versions id maybe does not correspond to a version "
+"associated to this article"
+msgstr ""
+
+#: ../src/controllers/webs/History.cpp:261
+#: ../src/controllers/webs/Users.cpp:215
+msgid "Unknown error"
 msgstr ""
 
 #: ../src/controllers/webs/Users.cpp:183
@@ -311,10 +379,6 @@ msgstr ""
 
 #: ../src/controllers/webs/Users.cpp:191
 msgid "Email already taken"
-msgstr ""
-
-#: ../src/controllers/webs/Users.cpp:215
-msgid "Unknown error"
 msgstr ""
 
 #: ../src/controllers/webs/Users.cpp:250
