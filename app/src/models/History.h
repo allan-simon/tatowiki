@@ -129,6 +129,23 @@ class History : public SqliteModel {
             const int articleId
         );
 
+        /**
+         * @brief Return the diff between two versions of an article
+         *
+         * @param articleId The article we want to compare two versions of
+         * @param oldVersion Id of the old revision we will use as a base
+         * @param newVersion Id of the new revision we will use to compare
+         * 
+         * @param The two contents and their differences
+         *
+         * @since 20 March 2013
+         */
+        results::Diff diff(
+            const int articleId,
+            const int oldVersion,
+            const int newVersion
+        );
+        
 };
 
 } // end namespace models 

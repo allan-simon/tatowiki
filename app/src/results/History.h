@@ -136,6 +136,17 @@ namespace results {
      * @since 18 January 2013
      */
     typedef std::vector<ArticleVersion> ArticlesVersions;
+    
+
+    /**
+     * @class Represent a diff between two version of a same article
+     *
+     * @since 20 March 2013
+     */
+    struct Diff {
+        std::string oldContent;
+        std::string newContent;
+    };
 } // end of namespace results
 
 

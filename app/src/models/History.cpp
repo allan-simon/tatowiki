@@ -257,6 +257,43 @@ results::ArticlesVersions History::recent_changes(
 
 }
 
+/**
+ *
+ */
+results::Diff History::diff(
+    const int articleId,
+    const int oldVersion,
+    const int newVersion
+) {
+    cppdb::statement statement = sqliteDb.prepare(
+        "SELECT "
+        "    content,"
+        "    version "
+        "FROM history "
+        "WHERE "
+        "   article_id = ? AND "
+        "   version IN (?,?) "
+        "LIMIT 2"
+    );
+    statement.bind(articleId); 
+    statement.bind(oldVersion); 
+    statement.bind(newVersion); 
+    
+    cppdb::result res = statement.query();
+    results::Diff diff;
+    while (res.next()) {
+        if (res.get<int>("version") == oldVersion) {
+            diff.oldContent = res.get<std::string>("content");
+        } else {
+            diff.newContent = res.get<std::string>("content");
+        }
+    }
+    statement.reset();
+    return diff;
+
+}
+
+
 
 } // end namespace models
 
