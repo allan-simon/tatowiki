@@ -28,6 +28,7 @@
         <% include footer() %>
     </div>
     <div id="footer_container"></div>
+    <% include footer_js() %>
 </body>
 </html>
 <% end template %>
@@ -88,6 +89,7 @@
     type="text/css"
 /><% end template %>
 
+
 <% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
     src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
     width="<%= width %>"
@@ -109,6 +111,15 @@
 <% end template %>
 
 
+/**
+ * @brief Used to include the javascript that does not need to be loaded
+ *        since the beginning, so that page would render faster
+ * 
+ * @since 20 March 2013
+ */
+<% template footer_js() %>
+
+<% end template %>
 
 /**
  *
@@ -246,6 +257,19 @@
 
 </div>
 <% end template %>
+
+
+/**
+ * @brief Used to generate a script tag for a javascript file
+ *
+ * @since 20 March 2013
+ */
+<% template js_link(std::string const& jsFile) %><script
+    src="<% c++ out() << Config::get_js_path(); %><%= jsFile %>"
+    type="text/javascript"
+></script><% end template %>
+
+
 
 <% end view %>
 <% end skin %>

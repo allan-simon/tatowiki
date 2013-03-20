@@ -71,6 +71,11 @@ int main(int argc,char ** argv)
         )
     );
 
+    Config::set_js_path(
+        app.settings().get<string>(
+            "TatoWiki.jsPath"
+        )
+    );
 
 
     Config::set_inner_css_folder(
@@ -82,6 +87,12 @@ int main(int argc,char ** argv)
     Config::set_inner_img_folder(
         app.settings().get<string>(
             "TatoWiki.innerImgFolder"
+        )
+    );
+
+    Config::set_inner_js_folder(
+        app.settings().get<string>(
+            "TatoWiki.innerJsFolder"
         )
     );
 

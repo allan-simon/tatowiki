@@ -40,7 +40,7 @@
             //note: the . at the beginning is important
             //if you want to stay log in between the different language
             //of your wiki
-            "domain" : ".sysko.fr" 
+            "domain" : ".tatolocal.org" 
         },
         "server" : {
             "storage" : "memory"
@@ -90,10 +90,12 @@
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         },
-        "baseHost" : "sysko.fr:8080",
+        "baseHost" : "tatolocal.org:8080",
         "innerCssFolder" : "../resources/css/",
         "innerImgFolder" : "../resources/img/",
+        "innerJsFolder" : "../resources/js/",
         "imgPath" : "/img/",
-        "cssPath" : "/css/"
+        "cssPath" : "/css/",
+        "jsPath" : "/js/"
 	}
 }

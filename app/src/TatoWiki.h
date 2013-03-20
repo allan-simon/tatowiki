@@ -37,6 +37,7 @@
 
 #include <cppcms_skel/controllers/webs/Img.h>
 #include <cppcms_skel/controllers/webs/Css.h>
+#include <cppcms_skel/controllers/webs/Js.h>
 #include "controllers/webs/Articles.h"
 #include "controllers/webs/Users.h"
 #include "controllers/webs/History.h"
@@ -59,6 +60,7 @@ private:
     //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
     controllers::webs::Img img;
     controllers::webs::Css css;
+    controllers::webs::Js  js;
     controllers::webs::History history;
     controllers::webs::Users users;
     controllers::webs::Articles articles;

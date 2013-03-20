@@ -57,6 +57,8 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
     
     css(serv),
     
+    js(serv),
+    
     history(serv),
     
     users(serv),
@@ -76,6 +78,7 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
     add(users,"^/users(.*)",1);
     add(history,"^/history(.*)",1);
     add(css,"^/css(.*)",1);
+    add(js,"^/js(.*)",1);
     add(img,"^/img(.*)",1);
     //%%%NEXT_CONTROLLER_DISPATCHER_MARKER%%%, do not delete
     add(pages, "/(.*)", 1);
