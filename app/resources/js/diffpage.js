@@ -30,8 +30,6 @@ function diffUsingJS() {
     wrap.appendChild(table.cloneNode(true));
     diffoutputdiv.innerHTML = wrap.innerHTML;
 
-    // scroll down to the diff view window.
-    location = document.URL;
 }
 
 window.onload =diffUsingJS();
