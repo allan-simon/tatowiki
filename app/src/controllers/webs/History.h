@@ -129,6 +129,24 @@ class History : public Controller {
          */
         void recent_changes();
 
+        /**
+         * @brief Show the diff between two versions of an article
+         *        It will redirect you to the previous page if the
+         *        article or the versions you're requesting does not
+         *        exists
+         *
+         * @param articleIdStr  The id of the article as a string
+         * @param oldVersionStr The id of the old version as a string
+         * @param newVersionStr The id of the new version as a string
+         *
+         * @since 20 March 2013
+         */
+        void show_diff_between(
+            const std::string articleIdStr,
+            const std::string oldVersionStr,
+            const std::string newVersionStr
+        );
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

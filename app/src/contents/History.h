@@ -156,6 +156,22 @@ struct RecentChanges : public History {
 
 };
 
+/**
+ * @struct ShowDiffBetween Content used by history/show-diff-between
+ * @since  20 March 2013
+ */
+struct ShowDiffBetween : public History {
+    
+    results::Diff diff;
+    int oldVersion;
+    int newVersion;
+
+    ShowDiffBetween() {
+
+    }
+
+};
+
 //%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace history

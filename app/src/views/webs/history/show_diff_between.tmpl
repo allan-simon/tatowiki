@@ -1,0 +1,37 @@
+<% c++ #include "contents/History.h" %>
+<% skin %>
+<% view history_show_diff_between uses contents::history::ShowDiffBetween extends master %>
+<% template title() %><% gt "Difference between version {1} and {2} " using oldVersion, newVersion  %><% end template %>
+
+/**
+ *
+ */
+<% template main_content() %> 
+<div class="module">
+    <div id="showDiff"></div>
+    
+    <pre id="old"><%= diff.oldContent %></pre>
+    <pre id="new"><%= diff.newContent %></pre>
+
+</div>
+<% end template %>
+
+/**
+ *
+ */
+<% template css() %>
+    <%include css_link("external/diffview.css") %>
+<% end template %>
+
+/**
+ *
+ */
+<% template footer_js() %>
+    <% include js_link("external/difflib.js") %>
+    <% include js_link("external/diffview.js") %>
+    <% include js_link("diffpage.js") %>
+<% end template %>
+
+
+<% end view %>
+<% end skin %>

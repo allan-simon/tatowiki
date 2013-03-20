@@ -43,13 +43,14 @@ History::History(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
 
-    dispatcher().assign("/revert-to-version/(.*)/(\\w+)", &History::revert_to_version, this, 1, 2);
-    dispatcher().assign("/show-version/(\\w+)", &History::show_version, this, 1);
+    dispatcher().assign("/revert-to-version/(.*)/(\\d+)", &History::revert_to_version, this, 1, 2);
+    dispatcher().assign("/show-version/(\\d+)", &History::show_version, this, 1);
 
     dispatcher().assign("/diff-between", &History::diff_between, this);
     dispatcher().assign("/diff-between_treat", &History::diff_between_treat, this);
     dispatcher().assign("/all-versions-of/(.*)", &History::all_versions_of, this, 1);
     dispatcher().assign("/recent-changes", &History::recent_changes, this);
+    dispatcher().assign("/show-diff-between/(\\d+)/(\\d+)/(\\d+)", &History::show_diff_between, this,1,2,3);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -90,11 +91,9 @@ void History::revert_to_version(
             articleVersion.article.content
         );
 
-        const std::string summary = (cppcms::locale::format(
-            cppcms::locale::translate(
-                "Revert article to version {1}" 
-            )
-        ) % version).str();
+        const std::string summary = (cppcms::locale::format(_(
+            "Revert article to version {1}" 
+        )) % version).str();
 
         historyModel->add_version(
             articleVersion.article,
@@ -131,6 +130,7 @@ void History::show_version(const std::string versionStr) {
 
     render("history_show_version", c);
 }
+
 
 /**
  *
@@ -198,6 +198,44 @@ void History::recent_changes() {
     c.articlesVersions = historyModel->recent_changes();
 
     render("history_recent_changes", c);
+}
+
+/**
+ *
+ */
+void History::show_diff_between(
+    const std::string articleIdStr,
+    const std::string oldVersionStr,
+    const std::string newVersionStr
+
+) {
+
+    const int articleId = std::stoi(articleIdStr);
+    const int oldVersion = std::stoi(oldVersionStr);
+    const int newVersion = std::stoi(newVersionStr);
+    
+    results::Diff diff = historyModel->diff(
+        articleId,
+        oldVersion,
+        newVersion
+    );
+    
+    if (diff.newContent.empty() || diff.oldContent.empty()) {
+        set_message(_(
+            "One of this two versions id maybe does not correspond to "
+            "a version associated to this article"
+        ));
+        go_back_to_previous_page();
+        return;
+    }
+
+    contents::history::ShowDiffBetween c;
+    init_content(c);
+    c.diff = diff; 
+    c.oldVersion = oldVersion;
+    c.newVersion = newVersion;
+
+    render("history_show_diff_between", c);
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
