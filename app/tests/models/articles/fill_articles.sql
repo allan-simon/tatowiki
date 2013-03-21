@@ -82,3 +82,17 @@ INSERT INTO articles(
     "Simply to test if it works in polish"
 );
 
+
+INSERT INTO articles(
+    group_id,
+    lang,
+    slug,
+    title,
+    content
+) VALUES (
+    7,
+    "fr",
+    "autre-page",
+    "Une autre page",
+    "Une page qui n'a rien à voir avec les autres"
+);

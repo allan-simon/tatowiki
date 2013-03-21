@@ -112,6 +112,7 @@ set(
     create_from_lang_and_slug
     add_to_group
     get_group_id_from_lang_and_slug
+    get_from_id
 )
 
 foreach(TEST ${ARTICLES_MODEL_TESTS})
