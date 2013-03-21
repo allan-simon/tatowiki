@@ -551,6 +551,7 @@ results::Article Articles::get_from_result(
     
     if (!res.empty()) {
         article.id = res.get<int>("article_id");
+        article.groupId = res.get<int>("group_id");
         article.lang = res.get<std::string>("lang");
         article.content = res.get<std::string>("content");
         article.slug = res.get<std::string>("slug");

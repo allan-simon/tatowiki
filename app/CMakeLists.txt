@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.8.0")
+set(PROJECT_VERSION "0.8.2")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -111,6 +111,7 @@ set(
     get_from_lang_and_slug
     create_from_lang_and_slug
     add_to_group
+    get_group_id_from_lang_and_slug
 )
 
 foreach(TEST ${ARTICLES_MODEL_TESTS})
