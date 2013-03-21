@@ -34,13 +34,12 @@
                 <% gt "history " %>
             </a>
             ) .. 
-            <%= version.article.title %>
             <% gt "<span class='time'>{1,dt=s}</span>" using version.change.editTime %>
+            <a href="<% include article_url(version.article.lang,version.article.slug) %>">
+                <%= version.article.title %>
+            </a>
             <% gt "by {1}" using version.change.byUserName  %>
             <!-- TODO use < url %> instead -->
-            <a href="<% include article_url(version.article.lang,version.article.slug) %>">
-                <% gt "Show current article." %>
-            </a>
             <br/>
             <% gt "summary: " %>
             <span class="summary"><%= version.change.summary %></span>

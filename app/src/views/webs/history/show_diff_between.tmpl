@@ -9,9 +9,9 @@
 <% template main_content() %> 
 <div class="module">
     <div id="showDiff"></div>
-    <h2 id="nameOld" ><% gt "Version {1}" using oldVersion %></h2>
+    <h2 id="nameOld" ><% gt "Version at: {1,dt=s}" using diff.oldVersionTime %></h2>
     <pre id="old"><%= diff.oldContent %></pre>
-    <h2 id="nameNew" ><% gt "Version {1}" using newVersion %></h2>
+    <h2 id="nameNew" ><% gt "version at: {1,dt=s}" using diff.newVersionTime %></h2>
     <pre id="new"><%= diff.newContent %></pre>
 
 </div>
@@ -41,7 +41,7 @@
             <a
                 href="/history/revert-to-version/<%= slug | urlencode %>/<%= oldVersion %>"
             >
-                <%gt "Revert to version {1}" using oldVersion %>
+                <%gt "Revert to version made the <span class='time'>{1,dt=s}</span>" using diff.oldVersionTime %>
             </a>
         </li>
         <li>

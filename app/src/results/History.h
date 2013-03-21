@@ -182,7 +182,9 @@ namespace results {
      */
     struct Diff {
         std::string oldContent;
+        int oldVersionTime;
         std::string newContent;
+        int newVersionTime;
     };
 } // end of namespace results
 

@@ -292,7 +292,8 @@ results::Diff History::diff(
     cppdb::statement statement = sqliteDb.prepare(
         "SELECT "
         "    content,"
-        "    version "
+        "    version, "
+        "    edit_time "
         "FROM history "
         "WHERE "
         "   article_id = ? AND "
@@ -308,8 +309,10 @@ results::Diff History::diff(
     while (res.next()) {
         if (res.get<int>("version") == oldVersion) {
             diff.oldContent = res.get<std::string>("content");
+            diff.oldVersionTime = res.get<int>("edit_time");
         } else {
             diff.newContent = res.get<std::string>("content");
+            diff.newVersionTime = res.get<int>("edit_time");
         }
     }
     statement.reset();
