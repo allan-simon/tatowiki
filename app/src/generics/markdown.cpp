@@ -64,12 +64,16 @@ cppcms::xss::rules const &xss_filter() {
     r.add_property("a","title",cl_id);
     r.add_tag("hr",rules::stand_alone);
     r.add_tag("br",rules::stand_alone);
+    
+    // rules for the img tag
     r.add_tag("img",rules::stand_alone);
     r.add_uri_property("img","src");
+    r.add_property("img","title",cl_id);
     r.add_integer_property("img","width");
     r.add_integer_property("img","height");
     r.add_integer_property("img","border");
     r.add_property("img","alt",booster::regex(".*"));
+    
     r.add_tag("table",rules::opening_and_closing);
     r.add_tag("tr",rules::opening_and_closing);
     r.add_tag("th",rules::opening_and_closing);
