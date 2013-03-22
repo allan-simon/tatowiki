@@ -113,6 +113,7 @@ set(
     add_to_group
     get_group_id_from_lang_and_slug
     get_from_id
+    edit_from_lang_and_slug
 )
 
 foreach(TEST ${ARTICLES_MODEL_TESTS})
