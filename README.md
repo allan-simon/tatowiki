@@ -39,7 +39,7 @@ config.js)
 
 #Running it 
 
-    ./TatoWiki -c ../config.js #from the build directory
+    ./tatowiki -c ../config.js #from the build directory
 
 
 #Note:
