@@ -55,6 +55,13 @@ struct BaseArticleForm : public cppcms::form {
 
     cppcms::widgets::text title;
     cppcms::widgets::textarea content;
+    
+    /**
+     * @brief Text field to explain what kind of change we made
+     *
+     * @since 24 March 2013
+     */
+    cppcms::widgets::text summary;
     /**
      * @brief button to save the article and view it
      *
@@ -91,7 +98,13 @@ struct BaseArticleForm : public cppcms::form {
             cppcms::locale::translate("Content")
         );
         content.non_empty();
+        
+        //
+        summary.message(
+            cppcms::locale::translate("Summary")
+        );
 
+        //
         saveAndView.value(
             cppcms::locale::translate("Save")
         );
@@ -116,6 +129,7 @@ struct BaseArticleForm : public cppcms::form {
         add(slug);
         add(title);
         add(content);
+        add(summary);
         add(saveAndView);
         add(saveAndContinue);
     }

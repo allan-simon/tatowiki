@@ -175,6 +175,7 @@ void Articles::edit_treat() {
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
     const std::string content = form.content.value();
+    const std::string summary = form.summary.value();
 
     // TODO maybe replace this by storing the id in an hidden 
     int articleId = articlesModel->get_id_from_lang_and_slug(
@@ -214,7 +215,7 @@ void Articles::edit_treat() {
     historyModel->add_version(
         article,
         get_current_user_id(),
-        "" // TODO add something for the summary
+        summary
     );
 
     // we invalidate the cache for this article
@@ -284,6 +285,7 @@ void Articles::create_treat() {
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
     const std::string content = form.content.value();
+    const std::string summary = form.summary.value();
     // we save in database the articles
     int articleId = articlesModel->create_from_lang_and_slug(
         lang,
@@ -312,7 +314,7 @@ void Articles::create_treat() {
     historyModel->add_version(
         article,
         get_current_user_id(),
-        "" // TODO add something for the summary
+        summary
     );
 
 
@@ -488,7 +490,11 @@ void Articles::translate_treat() {
     const std::string translationLang = form.transLang.selected_id();
     const std::string title = form.title.value();
     const std::string content = form.content.value();
-
+    std::string summary = form.summary.value();
+    
+    if (summary.empty()) {
+        summary = "translated from " + origLang + ":" + origSlug;
+    }
 
     int resultCode = articlesModel->translate_from_lang_and_slug(
        origLang,
@@ -530,8 +536,7 @@ void Articles::translate_treat() {
     historyModel->add_version(
         translationArticle,
         get_current_user_id(),
-        // TODO add something for the summary
-        "translated from " + origLang + ":" + origSlug  
+        summary
     );
     // we redirect to the article we've just added
     redirect(

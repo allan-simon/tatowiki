@@ -32,6 +32,21 @@
 </tr>
 <% end template %>
 
+<% template summary_text(forms::articles::BaseArticleForm & form) %>
+<tr>
+    <td>
+        <label for="<%= form.summary.name() %>">
+            <%= form.summary.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input form.summary %>
+    </td>
+</tr>
+<% end template %>
+
+
+
 <% template editor_area(forms::articles::BaseArticleForm & form) %>
 <tr>
     <td>
