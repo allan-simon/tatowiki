@@ -54,6 +54,7 @@ begin;
     -- someone else was already editing it
     create table conflicts (
         id integer primary key autoincrement not null,
+        group_id  integer   not null default 0, 
         article_id integer not null default 0,
         lang text not null,                            -- code iso 639-3 alpha 3 in which the articles is written
         slug text not null,                            -- "url" name of the article 
