@@ -84,6 +84,9 @@ struct BaseArticleForm : public cppcms::form {
         );
         title.non_empty();
 
+        //important for the javascript code to know
+        //on which textarea to put the markdown syntax
+        content.id("editor");
         content.message(
             cppcms::locale::translate("Content")
         );

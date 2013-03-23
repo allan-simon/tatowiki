@@ -1,0 +1,24 @@
+<% c++ #ifndef LAYOUT_ARTICLE_EDITION %>
+<% c++ #define LAYOUT_ARTICLE_EDITION %>
+<% c++ #include "cppcms_skel/contents/content.h" %>
+/**
+ * @brief Common template used by all the page related to
+ *        article edition
+ */
+<% skin %>
+<% view article_edition uses contents::BaseContent extends master %>
+
+<% template group_css() %>
+    <% include css_link("external/wmd.css") %>
+<% end template %>
+
+
+<% template footer_js() %>
+    <% include js_link("external/wmd.combined.min.js") %>
+    <% include js_link("mardown_editor.js") %>
+<% end template %>
+
+<% end view %>
+<% end skin %>
+
+<% c++ #endif %>

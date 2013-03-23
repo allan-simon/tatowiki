@@ -1,6 +1,6 @@
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
-<% view articles_create uses contents::articles::Create extends master %>
+<% view articles_create uses contents::articles::Create extends article_edition %>
 <% template title() %><% gt "Create a new article" %><% end template %>
 
 <% template css() %>
@@ -12,9 +12,37 @@
 <div class="module">
     <h2><% gt "Create a new article" %></h2>
     <form method="POST" action="/articles/create_treat" >
+    <% form input createForm.slug %>
     <table>
-        <% form as_table createForm %>
+        <tr>
+            <td>
+                <label for="<%= createForm.title.name() %>">
+                    <%= createForm.title.message() %>
+                </label>
+            </td>
+            <td>
+                <% form input createForm.title %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="<%= createForm.content.name() %>">
+                    <%= createForm.content.message() %>
+                </label>
+            </td>
+            <td>
+                <div id="editor-button-bar"></div>
+                <% form input createForm.content %>
+            </td>
+        </tr>
     </table>
+    <div class="submit">
+
+        <% form input createForm.saveAndView %>
+    </div>
+    <div class="submit">
+        <% form input createForm.saveAndContinue %>
+    </div>
     </form>
 </div>
 <% end template %>

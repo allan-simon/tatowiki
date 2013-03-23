@@ -107,6 +107,7 @@
  */
 <% template main_css() %>
     <% include css_link("layouts/default.css") %>
+    <% include group_css() %>
     <% include css() %>
 <% end template %>
 
@@ -117,9 +118,15 @@
  * 
  * @since 20 March 2013
  */
-<% template footer_js() %>
+<% template footer_js() %><% end template %>
 
-<% end template %>
+/**
+ * @brief Used to include the css that will be share by a group
+ *        of pages
+ * 
+ * @since 22 March 2013
+ */
+<% template group_css() %><% end template %>
 
 /**
  *

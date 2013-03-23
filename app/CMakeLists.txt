@@ -97,6 +97,7 @@ add_custom_command(
     OUTPUT view_web.cpp
     COMMAND cppcms_tmpl_cc 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/layouts/master.tmpl
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/layouts/article_edition.tmpl
         ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/*/*.tmpl 
         -o view_web.cpp
     DEPENDS
