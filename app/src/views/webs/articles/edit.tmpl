@@ -14,11 +14,16 @@
 <div class="module" >
     <h2><% gt "Edit article" %></h2>
     <form method="POST" action="/articles/edit_treat" >
+    <% form input editForm.slug %>
+    <% form input editForm.lastVersion %>
     <table>
-        <% form as_table editForm %>
+        <% include title_area(editForm) %>
+        <% include editor_area(editForm) %>
     </table>
+    <% include save_buttons(editForm) %>
     </form>
 </div>
+<% include preview_module() %>
 <% end template %>
 
 /**
