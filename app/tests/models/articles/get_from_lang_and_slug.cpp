@@ -42,17 +42,48 @@ int main() {
         "fr",
         "page_principale"
     );
-    if ( 
-        (!firstArticle.exists()) ||
-        (firstArticle.lang.compare("fr") != 0) ||
-        (firstArticle.slug.compare("page_principale") != 0) ||
-        (firstArticle.title.compare("Page Principale") != 0) ||
-        (firstArticle.content.compare(u8"Juste pour voir si ça marche") != 0) ||
-        (firstArticle.isLocked != false)
-    ) {
+    if (!firstArticle.exists()) {
+
         noTestFailed = false;
         std::cout << " [fail]" << std::endl; 
     
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+    //
+    std::cout << "the article we get should be the same than the one we've inserted ... " << std::endl;
+    std::cout << "the lang should be the same than the one we've inserted ... ";
+    if (firstArticle.lang.compare("fr") != 0) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+    // 
+    std::cout << "the lang should be the same than the one we've inserted ... ";
+    if (firstArticle.slug.compare("page_principale") != 0) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+    //
+    std::cout << "The title should be the same than the one we've inserted ... ";
+    if(firstArticle.title.compare("Page Principale") != 0) {
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
+    } else {
+        std::cout << " [ok]" << std::endl; 
+    }
+
+    //
+    std::cout << "The content should be the same than the one we've inserted ... ";
+    if(firstArticle.content.compare(u8"Juste pour voir si ça marche") != 0){
+        noTestFailed = false;
+        std::cout << " [fail]" << std::endl; 
     } else {
         std::cout << " [ok]" << std::endl; 
     }

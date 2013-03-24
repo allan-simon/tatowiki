@@ -76,8 +76,7 @@ int main() {
         (firstArticle.lang.compare(TEST_ARTICLE_LANG) != 0) ||
         (firstArticle.slug.compare(TEST_ARTICLE_SLUG) != 0) ||
         (firstArticle.title.compare(TEST_ARTICLE_TITLE) != 0) ||
-        (firstArticle.content.compare(TEST_ARTICLE_CONTENT) != 0) ||
-        (firstArticle.isLocked != false)
+        (firstArticle.content.compare(TEST_ARTICLE_CONTENT) != 0)
     ) {
         noTestFailed = false;
         std::cout << " [fail]" << std::endl; 
