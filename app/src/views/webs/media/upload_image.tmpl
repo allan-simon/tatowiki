@@ -1,0 +1,18 @@
+<% c++ #include "contents/Media.h" %>
+<% skin %>
+<% view media_upload_image uses contents::media::UploadImage extends master %>
+<% template title() %><% gt "TODO TITLE" %><% end template %>
+
+
+<% template body() %> 
+    Edit Me Media / UploadImage
+    <form method="POST" action="<% url "/media/upload-image_treat" %>" >
+        <% form as_p uploadImageForm %>
+    </form>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+
