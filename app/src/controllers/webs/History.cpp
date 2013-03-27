@@ -32,9 +32,11 @@
 #include "models/History.h"
 #include "models/Articles.h"
 
-#define _(X) cppcms::locale::translate((X))
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
+
+#include "generics/Config.h"
+#define _(X) cppcms::locale::translate((X))
 
 namespace controllers {
 namespace webs {
@@ -120,6 +122,10 @@ void History::revert_to_version(
  */
 void History::show_version(const std::string versionStr) {
 
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
     contents::history::ShowVersion c;
     init_content(c);
 
@@ -138,6 +144,12 @@ void History::show_version(const std::string versionStr) {
  */
 void History::diff_between() {
 
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
+
+
     contents::history::DiffBetween c;
     init_content(c);
 
@@ -149,6 +161,13 @@ void History::diff_between() {
  *
  */
 void History::diff_between_treat() {
+
+    //TODO add the TREAT_PAGE macro
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
+
 
     forms::history::DiffBetween form;
     form.load(context());
@@ -165,6 +184,9 @@ void History::diff_between_treat() {
  */
 void History::all_versions_of(const std::string slug) {
 
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
 
     int articleId = articlesModel->get_id_from_lang_and_slug(
         get_interface_lang(),
@@ -197,6 +219,10 @@ void History::all_versions_of(const std::string slug) {
  */
 void History::recent_changes() {
 
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
     contents::history::RecentChanges c;
     init_content(c);
     c.articlesVersions = historyModel->recent_changes();
@@ -212,6 +238,12 @@ void History::show_diff_between(
     const std::string oldVersionStr,
     const std::string newVersionStr
 ) {
+
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
+
 
     const int articleId = std::stoi(articleIdStr);
     const int oldVersion = std::stoi(oldVersionStr);
@@ -249,6 +281,12 @@ void History::diff_with_previous_version_of(
     const std::string articleIdStr,
     const std::string versionStr
 ) {
+
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
+
     const int articleId = std::stoi(articleIdStr);
     const int version = std::stoi(versionStr);
     

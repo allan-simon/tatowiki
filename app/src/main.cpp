@@ -97,6 +97,10 @@ int main(int argc,char ** argv)
     );
 
 
+    tatowiki::Config::isPrivate(
+        app.settings().at("TatoWiki.private").boolean()
+    );
+
 
     tatowiki::Config::set_lang_to_main_pages(
         app.settings().at("TatoWiki.mainPages").array()

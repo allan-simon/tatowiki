@@ -54,12 +54,40 @@ namespace tatowiki {
             Config();
 
             /**
+             * @brief Permit to know if the wiki is set as
+             *        private or not 
+             * @TODO replace this by something better to manage
+             *       global permission
+             *
+             * @since 28 March 2013
+             */
+            bool privateWiki;
+            /**
              * @brief Map  lang -> main page for that lang
              *
              * @since 14 January 2013
              */
             std::map<std::string, std::string> lang2MainPages;
         public:
+            /**
+             * @brief Permit to know if the wiki is set as
+             *        private or not
+             *
+             * @return bool True if it is private, false otherwise
+             *
+             * @since 28 March 2013
+             */
+            static bool isPrivate(void);
+            
+            /**
+             * @brief Set if the wiki is private or not
+             *
+             * @param privateWiki True if it is now private,
+             *                    false if we want it to be public
+             *
+             * @since 28 March 2013
+             */
+            static void isPrivate(bool privateWiki);
 
 
             /**

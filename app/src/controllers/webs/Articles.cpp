@@ -36,6 +36,7 @@
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
+#include "generics/Config.h"
 #include "generics/markdown.h"
 
 //TODO certainly move this somewhere else
@@ -85,6 +86,10 @@ Articles::~Articles() {
  *
  */
 void Articles::show(std::string slug) {
+
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
 
     contents::articles::Show c;
     init_content(c);
@@ -362,6 +367,12 @@ void Articles::remove(const std::string slug) {
  */
 void Articles::show_all() {
     //TODO in the future would be better if paginated
+    
+    if(tatowiki::Config::isPrivate()) {
+        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    }
+
+
     contents::articles::ShowAll c;
     init_content(c);
 

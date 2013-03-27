@@ -47,6 +47,7 @@
         }
     },
 	"TatoWiki" : {
+        "private" : true,
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
             ["de"  , "de_DE.UTF-8", "Deutsh"],

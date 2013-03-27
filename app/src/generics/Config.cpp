@@ -35,6 +35,20 @@ Config::Config() {
 
 }
 
+/**
+ *
+ */
+bool Config::isPrivate() {
+    return Config::get_instance()->privateWiki;
+}
+
+/**
+ *
+ */
+void Config::isPrivate(bool privateWiki) {
+    Config::get_instance()->privateWiki = privateWiki;
+}
+
 
 /**
  *
