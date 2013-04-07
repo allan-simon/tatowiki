@@ -1,0 +1,61 @@
+<% c++ #include "contents/History.h" %>
+<% skin %>
+<% view history_recent_changes uses contents::history::RecentChanges extends master %>
+<% template title() %><% gt "Recent changes" %><% end template %>
+
+/**
+ *
+ */
+<% template history_of_url( std::string const& slug) %>/history/all-versions-of/<%= slug %><% end template %>
+
+
+/**
+ *
+ */
+<% template diff_with_previous_of_url( int const& articleId, int const& version) %>/history/diff-with-previous-version-of/<%= articleId %>/<%= version %><% end template %>
+
+
+
+
+<% template main_content() %>
+<% include begin_module() %>
+    <h2><% gt "Recent changes" %></h2>
+
+    <% foreach version in articlesVersions %>
+    <ul>
+        <% item %>
+        <li>    
+            (
+            <a href="<% include diff_with_previous_of_url(version.article.id,version.change.version) %>">
+                <% gt "diff" %>
+            </a>
+            |
+            <a href="<% include history_of_url(version.article.slug) %>">
+                <% gt "history " %>
+            </a>
+            ) .. 
+            <% gt "<span class='time'>{1,dt=s}</span>" using version.change.editTime %>
+            <a href="<% include article_url(version.article.lang,version.article.slug) %>">
+                <%= version.article.title %>
+            </a>
+            <% gt "by {1}" using version.change.byUserName  %>
+            <!-- TODO use < url %> instead -->
+            <br/>
+            <% gt "summary: " %>
+            <span class="summary"><%= version.change.summary %></span>
+        </li>
+        <% end %>
+    </ul>
+    <% end foreach %>
+<% include end_module () %>
+<% end template %>
+
+/**
+ * @brief TODO maybe put some texts there
+ */
+<% template annexe_content() %>
+<% end template %>
+
+
+<% end view %>
+<% end skin %>

@@ -1,0 +1,36 @@
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view articles_create uses contents::articles::Create extends article_edition %>
+<% template title() %><% gt "Create a new article" %><% end template %>
+
+<% template css() %>
+    <% include css_link("articles/create.css") %>
+<% end template %>
+
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h2><% gt "Create a new article" %></h2>
+    <form method="POST" action="/articles/create_treat" >
+    <% form input createForm.slug %>
+    <table>
+        <% include title_area(createForm) %>
+        <% include editor_area(createForm) %>
+        <% include summary_text(createForm) %>
+    </table>
+    <% include save_buttons(createForm) %>
+    </form>
+<% include end_module() %>
+<% include preview_module() %>
+<% end template %>
+
+/**
+ *
+ */
+<% template annexe_content() %>
+   <% include markdown_help() %> 
+<% end template %>
+
+<% end view %>
+<% end skin %>
+

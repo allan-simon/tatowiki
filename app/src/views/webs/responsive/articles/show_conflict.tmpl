@@ -1,0 +1,24 @@
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view articles_show_conflict uses contents::articles::ShowConflict extends master %>
+<% template title() %><% gt "Show conflict" %><% end template %>
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h1><% gt "Notice" %></h1>
+    <% gt "You're seeing this page because someone has saved a modified version while you were edidting." %>
+    <% gt "In order to prevent conflicts, your version has been saved there." %>
+    <% gt "Note that for the moment unfortunately we don't provide tools to resolve it automatically, so you may need to transpose your changes manually." %>
+</div>
+<% include end_module() %>
+<% include begin_module() %>
+    <%= article.content | ext markdown %>
+<% include end_module() %>
+<% end template %>
+
+
+
+
+
+<% end view %>
+<% end skin %>

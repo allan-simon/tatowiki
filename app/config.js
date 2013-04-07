@@ -40,13 +40,13 @@
             //note: the . at the beginning is important
             //if you want to stay log in between the different language
             //of your wiki
-            "domain" : ".tatolocal.org" 
+            "domain" : ".YOURHOST" 
         },
         "server" : {
             "storage" : "memory"
         }
     },
-	"TatoWiki" : {
+ 	"TatoWiki" : {
         "private" : true,
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
@@ -91,12 +91,16 @@
         "sqlite3" : {
             "path" : "../data/sqlite6.db"
         },
-        "baseHost" : "tatolocal.org:8080",
-        "innerCssFolder" : "../resources/css/",
-        "innerImgFolder" : "../resources/img/",
-        "innerJsFolder" : "../resources/js/",
+        "baseHost" : "YOURHOST",
+        "innerCssFolder" : "../resources/skins/responsive/css/",
+        "innerImgFolder" : "../resources/skins/responsive/img/",
+        "innerJsFolder" : "../resources/skins/responsive/js/",
         "imgPath" : "/img/",
         "cssPath" : "/css/",
         "jsPath" : "/js/"
-	}
+	},
+   "views" : {
+        "default_skin" : "responsive"
+    },
+
 }

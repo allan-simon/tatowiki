@@ -1,0 +1,84 @@
+<% c++ #ifndef SKIN_RESPONSIVE_LAYOUT_ARTICLE_EDITION %>
+<% c++ #define SKIN_RESPONSIVE_LAYOUT_ARTICLE_EDITION %>
+<% c++ #include "contents/Articles.h" %>
+<% skin responsive %>
+/**
+ * @brief Common template used by all the page related to
+ *        article edition
+ */
+
+<% view article_edition uses contents::BaseContent extends master %>
+
+<% template group_css() %>
+    <% include css_link("external/wmd.css") %>
+<% end template %>
+
+
+<% template footer_js() %>
+    <% include js_link("external/wmd.combined.min.js") %>
+    <% include js_link("mardown_editor.js") %>
+<% end template %>
+
+<% template title_area(forms::articles::BaseArticleForm & form) %>
+<tr>
+    <td>
+        <label for="<%= form.title.name() %>">
+            <%= form.title.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input form.title %>
+    </td>
+</tr>
+<% end template %>
+
+<% template summary_text(forms::articles::BaseArticleForm & form) %>
+<tr>
+    <td>
+        <label for="<%= form.summary.name() %>">
+            <%= form.summary.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input form.summary %>
+    </td>
+</tr>
+<% end template %>
+
+
+
+<% template editor_area(forms::articles::BaseArticleForm & form) %>
+<tr>
+    <td>
+        <label for="<%= form.content.name() %>">
+            <%= form.content.message() %>
+        </label>
+    </td>
+    <td>
+        <div id="editor-button-bar"></div>
+        <% form input form.content %>
+    </td>
+</tr>
+<% end template %>
+
+<% template save_buttons(forms::articles::BaseArticleForm & form) %>
+    <div class="submit">
+
+        <% form input form.saveAndView %>
+    </div>
+    <div class="submit">
+        <% form input form.saveAndContinue %>
+    </div>
+<% end template %>
+
+<% template preview_module() %>
+<% include begin_module() %>
+    <h2><% gt "Preview" %></h2>
+    <div id="editor-preview"></div>
+<% include end_module() %>
+<% end template %>
+
+<% end view %>
+<% end skin %>
+
+<% c++ #endif %>

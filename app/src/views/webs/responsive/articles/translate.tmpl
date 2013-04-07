@@ -1,0 +1,71 @@
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view articles_translate uses contents::articles::Translate extends article_edition %>
+<% template title() %><% gt "Translate article" %><% end template %>
+
+<% template css() %>
+    <% include css_link("articles/create.css") %>
+<% end template %>
+
+
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h2><% gt "Translate article" %></h2>
+    <form method="POST" action="/articles/translate_treat" >
+    <% form input translateForm.slug %>
+    <table>
+        <% include title_area(translateForm) %>
+        <% include lang_select(translateForm) %>
+        <% include slug_text(translateForm) %>
+        <% include editor_area(translateForm) %>
+        <% include summary_text(translateForm) %>
+    </table>
+    <% include save_buttons(translateForm) %>
+    </form>
+<% include end_module() %>
+<% include preview_module() %>
+<% end template %>
+
+
+<% template lang_select(forms::articles::Translate & form) %>
+<tr>
+    <td>
+        <label for="<%= form.transLang.name() %>">
+            <%= form.transLang.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input form.transLang %>
+    </td>
+</tr>
+<% end template %>
+
+
+<% template slug_text(forms::articles::Translate & form) %>
+<tr>
+    <td>
+        <label for="<%= form.translationSlug.name() %>">
+            <%= form.translationSlug.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input form.translationSlug %>
+    </td>
+</tr>
+<% end template %>
+
+
+/**
+ *
+ */
+<% template annexe_content() %>
+   <% include markdown_help() %> 
+<% end template %>
+
+
+
+
+<% end view %>
+<% end skin %>
+

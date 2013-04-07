@@ -1,0 +1,337 @@
+<% c++ #ifndef RESPONSIVE_SKIN_LAYOUT_MASTER %>
+<% c++ #define RESPONSIVE_SKIN_LAYOUT_MASTER %>
+<% c++ #include <cppcms_skel/generics/Config.h> %>
+<% c++ #include "cppcms_skel/contents/content.h" %>
+<% c++ #include "generics/Config.h" %>
+<% skin responsive %>
+<% view master uses contents::BaseContent %>
+
+<% template render() %><!DOCTYPE html>
+<html lang="TODO">
+    <head><%include head() %></head>
+    <body><%include body() %></body>
+</html>
+<% end template %>
+
+
+/**
+ *
+ */
+<% template body() %>
+    <div class="navbar navbar-fixed-top"><%include navigation_bar() %></div>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span8">
+                <% include message() %>
+                <% include main_content() %>          
+            </div>
+            <div class="span4">
+                <%include annexe_content() %>
+            </div>
+        </div>
+        <hr>
+        <% include footer() %>
+    </div>
+    <% include footer_js() %>
+<% end template %>
+
+
+<% template top_menu() %>
+<div id="top_menu_container">
+    <div id="top_menu">
+        <% include navigation_menu() %>
+        <% include user_menu() %>
+    </div>
+</div>
+<% end template %>
+
+/** 
+ * @brief used to abstract how modules are organized
+ * 
+ * @since 7 April 2013
+ */
+<% template begin_module() %><div class="well"><% end template %>
+<% template end_module() %></div><% end template %>
+
+
+
+
+
+/**
+ *
+ */
+<% template title() %>TODO: replace this<% end template %>
+
+/**
+ *
+ */
+<% template head() %>
+    <meta charset="utf-8">
+    <title><% include title() %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<% include description() %>">
+    <meta name="author" content="<% include author() %>">
+    <% include global_css() %>
+    <% include group_css() %>
+    <% include local_css() %>
+    <% include head_global_js() %>
+    <% include head_group_js() %>
+    <% include head_local_js() %>
+
+<% end template %>
+
+/**
+ * @brief Will be used to display a message to the user, to aknowledge
+ *        from the success or failure of an action he just made
+ * 
+ * @since 30 August 2011
+ */
+<% template message() %>
+
+    <% if not message.empty() %>
+        <% include begin_module() %>
+            <div class="message" id="flashMessage">
+                <%= message | raw %>
+            </div>
+        <% include end_module() %>
+    <% end %>
+<% end template %>
+
+
+<% template annexe_content() %>
+    <% include begin_module() %>
+        TODO: replace this by actual content
+    <% include end_module () %>
+<% end template %>
+
+
+<% template main_content() %>
+    <% include begin_module() %>
+        TODO replace this by actual content
+    <% include end_module() %>
+<% end template %>
+
+<% template navigation_bar() %>
+<div class="navbar-inner">
+    <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="TODO">TODO</a>
+        <div class="nav-collapse"><% include navigation_menu() %></div>
+        <% include user_menu() %>
+    </div>
+</div>
+<% end template %>
+
+<% template navigation_menu() %>
+<ul class="nav">
+    <li class="active">
+        <a href="/"><% gt "Home" %></a>
+    </li>
+    <li>
+        <a href="/history/recent-changes" >
+            <% gt "Recent changes" %>
+        </a>
+    </li>
+</ul>
+<% end template %>
+
+<% template user_menu() %>
+<div id="user_menu">
+    <ul class="nav">
+    <% if not currentUserHelper.is_logged() %>
+        <li>
+            <a href="/users/register-new" >
+                <% gt "Register" %>
+            </a>
+        </li>
+        <li>
+            <a href="/users/login" >
+                <% gt "Login" %>
+            </a>
+        </li>
+    <% else %>
+        <li>
+            <a href="/users/logout" >
+                <% gt "Logout" %>
+            </a>
+        </li>
+        <li>
+            <a href="/users/change-password" >
+                <% gt "Change password" %>
+            </a>
+        </li>
+    <% end %>
+    </ul>
+</div>
+<% end template %>
+
+/**
+ *
+ */
+<% template footer() %>
+<footer><div class="container">
+    <p>&copy; Allan Simon, powered by tatowiki</p>
+</div></footer>
+<% end template %>
+
+
+
+/**
+ *
+ */
+<% template markdown_help() %>
+    <% include begin_module() %>
+    <h2><% gt "Note" %></h2>
+    
+    <p>
+        <%gt "This wiki uses the markdown syntax." %>
+    </p>
+    <% include end_module() %>
+    <% include begin_module() %>
+    <h2><% gt "How to format text" %></h2>
+    <ul>
+        <li>
+            <% gt "#Big title" %>
+        </li>
+        <li>
+            <% gt "##Smaller title" %>
+        </li>
+
+        <li>
+            <% gt "[text](http://example.com)" %>
+        </li>
+
+        <li>
+            <% gt "[text](other-article)" %>
+        </li>
+
+        <li>
+            <% gt "**bold**" %>
+        </li>
+
+        <li>
+            <% gt "*italic*" %>
+        </li>
+
+    </ul>
+    <% include end_module() %>
+<% end template %>
+
+
+/**
+ *
+ */
+<% template global_css() %>
+    <!-- Le styles -->
+    <% include css_link("external/bootstrap.min.css") %>
+    <% include css_link("layouts/default.css") %>
+<% end template %>
+
+
+/**
+ * @brief Used to include the css that will be share by a group
+ *        of pages
+ * 
+ * @since 22 March 2013
+ */
+<% template group_css() %><% end template %>
+
+/**
+ *
+ */
+<% template local_css() %><% end template %>
+
+/**
+ *
+ */
+<% template head_global_js() %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<% end template %>
+
+/**
+ *
+ */
+<% template head_local_js() %><% end template %>
+
+/**
+ *
+ */
+<% template head_group_js() %><% end template %>
+
+
+
+
+/**
+ * @brief Used to include the javascript that does not need to be loaded
+ *        since the beginning, so that page would render faster
+ * 
+ * @since 20 March 2013
+ */
+<% template footer_js() %>
+<% include js_link("external/jquery.min.js") %>
+<% include js_link("external/bootstrap.min.js") %>
+<% end template %>
+
+
+/**
+ *
+ */
+<% template article_url( std::string const& lang, std::string const& slug) %><% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %><% end template %>
+
+
+/**
+ * @brief Return the raw url to view the diff between two versions of
+ *        an article
+ *        Note : this template is on one line to avoid unwanted space/new line
+ *
+ * @since 20 March 2013
+ */
+<% template diff_url( int articleId, int oldVersion, int newVersion) %>/history/show-diff-between/<%= articleId %>/<%= oldVersion %>/<%= newVersion %><% end template %>
+
+
+
+
+
+/**
+ * @brief Used to generate a script tag for a javascript file
+ *
+ * @since 20 March 2013
+ */
+<% template js_link(std::string const& jsFile) %><script
+    src="<% c++ out() << Config::get_js_path(); %><%= jsFile %>"
+    type="text/javascript"
+></script><% end template %>
+
+
+<% template css_link(std::string const& cssFile) %><link 
+    href="<% c++ out() << Config::get_css_path(); %><%= cssFile %>"
+    rel="stylesheet"
+    type="text/css"
+/><% end template %>
+
+
+<% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
+    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
+    width="<%= width %>"
+    height="<%= height %>"
+    alt="<%= alt %>"
+/><%end template %>
+
+
+
+
+<% template description() %>TODO<%end template%>
+
+<% template author() %>TODO <% end template %>
+
+
+
+<% end view %>
+<% end skin %>
+<% c++ #endif %>
