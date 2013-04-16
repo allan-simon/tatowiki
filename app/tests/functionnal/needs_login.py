@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 from httpclient import Cookie, Session
-import urllib
 
 
 #we first try to access to a page that require login
@@ -17,46 +16,44 @@ def login(
     LOGIN_TREAT_URL = '/users/login_treat'
 
 
+    # we should be redirected to the login page when we try to access
+    # to a page reserved to registered users
     session.transmit(NEW_ARTICLE_URL)
-    if (session.status == 404):
-        print("ERROR this page is supposed to exist")
-        return None
-    if (session.status != 302):
-        print("ERROR not supposed to access to this")
-        return None
-
+    if (not session.test_http_status([302])):
+        print('ERROR we should be redirected when not logged');
+        return False
     loginURL = session.get_redirection()
+    #replace the encoded url by url encode
     if (loginURL != '/users/login?from=%2farticles%2fcreate%2ffoo'):
         print('ERROR we\'re not redirected to the login page')
-        return None
+        return False
 
-    postData = urllib.urlencode({
+
+    # we post the form
+    postData = {
         'username' : username,
         'password' : password,
         'rememberMe' : CHECKED,
         'login' : 'Log in'
-    })
-    loginTreatHTML = session.transmit(
-        url = LOGIN_TREAT_URL,
-        post_data = postData,
-        headers = {'Cookie': session.received['cppcms_session'] }
-    );
-    if (session.status != 302):
+    }
+    loginTreatHTML = session.transmit_post_form(
+        post_url = LOGIN_TREAT_URL,
+        post_data_array = postData
+    )
+    if (not session.test_http_status([302])):
         print("ERROR while trying to login")
-        return None
+        return False
 
+    # now try to access to a login-only page
     newArticleHTML = session.transmit(
         NEW_ARTICLE_URL,
-        headers = {'Cookie': session.received['cppcms_session'] }
     );
-
-    if (session.status == 200):
-        print("OK")
-    else:
+    if (not session.test_http_status([200])):
         print("ERROR we're supposed to be logged in now")
-        return None
-    return session
-    
+        return False
+        
+    return True
+
 if __name__ == '__main__':
     login()
 

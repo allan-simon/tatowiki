@@ -3,9 +3,10 @@
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 PORT=8080
-HOST = 'en.tatolocal'
+HOST = 'en.tatolocal.org'
 
 import httplib
+import urllib
 
 class Cookie:
 
@@ -78,7 +79,7 @@ class Session:
         received={}
         conn=httplib.HTTPConnection(HOST,PORT)
         conn.set_debuglevel(self.debug_level)
-        headers['Cookie']=self.getcookies()
+        headers['Cookie']=self.getcookies() 
         if post_data:
             headers['Content-Type']=content_type
             conn.request('POST',url,post_data,headers)
@@ -93,6 +94,7 @@ class Session:
         self.update_state()
         return content
 
+    ################
     def get_redirection(self):
         if (self.status in [302,303]):
             for name,value in self.headers:
@@ -100,6 +102,7 @@ class Session:
                     return value
         return ''
     
+    ################
     def update_state(self):
         if self.print_cookies:
             print("Got following cookies")
@@ -116,7 +119,36 @@ class Session:
                     self.state[name] = cookie
         if self.print_cookies:
             print("---------------------")
+    def debug_cookies(self):
+        print("Debug cookies")
+        for name,cookie in self.received.items():
+            print(cookie)
+        print("---------------------")
 
+    ################
+    def test_http_status(
+        self,
+        authorized = [200]
+    ):
+        if self.status not in authorized :
+            if 404 in authorized:
+                print("ERROR this page is not supposed to exist")
+            if 200 in authorized:
+                print("ERROR we're supposed to access to this page directly")
+            if 302 in authorized:
+                print("ERROR we're supposed to be redirected")
+            return False
+        return True
 
-
-
+        
+    ################
+    def transmit_post_form(
+        self,
+        post_url,
+        post_data_array,
+    ):
+        postData = urllib.urlencode(post_data_array)
+        return self.transmit(
+            url = post_url,
+            post_data = postData
+        )
