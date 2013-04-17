@@ -6,6 +6,7 @@ import urllib
 
 
 def create_article(
+    session = Session(),
     lang = 'en',
     title = 'test',
     slug = 'test',
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     if (not create_article(session)):
         error = True
         print("ERROR while trying to add a normal article")
-    if (create_article(title = '',slug='prout')):
+    if (create_article(session,title = '',slug='prout')):
         error = True
         print("ERROR we're not supposed to create an article with an empty title")
     if (not error):
