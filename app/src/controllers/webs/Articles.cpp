@@ -165,8 +165,8 @@ void Articles::edit_treat() {
     form.load(context());
 
     if (!form.validate()) {
-        //TODO add in a flash message
-        // why the form didn't validate
+        //TODO add a more precise message
+        set_message(_("The form is not valid."));
         go_back_to_previous_page();
         return;
     }
@@ -283,7 +283,9 @@ void Articles::create_treat() {
     form.load(context());
 
     if (!form.validate()) {
+        set_message(_("The form is not valid."));
         go_back_to_previous_page();
+        return;
     }
     
     const std::string lang = get_interface_lang();

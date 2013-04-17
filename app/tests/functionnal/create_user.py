@@ -15,7 +15,7 @@ CHECKED = 'y'
 #we need something to keep trace of redirection etc.  to emulate a 'real' browser
 #also something to send form , see the test in cppcms
 
-session = Session()
+session = Session(print_cookies = False)
 
 #we first try to access to a page that require login
 #we're supposed to be redirected to the login page

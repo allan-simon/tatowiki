@@ -65,6 +65,7 @@ class Session:
         self.received={}
         self.print_cookies = print_cookies
         self.debug_level = debug_level
+        self.errors = []
 
     def getcookies(self):
         allcookies=''
@@ -132,11 +133,11 @@ class Session:
     ):
         if self.status not in authorized :
             if 404 in authorized:
-                print("ERROR this page is not supposed to exist")
+                self.errors.append("ERROR this page is not supposed to exist")
             if 200 in authorized:
-                print("ERROR we're supposed to access to this page directly")
+                self.errors.append("ERROR we're supposed to access to this page directly")
             if 302 in authorized:
-                print("ERROR we're supposed to be redirected")
+                self.errors.append("ERROR we're supposed to be redirected")
             return False
         return True
 
