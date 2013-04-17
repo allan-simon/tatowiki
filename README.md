@@ -1,8 +1,10 @@
 #Introduction to Tatowiki
 
-Tatowiki is a wiki in c++ built upon cppcms and cppcms-skeleton
+Tatowiki is a wiki in c++ built upon cppcms and cppcms-skeleton, it is made for generic purpose and high performance.
 
-**Note:** This software is still at a very early stage, for the moment it's focused on producing something usable for Tatoeba, but in the future the goal would be to provide an easy to setup/custom/extand wiki.
+**Note:** This software is still at a very early stage, but since April 2013, it's now have several skin and a quite neutral and responsive one, so it can start to be used by people who need a basic wiki, with high performance and a low memory-print or a wiki that display fine on a mobile phone.
+
+Other features will be added step by step. The goal at the end is to have a complete wiki, that can easily be extended with plugins. 
 
 #Requirement for Tatowiki
 
