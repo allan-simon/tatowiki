@@ -58,7 +58,7 @@ if __name__ == '__main__':
         error = True
         print("ERROR we're not supposed to create an article with an empty title")
     if (not error):
-        print(OK)
+        print("OK")
 
 
 
