@@ -28,12 +28,13 @@
 
 #include <cppcms_skel/controllers/webs/Controller.h>
 
-
 //needed to avoid to include models directly here,
 //which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+namespace cppcmsskel {
 namespace models {
     class Users;
     // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+}
 }
 
 namespace controllers {
@@ -62,7 +63,7 @@ class Users : public Controller {
          * @brief TODO
          * @since %%MODEL_CTRL_TODAY%%
          */
-        models::Users *usersModel;
+        cppcmsskel::models::Users *usersModel;
 
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
     

@@ -24,12 +24,14 @@
  */
 
 #include <cppcms/session_interface.h>
+#include <cppcms_skel/models/Users.h>
+#include <cppcms_skel/generics/Config.h>
+
 #include "Users.h"
 
 
 #include "contents/Users.h"
 
-#include "models/Users.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -55,7 +57,7 @@ Users::Users(cppcms::service& serv) :
 
 
 
-    usersModel = new models::Users();
+    usersModel = new cppcmsskel::models::Users();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 

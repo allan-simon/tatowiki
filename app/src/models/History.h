@@ -41,7 +41,7 @@ namespace models {
  * @since 30 October 2012       
  *
  */
-class History : public SqliteModel {
+class History : public cppcmsskel::models::SqliteModel {
     public:
         /**
          * @brief Constructor

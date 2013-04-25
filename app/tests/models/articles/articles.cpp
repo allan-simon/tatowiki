@@ -1,6 +1,6 @@
 #include <iostream>
 #include "models/Articles.h"
-#include "test.h"
+#include <cppcms_skel/generics/test.h>
 
 #define TEST_NAME "models_articles_articles"
 
@@ -10,15 +10,15 @@
 int main () {
 
     bool noTestFailed = true;
-    models::SqliteModel articlesModels(TEST_NAME ".db");
+    cppcmsskel::models::SqliteModel articlesModels(TEST_NAME ".db");
 
-    TEST_RESULT_SHOULD_WORK(
+    CPPCMSSKEL_TEST_RESULT_WORK(
         "Try load the database ... " ,
         articlesModels.import_sql_file(DB_SQL_FILE_PATH),
         noTestFailed
     );
     
-    TEST_RESULT_SHOULD_WORK(
+    CPPCMSSKEL_TEST_RESULT_WORK(
         "Check articles table fields all there ... " ,
         articlesModels.import_sql_file(SQL_TABLE_STRUCTURE_CHECK),
         noTestFailed

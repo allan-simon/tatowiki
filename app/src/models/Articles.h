@@ -48,7 +48,7 @@ namespace models {
  * @since 30 October 2012       
  *
  */
-class Articles : public SqliteModel {
+class Articles : public cppcmsskel::models::SqliteModel {
     public:
         /**
          * @brief Constructor, load the article model and link it

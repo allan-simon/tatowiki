@@ -1,8 +1,8 @@
 #include <iostream>
+#include <cppcms_skel/generics/test.h>
 #include "models/Articles.h"
-#include "test.h"
 
-#define TEST_NAME "models_group_id_from_lang_and_slug_test"
+#define CPPCMSSKEL_TEST_NAME "models_group_id_from_lang_and_slug_test"
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
 #define SQL_FILL_ARTICLES "../tests/models/articles/fill_articles.sql"
 
@@ -18,16 +18,16 @@ int main() {
 
 
     bool noTestFailed = true;
-    models::Articles articlesModels(TEST_NAME ".db");
+    models::Articles articlesModels(CPPCMSSKEL_TEST_NAME ".db");
 
-    TEST_RESULT_SHOULD_WORK(
+    CPPCMSSKEL_TEST_RESULT_WORK(
         "Try load the database ... " ,
         articlesModels.import_sql_file(DB_SQL_FILE_PATH),
         noTestFailed
     );
     
     // we first load some raw articles on the database
-    TEST_RESULT_SHOULD_WORK(
+    CPPCMSSKEL_TEST_RESULT_WORK(
         "Try to load the database with some data ... " ,
         articlesModels.import_sql_file(SQL_FILL_ARTICLES),
         noTestFailed
