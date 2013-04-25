@@ -79,6 +79,7 @@ struct Translate : public BaseArticleForm {
         add(transLang);
         add(translationSlug);
         add(content);
+        add(summary);
         add(saveAndView);
         add(saveAndContinue);
 
