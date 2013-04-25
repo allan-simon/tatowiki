@@ -76,9 +76,17 @@ class Session:
                 allcookies+= '; ' + value.pair()
         return allcookies
 
-    def transmit(self,url,post_data=None,content_type='application/x-www-form-urlencoded',headers={}):
+    def transmit(
+        self,
+        url,
+        post_data=None,
+        content_type='application/x-www-form-urlencoded',
+        headers={},
+        host = HOST,
+        port = PORT
+    ):
         received={}
-        conn=httplib.HTTPConnection(HOST,PORT)
+        conn=httplib.HTTPConnection(host,port)
         conn.set_debuglevel(self.debug_level)
         headers['Cookie']=self.getcookies() 
         if post_data:
