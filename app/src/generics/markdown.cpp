@@ -58,10 +58,17 @@ cppcms::xss::rules const &xss_filter() {
     r.add_tag("pre",rules::opening_and_closing);
     r.add_property("pre","name",booster::regex("\\w+"));
     r.add_property("pre","class",booster::regex("\\w+"));
+    
+    // rules for a tag
     r.add_tag("a",rules::opening_and_closing);
-    r.add_uri_property("a","href");
+    r.add_uri_property(
+        "a",
+        "href",
+        "(http|https|irc|xmpp)"
+    );
     r.add_property("a","name",cl_id);
     r.add_property("a","title",cl_id);
+
     r.add_tag("hr",rules::stand_alone);
     r.add_tag("br",rules::stand_alone);
     
