@@ -39,20 +39,20 @@ namespace controllers {
 namespace webs { 
 /**
  * @class Media
- * @brief Class to manage the media (image/audio/video) available on the wiki
- * @since 26 March 2013
+ * @brief @TODO add a description
+ * @since 19 May 2013
  */
 class Media : public Controller {
     public:
         /**
          * @brief Constructor
-         * @since 26 March 2013
+         * @since 19 May 2013
          */
         Media(cppcms::service &serv);
 
         /**
          * @brief Destructor
-         * @since 26 March 2013
+         * @since 19 May 2013
          */
         ~Media();
 
@@ -60,17 +60,14 @@ class Media : public Controller {
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
         /**
-         * @brief Display a form to upload an image
-         * @since 26 March 2013
+         * @brief @TODO add a description
+         * @since 19 May 2013
          */
         void upload_image();
 
         /**
-         * @brief Treat a form that has uploaded an image
-         *        and will redirect to the previous page
-         *        with a session message saying if it was
-         *        successful or not
-         * @since 26 March 2013
+         * @brief @TODO add a description
+         * @since 19 May 2013
          */
         void upload_image_treat();
 

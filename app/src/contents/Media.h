@@ -38,14 +38,14 @@ namespace media {
 /**
  * @class Media
  * @brief Base content for every action of Media controller
- * @since 26 March 2013
+ * @since 19 May 2013
  */
 struct Media : public BaseContent {
 };
 
 /**
  * @struct UploadImage
- * @since  26 March 2013
+ * @since  19 May 2013
  * @brief 
  */
 struct UploadImage : public Media {

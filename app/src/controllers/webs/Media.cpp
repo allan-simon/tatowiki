@@ -78,14 +78,7 @@ void Media::upload_image_treat() {
 
     if (!form.validate()) {
         go_back_to_previous_page();
-        return;
     }
-    //auto file = form.image.value();
-    //std::string filename = form.image.value()->filename(); 
-    //TODO test if disk full etc.
-    //file.save_to(
-    //    //config::upload dir+ filename
-    //);
 
 }
 

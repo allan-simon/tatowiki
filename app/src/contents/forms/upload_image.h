@@ -36,7 +36,7 @@ namespace media {
 /**
  * @struct upload_image
  * @brief  @TODO
- * @since  26 March 2013
+ * @since  19 May 2013
  *
  */
 struct UploadImage : public cppcms::form {
