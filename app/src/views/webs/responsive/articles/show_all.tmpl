@@ -12,9 +12,11 @@
     <ul>
         <% item %>
         <li>    
+            <%= article.lang %>:
             <a href="<% include article_url(article.lang,article.slug) %>">
-                <%= article.lang %>:<%= article.title %>
+                <%= article.title %>
             </a>
+            ( <%= article.slug %> )
         </li>
         <% end %>
     </ul>
