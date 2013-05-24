@@ -13,7 +13,7 @@
         <% item %>
         <li>    
             <a href="<% include article_url(article.lang,article.slug) %>">
-                <%= article.title  %>
+                <%= article.lang %>:<%= article.title %>
             </a>
         </li>
         <% end %>
