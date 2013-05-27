@@ -556,6 +556,7 @@ results::Article Articles::get_from_result(
         article.content = res.get<std::string>("content");
         article.slug = res.get<std::string>("slug");
         article.title = res.get<std::string>("title");
+        article.isLocked = false;
     } else {
         article.id = 0;
     }
