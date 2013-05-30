@@ -251,9 +251,11 @@ results::ArticlesVersions History::recent_changes(
         "   username "
         "FROM history "
         "JOIN users ON (history.user_id = users.id) "
-        "ORDER BY edit_time DESC"
+        "ORDER BY edit_time DESC "
+        "LIMIT ?"
     );
 
+    recentChanges.bind(number);
     cppdb::result res = recentChanges.query();
     results::ArticlesVersions articlesVersions;
     while (res.next()) {

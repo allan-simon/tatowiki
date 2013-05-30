@@ -28,13 +28,13 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <booster/log.h>
 #include <cppdb/frontend.h>
 #include <cppcms/localization.h>
 
 #include "models/Articles.h"
 
 
-#define _(X) cppcms::locale::translate((X))
 
 namespace models {
 
@@ -122,7 +122,7 @@ bool Articles::edit_from_lang_and_slug(
     try {
         edit.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
+        BOOSTER_ERROR("tatowiki") << e.what();
         edit.reset();
         return false;
     }
@@ -163,8 +163,7 @@ int Articles::create_from_lang_and_slug(
     try {
         create.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
-        std::cerr << e.what();
+        BOOSTER_ERROR("tatowiki") << e.what();
         create.reset();
         return ARTICLE_CREATION_ERROR;
     }
@@ -209,7 +208,7 @@ bool Articles::remove(
     try {
         moveToDeleted.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
+        BOOSTER_ERROR("tatowiki") << e.what();
         std::cerr << e.what();
         moveToDeleted.reset();
         return false;
@@ -230,8 +229,7 @@ bool Articles::remove(
     try {
         remove.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
-        std::cerr << e.what();
+        BOOSTER_ERROR("tatowiki") << e.what();
         remove.reset();
         return false;
     }
@@ -432,8 +430,7 @@ int Articles::add_to_group(
     try {
         addToGroup.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
-        std::cerr << e.what();
+        BOOSTER_ERROR("tatowiki") << e.what();
         addToGroup.reset();
         return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
     }
@@ -509,14 +506,13 @@ int Articles::save_conflict(
     try {
         create.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
-        std::cerr << e.what();
+        BOOSTER_ERROR("tatowiki") << e.what();
         create.reset();
         return CONFLICT_CREATION_ERROR;
     }
 
     // the last inserted ID
-    const int conflictId = create.last_insert_id();
+    const int conflictId = static_cast<int>(create.last_insert_id());
     create.reset();
     return conflictId;
 
