@@ -28,9 +28,9 @@ namespace mkd {
 					  
 	static const int no_header    = 0x0100;  // don't process header blocks 
 	static const int tabstop      = 0x0200;  // expand tabs to 4 spaces 
-};
+}
 
-std::string markdown_to_html(char const *str,int len,int flags);
+std::string markdown_to_html(char const *str,size_t len,unsigned flags);
 std::string markdown_format_for_highlighting(std::string const &,std::string const &html_class);
 
 std::string mymarkdown(std::string const &s);

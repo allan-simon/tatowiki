@@ -14,10 +14,12 @@ extern "C" {
 	#include <mkdio.h>
 }
 
+cppcms::xss::rules const& xss_filter(void);
+
 /**
  *
  */
-cppcms::xss::rules const &xss_filter() {
+cppcms::xss::rules const &xss_filter(void) {
     static cppcms::xss::rules r;
     static bool initialized = false;
     if(initialized) {
@@ -109,11 +111,18 @@ struct init_it {
 /**
  *
  */
-std::string markdown_to_html(char const *str,int len,int flags)
-{
+std::string markdown_to_html(
+    char const *str,
+    size_t len,
+    unsigned flags
+) {
 	/// It is safe to const cast as mkd_string does not 
 	/// alter original string
-	MMIOT *doc = mkd_string(const_cast<char *>(str),len,flags);
+	MMIOT *doc = mkd_string(
+        const_cast<char *>(str),
+        static_cast<int>(len),
+        flags
+    );
 	if(!doc) {
 		throw std::runtime_error("Failed to read document");
 	}
@@ -129,9 +138,9 @@ std::string markdown_to_html(char const *str,int len,int flags)
 	content_size = mkd_document(doc,&content_ptr);
 	if(flags & mkd::toc) {
 		int toc_size = mkd_toc(doc,&toc_ptr);
-		result.assign(toc_ptr,toc_size);
+		result.assign(toc_ptr, static_cast<size_t>(toc_size));
 	}
-	result.append(content_ptr,content_size);
+	result.append(content_ptr,static_cast<size_t>(content_size));
 	free(toc_ptr);
 	mkd_cleanup(doc);
 
@@ -144,14 +153,15 @@ std::string markdown_to_html(char const *str,int len,int flags)
 
 std::string mymarkdown(std::string const &s)
 {
-    int flags = mkd::no_pants;
+    mkd_flag_t flags = mkd::no_pants;
     if(s.compare(0,10,"<!--toc-->")==0) {
         flags |= mkd::toc;
     }
 
     std::string html = markdown_to_html(
         s.c_str(),
-        s.size(),flags
+        s.size(),
+        flags
     );
     
 	return cppcms::xss::filter(
@@ -159,7 +169,7 @@ std::string mymarkdown(std::string const &s)
         xss_filter(),
         cppcms::xss::escape_invalid
     );
-};
+}
 
 
 
