@@ -101,21 +101,21 @@ namespace results {
             Change(){};
 
             Change(
-                int version,
-                unsigned int editTime,
-                const std::string &summary,
-                const std::string &byUserName,
-                const int byUserId,
-                const int nextVersion = -1,
-                const int previousVersion = -1
+                int versionParam,
+                unsigned int editTimeParam,
+                const std::string &summaryParam,
+                const std::string &byUserNameParam,
+                const int byUserIdParam,
+                const int nextVersionParam = -1,
+                const int previousVersionParam = -1
             ):
-            version(version),
-            editTime(editTime),
-            summary(summary),
-            byUserName(byUserName),
-            byUserId(byUserId),
-            nextVersion(nextVersion),
-            previousVersion(previousVersion) {
+            version(versionParam),
+            editTime(editTimeParam),
+            summary(summaryParam),
+            byUserName(byUserNameParam),
+            byUserId(byUserIdParam),
+            previousVersion(previousVersionParam),
+            nextVersion(nextVersionParam) {
                 //Nothing yet except initialization of the struct fields
             }
     };

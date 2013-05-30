@@ -68,17 +68,17 @@ namespace results {
 
         Article() {};
         Article(
-            const int id,
-            const std::string &lang,
-            const std::string &slug,
-            const std::string &title,
-            const std::string &content = ""
+            const int idParam,
+            const std::string &langParam,
+            const std::string &slugParam,
+            const std::string &titleParam,
+            const std::string &contentParam = ""
         ) :
-            id(id),//TODO replace
-            lang(lang),
-            slug(slug),
-            title(title),
-            content(content),
+            id(idParam),
+            lang(langParam),
+            slug(slugParam),
+            title(titleParam),
+            content(contentParam),
             isLocked(false)
         {
         };
