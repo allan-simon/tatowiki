@@ -55,7 +55,7 @@ void Config::isPrivate(bool privateWiki) {
  */
 std::map<std::string, std::string> Config::get_lang_to_main_pages() {
     return Config::get_instance()->lang2MainPages;
-};
+}
 
 
 /**
