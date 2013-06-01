@@ -43,6 +43,12 @@ struct UploadImage : public cppcms::form {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
 
+    
+    /**
+     * @brief Will contain the uploaded file
+     */
+    cppcms::widgets::file image;
+
     /**
      * @brief button to submit the form
      */
@@ -54,6 +60,18 @@ struct UploadImage : public cppcms::form {
     UploadImage() {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
+    
+        image.filename(
+            booster::regex(".*\\.(jpg|jpeg|png|JPG|PNG)")
+        );
+        // magic for JPEG
+        image.add_valid_magic("\xFF\xD8");
+        // magic for PNG
+        image.add_valid_magic("\x89\x50\x4E\x47\x0D\x0A\x1A\x0A");
+
+        image.limits(0, 1024*1024);
+        image.non_empty();
+        add(image);
 
         add(submit);
         submit.name(

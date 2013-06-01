@@ -24,6 +24,7 @@
  */
 
 #include <cppcms/session_interface.h>
+#include <cppcms/http_file.h>
 #include "Media.h"
 
 
@@ -31,6 +32,9 @@
 
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
+#ifndef _
+#define _(X) cppcms::locale::translate(X)
+#endif
 
 namespace controllers {
 namespace webs {
@@ -75,10 +79,41 @@ void Media::upload_image_treat() {
 
     forms::media::UploadImage form;
     form.load(context());
-
+    
+    form.image.load(context());
     if (!form.validate()) {
+        if (!form.image.validate()) {
+            set_message(_(
+                "Please check your image type (we only accept "
+                "jpeg/png images) or size ( < 1MB)"
+            )); 
+        }
         go_back_to_previous_page();
+        return;
     }
+    std::string filename = form.image.value()->filename(); 
+
+
+    try {
+        //TODO if we keep the same name, we should then check that there's
+        // not already a file with the same name
+        form.image.value()->save_to(
+            filename 
+        );
+    } catch (cppcms::cppcms_error const &e) {
+        set_message(_(
+            "Internal error while trying to upload the file."
+            "If you see this message again, try to contact an"
+            " administrator"
+        ));
+        go_back_to_previous_page();
+        return;
+    }
+    //TODO precise the path of the file
+    set_message(_(
+        "File uploaded successfully."
+    ));
+    go_back_to_previous_page();
 
 }
 
