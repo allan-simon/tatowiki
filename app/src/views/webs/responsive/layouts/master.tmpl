@@ -331,6 +331,27 @@
 <% template author() %>TODO <% end template %>
 
 
+/**
+ *
+ * @brief Display a form's widget as an HTML table's row
+ *
+ * @since 22 April 2013
+ */
+<% template widget_row(cppcms::widgets::base_widget & widget) %>
+<tr>
+    <td>
+        <label for="<%= widget.name() %>">
+            <%= widget.message() %>
+        </label>
+    </td>
+    <td>
+        <% form input widget %>
+    </td>
+</tr>
+<% end template %>
+
+
+
 
 <% end view %>
 <% end skin %>
