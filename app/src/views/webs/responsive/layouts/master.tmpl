@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span8">
-                <% include message() %>
+                <% include messages() %>
                 <% include main_content() %>          
             </div>
             <div class="span4">
@@ -86,14 +86,15 @@
  * 
  * @since 30 August 2011
  */
-<% template message() %>
-
-    <% if not message.empty() %>
-        <% include begin_module() %>
-            <div class="message" id="flashMessage">
-                <%= message | raw %>
+<% template messages() %>
+    <% if not messages.empty() %>
+        <% foreach message in messages %>
+        <% item %>
+            <div class="well alert alert-block alert-<%= message.type%>" >
+                <%= message.text | raw %>
             </div>
-        <% include end_module() %>
+        <% end %>
+        <% end foreach %>
     <% end %>
 <% end template %>
 

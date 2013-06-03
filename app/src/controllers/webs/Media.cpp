@@ -83,7 +83,7 @@ void Media::upload_image_treat() {
     form.image.load(context());
     if (!form.validate()) {
         if (!form.image.validate()) {
-            set_message(_(
+            add_error(_(
                 "Please check your image type (we only accept "
                 "jpeg/png images) or size ( < 1MB)"
             )); 
@@ -101,7 +101,7 @@ void Media::upload_image_treat() {
             filename 
         );
     } catch (cppcms::cppcms_error const &e) {
-        set_message(_(
+        add_error(_(
             "Internal error while trying to upload the file."
             "If you see this message again, try to contact an"
             " administrator"
@@ -110,7 +110,7 @@ void Media::upload_image_treat() {
         return;
     }
     //TODO precise the path of the file
-    set_message(_(
+    add_success(_(
         "File uploaded successfully."
     ));
     go_back_to_previous_page();

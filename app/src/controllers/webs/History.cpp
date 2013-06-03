@@ -193,7 +193,7 @@ void History::all_versions_of(const std::string slug) {
         slug
     );
     if (articleId == ARTICLE_DOESNT_EXIST_ERROR) {
-        set_message(_(
+        add_error(_(
             "You can't see the history of this article, "
             "because this article does not exist."
         ));
@@ -256,7 +256,7 @@ void History::show_diff_between(
     );
     
     if (diff.newContent.empty() || diff.oldContent.empty()) {
-        set_message(_(
+        add_error(_(
             "One of this two versions id maybe does not correspond to "
             "a version associated to this article"
         ));
@@ -296,7 +296,7 @@ void History::diff_with_previous_version_of(
     );
    
     if (previousVersion == HISTORY_UNKOWN_ERROR) {
-        set_message(_("Unknown error"));
+        add_error(_("Unknown error"));
         go_back_to_previous_page();
         return;
     }

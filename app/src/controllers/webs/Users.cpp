@@ -74,7 +74,7 @@ Users::~Users() {
  */
 void Users::logout() {
     current_user_logout();
-    set_message(_("Logout"));
+    add_info( _("Logout"));
     go_back_to_previous_page();
 
 }
@@ -118,7 +118,7 @@ void Users::login_treat() {
 
     // TODO maybe move that in the validate function of the form?
     if (!form.validate()) {
-        set_message("Form didn't validate");
+        add_error(_("The form is not valid"));
         go_back_to_previous_page();
         return;
     }
@@ -137,12 +137,13 @@ void Users::login_treat() {
         // on the login page
         // TODO the message is not displayed try to see why
         // certainly due to successive redirection
-        set_message("Login");
+        add_success(_("Login"));
+        
         redirect(
             form.previousUrl.value()
         );
     } else {
-        set_message("Password incorrect");
+        add_error(_("Password or username not correct"));
         go_back_to_previous_page();
     } 
 
@@ -181,17 +182,13 @@ void Users::register_new_treat() {
     const std::string email = form.email.value();
 
     if (usersModel->username_exists(username)) {
-        set_message(
-            _("Username already taken")
-        );
+        add_error(_("Username already taken"));
         go_back_to_previous_page();
         return;
     }
 
     if (usersModel->email_exists(email)) {
-        set_message(
-            _("Email already taken")
-        );
+        add_error(_("Email already taken"));
         go_back_to_previous_page();
         return;
     }
@@ -213,9 +210,7 @@ void Users::register_new_treat() {
         //TODO replace / by "ROOT_APPLICATION"
         redirect("/");
     } else {
-        set_message(
-            _("Unknown error")
-        );
+        add_error(_("Unknown error"));
         go_back_to_previous_page();
     }
 }
@@ -249,7 +244,7 @@ void Users::change_password_treat() {
 
     // we  check that there's no empty field
     if (!form.validate()) {
-        set_message(_("Your form is not valid")); 
+        add_error(_("Your form is not valid")); 
         go_back_to_previous_page();
         return;
     }
@@ -261,7 +256,7 @@ void Users::change_password_treat() {
         form.oldPassword.value()
     );
     if (!oldPasswordCorrect) {
-        set_message(_("Your previous password is not correct.")); 
+        add_error(_("Your previous password is not correct.")); 
         go_back_to_previous_page();
         return;
     }
@@ -269,7 +264,7 @@ void Users::change_password_treat() {
     const std::string newPassword = form.newPassword.value();
     const std::string newPasswordTwice = form.newPasswordTwice.value();
     if (newPassword != newPasswordTwice) {
-        set_message(_("You haven't entered twice the same new password.")); 
+        add_error(_("You haven't entered twice the same new password.")); 
         go_back_to_previous_page();
         return;
     }
@@ -279,11 +274,11 @@ void Users::change_password_treat() {
        newPassword
     );
     if (!changed) {
-        set_message(_("Error while trying to update your password.")); 
+        add_error(_("Error while trying to update your password.")); 
         go_back_to_previous_page();
         return;
     } 
-    set_message(_("Password updated successfully."));
+    add_success(_("Password updated successfully."));
     go_back_to_previous_page();
 
 }

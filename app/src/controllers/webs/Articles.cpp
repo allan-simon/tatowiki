@@ -166,7 +166,7 @@ void Articles::edit_treat() {
 
     if (!form.validate()) {
         //TODO add a more precise message
-        set_message(_("The form is not valid."));
+        add_error(_("The form is not valid."));
         go_back_to_previous_page();
         return;
     }
@@ -198,7 +198,7 @@ void Articles::edit_treat() {
  
  
     if (lastVersionId != historyModel->get_last_version_id_of(articleId)) {
-        set_message(_(
+        add_error(_(
             "Error, someone has edited the article while you"
             "were also editing it"
         ));
@@ -283,7 +283,7 @@ void Articles::create_treat() {
     form.load(context());
 
     if (!form.validate()) {
-        set_message(_("The form is not valid."));
+        add_error(_("The form is not valid."));
         go_back_to_previous_page();
         return;
     }
@@ -302,7 +302,7 @@ void Articles::create_treat() {
     );
 
     if (articleId <= 0) {
-        set_message(_("Error while trying to add the article"));
+        add_error(_("Error while trying to add the article"));
         go_back_to_previous_page();
         return;
     }
@@ -357,9 +357,9 @@ void Articles::remove(const std::string slug) {
     );
     
     if (success) {
-        set_message(_("The article has been removed"));
+        add_success(_("The article has been removed"));
     } else {
-        set_message(_("A problem occured while trying to remove"));
+        add_error(_("A problem occured while trying to remove"));
     }
     go_to_main_page();
 }
@@ -469,7 +469,7 @@ void Articles::translate(const std::string slug) {
     );
 
     if (articleToTranslateId == ARTICLE_DOESNT_EXIST_ERROR) {
-        set_message(_("The article you try to translate does not exist."));
+        add_error(_("The article you try to translate does not exist."));
         go_back_to_previous_page();
         return;
     }
@@ -492,7 +492,7 @@ void Articles::translate_treat() {
     forms::articles::Translate form;
     form.load(context());
     if (!form.validate()) {
-        set_message(_("The form you've submitted is not valid"));
+        add_error(_("The form you've submitted is not valid"));
         go_back_to_previous_page();
     }
 
@@ -525,11 +525,11 @@ void Articles::translate_treat() {
     //      translation link in the history 
     if (resultCode <= 0) {
         if (resultCode == ARTICLE_ALREADY_TRANSLATED_ERROR) {
-            set_message(_("This article has already a translation in that language."));
+            add_error(_("This article has already a translation in that language."));
         } else if (resultCode == ARTICLE_SAME_TRANSLATION_LANGUAGE_ERROR) {
-            set_message(_("You can't translate an article in the same language."));
+            add_error(_("You can't translate an article in the same language."));
         } else {
-            set_message(_("Error while trying to translate."));
+            add_error(_("Error while trying to translate."));
         }
         go_back_to_previous_page();
         return;
@@ -575,7 +575,7 @@ void Articles::show_conflict(std::string conflictIdStr) {
     );
     
     if (article.id == 0) {
-        set_message(_(
+        add_error(_(
             "This conflict does not exists"
         ));
         go_back_to_previous_page();
