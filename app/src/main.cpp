@@ -48,59 +48,11 @@ int main(int argc,char ** argv)
 
     service app(argc, argv);
     /*load some conf defined variables*/
-
-    Config::get_instance()->sqlite3Path = app.settings().get<string>(
-        "TatoWiki.sqlite3.path"
-    );
-
-    Config::set_base_host(
-        app.settings().get<string>(
-            "TatoWiki.baseHost"
-        )
-    );
-
-    Config::set_css_path(
-        app.settings().get<string>(
-            "TatoWiki.cssPath"
-        )
-    );
-
-    Config::set_img_path(
-        app.settings().get<string>(
-            "TatoWiki.imgPath"
-        )
-    );
-
-    Config::set_js_path(
-        app.settings().get<string>(
-            "TatoWiki.jsPath"
-        )
-    );
-
-
-    Config::set_inner_css_folder(
-        app.settings().get<string>(
-            "TatoWiki.innerCssFolder"
-        )
-    );
-
-    Config::set_inner_img_folder(
-        app.settings().get<string>(
-            "TatoWiki.innerImgFolder"
-        )
-    );
-
-    Config::set_inner_js_folder(
-        app.settings().get<string>(
-            "TatoWiki.innerJsFolder"
-        )
-    );
-
+    Config::set_values(app.settings().at("TatoWiki"));
 
     tatowiki::Config::isPrivate(
         app.settings().at("TatoWiki.private").boolean()
     );
-
 
     tatowiki::Config::set_lang_to_main_pages(
         app.settings().at("TatoWiki.mainPages").array()
