@@ -25,6 +25,8 @@
 
 #include <cppcms/session_interface.h>
 #include <cppcms/http_file.h>
+
+#include <cppcms_skel/models/Media.h>
 #include "Media.h"
 
 
@@ -48,7 +50,7 @@ Media::Media(cppcms::service& serv) :
     dispatcher().assign("/upload-image_treat", &Media::upload_image_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
-
+    mediaModel = new cppcmsskel::models::Media();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 
@@ -57,6 +59,7 @@ Media::Media(cppcms::service& serv) :
  */
 Media::~Media() {
     //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
+    delete mediaModel;
 }
 
 /**
@@ -79,7 +82,6 @@ void Media::upload_image_treat() {
 
     forms::media::UploadImage form;
     form.load(context());
-    
     form.image.load(context());
     if (!form.validate()) {
         if (!form.image.validate()) {
@@ -91,16 +93,11 @@ void Media::upload_image_treat() {
         go_back_to_previous_page();
         return;
     }
-    std::string filename = form.image.value()->filename(); 
-
-
-    try {
-        //TODO if we keep the same name, we should then check that there's
-        // not already a file with the same name
-        form.image.value()->save_to(
-            filename 
-        );
-    } catch (cppcms::cppcms_error const &e) {
+    
+    std::string fileURL = mediaModel->save_media(
+        form.image.value()
+    );
+    if (fileURL.empty()) {
         add_error(_(
             "Internal error while trying to upload the file."
             "If you see this message again, try to contact an"
@@ -109,14 +106,14 @@ void Media::upload_image_treat() {
         go_back_to_previous_page();
         return;
     }
-    //TODO precise the path of the file
-    add_success(_(
-        "File uploaded successfully."
-    ));
+    const std::string fileUploaded = (cppcms::locale::format(
+        _("File uploaded successfully. at this address: {1} ")
+    ) % fileURL).str();
+
+    add_success(fileUploaded);
     go_back_to_previous_page();
 
 }
-
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

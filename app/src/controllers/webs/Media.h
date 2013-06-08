@@ -30,9 +30,14 @@
 
 
 //needed to avoid to include models directly here,
-//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+//which would have the side effects to require to recompile the
+// controller every time we modify a model. even though it does
+// not affect the controller
+namespace cppcmsskel {
 namespace models {
+    class Media;
     // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+}
 }
 
 namespace controllers {
@@ -57,7 +62,11 @@ class Media : public Controller {
         ~Media();
 
     private:
-        // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
+        /**
+         * @brief Pointer to the medial model to save file
+         * @since 7 June 2013
+         */
+        cppcmsskel::models::Media *mediaModel;
 
         /**
          * @brief @TODO add a description

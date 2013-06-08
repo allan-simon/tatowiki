@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.14.0")
+set(PROJECT_VERSION "0.14.2")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -16,8 +16,8 @@ add_custom_target(
 enable_testing()
 
 
-#set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Wno-padded -Wno-global-constructors -Wno-weak-vtables -std=c++0x")
 
 include_directories(
     src
