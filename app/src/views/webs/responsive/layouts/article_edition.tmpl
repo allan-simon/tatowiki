@@ -20,45 +20,17 @@
 <% end template %>
 
 <% template title_area(forms::articles::BaseArticleForm & form) %>
-<tr>
-    <td>
-        <label for="<%= form.title.name() %>">
-            <%= form.title.message() %>
-        </label>
-    </td>
-    <td>
-        <% form input form.title %>
-    </td>
-</tr>
+<% include widget_row(form.title) %>
 <% end template %>
 
 <% template summary_text(forms::articles::BaseArticleForm & form) %>
-<tr>
-    <td>
-        <label for="<%= form.summary.name() %>">
-            <%= form.summary.message() %>
-        </label>
-    </td>
-    <td>
-        <% form input form.summary %>
-    </td>
-</tr>
+<% include widget_row(form.summary) %>
 <% end template %>
 
 
 
 <% template editor_area(forms::articles::BaseArticleForm & form) %>
-<tr>
-    <td>
-        <label for="<%= form.content.name() %>">
-            <%= form.content.message() %>
-        </label>
-    </td>
-    <td>
-        <div id="editor-button-bar"></div>
-        <% form input form.content %>
-    </td>
-</tr>
+<%include widget_row_text(form.content, "<div id='editor-button-bar'></div>") %>
 <% end template %>
 
 <% template save_buttons(forms::articles::BaseArticleForm & form) %>

@@ -339,13 +339,19 @@
  * @since 22 April 2013
  */
 <% template widget_row(cppcms::widgets::base_widget & widget) %>
+<% include widget_row_text(widget,"") %>
+<% end template %>
+
+
+<% template widget_row_text(cppcms::widgets::base_widget & widget, std::string const& preinputText ) %>
 <tr>
-    <td>
+    <td class="labels" >
         <label for="<%= widget.name() %>">
             <%= widget.message() %>
         </label>
     </td>
     <td>
+        <%= preinputText | raw %>
         <% form input widget %>
     </td>
 </tr>
