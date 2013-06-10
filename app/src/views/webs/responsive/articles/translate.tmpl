@@ -28,16 +28,7 @@
 <% end template %>
 
 <% template slug_text(forms::articles::Translate & form) %>
-<tr>
-    <td>
-        <label for="<%= form.translationSlug.name() %>">
-            <%= form.translationSlug.message() %>
-        </label>
-    </td>
-    <td>
-        <% form input form.translationSlug %>
-    </td>
-</tr>
+<% include widget_row_text(form.translationSlug, "<span>http://.../articles/show/</span>") %>
 <% end template %>
 
 
