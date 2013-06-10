@@ -71,6 +71,7 @@ struct Translate : public BaseArticleForm {
         transLang.message(_("Language of the translation:"));
 
         translationSlug.name("translationSlug");
+        translationSlug.id("translationSlug");
         translationSlug.message(_("URL name of this article's translation:"));
         translationSlug.non_empty();
 

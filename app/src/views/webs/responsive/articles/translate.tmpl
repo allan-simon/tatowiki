@@ -7,12 +7,20 @@
     <% include css_link("articles/create.css") %>
 <% end template %>
 
-
+<% template footer_js() %>
+    <% include js_link("external/wmd.combined.min.js") %>
+    <% include js_link("mardown_editor.js") %>
+    <% include js_link("check_translation.js") %>
+<% end template %>
 
 <% template main_content() %> 
 <% include begin_module() %>
     <h2><% gt "Translate article" %></h2>
-    <form method="POST" action="/articles/translate_treat" >
+    <form
+        id="translateform"
+        method="POST"
+        action="/articles/translate_treat"
+    >
     <% form input translateForm.slug %>
     <table>
         <% include title_area(translateForm) %>
