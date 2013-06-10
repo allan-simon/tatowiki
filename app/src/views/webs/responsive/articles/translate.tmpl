@@ -16,7 +16,7 @@
     <% form input translateForm.slug %>
     <table>
         <% include title_area(translateForm) %>
-        <% include lang_select(translateForm) %>
+        <% include widget_row(translateForm.transLang) %>
         <% include slug_text(translateForm) %>
         <% include editor_area(translateForm) %>
         <% include summary_text(translateForm) %>
@@ -26,21 +26,6 @@
 <% include end_module() %>
 <% include preview_module() %>
 <% end template %>
-
-
-<% template lang_select(forms::articles::Translate & form) %>
-<tr>
-    <td>
-        <label for="<%= form.transLang.name() %>">
-            <%= form.transLang.message() %>
-        </label>
-    </td>
-    <td>
-        <% form input form.transLang %>
-    </td>
-</tr>
-<% end template %>
-
 
 <% template slug_text(forms::articles::Translate & form) %>
 <tr>
