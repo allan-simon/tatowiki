@@ -95,9 +95,11 @@
         "innerCssFolder" : "../resources/skins/responsive/css/",
         "innerImgFolder" : "../resources/skins/responsive/img/",
         "innerJsFolder" : "../resources/skins/responsive/js/",
+        "uploadFolder" : "../upload/",
         "imgPath" : "/img/",
         "cssPath" : "/css/",
         "jsPath" : "/js/"
+        "uploadUrl" : "/upload/",
 	},
    "views" : {
         "default_skin" : "responsive"

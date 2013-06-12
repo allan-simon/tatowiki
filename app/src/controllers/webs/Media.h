@@ -35,7 +35,7 @@
 // not affect the controller
 namespace cppcmsskel {
 namespace models {
-    class Media;
+    class Uploads;
     // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
 }
 }
@@ -43,8 +43,8 @@ namespace models {
 namespace controllers {
 namespace webs { 
 /**
- * @class Media
- * @brief @TODO add a description
+ * @class Media Class that contains all the pages to deal with
+ *              uploading/managing uploaded files
  * @since 19 May 2013
  */
 class Media : public Controller {
@@ -66,19 +66,26 @@ class Media : public Controller {
          * @brief Pointer to the medial model to save file
          * @since 7 June 2013
          */
-        cppcmsskel::models::Media *mediaModel;
+        cppcmsskel::models::Uploads* uploadsModel;
 
         /**
-         * @brief @TODO add a description
+         * @brief Display a page containing a form to upload an image
          * @since 19 May 2013
          */
         void upload_image();
 
         /**
-         * @brief @TODO add a description
+         * @brief Display nothing, only to treat a form that upload an image
          * @since 19 May 2013
          */
         void upload_image_treat();
+
+        /**
+         * @brief Paginated page that display in list the uploaded files
+         * @TODO  it's not yet paginated
+         * @since 13 June 2013
+         */
+        void list_all();
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

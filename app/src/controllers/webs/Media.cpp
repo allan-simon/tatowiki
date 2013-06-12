@@ -26,7 +26,7 @@
 #include <cppcms/session_interface.h>
 #include <cppcms/http_file.h>
 
-#include <cppcms_skel/models/Media.h>
+#include <cppcms_skel/models/Uploads.h>
 #include "Media.h"
 
 
@@ -38,6 +38,8 @@
 #define _(X) cppcms::locale::translate(X)
 #endif
 
+#define MEDIA_FILES_BY_PAGE 50
+
 namespace controllers {
 namespace webs {
 
@@ -48,9 +50,10 @@ Media::Media(cppcms::service& serv) :
 
     dispatcher().assign("/upload-image", &Media::upload_image, this);
     dispatcher().assign("/upload-image_treat", &Media::upload_image_treat, this);
+    dispatcher().assign("/list-all", &Media::list_all, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
-    mediaModel = new cppcmsskel::models::Media();
+    uploadsModel = new cppcmsskel::models::Uploads();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 
@@ -59,7 +62,7 @@ Media::Media(cppcms::service& serv) :
  */
 Media::~Media() {
     //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
-    delete mediaModel;
+    delete uploadsModel;
 }
 
 /**
@@ -94,7 +97,7 @@ void Media::upload_image_treat() {
         return;
     }
     
-    std::string fileURL = mediaModel->save_media(
+    std::string fileURL = uploadsModel->save(
         form.image.value()
     );
     if (fileURL.empty()) {
@@ -113,6 +116,19 @@ void Media::upload_image_treat() {
     add_success(fileUploaded);
     go_back_to_previous_page();
 
+}
+
+/**
+ *
+ */
+void Media::list_all() {
+
+    contents::media::ListAll c(
+        uploadsModel->list(MEDIA_FILES_BY_PAGE)
+    );
+    init_content(c);
+
+    render("media_list_all", c);
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete

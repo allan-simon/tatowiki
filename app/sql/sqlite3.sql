@@ -7,6 +7,7 @@ begin;
     drop table if exists history;
     drop table if exists conflicts;
     drop table if exists salt;
+    drop table if exists uploads;
 
     -- table representing a user
     CREATE TABLE users (
@@ -58,7 +59,6 @@ begin;
 
 
     -- table storing the different version of the articles 
-    -- TODO storing user_id so that we know who did the change
     create table history (
         article_id integer key not null default 0,                      -- id of the article
         version integer primary key autoincrement not null default 1, 
@@ -70,6 +70,14 @@ begin;
         edit_time timestamp default (strftime('%s', 'now')),-- when the edition has been made
         summary text not null                              -- text to explain what has been done
 
+    );
+
+    -- table to store information about the files uploaded
+    -- on the server
+    create table uploads (
+        id integer primary key autoincrement not null,
+        filename text not null,  -- name of the file (not path)
+        created timestamp        -- when the file has been uploaded
     );
 
     -- table to store the salt used for the password encryption

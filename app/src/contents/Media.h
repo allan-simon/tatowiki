@@ -27,7 +27,8 @@
 #ifndef TATOWIKI_CONTENTS_MEDIA_H
 #define TATOWIKI_CONTENTS_MEDIA_H
 
-#include "cppcms_skel/contents/content.h"
+#include <cppcms_skel/contents/content.h>
+#include <cppcms_skel/results/Uploads.h>
 
 #include "contents/forms/upload_image.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
@@ -57,6 +58,26 @@ struct UploadImage : public Media {
      */
     UploadImage() {
     }
+
+};
+
+/**
+ * @struct ListAll Contents used by Media::list_all()
+ * @since  13 June 2013
+ */
+struct ListAll : public Media {
+
+    cppcmsskel::results::Files files;
+    
+    ListAll() {
+    }
+
+    /**
+     *
+     */
+     ListAll(cppcmsskel::results::Files filesParam) : files(filesParam) {
+
+     }
 
 };
 

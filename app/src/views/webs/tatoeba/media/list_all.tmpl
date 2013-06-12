@@ -1,0 +1,41 @@
+<% c++ #include "contents/Media.h" %>
+<% skin %>
+<% view media_list_all uses contents::media::ListAll extends master %>
+<% template title() %><% gt "All uploaded files" %><% end template %>
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h1><% gt "All uploaded files" %></h1>
+    <% foreach file in files %>
+    <ul>
+        <% item %>
+        <li>    
+            <a href="<%= file.URLname %>">
+                <%= file.name %>
+            </a>
+            ( <%= file.URLname %> )
+        </li>
+        <% end %>
+    </ul>
+    <% end foreach %>
+<% include end_module() %>
+<% end template %>
+
+<% template annexe_content() %>
+<% include begin_module() %>
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="upload-image">
+                <%gt "Upload a new image" %>
+            </a>
+        </li>
+    </ul>
+<% include end_module() %>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>
