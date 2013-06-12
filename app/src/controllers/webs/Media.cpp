@@ -1,6 +1,6 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,18 +18,20 @@
  *
  * @category Tatoeba wiki
  * @package  Controllers
- * @author   Allan SIMON <allan.simon@supinfo.com> 
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki@
  */
+
+#include <fstream>
 
 #include <cppcms/session_interface.h>
 #include <cppcms/http_file.h>
 
 #include <cppcms_skel/models/Uploads.h>
+#include <cppcms_skel/generics/Config.h>
+
 #include "Media.h"
-
-
 #include "contents/Media.h"
 
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
@@ -48,6 +50,7 @@ Media::Media(cppcms::service& serv) :
 {
 
 
+    dispatcher().assign("/get/(.+\\.(png|PNG|jpeg|jpg|JPG|JPEG))", &Media::get, this, 1, 2);
     dispatcher().assign("/upload-image", &Media::upload_image, this);
     dispatcher().assign("/upload-image_treat", &Media::upload_image_treat, this);
     dispatcher().assign("/list-all", &Media::list_all, this);
@@ -91,12 +94,12 @@ void Media::upload_image_treat() {
             add_error(_(
                 "Please check your image type (we only accept "
                 "jpeg/png images) or size ( < 1MB)"
-            )); 
+            ));
         }
         go_back_to_previous_page();
         return;
     }
-    
+
     std::string fileURL = uploadsModel->save(
         form.image.value()
     );
@@ -130,6 +133,66 @@ void Media::list_all() {
 
     render("media_list_all", c);
 }
+
+/**
+ *
+ */
+void Media::get(
+    const std::string filename,
+    const std::string extension
+) {
+    std::string absolutePath = Config::get_upload_folder() + filename;
+    std::ifstream file(
+        absolutePath.c_str()
+    );
+    if(!file.good()) {
+       response().status(404);
+       response().out() << "404";
+    }
+    else {
+        response().content_type(
+            mime_from_extension(extension)
+        );
+        response().out() << file.rdbuf();
+    }
+
+    file.close();
+
+}
+
+/**
+ *
+ */
+const std::string Media::mime_from_extension(
+    const std::string &extension
+) {
+
+    //TODO it can certainly be improved
+
+    // if it's a jpeg image
+    if (
+        extension == "jpeg" ||
+        extension == "jpg" ||
+        extension == "JPEG" ||
+        extension == "JPG"
+    ) {
+        return "image/jpeg";
+    }
+
+    // if it's a png image
+    if (
+        extension == "png" ||
+        extension == "PNG"
+    ) {
+        return "image/png";
+    }
+
+    // when we don't know what is, RFC 2046 says it's for arbitrary binary
+    // data
+    return "application/octet-stream";
+}
+
+
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

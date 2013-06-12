@@ -1,6 +1,6 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
  *
  * @category Tatoeba wiki
  * @package  Controllers
- * @author   Allan SIMON <allan.simon@supinfo.com> 
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki@
  */
@@ -36,12 +36,12 @@
 namespace cppcmsskel {
 namespace models {
     class Uploads;
-    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%
 }
 }
 
 namespace controllers {
-namespace webs { 
+namespace webs {
 /**
  * @class Media Class that contains all the pages to deal with
  *              uploading/managing uploaded files
@@ -86,6 +86,37 @@ class Media : public Controller {
          * @since 13 June 2013
          */
         void list_all();
+
+        /**
+         * @brief Not a page, send the requested file
+         *        Note: only for testing purpose, in production use your
+         *        web server to server directly files
+         *
+         * @TODO  add a test to not work if in 'production'
+         *
+         * @param filename  Name of the file to serve
+         * @param extension Extension of the file (i.e 3/4 last letters)
+         *
+         * @since 13 June 2013
+         */
+        void get(
+            const std::string filename,
+            const std::string extension
+        );
+
+        /**
+         * @brief Utility function, get the MIME type from the extension
+         *
+         * @TODO maybe move it to cppcms_skel
+         *
+         * @param extension Extension of the file (i.e 3/4 last letters)
+         *
+         * @since 13 June 2013
+         */
+        const std::string mime_from_extension(
+            const std::string &extension
+        );
+
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
