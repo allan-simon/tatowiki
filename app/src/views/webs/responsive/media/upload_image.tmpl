@@ -19,11 +19,24 @@
             <% form input uploadImageForm.submit %>
         </div>
     </form>
-
-
-
 <% include end_module() %>
 <% end template %>
+
+<% template annexe_content() %>
+<% include begin_module() %>
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="list-all">
+                <%gt "View all images" %>
+            </a>
+        </li>
+    </ul>
+<% include end_module() %>
+<% end template %>
+
+
 
 
 
