@@ -50,7 +50,7 @@
         "private" : true,
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
-            ["de"  , "de_DE.UTF-8", "Deutsh"],
+            ["de"  , "de_DE.UTF-8", "Deutsch"],
             ["eo"  , "eo.UTF-8", "Esperanto"],
             ["es"  , "es_ES.UTF-8", "Español"],
             ["fr"  , "fr_FR.UTF-8", "Français"],
