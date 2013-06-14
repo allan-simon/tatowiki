@@ -4,7 +4,7 @@
 xgettext\
     --keyword=translate:1,1t\
     --keyword=_\
-    ../build/view_web.cpp\
+    ../build/view*.cpp\
     ../src/*.cpp\
     ../src/controllers/webs/*.cpp\
     ../src/contents/forms/*.h\
