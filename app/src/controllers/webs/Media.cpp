@@ -73,6 +73,8 @@ Media::~Media() {
  */
 void Media::upload_image() {
 
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+
     contents::media::UploadImage c;
     init_content(c);
 
@@ -85,6 +87,8 @@ void Media::upload_image() {
  *
  */
 void Media::upload_image_treat() {
+
+    CHECK_PERMISSION_OR_GO_TO_LOGIN();
 
     forms::media::UploadImage form;
     form.load(context());
