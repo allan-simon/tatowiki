@@ -338,6 +338,9 @@
                     $(this).markeditBindAutoPreview(previewPane);
 
                 }
+                else if (options.preview === 'selector') {
+                    $(this).markeditBindAutoPreview($(options.selector));
+                }
                 else if (options.preview !== false) {
                     throw "Preview option '" + options.preview + "' is not recognized.";
                 }

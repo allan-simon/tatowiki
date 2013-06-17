@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.18.0")
+set(PROJECT_VERSION "0.18.1")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -74,6 +74,7 @@ add_executable(
     ${results_files}
     ${contents_files}
     view_tatoeba_skin_web.cpp
+    view_ajax.cpp
     view_responsive_skin_web.cpp
 )
 
@@ -134,6 +135,27 @@ add_custom_command(
     DEPENDS
         ${RESPONSIVE_WEB_SKIN_DIR}/*/*.tmpl 
 )
+
+########################
+#  Ajax skin
+########################
+set(
+    TATOEBA_AJAX_SKIN_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/views/ajax/
+)
+
+add_custom_command(
+    OUTPUT view_ajax.cpp
+    COMMAND cppcms_tmpl_cc 
+        ${TATOEBA_AJAX_SKIN_DIR}/layouts/json.tmpl
+        ${TATOEBA_AJAX_SKIN_DIR}/*/*.tmpl 
+        -o view_ajax.cpp
+        -s ajax
+    DEPENDS
+        ${TATOEBA_AJAX_SKIN_DIR}/*/*.tmpl 
+)
+
+
 
 
 
