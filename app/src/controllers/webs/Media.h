@@ -80,6 +80,7 @@ class Media : public Controller {
          */
         void upload_image_treat();
 
+        void upload_image_ajax();
         /**
          * @brief Paginated page that display in list the uploaded files
          * @TODO  it's not yet paginated

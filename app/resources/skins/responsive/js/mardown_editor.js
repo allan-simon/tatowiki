@@ -9,7 +9,7 @@
         //define the content
         var win = $('<form></form>');
         win.attr('method', 'POST');
-        win.attr('action', '/media/upload-image_treat');
+        win.attr('action', '/media/upload-image_ajax');
         win.attr('enctype', 'multipart/form-data');
 
         var text = $('<span></span>');
@@ -44,8 +44,26 @@
         });
 
         $(win).ajaxForm({
-            complete: function(xhr) {
-                alert(xhr.responseText);
+            dataType : 'json',
+            success: function(obj) {
+                //we lenght === 1 and not 0
+                //because for the moment the errors array contains
+                //always a final empty element
+                //TODO correct this hack
+                if (obj.errors.length === 1) {
+                    $(url).attr("value",obj.data);
+                } else {
+                    
+                    $.each(
+                        obj.errors.slice(0,-1),
+                        function(index,error) {
+                            alert(error.text);
+                        }
+                    )
+                }
+            },
+            error: function(){
+                alert("error");
             }
         });
 
@@ -83,7 +101,8 @@
         '| numberlist bulletlist heading line';
 
     $('#editor').markedit({
-        'preview': 'below',
+        'preview': 'selector',
+        'selector': '#editor-preview',
         'toolbar' : {
             'layout' : layout,
             'buttons' : [{

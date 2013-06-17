@@ -33,12 +33,32 @@
 
 #include "Media.h"
 #include "contents/Media.h"
+#include "contents/ajax/Media.h"
 
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 #ifndef _
 #define _(X) cppcms::locale::translate(X)
 #endif
+
+#define MEDIA_NOT_LOGIN_ERROR_TEXT _(\
+    "Please login"\
+)
+
+#define MEDIA_SAVE_INVALID_ERROR_TEXT _(\
+    "Please check your image type (we only accept "\
+    "jpeg/png images) or size ( < 1MB)"\
+)
+
+#define MEDIA_SAVE_INTERNAL_ERROR_TEXT _(\
+    "Internal error while trying to upload the file." \
+    "If you see this message again, try to contact an" \
+    " administrator" \
+)
+#define MEDIA_SAVE_INVALID_ERROR_CODE 1
+#define MEDIA_SAVE_INTERNAL_ERROR_CODE 2
+#define MEDIA_NOT_LOGIN_ERROR_CODE 3
+            
 
 #define MEDIA_FILES_BY_PAGE 50
 
@@ -53,6 +73,7 @@ Media::Media(cppcms::service& serv) :
     dispatcher().assign("/get/(.+\\.(png|PNG|jpeg|jpg|JPG|JPEG))", &Media::get, this, 1, 2);
     dispatcher().assign("/upload-image", &Media::upload_image, this);
     dispatcher().assign("/upload-image_treat", &Media::upload_image_treat, this);
+    dispatcher().assign("/upload-image_ajax", &Media::upload_image_ajax, this);
     dispatcher().assign("/list-all", &Media::list_all, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
@@ -95,10 +116,7 @@ void Media::upload_image_treat() {
     form.image.load(context());
     if (!form.validate()) {
         if (!form.image.validate()) {
-            add_error(_(
-                "Please check your image type (we only accept "
-                "jpeg/png images) or size ( < 1MB)"
-            ));
+            add_error(MEDIA_SAVE_INVALID_ERROR_TEXT);
         }
         go_back_to_previous_page();
         return;
@@ -108,11 +126,7 @@ void Media::upload_image_treat() {
         form.image.value()
     );
     if (fileURL.empty()) {
-        add_error(_(
-            "Internal error while trying to upload the file."
-            "If you see this message again, try to contact an"
-            " administrator"
-        ));
+        add_error(MEDIA_SAVE_INTERNAL_ERROR_TEXT);
         go_back_to_previous_page();
         return;
     }
@@ -124,6 +138,56 @@ void Media::upload_image_treat() {
     go_back_to_previous_page();
 
 }
+/**
+ *
+ */
+void Media::upload_image_ajax() {
+
+    contents::ajax::media::UploadImage c;
+    
+    forms::media::UploadImage form;
+    form.load(context());
+    form.image.load(context());
+
+    response().content_type("application/json");
+
+    if (!check_permission()) {
+        c.add_error(
+            MEDIA_NOT_LOGIN_ERROR_CODE,
+            MEDIA_NOT_LOGIN_ERROR_TEXT
+        );
+        render("ajax","media_upload_image", c);
+        return;
+    }
+    
+    // if the form is not valid
+    if (
+        !form.validate() &&
+        !form.image.validate()
+    ) {
+        c.add_error(
+            MEDIA_SAVE_INVALID_ERROR_CODE,
+            MEDIA_SAVE_INVALID_ERROR_TEXT 
+        );
+    } else {
+        std::string fileURL = uploadsModel->save(
+            form.image.value()
+        );
+        
+        // if we got an internal proble while saving
+        if (fileURL.empty()) {
+            c.add_error(
+                MEDIA_SAVE_INTERNAL_ERROR_CODE,
+                MEDIA_SAVE_INTERNAL_ERROR_TEXT
+            );
+        } else {
+            c.url = fileURL;
+        }
+    }
+
+    render("ajax","media_upload_image", c);
+}
+
 
 /**
  *

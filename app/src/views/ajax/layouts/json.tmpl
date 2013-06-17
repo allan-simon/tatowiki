@@ -1,0 +1,36 @@
+<% c++ #ifndef LAYOUT_AJAX_JSON %>
+<% c++ #define LAYOUT_AJAX_JSON %>
+<% c++ #include <cppcms_skel/generics/Config.h> %>
+<% c++ #include "cppcms_skel/contents/AjaxContent.h" %>
+<% c++ #include "generics/Config.h" %>
+<% skin ajax %>
+<% view master uses cppcmsskel::contents::AjaxContent %>
+
+/*
+ *
+ */
+<% template render() %>{
+    "errors": [<% include errors() %>],
+    "data": <% include data() %>
+}<% end template %>
+
+/**
+ * TODO there's a hack, the final {}
+ * is here in order to have a valid json
+ */
+<% template errors() %>
+    <% foreach error in errors %><% item %>{
+        "code" : <%= error.code %>,
+        "text" : "<%= error.text | raw %>"
+    },<% end %><% end foreach %>
+    {}
+<% end template %>
+
+/**
+ *
+ */
+<% template data() %>null<% end template %>
+
+<% end view %>
+<% end skin %>
+<% c++ #endif %>
