@@ -34,7 +34,8 @@
 // controller every time we modify a model. even though it does
 // not affect the controller
 namespace models {
-    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%g
+    class Search;
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%
 }
 
 namespace controllers {
@@ -58,7 +59,14 @@ class Search : public Controller {
         ~Search();
 
     private:
+        /**
+         * @brief TODO
+         * @since %%MODEL_CTRL_TODAY%%
+         */
+        models::Search *searchModel;
+
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
+
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

@@ -29,6 +29,7 @@
 
 #include"contents/Search.h"
 
+#include "models/Search.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -41,14 +42,16 @@ controllers::webs::Controller(serv)
 
 //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
-//%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
+    searchModel = new models::Search();
+    //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
 }
 
 /**
 *
 */
 Search::~Search(){
-//%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
+    delete searchModel;
+    //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
 }
 
 //%%%NEXT_ACTION_MARKER%%% , do not delete
