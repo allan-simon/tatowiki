@@ -1,6 +1,6 @@
 /**
 * Tatoeba wiki  Wiki made with cppcmsskel
-* Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
+* Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
 *
 * @category Tatoeba wiki
 * @package  Controllers
-* @author   Allan SIMON <allan.simon@supinfo.com> 
+* @author   Allan SIMON <allan.simon@supinfo.com>
 * @license  Affero General Public License
 * @link     https://github.com/sysko/tatowiki@
 */
@@ -40,7 +40,11 @@ Search::Search(cppcms::service&serv) :
 controllers::webs::Controller(serv)
 {
 
-//%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
+
+    dispatcher().assign("/simple", &Search::simple, this);
+    dispatcher().assign("/simple_treat", &Search::simple_treat, this);
+    //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
+
 
     searchModel = new models::Search();
     //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
@@ -54,7 +58,35 @@ Search::~Search(){
     //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
 }
 
-//%%%NEXT_ACTION_MARKER%%% , do not delete
+/**
+ *
+ */
+void Search::simple() {
+
+    contents::search::Simple c;
+    init_content(c);
+
+
+    render("search_simple", c);
+}
+
+
+/**
+ *
+ */
+void Search::simple_treat() {
+
+    forms::search::Simple form;
+    form.load(context());
+
+    if (!form.validate()) {
+        go_back_to_previous_page();
+    }
+
+}
+
+
+// %%%NEXT_ACTION_MARKER%%% , do not delete
 
 
 

@@ -17,51 +17,59 @@
  *
  *
  * @category Tatoeba wiki
- * @package  Contents
+ * @package  Form
  * @author   Allan SIMON <allan.simon@supinfo.com>
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki@
  */
 
 
-#ifndef TATOWIKI_CONTENTS_SEARCH_H
-#define TATOWIKI_CONTENTS_SEARCH_H
+#ifndef TATOWIKI_SIMPLE
+#define TATOWIKI_SIMPLE
 
-#include "cppcms_skel/contents/content.h"
 
-#include "contents/forms/simple.h"
-//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
+#include <cppcms/form.h>
 
-namespace contents {
+namespace forms{
 namespace search {
 
 /**
- * @class Search Base content for every action of Search controller
- * @since 18 June 2013
- */
-struct Search : public BaseContent {
-};
-
-/**
- * @struct Simple
+ * @struct simple
+ * @brief  @TODO
  * @since  18 June 2013
- * @brief
+ *
  */
-struct Simple : public Search {
+struct Simple : public cppcms::form {
 
-    forms::search::Simple simpleForm;
+    //%%%NEXT_WIDGET_VAR_MARKER%%%
+
+    /**
+     * @brief button to submit the form
+     */
+    cppcms::widgets::submit submit;
 
     /**
      * @brief Constructor
      */
     Simple() {
+
+        //%%%NEXT_WIDGET_ADD_MARKER%%%
+
+        add(submit);
+        submit.name(
+            cppcms::locale::translate("submit")
+        );
+        submit.value("submit");
     }
+
 
 };
 
-//%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace search
-} //end of namespace contents
+}// end of namespace forms
+
 
 #endif
+
+

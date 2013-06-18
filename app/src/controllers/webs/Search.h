@@ -68,6 +68,18 @@ class Search : public Controller {
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
 
+        /**
+         * @brief @TODO add a description
+         * @since 18 June 2013
+         */
+        void simple();
+
+        /**
+         * @brief @TODO add a description
+         * @since 18 June 2013
+         */
+        void simple_treat();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };
