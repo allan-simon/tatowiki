@@ -4,7 +4,7 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
+<% template body() %>
     Edit Me %%CONTROLLER_NAME%% / %%CONTENT_NAME%%
 <% end template %>
 

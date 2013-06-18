@@ -1,6 +1,6 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
  *
  * @category Tatoeba wiki
  * @package  Models
- * @author   Allan SIMON <allan.simon@supinfo.com> 
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki@
  */

@@ -1,6 +1,6 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
  *
  * @category Tatoeba wiki
  * @package  Controllers
- * @author   Allan SIMON <allan.simon@supinfo.com> 
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @license  Affero General Public License
  * @link     https://github.com/sysko/tatowiki@
  */
@@ -30,16 +30,17 @@
 
 
 //needed to avoid to include models directly here,
-//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+//which would have the side effects to require to recompile the
+// controller every time we modify a model. even though it does
+// not affect the controller
 namespace models {
-    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%
 }
 
 namespace controllers {
-namespace webs { 
+namespace webs {
 /**
- * @class %%CONTROLLER_NAME%%
- * @brief %%CONTROLLER_DESCRIPTION%%
+ * @class %%CONTROLLER_NAME%% %%CONTROLLER_DESCRIPTION%%
  * @since %%CONTROLLER_TODAY%%
  */
 class %%CONTROLLER_NAME%% : public Controller {

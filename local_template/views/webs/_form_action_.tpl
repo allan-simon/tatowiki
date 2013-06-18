@@ -4,7 +4,7 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %> 
+<% template body() %>
     Edit Me %%CONTROLLER_NAME%% / %%CONTENT_NAME%%
     <form method="POST" action="<% url "/%%CONTROLLER_URL%%/%%FORM_TREAT_URL%%" %>" >
         <% form as_p %%FORM_VAR%% %>

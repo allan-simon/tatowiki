@@ -29,6 +29,7 @@
 
 #include "cppcms_skel/contents/content.h"
 
+#include "contents/forms/simple.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
