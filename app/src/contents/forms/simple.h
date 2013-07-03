@@ -30,6 +30,11 @@
 
 #include <cppcms/form.h>
 
+#ifndef _
+    #define _(X) cppcms::locale::translate((X))
+#endif 
+
+
 namespace forms{
 namespace search {
 
@@ -44,6 +49,11 @@ struct Simple : public cppcms::form {
     //%%%NEXT_WIDGET_VAR_MARKER%%%
 
     /**
+     * @brief Search query
+     */
+    cppcms::widgets::text query;
+
+    /**
      * @brief button to submit the form
      */
     cppcms::widgets::submit submit;
@@ -54,12 +64,14 @@ struct Simple : public cppcms::form {
     Simple() {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
+        query.name("query");
+        query.message(_("Query:"));
+        query.non_empty();
+        add(query);
 
-        add(submit);
-        submit.name(
-            cppcms::locale::translate("submit")
-        );
+        submit.name(_("Search"));
         submit.value("submit");
+        add(submit);
     }
 
 
