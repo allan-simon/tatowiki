@@ -59,6 +59,19 @@ struct Simple : public Search {
 
 };
 
+/**
+ * @struct Result Content used by the page "search/result"
+ * @since  21 June 2013
+ *
+ */
+struct Result : public Search {
+
+    Result() {
+
+    }
+
+};
+
 //%%%NEXT_CONTENT_MARKER%%%
 
 } // end of namespace search

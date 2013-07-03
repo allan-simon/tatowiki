@@ -33,8 +33,8 @@
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
-namespacecontrollers {
-namespacewebs {
+namespace controllers {
+namespace webs {
 
 Search::Search(cppcms::service&serv) :
 controllers::webs::Controller(serv)
@@ -43,6 +43,7 @@ controllers::webs::Controller(serv)
 
     dispatcher().assign("/simple", &Search::simple, this);
     dispatcher().assign("/simple_treat", &Search::simple_treat, this);
+    dispatcher().assign("/result", &Search::result, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -85,6 +86,18 @@ void Search::simple_treat() {
 
 }
 
+
+/**
+ *
+ */
+void Search::result() {
+
+    contents::search::Result c;
+    init_content(c);
+
+
+    render("search_result", c);
+}
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

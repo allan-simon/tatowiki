@@ -23,8 +23,8 @@
  * @link     https://github.com/sysko/tatowiki@
  */
 
-#ifndef TATOWIKICONTROLLERS_WEBS_SEARCH_H
-#define TATOWIKICONTROLLERS_WEBS_SEARCH_H
+#ifndef TATOWIKI_CONTROLLERS_WEBS_SEARCH_H
+#define TATOWIKI_CONTROLLERS_WEBS_SEARCH_H
 
 #include "cppcms_skel/controllers/webs/Controller.h"
 
@@ -39,7 +39,7 @@ namespace models {
 }
 
 namespace controllers {
-namespace webs {g
+namespace webs {
 /**
  * @class Search @TODO add a description
  * @since 18 June 2013
@@ -79,6 +79,12 @@ class Search : public Controller {
          * @since 18 June 2013
          */
         void simple_treat();
+
+        /**
+         * @brief Page to display the result of a search request
+         * @since 21 June 2013
+         */
+        void result();
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
