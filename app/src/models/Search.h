@@ -25,9 +25,7 @@
 #ifndef TATOWIKI_SEARCH
 #define TATOWIKI_SEARCH
 
-
-
-#include "cppcms_skel/models/SqliteModel.h"
+#include <cppcms_skel/models/SqliteModel.h>
 namespace models {
 
 
@@ -36,7 +34,7 @@ namespace models {
  * @since 18 June 2013
  *
  */
-class Search : public SqliteModel {
+class Search : public cppcmsskel::models::SqliteModel {
     public:
         /**
          * @brief Constructor
