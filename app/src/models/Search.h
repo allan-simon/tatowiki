@@ -26,6 +26,7 @@
 #define TATOWIKI_SEARCH
 
 #include <cppcms_skel/models/SqliteModel.h>
+#include "results/Articles.h"
 namespace models {
 
 
@@ -35,6 +36,10 @@ namespace models {
  *
  */
 class Search : public cppcmsskel::models::SqliteModel {
+
+    private:
+        std::string content_summary(const std::string &content);
+
     public:
         /**
          * @brief Constructor
@@ -55,6 +60,22 @@ class Search : public cppcmsskel::models::SqliteModel {
             const std::string &query,
             const std::string &lang
         );
+
+
+        /**
+         * @brief Perform a search in the articles' content
+         *
+         * @param query The query to perform
+         * @param lang  The query will be performed only on articles
+         *              int that language
+         *
+         * @since 4 July 2013
+         */
+        results::Articles content(
+            const std::string &query,
+            const std::string &lang
+        );
+
 
 };
 

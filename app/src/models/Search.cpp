@@ -66,6 +66,69 @@ std::string Search::title(
     }
 }
 
+/**
+ *
+ */
+results::Articles Search::content(
+    const std::string &query,
+    const std::string &lang
+) {
+    cppdb::statement searchContent = sqliteDb.prepare(
+        "SELECT "
+        "   docid,  "
+        "   lang,  "
+        "   slug,  "
+        "   title,  "
+        "   content  "
+        "FROM search "
+        "WHERE "
+        "   content MATCH ? AND "
+        "   lang = ? "
+    );
+    searchContent.bind(query);
+    searchContent.bind(lang);
+
+    cppdb::result res = searchContent.query();
+    results::Articles articles;
+    while (res.next()) {
+        results::Article tmpArticle(
+            res.get<int>("docid"),
+            res.get<std::string>("lang"),
+            res.get<std::string>("slug"),
+            res.get<std::string>("title"),
+            content_summary(res.get<std::string>("content"))
+        );
+        articles.push_back(tmpArticle);
+    }
+    return articles;
+}
+
+
+std::string Search::content_summary(const std::string &content) {
+    size_t endTitle=  content.find_first_of('\n',0);
+    size_t endFirstSentence = content.find_first_of(
+        "\n",
+        endTitle+1
+    );
+    // for people who put several new lines before the title
+    // and the actual content
+    while (endFirstSentence - endTitle <= 2 ) {
+        endTitle = endFirstSentence;
+        endFirstSentence = content.find_first_of(
+            "\n",
+            endTitle+1
+        );
+    }
+
+    std::string contentSummary = content.substr(
+        endTitle,
+        endFirstSentence - endTitle
+    );
+
+    return contentSummary;
+}
+
+
 } // end namespace models
 
 
