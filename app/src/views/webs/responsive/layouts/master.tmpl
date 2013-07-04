@@ -95,10 +95,14 @@
         <a class="brand" href="TODO">TODO</a>
         <div class="nav-collapse"><% include navigation_menu() %></div>
         <% include user_menu() %>
+        <% include search() %>
     </div>
 </div>
 <% end template %>
 
+/**
+ *
+ */
 <% template navigation_menu() %>
 <ul class="nav">
     <li class="active">
@@ -110,6 +114,27 @@
         </a>
     </li>
 </ul>
+<% end template %>
+
+/**
+ * @brief used to display the search form in
+ *        the navigation bar
+ *
+ * @since 4 July 2013
+ */
+<% template search() %>
+<form
+    class="navbar-search pull-right"
+    method="GET"
+    action="/search/result"
+>
+    <input
+        class="search-query span2"
+        name="query"
+        placeholder="<% gt "Search" %>"
+        type="text"
+    />
+</form>
 <% end template %>
 
 <% template user_menu() %>
