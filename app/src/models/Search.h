@@ -58,19 +58,39 @@ class Search : public cppcmsskel::models::SqliteModel {
         Search();
 
         /**
+         * @brief Perform an exact search in the articles' title
+         *
+         * @param query The query to perform
+         * @param lang  The query will be performed only on articles
+         *              int that language
+         *
+         * @return The slug of this article if an exact match (delta collation)
+         *         empty string otherwise
+         *
+         * @since 4 July 2013
+         */
+        std::string exact_title(
+            const std::string &query,
+            const std::string &lang
+        );
+
+
+        /**
          * @brief Perform a search in the articles' title
          *
          * @param query The query to perform
          * @param lang  The query will be performed only on articles
          *              int that language
          *
+         * @return The slug of this article if any match
+         *         empty string otherwise
+         *
          * @since 4 July 2013
          */
-        std::string title(
+        std::string match_title(
             const std::string &query,
             const std::string &lang
         );
-
 
         /**
          * @brief Perform a search in the articles' content

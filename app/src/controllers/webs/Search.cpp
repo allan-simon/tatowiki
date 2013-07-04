@@ -86,7 +86,11 @@ void Search::result() {
         return;
     }
 
-    const std::string slug = searchModel->title(query,c.lang);
+    std::string slug = searchModel->exact_title(query,c.lang);
+    if (slug.empty()) {
+        slug = searchModel->match_title(query,c.lang);
+    }
+
     if (!slug.empty()) {
         redirect(
             tatowiki::Config::articles_url_from_lang_and_slug(

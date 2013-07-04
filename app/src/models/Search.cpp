@@ -44,10 +44,36 @@ Search::Search() :
 {
 }
 
+
 /**
  *
  */
-std::string Search::title(
+std::string Search::exact_title(
+    const std::string &query,
+    const std::string &lang
+) {
+    cppdb::statement searchTitle = sqliteDb.prepare(
+        "SELECT slug  FROM search "
+        "WHERE lower(title) = lower(?) AND lang = ? LIMIT 1"
+    );
+    searchTitle.bind(query);
+    searchTitle.bind(lang);
+
+    cppdb::result res = searchTitle.row();
+    if (res.empty()) {
+        return "";
+    } else {
+        return res.get<std::string>("slug");
+    }
+}
+
+
+
+
+/**
+ *
+ */
+std::string Search::match_title(
     const std::string &query,
     const std::string &lang
 ) {
