@@ -29,6 +29,7 @@
 
 #include "models/Search.h"
 #include "generics/Config.h"
+#include "generics/markdown.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -93,7 +94,12 @@ void Search::result() {
                 slug
             )
         );
+        return;
     }
+
+    c.markdown = mymarkdown;
+    c.query = query;
+    c.articles = searchModel->content(query,c.lang);
 
 
     render("search_result", c);
