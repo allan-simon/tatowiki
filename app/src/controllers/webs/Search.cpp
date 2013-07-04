@@ -78,6 +78,23 @@ void Search::result() {
     contents::search::Result c;
     init_content(c);
 
+    const std::string query = request().get("query");
+
+    if (query.empty()) {
+        go_back_to_previous_page();
+        return;
+    }
+
+    const std::string slug = searchModel->title(query,c.lang);
+    if (!slug.empty()) {
+        redirect(
+            tatowiki::Config::articles_url_from_lang_and_slug(
+                c.lang,
+                slug
+            )
+        );
+    }
+
 
     render("search_result", c);
 }

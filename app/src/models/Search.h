@@ -42,6 +42,20 @@ class Search : public cppcmsskel::models::SqliteModel {
          */
         Search();
 
+        /**
+         * @brief Perform a search in the articles' title
+         *
+         * @param query The query to perform
+         * @param lang  The query will be performed only on articles
+         *              int that language
+         *
+         * @since 4 July 2013
+         */
+        std::string title(
+            const std::string &query,
+            const std::string &lang
+        );
+
 };
 
 } // end namespace models
