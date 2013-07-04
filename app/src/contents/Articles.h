@@ -58,7 +58,7 @@ struct Show : public Articles {
 
     /**
      * @brief placeholder for the function that will be called
-     *        when using  <%= varible | ext markdown %> in the
+     *        when using  <%= variable | ext markdown %> in the
      *        template
      *
      * @since  30 October 2012
