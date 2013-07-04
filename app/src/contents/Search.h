@@ -27,9 +27,11 @@
 #ifndef TATOWIKI_CONTENTS_SEARCH_H
 #define TATOWIKI_CONTENTS_SEARCH_H
 
-#include "cppcms_skel/contents/content.h"
+#include <booster/function.h>
+#include <cppcms_skel/contents/content.h>
 
 #include "contents/forms/simple.h"
+#include "results/Articles.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
@@ -65,6 +67,32 @@ struct Simple : public Search {
  *
  */
 struct Result : public Search {
+
+    /**
+     * @brief placeholder for the function that will be called
+     *        when using  <%= variable | ext markdown %> in the
+     *        template
+     *
+     * @since  30 October 2012
+     */
+    booster::function<
+        std::string(
+            const std::string &
+        )
+    > markdown;
+
+
+
+    /**
+     * @brief contains all the articles that match the request
+     *        and the first part of their contents
+     *
+     * @since 4 July 2013
+     */
+    results::Articles articles;
+
+    //TODO
+    std::string query;
 
     Result() {
 
