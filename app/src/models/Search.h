@@ -38,6 +38,16 @@ namespace models {
 class Search : public cppcmsskel::models::SqliteModel {
 
     private:
+        /**
+         * @brief Shorten the content of an article
+         *
+         * @param content The content to shorten
+         *
+         * @return A string containing only an "interesting" part
+         *         of the initial content
+         *
+         * @since 5 July 2013
+         */
         std::string content_summary(const std::string &content);
 
     public:
