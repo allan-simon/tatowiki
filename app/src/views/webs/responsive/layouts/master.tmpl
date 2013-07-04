@@ -3,16 +3,9 @@
 <% c++ #include <cppcms_skel/generics/Config.h> %>
 <% c++ #include "cppcms_skel/contents/content.h" %>
 <% c++ #include "generics/Config.h" %>
+<% c++ #include "results/Articles.h" %>
 <% skin responsive %>
-<% view master uses contents::BaseContent %>
-
-<% template render() %><!DOCTYPE html>
-<html lang="<%= lang %>">
-    <head><%include head() %></head>
-    <body><%include body() %></body>
-</html>
-<% end template %>
-
+<% view master uses contents::BaseContent extends commons %>
 
 /**
  *
@@ -55,12 +48,6 @@
 
 
 
-
-
-/**
- *
- */
-<% template title() %>TODO: replace this<% end template %>
 
 /**
  *
@@ -183,62 +170,11 @@
 /**
  *
  */
-<% template markdown_help() %>
-    <% include begin_module() %>
-    <h2><% gt "Note" %></h2>
-    
-    <p>
-        <%gt "This wiki uses the markdown syntax." %>
-    </p>
-    <% include end_module() %>
-    <% include begin_module() %>
-    <h2><% gt "How to format text" %></h2>
-    <ul>
-        <li>
-            <% gt "#Big title" %>
-        </li>
-        <li>
-            <% gt "##Smaller title" %>
-        </li>
-
-        <li>
-            <% gt "[text](http://example.com)" %>
-        </li>
-
-        <li>
-            <% gt "[text](other-article)" %>
-        </li>
-
-        <li>
-            <% gt "**bold**" %>
-        </li>
-
-        <li>
-            <% gt "*italic*" %>
-        </li>
-
-    </ul>
-    <% include end_module() %>
-<% end template %>
-
-
-/**
- *
- */
 <% template global_css() %>
     <!-- Le styles -->
     <% include css_link("external/bootstrap.min.css") %>
     <% include css_link("layouts/default.css") %>
 <% end template %>
-
-
-/**
- * @brief Used to include the css that will be share by a group
- *        of pages
- * 
- * @since 22 March 2013
- */
-<% template group_css() %><% end template %>
 
 /**
  *
@@ -255,18 +191,6 @@
     <![endif]-->
 <% end template %>
 
-/**
- *
- */
-<% template head_local_js() %><% end template %>
-
-/**
- *
- */
-<% template head_group_js() %><% end template %>
-
-
-
 
 /**
  * @brief Used to include the javascript that does not need to be loaded
@@ -278,87 +202,6 @@
 <% include js_link("external/jquery.min.js") %>
 <% include js_link("external/bootstrap.min.js") %>
 <% end template %>
-
-
-/**
- *
- */
-<% template article_url( std::string const& lang, std::string const& slug) %><% c++ out() << tatowiki::Config::articles_url_from_lang_and_slug(lang,slug); %><% end template %>
-
-
-/**
- * @brief Return the raw url to view the diff between two versions of
- *        an article
- *        Note : this template is on one line to avoid unwanted space/new line
- *
- * @since 20 March 2013
- */
-<% template diff_url( int articleId, int oldVersion, int newVersion) %>/history/show-diff-between/<%= articleId %>/<%= oldVersion %>/<%= newVersion %><% end template %>
-
-
-
-
-
-/**
- * @brief Used to generate a script tag for a javascript file
- *
- * @since 20 March 2013
- */
-<% template js_link(std::string const& jsFile) %><script
-    src="<% c++ out() << Config::get_js_path(); %><%= jsFile %>"
-    type="text/javascript"
-></script><% end template %>
-
-
-<% template css_link(std::string const& cssFile) %><link 
-    href="<% c++ out() << Config::get_css_path(); %><%= cssFile %>"
-    rel="stylesheet"
-    type="text/css"
-/><% end template %>
-
-
-<% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
-    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
-    width="<%= width %>"
-    height="<%= height %>"
-    alt="<%= alt %>"
-/><%end template %>
-
-
-
-
-<% template description() %>TODO<%end template%>
-
-<% template author() %>TODO <% end template %>
-
-
-/**
- *
- * @brief Display a form's widget as an HTML table's row
- *
- * @since 22 April 2013
- */
-<% template widget_row(cppcms::widgets::base_widget & widget) %>
-<% include widget_row_text(widget,"") %>
-<% end template %>
-
-
-<% template widget_row_text(cppcms::widgets::base_widget & widget, std::string const& preinputText ) %>
-<tr>
-    <td class="labels" >
-        <label for="<%= widget.name() %>">
-            <%= widget.message() %>
-        </label>
-    </td>
-    <td>
-        <%= preinputText | raw %>
-        <% form input widget %>
-    </td>
-</tr>
-<% end template %>
-
-
-
 
 <% end view %>
 <% end skin %>
