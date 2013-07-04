@@ -415,6 +415,25 @@ dt {
     border: #E1E1E1 1px solid;
 }
 
+/**
+ * Temp for the search input in the nav bar
+ */
+.search-query {
+    float: right;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 10px;
+    padding: 4px 14px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    margin-top: 2px;
+}
+
 
 /*
  * Other
@@ -433,4 +452,5 @@ dt {
 .annexeMenu .item:before {
     content: "\00BB \0020";
 }
+
 
