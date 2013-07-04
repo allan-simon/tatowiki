@@ -23,13 +23,12 @@
 * @link     https://github.com/sysko/tatowiki@
 */
 
-#include<cppcms/session_interface.h>
-#include"Search.h"
-
-
-#include"contents/Search.h"
+#include <cppcms/session_interface.h>
+#include "Search.h"
+#include "contents/Search.h"
 
 #include "models/Search.h"
+#include "generics/Config.h"
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
@@ -42,7 +41,6 @@ controllers::webs::Controller(serv)
 
 
     dispatcher().assign("/simple", &Search::simple, this);
-    dispatcher().assign("/simple_treat", &Search::simple_treat, this);
     dispatcher().assign("/result", &Search::result, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
@@ -69,21 +67,6 @@ void Search::simple() {
 
 
     render("search_simple", c);
-}
-
-
-/**
- *
- */
-void Search::simple_treat() {
-
-    forms::search::Simple form;
-    form.load(context());
-
-    if (!form.validate()) {
-        go_back_to_previous_page();
-    }
-
 }
 
 

@@ -75,12 +75,6 @@ class Search : public Controller {
         void simple();
 
         /**
-         * @brief @TODO add a description
-         * @since 18 June 2013
-         */
-        void simple_treat();
-
-        /**
          * @brief Page to display the result of a search request
          * @since 21 June 2013
          */
