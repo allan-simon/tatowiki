@@ -1,39 +1,6 @@
 <% c++ #include "contents/Articles.h" %>
 <% skin %>
-<% view articles_edit uses contents::articles::Edit extends article_edition %>
-<% template title() %><% gt "Edit article" %><% end template %>
-
-
-<% template css() %>
-    <% include css_link("articles/create.css") %>
-<% end template %>
-
-
-
-<% template main_content() %> 
-<div class="module" >
-    <h2><% gt "Edit article" %></h2>
-    <form method="POST" action="/articles/edit_treat" >
-    <% form input editForm.slug %>
-    <% form input editForm.lastVersion %>
-    <table>
-        <% include title_area(editForm) %>
-        <% include editor_area(editForm) %>
-        <% include summary_text(editForm) %>
-    </table>
-    <% include save_buttons(editForm) %>
-    </form>
-</div>
-<% include preview_module() %>
-<% end template %>
-
-/**
- *
- */
-<% template annexe_content() %>
-   <% include markdown_help() %> 
-<% end template %>
-
+<% view articles_edit uses contents::articles::Edit extends common_articles_edit %>
 
 <% end view %>
 <% end skin %>

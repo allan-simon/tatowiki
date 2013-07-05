@@ -1,43 +1,7 @@
 <% c++ #include "contents/Articles.h" %>
 <% c++ #include "generics/Config.h" %>
 <% skin %>
-<% view articles_show_all uses contents::articles::ShowAll extends master %>
-<% template title() %><% gt "All articles" %><% end template %>
-
-
-<% template main_content() %> 
-<div class="module">
-    <h1><% gt "All articles" %></h1>
-    <% foreach article in articles %>
-    <ul>
-        <% item %>
-        <li>    
-            <!-- TODO use < url %> instead -->
-            <a href="<% include article_url(article.lang,article.slug) %>">
-                <%= article.title  %>
-            </a>
-        </li>
-        <% end %>
-    </ul>
-    <% end foreach %>
-</div>
-<% end template %>
-
-<% template annexe_content() %>
-<div class="module">
-    <h2><%gt "Actions" %></h2>
-    
-    <ul class="annexeMenu">
-        <li>
-            <!-- TODO replace by application root !-->
-            <a href="/">
-                <%gt "Go back to main page" %>
-            </a>
-        </li>
-    </ul>
-</div>
-
-<% end template %>
+<% view articles_show_all uses contents::articles::ShowAll extends common_articles_show_all %>
 
 <% end view %>
 <% end skin %>

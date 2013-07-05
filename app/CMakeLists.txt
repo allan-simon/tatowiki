@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.20.2")
+set(PROJECT_VERSION "0.20.3")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -105,6 +105,7 @@ set(
 set(
     WEB_SKINS_COMMONS
     ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
+    ${WEB_SKINS_COMMONS_DIR}/layouts/article_edition.tmpl
     ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl 
 ) 
 
@@ -124,6 +125,7 @@ add_custom_command(
     COMMAND cppcms_tmpl_cc 
         ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
         ${TATOEBA_WEB_SKIN_DIR}/layouts/master.tmpl
+        ${WEB_SKINS_COMMONS_DIR}/layouts/article_edition.tmpl
         ${TATOEBA_WEB_SKIN_DIR}/layouts/article_edition.tmpl
         ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl 
         ${TATOEBA_WEB_SKIN_DIR}/*/*.tmpl 
@@ -147,6 +149,7 @@ add_custom_command(
     COMMAND cppcms_tmpl_cc 
         ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/layouts/master.tmpl
+        ${WEB_SKINS_COMMONS_DIR}/layouts/article_edition.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/layouts/article_edition.tmpl
         ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/*/*.tmpl 

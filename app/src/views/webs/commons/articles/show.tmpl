@@ -1,0 +1,78 @@
+<% c++ #include <cppcms_skel/generics/Languages.h> %>
+<% c++ #include "contents/Articles.h" %>
+<% skin %>
+<% view common_articles_show uses contents::articles::Show extends master %>
+<% template title() %><%= article.title %><% end template %>
+
+
+<% template main_content() %> 
+<% cache cacheKey %>
+<% include begin_module() %>
+    <%= article.content | ext markdown %>
+<% include end_module() %>
+<%end cache %>
+<% end template %>
+
+<% template annexe_content() %>
+<% include begin_module() %>
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="/articles/edit/<%= article.slug | urlencode %>">
+                <%gt "Edit" %>
+            </a>
+        </li>
+        <li>
+            <a href="/articles/translate/<%= article.slug | urlencode %>">
+                <%gt "Translate" %>
+            </a>
+        </li>
+        <li>
+            <a href="/history/all-versions-of/<%= article.slug | urlencode %>">
+                <%gt "History" %>
+            </a>
+        </li> 
+        <li>
+            <a href="/articles/remove/<%= article.slug | urlencode %>">
+                <%gt "Remove" %>
+            </a>
+        </li>
+    </ul>
+<% include end_module() %>
+<% include begin_module() %>
+    <h2><%gt "Article available in:" %></h2>
+
+        <% foreach translation in translatedIn %>
+        <ul>
+            <% item %>
+            <li>
+                <% include link_to_translation(translation.first, translation.second) %>
+            </li>
+            <% end %>
+        </ul>
+        <% end foreach %>
+<% include end_module() %>
+<% end template %>
+
+/**
+ *
+ * @brief Generate the html link to an article, giving its lang and slug
+ *
+ * @param lang The code of the language in which the article is written
+ * @param slug The slug of that article
+ *
+ * @since 28 December 2012
+ */
+<% template link_to_translation(std::string lang, std::string slug) %>
+    <a
+        href="<% include article_url(lang,slug) %>"
+    >
+        <% c++ out() << Languages::get_instance()->get_interface_lang_from_code(lang); %>
+    </a>
+<% end template %>
+
+
+
+<% end view %>
+<% end skin %>

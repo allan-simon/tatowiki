@@ -1,82 +1,8 @@
 <% c++ #ifndef SKIN_RESPONSIVE_LAYOUT_ARTICLE_EDITION %>
 <% c++ #define SKIN_RESPONSIVE_LAYOUT_ARTICLE_EDITION %>
 <% c++ #include "contents/Articles.h" %>
-<% skin responsive %>
-/**
- * @brief Common template used by all the page related to
- *        article edition
- */
-
-<% view article_edition uses contents::BaseContent extends master %>
-
-<% template group_css() %>
-    <% include css_link("external/jquery-ui.css") %>
-    <% include css_link("external/jquery.markedit.css") %>
-<% end template %>
-
-
-<% template footer_js() %>
-    <% include js_link("external/showdown.js") %>
-    <% include js_link("external/jquery.min.js") %>
-    <% include js_link("external/jquery-ui.js") %>
-    <% include js_link("external/jquery.form.js") %>
-    <% include js_link("external/jquery.markedit.js") %>
-    <% include js_link("mardown_editor.js") %>
-<% end template %>
-
-<% template title_area(forms::articles::BaseArticleForm & form) %>
-<% include widget_row(form.title) %>
-<% end template %>
-
-<% template summary_text(forms::articles::BaseArticleForm & form) %>
-<% include widget_row(form.summary) %>
-<% end template %>
-
-
-
-<% template editor_area(forms::articles::BaseArticleForm & form) %>
-<%include widget_row_text(form.content, "<div id='editor-button-bar'></div>") %>
-<% end template %>
-
-<% template save_buttons(forms::articles::BaseArticleForm & form) %>
-    <div class="submit">
-
-        <% form input form.saveAndView %>
-    </div>
-    <div class="submit">
-        <% form input form.saveAndContinue %>
-    </div>
-<% end template %>
-
-<% template preview_module() %>
-<% include begin_module() %>
-    <h2><% gt "Preview" %></h2>
-    <div id="editor-preview"></div>
-<% include end_module() %>
-<% end template %>
-/**
- *
- */
-<% template annexe_content() %>
-<% include begin_module() %>
-    <h2><%gt "Actions" %></h2>
-
-    <ul class="annexeMenu">
-        <li>
-            <a href="upload-image">
-                <%gt "Upload a new image" %>
-            </a>
-        </li>
-        <li>
-            <a href="list-all">
-                <%gt "View all images" %>
-            </a>
-        </li>
-
-    </ul>
-<% include end_module() %>
-<% include markdown_help() %>
-<% end template %>
+<% skin %>
+<% view article_edition uses contents::BaseContent extends common_article_edition %>
 
 <% end view %>
 <% end skin %>
