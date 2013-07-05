@@ -1,53 +1,6 @@
 <% c++ #include "contents/History.h" %>
 <% skin %>
-<% view history_show_version uses contents::history::ShowVersion extends master %>
-//TODO
-<% template title() %><% gt "Previous version" %><% end template %>
-
-<% template main_content() %> 
-<% include begin_module() %>
-    <h1><% gt "Notice" %></h1>
-    <% gt "This page show a previous version of the article" %>
-<% include end_module () %>
-
-<% include begin_module() %>
-    <%= articleVersion.article.content | ext markdown %>
-<% include end_module () %>
-<% end template %>
-
-
-<% template annexe_content() %>
-<% include begin_module() %>
-    <h2><%gt "Actions" %></h2>
-    
-    <ul class="annexeMenu">
-        <li>
-            <a
-                href="/history/all-versions-of/<%= articleVersion.article.slug | urlencode %>"
-            >
-                <%gt "History" %>
-            </a>
-        </li>
-        <li>
-            <a
-                href="/history/revert-to-version/<%= articleVersion.article.slug | urlencode %>/<%= articleVersion.change.version %>"
-            >
-                <%gt "Revert" %>
-            </a>
-        </li>
-        <li>
-            <a href="/articles/show/<%= articleVersion.article.slug | urlencode %>">
-                <%gt "Go back to article's page" %>
-            </a>
-        </li>
-
-    </ul>
-<% include end_module () %>
-<% end template %>
-
-
-
-
+<% view history_show_version uses contents::history::ShowVersion extends common_history_show_version %>
 
 <% end view %>
 <% end skin %>

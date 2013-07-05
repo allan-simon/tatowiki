@@ -1,17 +1,6 @@
 <% c++ #include "contents/History.h" %>
 <% skin %>
-<% view history_diff_between uses contents::history::DiffBetween extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
-
-
-<% template body() %> 
-    Edit Me History / DiffBetween
-    <form method="POST" action="<% url "/history/diff-between_treat" %>" >
-        <% form as_p diffBetweenForm %>
-    </form>
-<% end template %>
-
-
+<% view history_diff_between uses contents::history::DiffBetween extends common_history_diff_between %>
 
 <% end view %>
 <% end skin %>

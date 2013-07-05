@@ -1,61 +1,6 @@
 <% c++ #include "contents/History.h" %>
 <% skin %>
-<% view history_all_versions_of uses contents::history::AllVersionsOf extends master %>
-<% template title() %><% gt "Article's history" %><% end template %>
-
-
-<% template main_content() %> 
-<% include begin_module() %>
-    <% foreach change in changes %>
-    <ul>
-        <% item %>
-        <li>    
-            <% gt "version {1}: " using change.version %>
-
-
-            <% if (change.nextVersion != -1) %>
-                <a href="/history/show-version/<%= change.version %>">
-                    <% gt "Show that version" %>
-                </a>
-            <% else %>
-                <% gt "Current version" %>
-            <% end %>
-            
-            <% if (change.previousVersion != -1) %>
-                <a href="<% include diff_url(articleId,change.previousVersion,change.version) %>" >
-                    <% gt "Show diff with previous version" %>
-                </a>
-            <% else %>
-                <% gt "First version" %>
-            <% end %>
-            <% gt "<span class='time'>{1,dt=s}</span>" using change.editTime %>
-            <% gt "by {1}" using change.byUserName  %>
-            <br/>
-            <% gt "summary: " %>
-            <span class="summary"><%= change.summary %></span>
-        </li>
-        <% end %>
-    </ul>
-    <% end foreach %>
-<% include end_module () %>
-<% end template %>
-
-
-<% template annexe_content() %>
-<% include begin_module() %>
-    <h2><%gt "Actions" %></h2>
-    
-    <ul class="annexeMenu">
-        <li>
-            <a href="/articles/show/<%= slug | urlencode %>">
-                <%gt "Go back to article's page" %>
-            </a>
-        </li>
-    </ul>
-<% include end_module () %>
-<% end template %>
-
-
+<% view history_all_versions_of uses contents::history::AllVersionsOf extends common_history_all_versions_of %>
 
 <% end view %>
 <% end skin %>

@@ -1,14 +1,6 @@
 <% c++ #include "contents/History.h" %>
 <% skin %>
-<% view history_revert_to_version uses contents::history::RevertToVersion extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
-
-
-<% template body() %> 
-    Edit Me History / RevertToVersion
-<% end template %>
-
-
+<% view history_revert_to_version uses contents::history::RevertToVersion extends common_history_revert_to_version %>
 
 <% end view %>
 <% end skin %>
