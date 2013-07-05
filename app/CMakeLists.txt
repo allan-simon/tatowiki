@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project(tatowiki)
 
 # set the version
-set(PROJECT_VERSION "0.19.13")
+set(PROJECT_VERSION "0.20.0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -94,16 +94,25 @@ target_link_libraries(
     ${TATOWIKI_LIBS}
 )
 
+###########################
+# Part common to all skins
+###########################
+set(
+    WEB_SKINS_COMMONS_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/commons/
+)
+
+set(
+    WEB_SKINS_COMMONS
+    ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
+    ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl 
+) 
+
 
 
 ########################
 #  Tatoeba skin
 ########################
-set(
-    WEB_SKINS_COMMONS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/commons/commons.tmpl
-) 
-
 
 set(
     TATOEBA_WEB_SKIN_DIR
@@ -113,9 +122,10 @@ set(
 add_custom_command(
     OUTPUT view_tatoeba_skin_web.cpp
     COMMAND cppcms_tmpl_cc 
-        ${WEB_SKINS_COMMONS}       
+        ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
         ${TATOEBA_WEB_SKIN_DIR}/layouts/master.tmpl
         ${TATOEBA_WEB_SKIN_DIR}/layouts/article_edition.tmpl
+        ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl 
         ${TATOEBA_WEB_SKIN_DIR}/*/*.tmpl 
         -o view_tatoeba_skin_web.cpp
         -s tatoeba
@@ -135,9 +145,10 @@ set(
 add_custom_command(
     OUTPUT view_responsive_skin_web.cpp
     COMMAND cppcms_tmpl_cc 
-        ${WEB_SKINS_COMMONS}       
+        ${WEB_SKINS_COMMONS_DIR}/layouts/master.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/layouts/master.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/layouts/article_edition.tmpl
+        ${WEB_SKINS_COMMONS_DIR}/*/*.tmpl
         ${RESPONSIVE_WEB_SKIN_DIR}/*/*.tmpl 
         -o view_responsive_skin_web.cpp
         -s responsive

@@ -1,0 +1,30 @@
+<% c++ #include "contents/Search.h" %>
+<% skin %>
+<% view common_search_simple uses contents::search::Simple extends master %>
+<% template title() %><% gt "Search" %><% end template %>
+
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h2><% gt "Search for articles" %></h2>
+    <form
+        id="SearchSimpleForm"
+        method="GET"
+        action="/search/result"
+    >
+        <label for="<%= simpleForm.query.name() %>">
+            <%= simpleForm.query.message() %>
+        </label>
+        <% form input simpleForm.query %> 
+        <br/>
+        <% form input simpleForm.submit %>
+    </form>
+<% include end_module() %>
+<% end template %>
+
+
+
+
+
+<% end view %>
+<% end skin %>

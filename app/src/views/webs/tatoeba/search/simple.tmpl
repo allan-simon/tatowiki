@@ -1,14 +1,6 @@
 <% c++ #include "contents/Search.h" %>
 <% skin %>
-<% view search_simple uses contents::search::Simple extends master %>
-<% template title() %><% gt "TODO TITLE" %><% end template %>
-
-
-<% template body() %>
-    Edit Me Search / Simple
-<% end template %>
-
-
+<% view search_simple uses contents::search::Simple extends common_search_simple %>
 
 <% end view %>
 <% end skin %>
