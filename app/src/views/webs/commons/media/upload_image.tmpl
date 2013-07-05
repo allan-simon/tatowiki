@@ -1,0 +1,44 @@
+<% c++ #include "contents/Media.h" %>
+<% skin %>
+<% view common_media_upload_image uses contents::media::UploadImage extends master %>
+<% template title() %><% gt "Upload an image" %><% end template %>
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h2><% gt "Upload an image" %></h2>
+    <form
+        method="POST"
+        action="/media/upload-image_treat"
+        id="upload_image_form"
+        enctype="multipart/form-data"
+    >
+        <table class='input'>
+            <% include widget_row(uploadImageForm.image) %>
+        </table>
+        <div class="submit">
+            <% form input uploadImageForm.submit %>
+        </div>
+    </form>
+<% include end_module() %>
+<% end template %>
+
+<% template annexe_content() %>
+<% include begin_module() %>
+    <h2><%gt "Actions" %></h2>
+    
+    <ul class="annexeMenu">
+        <li>
+            <a href="list-all">
+                <%gt "View all images" %>
+            </a>
+        </li>
+    </ul>
+<% include end_module() %>
+<% end template %>
+
+
+
+
+
+<% end view %>
+<% end skin %>
