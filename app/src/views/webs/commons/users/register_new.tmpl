@@ -1,0 +1,52 @@
+<% c++ #include "contents/Users.h" %>
+<% skin %>
+<% view common_users_register_new uses contents::users::RegisterNew extends master %>
+<% template title() %><% gt "Register a new user" %><% end template %>
+
+<% template css() %><% include css_link("users/register-new.css") %><% end template%>
+
+
+<% template main_content() %> 
+<% include begin_module() %>
+    <h2><% gt "Register a new user" %></h2>
+    <form id="UsersRegisterForm" method="POST" action="/users/register-new_treat" >
+        <table>
+            <% include widget_row(registerNewForm.username) %>
+            <% include widget_row(registerNewForm.password) %>
+            <% include widget_row(registerNewForm.email) %>
+        </table>
+        <div id="quiz">
+            <% gt "We need to make sure you are human." %>
+            <label for="<%= registerNewForm.quiz.name()">
+                <%= registerNewForm.quiz.message() %>
+            </label>
+            <p>
+                <% form input registerNewForm.quiz %>
+            </p>
+            <% gt "For instance, if your email is me12345@example.com, the answer is \"me123\"." %>
+        </div>
+        <div id="termsOfUse">
+            <% form input registerNewForm.termsOfUse %>
+            <label for="<%= registerNewForm.termsOfUse.name()">
+               <%= registerNewForm.termsOfUse.message() %>
+            <label> 
+        </div>
+        <div class="submit">
+            <% form input registerNewForm.submit %>
+        </div>
+    </form>
+<% include end_module() %>
+<% end template %>
+
+<% template annexe_content() %>
+<% include begin_module() %>
+    <h2><% gt "Note:" %></h2>
+    <p>
+        <% gt "Your email address will never be given or sold to third services. It will only be used internally to send you automatic notification or in case you lose your password." %>
+    </p>
+<% include end_module() %>
+<% end template %>
+
+<% end view %>
+<% end skin %>
+
