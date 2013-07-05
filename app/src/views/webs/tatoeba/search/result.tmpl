@@ -1,23 +1,6 @@
 <% c++ #include "contents/Search.h" %>
 <% skin %>
-<% view search_result uses contents::search::Result extends master %>
-<% template title() %><% gt "Research results for: \"{1}\" " using query %><% end template %>
-
-
-<% template main_content() %>
-    <% include begin_module() %>
-        <h2><% gt "Research results for \"{1}\"" using query  %></h2>
-    <% include end_module() %>
-    <% foreach article in articles %>
-        <% item %>
-            <% include begin_module() %>
-            <h3><% include article_link(article) %></h3>
-            <%= article.content | ext markdown %>
-            <% include end_module() %>
-        <% end %>
-    <% end foreach %>
-
-<% end template %>
+<% view search_result uses contents::search::Result extends common_search_result %>
 
 <% end view %>
 <% end skin %>
