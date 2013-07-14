@@ -6,11 +6,8 @@
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
 #define SQL_FILL_ARTICLES "../tests/models/articles/fill_articles.sql"
 
-#define TEST_ARTICLE_GROUP_ID  7
 #define TEST_ARTICLE_LANG "fr"
 #define TEST_ARTICLE_SLUG "page_principale"
-#define TEST_ARTICLE_TITLE "Page Principale"
-#define TEST_ARTICLE_CONTENT u8"Juste pour voir si ça marche"
 
 
 
