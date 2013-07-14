@@ -14,6 +14,10 @@
         return false;
     }
     
+    // check that we're not doing a translation to the same language
+    function check_translation_lang() {
+
+    }
     //check if the translation form is likely to validate
     function check_translation_form() {
         return check_slug();
