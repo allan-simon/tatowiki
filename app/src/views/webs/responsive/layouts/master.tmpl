@@ -16,7 +16,7 @@
         <div class="row-fluid">
             <div class="span8">
                 <% include messages() %>
-                <% include main_content() %>          
+                <% include main_content() %>
             </div>
             <div class="span4">
                 <%include annexe_content() %>
@@ -58,12 +58,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<% include description() %>">
     <meta name="author" content="<% include author() %>">
-    <% include global_css() %>
-    <% include group_css() %>
-    <% include local_css() %>
-    <% include head_global_js() %>
-    <% include head_group_js() %>
-    <% include head_local_js() %>
+    <% include css() %>
+    <% include head_js() %>
 
 <% end template %>
 
@@ -163,14 +159,9 @@
  */
 <% template global_css() %>
     <!-- Le styles -->
-    <% include css_link("external/bootstrap.min.css") %>
-    <% include css_link("layouts/default.css") %>
+    <% include css_link("commons/css/external/bootstrap.min.css") %>
+    <% include css_link("skins/responsive/css/layouts/default.css") %>
 <% end template %>
-
-/**
- *
- */
-<% template local_css() %><% end template %>
 
 /**
  *
@@ -190,9 +181,10 @@
  * @since 20 March 2013
  */
 <% template footer_js() %>
-<% include js_link("external/jquery.min.js") %>
-<% include js_link("external/bootstrap.min.js") %>
+<% include js_link("commons/js/external/jquery.min.js") %>
+<% include js_link("commons/js/external/bootstrap.min.js") %>
 <% end template %>
+
 
 <% end view %>
 <% end skin %>

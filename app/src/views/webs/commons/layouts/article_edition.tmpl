@@ -10,18 +10,21 @@
 <% view common_article_edition uses contents::BaseContent extends master %>
 
 <% template group_css() %>
-    <% include css_link("external/jquery-ui.css") %>
-    <% include css_link("external/jquery.markedit.css") %>
+    <% include css_link("commons/css/external/jquery-ui.css") %>
+    <% include css_link("commons/css/external/jquery.markedit.css") %>
+    <% include skin_group_css() %>
 <% end template %>
+
+<% template skin_group_css() %><% end template %>
 
 
 <% template footer_js() %>
-    <% include js_link("external/showdown.js") %>
-    <% include js_link("external/jquery.min.js") %>
-    <% include js_link("external/jquery-ui.js") %>
-    <% include js_link("external/jquery.form.js") %>
-    <% include js_link("external/jquery.markedit.js") %>
-    <% include js_link("mardown_editor.js") %>
+    <% include js_link("commons/js/external/showdown.js") %>
+    <% include js_link("commons/js/external/jquery.min.js") %>
+    <% include js_link("commons/js/external/jquery-ui.js") %>
+    <% include js_link("commons/js/external/jquery.form.js") %>
+    <% include js_link("commons/js/external/jquery.markedit.js") %>
+    <% include js_link("commons/js/mardown_editor.js") %>
 <% end template %>
 
 <% template title_area(forms::articles::BaseArticleForm & form) %>

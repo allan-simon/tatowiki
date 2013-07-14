@@ -14,6 +14,25 @@
 </html>
 <% end template %>
 
+
+/**
+ *
+ */
+<% template css() %>
+    <% include global_css() %>
+    <% include group_css() %>
+    <% include local_css() %>
+<% end template %>
+
+/**
+ *
+ */
+<% template head_js() %>
+    <% include head_global_js() %>
+    <% include head_group_js() %>
+    <% include head_local_js() %>
+<% end template %>
+
 /**
  *
  */
@@ -29,25 +48,28 @@
  */
 <% template title() %>TODO: replace this<% end template %>
 
+
+<% template asset_url(std::string const& type, std::string const& file) %><% c++ out() << Config::get_assets_url(); %><%= type %>/<%= file %><% end template %>
 /**
  * @brief Used to generate a script tag for a javascript file
  *
  * @since 20 March 2013
  */
+
 <% template js_link(std::string const& jsFile) %><script
-    src="<% c++ out() << Config::get_js_path(); %><%= jsFile %>"
+    src="<% include asset_url("js",jsFile) %>"
     type="text/javascript"
 ></script><% end template %>
 
 
 <% template css_link(std::string const& cssFile) %><link 
-    href="<% c++ out() << Config::get_css_path(); %><%= cssFile %>"
+    href="<% include asset_url("css",cssFile) %>"
     rel="stylesheet"
     type="text/css"
 /><% end template %>
 
 <% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
-    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
+    src="<% include asset_url("img",imgFile) %>"
     width="<%= width %>"
     height="<%= height %>"
     alt="<%= alt %>"
@@ -75,35 +97,6 @@
  * @since 20 March 2013
  */
 <% template diff_url( int articleId, int oldVersion, int newVersion) %>/history/show-diff-between/<%= articleId %>/<%= oldVersion %>/<%= newVersion %><% end template %>
-
-
-
-/**
- * @brief Include all the css, overide this method if you want to include
- *        ONLY your css
- *
- * @since 18 January
- */
-<% template main_css() %>
-    <% include css_link("layouts/default.css") %>
-    <% include group_css() %>
-    <% include css() %>
-<% end template %>
-
-/**
- * @brief Used to include the css that will be share by a group
- *        of pages
- * 
- * @since 22 March 2013
- */
-<% template group_css() %><% end template %>
-
-/**
- *
- */
-<% template css() %><% end template %>
-
-
 
 <% template description() %>TODO<%end template%>
 
@@ -138,6 +131,21 @@
 /**
  *
  */
+<% template global_css() %><% end template %>
+
+/**
+ *
+ */
+<% template group_css() %><% end template %>
+
+/**
+ *
+ */
+<% template local_css() %><% end template %>
+
+/**
+ *
+ */
 <% template head_local_js() %><% end template %>
 
 /**
@@ -145,6 +153,10 @@
  */
 <% template head_group_js() %><% end template %>
 
+/**
+ *
+ */
+<% template head_global_js() %><% end template %>
 /** 
  * @brief used to abstract how modules are organized
  * 

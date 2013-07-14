@@ -236,7 +236,7 @@ dt {
     width: 960px;
     margin: auto;
     padding: 0px 10px;
-    background: url(/img/bg_main.png) repeat-y;
+    background: url(/img/skins/tatoeba/img/bg_main.png) repeat-y;
 }
 
 #container {
@@ -272,7 +272,7 @@ dt {
 .module {
     padding: 10px 10px 5px 10px;
     margin: 0px 0px 20px 0px;
-    background: url(/img/module_background.png) repeat-x bottom left;
+    background: url(/img/skins/tatoeba/img/module_background.png) repeat-x bottom left;
     overflow: hidden;
 }
 #annexe_content .module {
@@ -280,7 +280,7 @@ dt {
 }
 
 .module h2 {
-    background: url(/img/title.png) no-repeat top left;
+    background: url(/img/skins/tatoeba/img/title.png) no-repeat top left;
     padding-left: 28px;
     margin: 0 0 15px -8px;
     font-size: 1.5em;
@@ -296,12 +296,12 @@ dt {
 .main_module {
     font-size: 1.25em;
     padding: 10px 10px 5px 10px;
-    background: url(/img/module_background.png) repeat-x bottom left;
+    background: url(/img/skins/tatoeba/img/module_background.png) repeat-x bottom left;
     margin-bottom: 20px;
 }
 
 .main_module h2 {
-    background: url(/img/title_main.png) no-repeat top left;
+    background: url(/img/skins/tatoeba/img/title_main.png) no-repeat top left;
     padding-left: 32px;
     font-size: 1.5em;
     border-bottom: none;
@@ -329,7 +329,7 @@ dt {
 }
 
 #footer_container {
-    background: url(/img/bg_footer.png) bottom left;
+    background: url(/img/skins/tatoeba/img/bg_footer.png) bottom left;
     width: 960px;
     height: 24px;
     margin: auto;

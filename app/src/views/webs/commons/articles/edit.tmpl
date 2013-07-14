@@ -3,13 +3,6 @@
 <% view common_articles_edit uses contents::articles::Edit extends article_edition %>
 <% template title() %><% gt "Edit article" %><% end template %>
 
-
-<% template local_css() %>
-    <% include css_link("articles/create.css") %>
-<% end template %>
-
-
-
 <% template main_content() %> 
 <% include begin_module() %>
     <h2><% gt "Edit article" %></h2>

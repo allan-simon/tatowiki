@@ -92,14 +92,10 @@
             "path" : "../data/sqlite6.db"
         },
         "baseHost" : "YOURHOST",
-        "innerCssFolder" : "../resources/skins/responsive/css/",
-        "innerImgFolder" : "../resources/skins/responsive/img/",
-        "innerJsFolder" : "../resources/skins/responsive/js/",
+        "assetsFolder" : "../resources/",
+        "assetsURL" : "/",
         "uploadFolder" : "../upload/",
-        "imgPath" : "/img/",
-        "cssPath" : "/css/",
-        "jsPath" : "/js/"
-        "uploadUrl" : "/upload/",
+        "uploadURL" : "/media/get/",
 	},
    "views" : {
         "default_skin" : "responsive"

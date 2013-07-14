@@ -3,11 +3,6 @@
 <% view common_articles_create uses contents::articles::Create extends article_edition %>
 <% template title() %><% gt "Create a new article" %><% end template %>
 
-<% template css() %>
-    <% include css_link("articles/create.css") %>
-<% end template %>
-
-
 <% template main_content() %> 
 <% include begin_module() %>
     <h2><% gt "Create a new article" %></h2>

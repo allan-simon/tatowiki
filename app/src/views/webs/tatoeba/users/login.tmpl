@@ -2,6 +2,11 @@
 <% skin %>
 <% view users_login uses contents::users::Login extends common_users_login %>
 
+
+<% template local_css() %>
+    <% include css_link("skins/tatoeba/css/users/login.css") %>
+<% end template %>
+
 <% end view %>
 <% end skin %>
 

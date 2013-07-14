@@ -9,12 +9,21 @@
 /**
  *
  */
+<% template global_css() %>
+    <% include css_link("skins/tatoeba/css/layouts/default.css") %>
+<% end template %>
+
+
+
+/**
+ *
+ */
 <% template body() %>
     <% include top_menu() %>
     <div id="container1">
         <div id="header">
             <a href="/">
-                <% include img_tag("logo.png", 72, 450, "Tatowiki's logo") %>
+                <% include img_tag("skins/tatoeba/img/logo.png", 72, 450, "Tatowiki's logo") %>
             </a>
         </div>
         <div id="container">
@@ -69,16 +78,6 @@
 		</div>
 <% end template %>
 
-
-<% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
-    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
-    width="<%= width %>"
-    height="<%= height %>"
-    alt="<%= alt %>"
-/><%end template %>
-
-
-
 /**
  * @brief Used to include the javascript that does not need to be loaded
  *        since the beginning, so that page would render faster
@@ -126,7 +125,8 @@
 <% template head() %>
 <title><% include title() %></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<% include main_css() %>
+<% include css() %>
+<% include head_js() %>
 <% end template %>
 
 
