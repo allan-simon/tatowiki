@@ -62,7 +62,7 @@
 ></script><% end template %>
 
 
-<% template css_link(std::string const& cssFile) %><link 
+<% template css_link(std::string const& cssFile) %><link
     href="<% include asset_url("css",cssFile) %>"
     rel="stylesheet"
     type="text/css"
@@ -157,9 +157,29 @@
  *
  */
 <% template head_global_js() %><% end template %>
-/** 
+
+/**
+ * @brief Used to include the javascript that does not need to be loaded
+ *        since the beginning, so that page would render faster
+ *
+ * @since 20 March 2013
+ */
+<% template footer_js() %>
+<% include js_link("commons/js/external/jquery.min.js") %>
+<% include local_footer_js() %>
+<% end template %>
+
+/**
+ *
+ * @since 15 July 2013
+ */
+<% template local_footer_js() %><% end template %>
+
+
+
+/**
  * @brief used to abstract how modules are organized
- * 
+ *
  * @since 7 April 2013
  */
 <% template begin_module() %><div><% end template %>
@@ -173,7 +193,7 @@
 <% template markdown_help() %>
     <% include begin_module() %>
     <h2><% gt "Note" %></h2>
-    
+
     <p>
         <%gt "This wiki uses the markdown syntax." %>
     </p>

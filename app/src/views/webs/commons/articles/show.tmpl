@@ -15,6 +15,13 @@
 
 <% template annexe_content() %>
 <% include begin_module() %>
+    <h2><%gt "Contents" %></h2>
+    <ul id="toc"><li></li></ul>
+
+<% include end_module() %>
+
+<% include begin_module() %>
+
     <h2><%gt "Actions" %></h2>
     
     <ul class="annexeMenu">
@@ -71,6 +78,12 @@
         <% c++ out() << Languages::get_instance()->get_interface_lang_from_code(lang); %>
     </a>
 <% end template %>
+
+<% template local_footer_js() %>
+<% include js_link("commons/js/external/jquery.tableofcontents.js") %>
+<% include js_link("commons/js/toc.js") %>
+<% end template %>
+
 
 
 

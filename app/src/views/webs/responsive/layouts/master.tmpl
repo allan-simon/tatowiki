@@ -14,7 +14,7 @@
     <div class="navbar navbar-fixed-top"><%include navigation_bar() %></div>
     <div class="container">
         <div class="row-fluid">
-            <div class="span8">
+            <div id="main_content" class="span8">
                 <% include messages() %>
                 <% include main_content() %>
             </div>
@@ -183,8 +183,8 @@
 <% template footer_js() %>
 <% include js_link("commons/js/external/jquery.min.js") %>
 <% include js_link("commons/js/external/bootstrap.min.js") %>
+<% include local_footer_js() %>
 <% end template %>
-
 
 <% end view %>
 <% end skin %>
