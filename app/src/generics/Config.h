@@ -1,28 +1,14 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2013 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
  * @package  Generics
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #ifndef TATOWIKI_GENERICS_CONFIG_H
 #define TATOWIKI_GENERICS_CONFIG_H
@@ -37,7 +23,7 @@
 namespace tatowiki {
 
     /**
-     * @class Config Contains the configuration given by config.js 
+     * @class Config Contains the configuration given by config.js
      *               and that are specific to Tatowiki
      *
      * @since 14 January 2013
@@ -55,7 +41,7 @@ namespace tatowiki {
 
             /**
              * @brief Permit to know if the wiki is set as
-             *        private or not 
+             *        private or not
              * @TODO replace this by something better to manage
              *       global permission
              *
@@ -78,7 +64,7 @@ namespace tatowiki {
              * @since 28 March 2013
              */
             static bool isPrivate(void);
-            
+
             /**
              * @brief Set if the wiki is private or not
              *
@@ -158,9 +144,7 @@ namespace tatowiki {
             static std::map<std::string, std::string> get_lang_to_main_pages();
     };
 
-
 } // end of namespace tatowiki
-
 
 #endif
 
