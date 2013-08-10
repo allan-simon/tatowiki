@@ -1,25 +1,13 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
  * @package  Models
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
 
 #ifndef TatoWiki_HISTORY
@@ -37,8 +25,8 @@ namespace models {
 
 /**
  * @class History
- * 
- * @since 30 October 2012       
+ *
+ * @since 30 October 2012
  *
  */
 class History : public cppcmsskel::models::SqliteModel {
@@ -51,7 +39,7 @@ class History : public cppcmsskel::models::SqliteModel {
 
         /**
          * @brief Save a new version of an article
-         * 
+         *
          * @param article The article's version to save
          * @param userId  Id of the user who has added this version
          * @param summary A description of the change
@@ -68,7 +56,7 @@ class History : public cppcmsskel::models::SqliteModel {
 
         /**
          * @brief Retrieve the list of changes made on an article
-         * 
+         *
          * @param lang ISO code of the language in which the article
          *             is written
          * @param slug Slug of the article (i.e URL version of the
@@ -88,7 +76,7 @@ class History : public cppcmsskel::models::SqliteModel {
 
         /**
          * @brief Retrieve a given version of an article
-         * 
+         *
          * @param int Version The version number
 
          * @return ArticleVersion The article as it was at that time
@@ -103,7 +91,7 @@ class History : public cppcmsskel::models::SqliteModel {
 
 
         /**
-         * @brief Get a summary of the last modifications made 
+         * @brief Get a summary of the last modifications made
          *        on the wiki
          *
          * @param number Will return the numberTh last modifications
@@ -116,7 +104,7 @@ class History : public cppcmsskel::models::SqliteModel {
         results::ArticlesVersions recent_changes(
             const int number = 100
         );
-        
+
         /**
          * @brief Get the last revision number of an article
          *
@@ -136,7 +124,7 @@ class History : public cppcmsskel::models::SqliteModel {
          * @param articleId The article we want to compare two versions of
          * @param oldVersion Id of the old revision we will use as a base
          * @param newVersion Id of the new revision we will use to compare
-         * 
+         *
          * @param The two contents and their differences
          *
          * @since 20 March 2013
@@ -146,14 +134,14 @@ class History : public cppcmsskel::models::SqliteModel {
             const int oldVersion,
             const int newVersion
         );
-        
+
         /**
          * @brief Return the id of the change change that happened just
          *               before the one given on parameter on a given article
          *
          * @param articleId The id of the article we're interested in
          * @param version Id of the version we want to get the previous change
-         * 
+         *
          * @param The id of the change preceding the one given in parameter
          *
          * @since 20 March 2013
@@ -162,10 +150,9 @@ class History : public cppcmsskel::models::SqliteModel {
             const int articleId,
             const int version
         );
-            
-        
+
 };
 
-} // end namespace models 
+} // end namespace models
 
 #endif

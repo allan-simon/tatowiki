@@ -1,28 +1,14 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
- * @package  Models
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @package  Contents
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #include <iostream>
 #include <string>
@@ -33,8 +19,6 @@
 #include <cppcms/localization.h>
 
 #include "models/Articles.h"
-
-
 
 namespace models {
 
@@ -70,7 +54,7 @@ results::Article Articles::get_from_lang_and_slug(
 
     cppdb::result res = getFromLangAndSlug.row();
     results::Article article = get_from_result(res);
-    
+
     getFromLangAndSlug.reset();
     return article;
 }
@@ -90,7 +74,7 @@ results::Article Articles::get_from_id(
 
     cppdb::result res = statement.row();
     results::Article article = get_from_result(res);
-    
+
     statement.reset();
     return article;
 }
@@ -113,7 +97,7 @@ bool Articles::edit_from_lang_and_slug(
         "   content = ? "
         "WHERE lang = ? AND slug = ?"
     );
-    
+
     edit.bind(title);
     edit.bind(content);
     edit.bind(lang);
@@ -154,7 +138,7 @@ int Articles::create_from_lang_and_slug(
         "   ? "
         ")"
     );
-    
+
     create.bind(title);
     create.bind(content);
     create.bind(lang);
@@ -192,7 +176,7 @@ bool Articles::remove(
     const std::string &slug
 ) {
 
-    
+
     // first we copy the articles to the list of deleted articles
     cppdb::statement moveToDeleted = sqliteDb.prepare(
         "INSERT OR REPLACE INTO deleted_articles "
@@ -338,7 +322,7 @@ int Articles::translate_from_lang_and_slug(
     }
     //cppdb::transaction guard(sqliteDb);
 
-    // GET group id of the article 
+    // GET group id of the article
     const int groupId = get_group_id_from_lang_and_slug(
         origLang,
         origSlug
@@ -351,8 +335,8 @@ int Articles::translate_from_lang_and_slug(
         return ARTICLE_ALREADY_TRANSLATED_ERROR;
     }
 
-    // save translation 
-    // if ID < 0 => error 
+    // save translation
+    // if ID < 0 => error
     const int translationId = create_from_lang_and_slug(
         lang,
         slug,
@@ -370,7 +354,7 @@ int Articles::translate_from_lang_and_slug(
     if (linksAdded < 0) {
         return ARTICLE_ADD_TRANSLATION_LINK_ERROR;
     }
-    
+
     //guard.commit();
     return translationId;
 
@@ -383,7 +367,7 @@ bool Articles::group_contains_lang(
     const int groupId,
     const std::string &lang
 ) {
-    
+
     cppdb::statement checkTransExists = sqliteDb.prepare(
         "SELECT 1 "
         "FROM articles "
@@ -414,7 +398,7 @@ int Articles::add_to_group(
     const int groupId,
     const int translationId
 ) {
-    
+
     // if we want to translate a  by  b ...
     cppdb::statement addToGroup = sqliteDb.prepare(
         "UPDATE articles "
@@ -447,7 +431,7 @@ results::TranslatedIn Articles::get_group_of(
     const int articleId,
     const int groupId
 ) {
-    
+
     cppdb::statement request = sqliteDb.prepare(
         "SELECT "
         "    lang, "
@@ -496,7 +480,7 @@ int Articles::save_conflict(
         "   ? "
         ")"
     );
-    
+
     create.bind(article.id);
     create.bind(article.title);
     create.bind(article.content);
@@ -544,7 +528,7 @@ results::Article Articles::get_from_result(
     cppdb::result &res
 ) {
     results::Article article;
-    
+
     if (!res.empty()) {
         article.id = res.get<int>("article_id");
         article.groupId = res.get<int>("group_id");
@@ -558,9 +542,6 @@ results::Article Articles::get_from_result(
     }
     return article;
 }
-
-
-
 
 } // end namespace models
 
