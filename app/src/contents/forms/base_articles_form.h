@@ -1,28 +1,14 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
- * @package  Form
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @package  Forms
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #ifndef TATOWIKI_BASE_ARTICLES_FORM_H
 #define TATOWIKI_BASE_ARTICLES_FORM_H
@@ -39,7 +25,7 @@ namespace articles {
 /**
  * @struct BaseArticleForm Base form for all form
  *                         related to articles
- * 
+ *
  * @since 3 November 2012
  */
 struct BaseArticleForm : public cppcms::form {
@@ -55,7 +41,7 @@ struct BaseArticleForm : public cppcms::form {
 
     cppcms::widgets::text title;
     cppcms::widgets::textarea content;
-    
+
     /**
      * @brief Text field to explain what kind of change we made
      *
@@ -75,7 +61,7 @@ struct BaseArticleForm : public cppcms::form {
      * @since  30 October 2012
      */
     cppcms::widgets::submit saveAndContinue;
-    
+
     /**
      * @brief Centralize the common instruction between the
      *        constructors of this form, without adding them
@@ -98,7 +84,7 @@ struct BaseArticleForm : public cppcms::form {
             cppcms::locale::translate("Content")
         );
         content.non_empty();
-        
+
         //
         summary.message(
             cppcms::locale::translate("Summary")

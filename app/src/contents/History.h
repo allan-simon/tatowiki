@@ -1,26 +1,13 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
  * @package  Contents
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
 
 
@@ -47,7 +34,6 @@ struct History : public BaseContent {
 /**
  * @struct RevertToVersion
  * @since  30 October 2012
- * @brief 
  */
 struct RevertToVersion : public History {
 
@@ -60,7 +46,6 @@ struct RevertToVersion : public History {
 /**
  * @struct ShowVersion Content that will be used by History::show_version
  * @since  30 October 2012
- * @brief 
  */
 struct ShowVersion : public History {
 
@@ -94,7 +79,6 @@ struct ShowVersion : public History {
 /**
  * @struct DiffBetween
  * @since  30 October 2012
- * @brief 
  */
 struct DiffBetween : public History {
 
@@ -111,7 +95,6 @@ struct DiffBetween : public History {
 /**
  * @struct AllVersionsOf
  * @since  04 November 2012
- * @brief 
  */
 struct AllVersionsOf : public History {
 
@@ -123,13 +106,13 @@ struct AllVersionsOf : public History {
     results::Changes changes;
 
     /**
-     * @brief slug Url name of the article 
+     * @brief slug Url name of the article
      *
      * @since 04 November 2012
      */
 
     std::string slug;
-    
+
     /**
      * @brief Id of the article
      *
@@ -168,7 +151,7 @@ struct RecentChanges : public History {
  * @since  20 March 2013
  */
 struct ShowDiffBetween : public History {
-    
+
     results::Diff diff;
     int oldVersion;
     int newVersion;

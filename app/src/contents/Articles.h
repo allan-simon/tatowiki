@@ -1,32 +1,17 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
  * @package  Contents
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #ifndef TATOWIKI_CONTENTS_ARTICLES_H
 #define TATOWIKI_CONTENTS_ARTICLES_H
-
 
 #include <booster/function.h>
 #include <cppcms_skel/contents/content.h>
@@ -52,7 +37,6 @@ struct Articles : public BaseContent {
 /**
  * @struct Show
  * @since  30 October 2012
- * @brief 
  */
 struct Show : public Articles {
 
@@ -78,7 +62,7 @@ struct Show : public Articles {
      *
      */
     std::string cacheKey;
- 
+
     /**
      * @brief the article to display
      *
@@ -87,11 +71,11 @@ struct Show : public Articles {
     results::Article article;
 
     /**
-     * @brief The languages in which the article is available 
+     * @brief The languages in which the article is available
      * @since 27 December 2012
      */
     results::TranslatedIn translatedIn;
- 
+
     /**
      * @brief Constructor
      *
@@ -105,12 +89,12 @@ struct Show : public Articles {
 /**
  * @struct Edit
  * @since  30 October 2012
- * @brief 
+ * @brief
  */
 struct Edit : public Articles {
 
     forms::articles::Edit editForm;
-    
+
     /**
      * @brief Constructor
      *
@@ -123,7 +107,7 @@ struct Edit : public Articles {
     Edit(
         const results::Article &article,
         const int lastVersionId
-        
+
     ): editForm(article,lastVersionId) {
     }
 
@@ -133,7 +117,6 @@ struct Edit : public Articles {
 /**
  * @struct Create
  * @since  30 October 2012
- * @brief 
  */
 struct Create : public Articles {
 
@@ -150,13 +133,12 @@ struct Create : public Articles {
 /**
  * @struct ShowAll
  * @since  17 November 2012
- * @brief 
  */
 struct ShowAll : public Articles {
 
     /**
      * @brief contains all the articles titles and url to access to it
-     * 
+     *
      * @since 17 November 2012
      */
     results::Articles articles;
@@ -190,7 +172,7 @@ struct Translate : public Articles {
  * @since  14 March 2013
  */
 struct ShowConflict : public Show {
- 
+
     ShowConflict() {
 
     }

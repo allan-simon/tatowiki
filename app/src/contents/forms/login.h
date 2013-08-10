@@ -1,28 +1,14 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
- * @package  Form
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @package  Forms
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #ifndef TatoWiki_LOGIN
 #define TatoWiki_LOGIN
@@ -50,31 +36,31 @@ struct Login : public cppcms::form {
      * @since 13 November 2012
      */
     cppcms::widgets::hidden previousUrl;
-    
+
     /**
      * @brief The username with which we want to log in
      * @since 13 November 2012
      */
     cppcms::widgets::text username;
-    
+
     /**
      * TODO write the doc
      * @since 13 November 2012
      */
     cppcms::widgets::password password;
-    
+
     /**
      * TODO write the doc
      * @since 13 November 2012
      */
     cppcms::widgets::checkbox rememberMe;
-    
+
     /**
      * TODO write the doc
      * @since 13 November 2012
      */
     cppcms::widgets::submit submit;
-    
+
 
     /**
      * @brief Default constructor add all the fields to the form
@@ -99,7 +85,7 @@ struct Login : public cppcms::form {
         rememberMe.name("rememberMe");
         rememberMe.message(_("Remember me"));
         add(rememberMe);
-        
+
 
         submit.name("submit");
         submit.value(_("Log in"));
@@ -108,7 +94,7 @@ struct Login : public cppcms::form {
 
         password.non_empty();
     }
-    
+
 
 
 

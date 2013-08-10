@@ -1,32 +1,17 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
- * @package  Form
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @package  Forms
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #ifndef TatoWiki_REGISTER_NEW
 #define TatoWiki_REGISTER_NEW
-
 
 #include <cppcms/form.h>
 
@@ -82,7 +67,7 @@ struct RegisterNew : public cppcms::form {
         password.name("password");
         password.message(_("Password:"));
         password.non_empty();
-        add(password); 
+        add(password);
 
         email.name("email");
         email.message(_("Email:"));
@@ -96,13 +81,10 @@ struct RegisterNew : public cppcms::form {
         termsOfUse.name("termsofuse");
         termsOfUse.message(_("I accept the terms of use."));
         add(termsOfUse);
-        
-
 
         submit.value(_("Register"));
         submit.id("registerButton");
         add(submit);;
-
 
     }
 
@@ -112,19 +94,14 @@ struct RegisterNew : public cppcms::form {
     virtual bool validate() {
         return form::validate() &&
             termsOfUse.value() && //should have check the terms of use
-            // the "captcha" test is to input the first four letters of 
+            // the "captcha" test is to input the first four letters of
             // the email so we test if it's correct
-            email.value().substr(0,5).compare(quiz.value()) == 0; 
+            email.value().substr(0,5).compare(quiz.value()) == 0;
     }
 };
-
-
-
 
 } // end of namespace users
 }// end of namespace forms
 
-
 #endif
-
 

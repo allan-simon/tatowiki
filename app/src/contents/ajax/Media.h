@@ -30,7 +30,7 @@ struct Media : public cppcmsskel::contents::AjaxContent {
  * @since  18 June 2013
  */
 struct UploadImage : public Media {
-    
+
     std::string url;
 };
 
