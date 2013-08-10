@@ -1,28 +1,14 @@
 /**
  * Tatoeba wiki  Wiki made with cppcmsskel
- * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com> 
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category Tatoeba wiki
  * @package  Apps
- * @author   Allan SIMON <allan.simon@supinfo.com> 
- * @license  Affero General Public License
- * @link     https://github.com/sysko/tatowiki@
+ * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @link     https://github.com/allan-simon/tatowiki
  */
-
 
 #include <iostream>
 #include <string>
@@ -56,19 +42,19 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
     search(serv),
 
     media(serv),
-    
+
     img(serv),
-    
+
     css(serv),
-    
+
     js(serv),
-    
+
     history(serv),
-    
+
     users(serv),
-    
+
     articles(serv),
-    
+
     pages(serv)
 {
 
@@ -98,7 +84,7 @@ TatoWiki::TatoWiki(cppcms::service &serv) :
 
 
 void TatoWiki::main(std::string url) {
-    
+
     std::string interfaceLang("");
 
     std::string serverName = request().http_host();
@@ -106,7 +92,7 @@ void TatoWiki::main(std::string url) {
         0,
         serverName.find('.')
     );
-    
+
 
     // NextGen url "lang.wiki.tatoeba.org/url"
     // at the difference of tatoeba, here it's more likely that if someone share
@@ -135,17 +121,17 @@ void TatoWiki::main(std::string url) {
     }
 
 
-    
+
 }
 
 /**
- * 
+ *
  */
 std::string TatoWiki::get_default_interface_lang() {
-    
+
     std::string acceptedLanguage = request().http_accept_language();
-       
-    size_t size = acceptedLanguage.size(); 
+
+    size_t size = acceptedLanguage.size();
     // if the browser has sent no header indicating what is its prefered
     // language
     if (size == 0) {
@@ -153,8 +139,8 @@ std::string TatoWiki::get_default_interface_lang() {
     }
 
     std::string lang;
-   
-     
+
+
     if (size == 2 || size == 3) {
         lang = acceptedLanguage;
     } else  {
@@ -164,8 +150,8 @@ std::string TatoWiki::get_default_interface_lang() {
     // if this language is part of the supported languages
     if (Languages::get_instance()->is_interface_lang(lang)) {
         return lang;
-    } 
-    
+    }
+
     return DEFAULT_INTERFACE_LANG;
 }
 
