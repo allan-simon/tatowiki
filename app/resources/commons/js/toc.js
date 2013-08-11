@@ -2,7 +2,6 @@ $(function(){
     $("#toc").tableOfContents(
         $("#main_content")
     );
-    alert("plop");
     // we need to do that to force the browser to
     // re-evaluate the hash in the url, now that it has
     // been created
