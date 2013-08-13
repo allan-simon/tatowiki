@@ -47,6 +47,18 @@ class Admin : public Controller {
     private:
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
+        /**
+         * @brief @TODO add a description
+         * @since 14 August 2013
+         */
+        void change_brand();
+
+        /**
+         * @brief @TODO add a description
+         * @since 14 August 2013
+         */
+        void change_brand_treat();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

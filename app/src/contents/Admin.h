@@ -15,6 +15,7 @@
 
 #include "cppcms_skel/contents/content.h"
 
+#include "contents/forms/change_brand.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
@@ -26,6 +27,23 @@ namespace admin {
  * @since 10 August 2013
  */
 struct Admin : public BaseContent {
+};
+
+/**
+ * @struct ChangeBrand
+ * @since  14 August 2013
+ * @brief
+ */
+struct ChangeBrand : public Admin {
+
+    forms::admin::ChangeBrand changeBrandForm;
+
+    /**
+     * @brief Constructor
+     */
+    ChangeBrand() {
+    }
+
 };
 
 //%%%NEXT_CONTENT_MARKER%%%
