@@ -14,14 +14,15 @@
 #define TATOWIKI_CONTENTS_ARTICLES_H
 
 #include <booster/function.h>
-#include <cppcms_skel/contents/content.h>
 
+#include "contents/BaseContent.h"
 #include "contents/forms/edit.h"
 #include "contents/forms/create.h"
 #include "contents/forms/translate.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 #include "results/Articles.h"
+
 namespace contents {
 namespace articles {
 
@@ -30,7 +31,7 @@ namespace articles {
  * @brief Base content for every action of Articles controller
  * @since 30 October 2012
  */
-struct Articles : public BaseContent {
+struct Articles : public ::tatowiki::contents::BaseContent {
 };
 
 

@@ -13,7 +13,7 @@
 #ifndef TATOWIKI_CONTENTS_ADMIN_H
 #define TATOWIKI_CONTENTS_ADMIN_H
 
-#include "cppcms_skel/contents/content.h"
+#include "contents/BaseContent.h"
 
 #include "contents/forms/change_brand.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
@@ -26,7 +26,7 @@ namespace admin {
  * @brief Base content for every action of Admin controller
  * @since 10 August 2013
  */
-struct Admin : public BaseContent {
+struct Admin : public tatowiki::contents::BaseContent {
 };
 
 /**

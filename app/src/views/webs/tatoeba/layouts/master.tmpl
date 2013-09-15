@@ -1,10 +1,10 @@
 <% c++ #ifndef LAYOUT_MASTER %>
 <% c++ #define LAYOUT_MASTER %>
 <% c++ #include <cppcms_skel/generics/Config.h> %>
-<% c++ #include "cppcms_skel/contents/content.h" %>
+<% c++ #include "contents/BaseContent.h" %>
 <% c++ #include "generics/Config.h" %>
 <% skin %>
-<% view master uses contents::BaseContent extends common_master %>
+<% view master uses tatowiki::contents::BaseContent extends common_master %>
 
 /**
  *
@@ -22,9 +22,12 @@
     <% include top_menu() %>
     <div id="container1">
         <div id="header">
+            <% include brand() %>
+        <!--
             <a href="/">
                 <% include img_tag("skins/tatoeba/img/logo.png", 72, 450, "Tatowiki's logo") %>
             </a>
+        !-->
         </div>
         <div id="container">
             <% include container() %>

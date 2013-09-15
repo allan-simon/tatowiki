@@ -1,11 +1,11 @@
 <% c++ #ifndef COMMONS_SKIN_LAYOUT_MASTER %>
 <% c++ #define COMMONS_SKIN_LAYOUT_MASTER %>
 <% c++ #include <cppcms_skel/generics/Config.h> %>
-<% c++ #include "cppcms_skel/contents/content.h" %>
+<% c++ #include "contents/BaseContent.h" %>
 <% c++ #include "generics/Config.h" %>
 <% c++ #include "results/Articles.h" %>
 <% skin %>
-<% view common_master uses contents::BaseContent %>
+<% view common_master uses tatowiki::contents::BaseContent %>
 
 <% template render() %><!DOCTYPE html>
 <html lang="<%= lang %>">
@@ -48,6 +48,19 @@
  */
 <% template title() %>TODO: replace this<% end template %>
 
+/**
+ *
+ */
+<% template brand () %>
+<a class="brand" href="/">
+    <% if wiki.logo.isImage %>
+        <% include img_tag(wiki.logo.url, wiki.logo.width, wiki.logo.height, wiki.logo.text) %>
+    <% else %>
+        <%= wiki.logo.text %>
+    <% end %>
+<%= wiki.logoUrl </a>
+<% end template %>
+
 
 <% template asset_url(std::string const& type, std::string const& file) %><% c++ out() << Config::get_assets_url(); %><%= type %>/<%= file %><% end template %>
 /**
@@ -68,7 +81,7 @@
     type="text/css"
 /><% end template %>
 
-<% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
+<% template img_tag(std::string const& imgFile, unsigned width, unsigned height, std::string const& alt) %><img
     src="<% include asset_url("img",imgFile) %>"
     width="<%= width %>"
     height="<%= height %>"

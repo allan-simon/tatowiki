@@ -13,8 +13,8 @@
 #ifndef TATOEBACPP_CONTENTS_USERS_H
 #define TATOEBACPP_CONTENTS_USERS_H
 
-#include <cppcms_skel/contents/content.h>
 
+#include "contents/BaseContent.h"
 #include "contents/forms/login.h"
 #include "contents/forms/register_new.h"
 #include "contents/forms/change_password.h"
@@ -28,7 +28,7 @@ namespace users {
  * @brief Base content for every action of Users controller
  * @since 30 October 2012
  */
-struct Users : public BaseContent {
+struct Users : public ::tatowiki::contents::BaseContent {
 };
 
 /**

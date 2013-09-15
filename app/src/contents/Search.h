@@ -15,8 +15,8 @@
 #define TATOWIKI_CONTENTS_SEARCH_H
 
 #include <booster/function.h>
-#include <cppcms_skel/contents/content.h>
 
+#include "contents/BaseContent.h"
 #include "contents/forms/simple.h"
 #include "results/Articles.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
@@ -28,7 +28,7 @@ namespace search {
  * @class Search Base content for every action of Search controller
  * @since 18 June 2013
  */
-struct Search : public BaseContent {
+struct Search : public ::tatowiki::contents::BaseContent {
 };
 
 /**

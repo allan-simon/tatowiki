@@ -14,9 +14,9 @@
 #ifndef TATOWIKI_CONTENTS_MEDIA_H
 #define TATOWIKI_CONTENTS_MEDIA_H
 
-#include <cppcms_skel/contents/content.h>
 #include <cppcms_skel/results/Uploads.h>
 
+#include "contents/BaseContent.h"
 #include "contents/forms/upload_image.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
@@ -28,7 +28,7 @@ namespace media {
  * @brief Base content for every action of Media controller
  * @since 19 May 2013
  */
-struct Media : public BaseContent {
+struct Media : public ::tatowiki::contents::BaseContent {
 };
 
 /**

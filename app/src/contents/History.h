@@ -14,8 +14,7 @@
 #ifndef TATOEBACPP_CONTENTS_HISTORY_H
 #define TATOEBACPP_CONTENTS_HISTORY_H
 
-#include <cppcms_skel/contents/content.h>
-
+#include "contents/BaseContent.h"
 #include "contents/forms/diff_between.h"
 #include "results/History.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
@@ -28,7 +27,7 @@ namespace history {
  * @brief Base content for every action of History controller
  * @since 30 October 2012
  */
-struct History : public BaseContent {
+struct History : public ::tatowiki::contents::BaseContent {
 };
 
 /**
