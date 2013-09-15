@@ -98,7 +98,7 @@ namespace results {
 
 
         public:
-            Change(){};
+            Change(){}
 
             Change(
                 int versionParam,
@@ -141,7 +141,7 @@ namespace results {
          */
         bool exists() {
             return change.version > 0;
-        };
+        }
     };
 
     /**

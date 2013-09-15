@@ -40,7 +40,7 @@ struct Edit : public BaseArticleForm {
     Edit() {
         init_and_add();
         add(lastVersion);
-    };
+    }
 
     /**
      * @brief Constructor using an article structure to pre-fill
@@ -59,7 +59,7 @@ struct Edit : public BaseArticleForm {
         lastVersion.value(std::to_string(lastVersionId));
         add(lastVersion);
 
-    };
+    }
 };
 
 

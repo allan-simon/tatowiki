@@ -17,7 +17,7 @@ enable_testing()
 
 
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Wno-padded -Wno-global-constructors -Wno-weak-vtables -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Wno-c++98-compat -Wno-padded -Wno-global-constructors -Wno-weak-vtables -std=c++0x")
 
 include_directories(
     src

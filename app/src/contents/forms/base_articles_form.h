@@ -101,7 +101,7 @@ struct BaseArticleForm : public cppcms::form {
         );
         saveAndContinue.name("save_and_continue");
 
-    };
+    }
 
     /**
      * @brief Centralize the common instruction between the

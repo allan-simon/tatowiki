@@ -64,9 +64,9 @@ namespace results {
          */
         bool exists() {
             return id > 0;
-        };
+        }
 
-        Article() {};
+        Article() {}
         Article(
             const int idParam,
             const std::string &langParam,
@@ -81,7 +81,7 @@ namespace results {
             content(contentParam),
             isLocked(false)
         {
-        };
+        }
     };
 
     typedef std::vector<results::Article> Articles;

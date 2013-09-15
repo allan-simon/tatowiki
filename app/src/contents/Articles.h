@@ -87,9 +87,9 @@ struct Show : public Articles {
 };
 
 /**
- * @struct Edit
+ * @struct Edit Contains the information send to the view in order
+ *              to present an edit form of an article
  * @since  30 October 2012
- * @brief
  */
 struct Edit : public Articles {
 

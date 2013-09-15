@@ -30,9 +30,9 @@ struct Admin : public BaseContent {
 };
 
 /**
- * @struct ChangeBrand
+ * @struct ChangeBrand Contains the information to show a form to change
+ *                     the wiki's brand
  * @since  14 August 2013
- * @brief
  */
 struct ChangeBrand : public Admin {
 
