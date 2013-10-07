@@ -46,6 +46,7 @@ struct UploadImage : public cppcms::form {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
 
+        //TODO duplicate with change_brand.h
         image.filename(
             booster::regex(".*\\.(jpg|jpeg|png|JPG|PNG)")
         );
