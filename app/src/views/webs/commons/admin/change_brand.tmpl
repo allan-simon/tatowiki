@@ -4,8 +4,28 @@
 <% template title() %><% gt "TODO TITLE" %><% end template %>
 
 
-<% template body() %>
-    Edit Me Admin / ChangeBrand
+
+<% template main_content() %>
+    <% include begin_module() %>
+    <h2><% gt "Change brand's logo" %></h2>
+    <form
+        method="POST"
+        action="/admin/change-brand_treat"
+        id="AdminChangeBrandForm"
+    >
+        <table class='input'>
+            <% include widget_row(changeBrandForm.useImage) %>
+            <% include widget_row(changeBrandForm.image) %>
+            <% include widget_row(changeBrandForm.brandText) %>
+        </table>
+
+        <div class="submit">
+            <% form input changeBrandForm.submit %>
+        </div>
+
+    </form>
+
+    <% include end_module() %>
 <% end template %>
 
 
