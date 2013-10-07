@@ -77,7 +77,7 @@ class History : public cppcmsskel::models::SqliteModel {
         /**
          * @brief Retrieve a given version of an article
          *
-         * @param int Version The version number
+         * @param version int The version number
 
          * @return ArticleVersion The article as it was at that time
          *                        And information related to the edit
@@ -125,7 +125,7 @@ class History : public cppcmsskel::models::SqliteModel {
          * @param oldVersion Id of the old revision we will use as a base
          * @param newVersion Id of the new revision we will use to compare
          *
-         * @param The two contents and their differences
+         * @return The two contents and their differences
          *
          * @since 20 March 2013
          */
@@ -142,7 +142,7 @@ class History : public cppcmsskel::models::SqliteModel {
          * @param articleId The id of the article we're interested in
          * @param version Id of the version we want to get the previous change
          *
-         * @param The id of the change preceding the one given in parameter
+         * @return The id of the change preceding the one given in parameter
          *
          * @since 20 March 2013
          */

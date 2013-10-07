@@ -68,9 +68,9 @@ class History : public Controller {
          * @brief Not a page, directly revert an article to a given
          *        version and redirect to the page that display it
          *
-         * @param string slug    URL name of the article to revert
-         * @param string version Version number to which revert the
-         *                       article (number as a string)
+         * @param slug       string URL name of the article to revert
+         * @param versionStr string Version number to which revert the
+         *                          article (number as a string)
          *
          * @since 30 October 2012
          */
@@ -81,7 +81,7 @@ class History : public Controller {
 
         /**
          * @brief Display the given version of an article
-         * @param string versionStr The version number as a string
+         * @param versionStr string The version number as a string
          * @since 30 October 2012
          */
         void show_version(
@@ -103,7 +103,7 @@ class History : public Controller {
         /**
          * @brief Show all the version of a given article
          * 
-         * @param string slug The url name of the article, will be used in
+         * @param slug string The url name of the article, will be used in
          *                    combination with the lang to identify the article
          *
          * @since 04 November 2012
