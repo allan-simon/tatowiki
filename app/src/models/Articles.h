@@ -48,7 +48,7 @@ class Articles : public cppcmsskel::models::SqliteModel {
          * @brief Load the article models and link it with the database
          *        precised in parameters
          *
-         * @param The database file path to link the model with
+         * @param dbPath The database file path to link the model with
          *
          * @since 4 January 2013
          */
