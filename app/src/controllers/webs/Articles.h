@@ -53,8 +53,6 @@ class Articles : public Controller {
          * @param lang2MainPages A map containing the languages supported
          *                       and the slug of their main page
          *
-         * @return Nothing for the moment 
-         *
          * @since 15 March 2013
          */
         static void generate_main_pages(
@@ -81,7 +79,7 @@ class Articles : public Controller {
         /**
          * @brief Display an article
          *
-         * @param string slug URL name of the article
+         * @param slug string URL name of the article
          *
          * @since 30 October 2012
 
@@ -91,7 +89,7 @@ class Articles : public Controller {
         /**
          * @brief Edit a given article
          *
-         * @param string slug URL name of the article
+         * @param slug string URL name of the article
          *
          * @since 30 October 2012
          */
@@ -106,7 +104,7 @@ class Articles : public Controller {
         /**
          * @brief Show a form to create a new page with a given slug
          *
-         * @param string slug URL name that will be associated to the page
+         * @param slug string URL name that will be associated to the page
          *
          * @since 30 October 2012
          */
@@ -121,7 +119,7 @@ class Articles : public Controller {
         /**
          * @brief Remove a given article from the list of viewable articles
          *
-         * @param string slug URL name of the article we want to remove
+         * @param slug string URL name of the article we want to remove
          *
          * @since 16 November 2012
          */

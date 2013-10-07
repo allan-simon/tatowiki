@@ -32,9 +32,8 @@ struct Search : public ::tatowiki::contents::BaseContent {
 };
 
 /**
- * @struct Simple
+ * @struct Simple Form to do a simple textual search on the wiki
  * @since  18 June 2013
- * @brief
  */
 struct Simple : public Search {
 

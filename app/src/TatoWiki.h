@@ -74,7 +74,7 @@ public:
     /**
      * Constructor
      * Will connect every controllers to their respective paths
-     * @param serv
+     * @param serv Cppcms service created to handle connections etc.
      */
 	TatoWiki(cppcms::service &serv);
 
