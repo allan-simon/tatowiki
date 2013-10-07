@@ -6,10 +6,7 @@
 
 
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
-#define SQL_FILL_ARTICLES "../tests/models/articles/fill_articles.sql"
-
-
-
+#define SQL_FILL_ARTICLES "../tests/models/Articles/fill_articles.sql"
 
 #define TEST_ARTICLE_LANG_FRENCH "fr"
 #define TEST_ARTICLE_LANG_GERMAN "de"

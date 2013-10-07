@@ -5,7 +5,7 @@
 #define TEST_NAME "models_articles_articles"
 
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
-#define SQL_TABLE_STRUCTURE_CHECK "../tests/models/articles/table_structure_check.sql"
+#define SQL_TABLE_STRUCTURE_CHECK "../tests/models/Articles/table_structure_check.sql"
 
 int main () {
 

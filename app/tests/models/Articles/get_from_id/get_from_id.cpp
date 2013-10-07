@@ -3,7 +3,7 @@
 #include <cppcms_skel/generics/test.h>
 
 #define TEST_NAME "models_get_from_lang_and_slug_test"
-#define SQL_FILL_ARTICLES "../tests/models/articles/fill_articles.sql"
+#define SQL_FILL_ARTICLES "../tests/models/Articles/fill_articles.sql"
 #define DB_SQL_FILE_PATH  "../sql/sqlite3.sql"
 
 
