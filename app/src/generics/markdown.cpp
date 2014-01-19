@@ -66,7 +66,7 @@ cppcms::xss::rules const &xss_filter(void) {
     r.add_uri_property(
         "a",
         "href",
-        "(http|https|irc|xmpp)"
+        "(http|https|irc|xmpp|javascript)"
     );
     r.add_property("a","name",cl_id);
     r.add_property("a","title",cl_id);
