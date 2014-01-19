@@ -81,7 +81,7 @@ void Users::login() {
     std::string wantedPage = request().get("from"); 
     if(wantedPage.empty()) {
         //TODO replace / by APPLICATION_ROOT
-        wantedPage = "/";
+        wantedPage = Config::get_base_host();
     }
 
     c.loginForm.previousUrl.value(
@@ -194,8 +194,7 @@ void Users::register_new_treat() {
             username,
             userId
         );
-        //TODO replace / by "ROOT_APPLICATION"
-        redirect("/");
+        go_to_main_page();
     } else {
         add_error(_("Unknown error"));
         go_back_to_previous_page();
