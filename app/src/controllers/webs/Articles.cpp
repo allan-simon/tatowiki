@@ -151,9 +151,13 @@ void Articles::edit_treat() {
     forms::articles::Edit form;
     form.load(context());
 
-    // if cancel => go back to previous page
+    // if cancel => go back to "show" page
     if (form.cancel.value()) {
-        go_back_to_previous_page();
+        //TODO replace by function to generate an
+        // article url
+        redirect(
+            "/articles/show/" + form.slug.value()
+        );
         return;
     }
 
@@ -275,8 +279,15 @@ void Articles::create_treat() {
     forms::articles::Create form;
     form.load(context());
 
-    // if cancel => go back to previous page
+    // if cancel => go back to main page
     if (form.cancel.value()) {
+        // TODO most of the time if we are on a create page
+        // its because we've clicked on a link to a non-existing
+        // page, so it would be better that "cancel" return us to that page
+        // maybe by storing the page url in the create form ?
+        redirect(
+            tatowiki::Config::main_url_from_lang(get_interface_lang())
+        );
         go_back_to_previous_page();
         return;
     }
@@ -491,9 +502,13 @@ void Articles::translate_treat() {
     forms::articles::Translate form;
     form.load(context());
 
-    // if cancel => go back to previous page
+    // if cancel => go back to "show" page
     if (form.cancel.value()) {
-        go_back_to_previous_page();
+        //TODO replace by function to generate an
+        // article url
+        redirect(
+            "/articles/show/" + form.slug.value()
+        );
         return;
     }
 
