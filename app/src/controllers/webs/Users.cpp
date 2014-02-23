@@ -12,7 +12,7 @@
 
 #include <cppcms/session_interface.h>
 #include <cppcms_skel/models/Users.h>
-#include <cppcms_skel/generics/Config.h>
+#include "generics/Config.h"
 
 #include "Users.h"
 
@@ -81,7 +81,7 @@ void Users::login() {
     std::string wantedPage = request().get("from"); 
     if(wantedPage.empty()) {
         //TODO replace / by APPLICATION_ROOT
-        wantedPage = Config::get_base_host();
+        wantedPage = tatowiki::Config::main_url_from_lang(c.lang);
     }
 
     c.loginForm.previousUrl.value(
