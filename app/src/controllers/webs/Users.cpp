@@ -207,7 +207,7 @@ void Users::register_new_treat() {
  */
 void Users::change_password() {
 
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     contents::users::ChangePassword c;
     init_content(c);
@@ -223,7 +223,7 @@ void Users::change_password() {
 void Users::change_password_treat() {
 
     TREAT_PAGE();
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     forms::users::ChangePassword form;
     form.load(context());

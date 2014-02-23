@@ -65,7 +65,7 @@ void History::revert_to_version(
     const std::string slug,
     const std::string versionStr 
 ) {
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     const int version = std::stoi(versionStr); 
     results::ArticleVersion articleVersion = historyModel->get_version(
@@ -110,7 +110,7 @@ void History::revert_to_version(
 void History::show_version(const std::string versionStr) {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
     contents::history::ShowVersion c;
@@ -132,7 +132,7 @@ void History::show_version(const std::string versionStr) {
 void History::diff_between() {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
 
@@ -151,7 +151,7 @@ void History::diff_between_treat() {
 
     //TODO add the TREAT_PAGE macro
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
 
@@ -172,7 +172,7 @@ void History::diff_between_treat() {
 void History::all_versions_of(const std::string slug) {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
     int articleId = articlesModel->get_id_from_lang_and_slug(
@@ -207,7 +207,7 @@ void History::all_versions_of(const std::string slug) {
 void History::recent_changes() {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
     contents::history::RecentChanges c;
@@ -227,7 +227,7 @@ void History::show_diff_between(
 ) {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
 
@@ -270,7 +270,7 @@ void History::diff_with_previous_version_of(
 ) {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
 

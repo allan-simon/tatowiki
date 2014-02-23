@@ -75,7 +75,7 @@ Articles::~Articles() {
 void Articles::show(std::string slug) {
 
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
     contents::articles::Show c;
@@ -112,7 +112,7 @@ void Articles::show(std::string slug) {
  *
  */
 void Articles::edit(const std::string slug) {
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
 
     results::Article article = articlesModel->get_from_lang_and_slug(
@@ -146,7 +146,7 @@ void Articles::edit(const std::string slug) {
  */
 void Articles::edit_treat() {
     TREAT_PAGE();
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     forms::articles::Edit form;
     form.load(context());
@@ -235,7 +235,7 @@ void Articles::edit_treat() {
  *
  */
 void Articles::create(std::string slug) {
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     results::Article article = articlesModel->get_from_lang_and_slug(
         get_interface_lang(),
@@ -264,7 +264,7 @@ void Articles::create(std::string slug) {
  */
 void Articles::create_treat() {
     TREAT_PAGE();
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     forms::articles::Create form;
     form.load(context());
@@ -336,7 +336,7 @@ void Articles::create_treat() {
  */
 void Articles::remove(const std::string slug) {
 
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     const bool success = articlesModel->remove(
         get_interface_lang(),
@@ -358,7 +358,7 @@ void Articles::show_all() {
     //TODO in the future would be better if paginated
     
     if(tatowiki::Config::isPrivate()) {
-        CHECK_PERMISSION_OR_GO_TO_LOGIN();
+        LOGIN_REQUIRED();
     }
 
 
@@ -448,7 +448,7 @@ void Articles::generate_main_pages(
  *
  */
 void Articles::translate(const std::string slug) {
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     int articleToTranslateId = articlesModel->get_id_from_lang_and_slug(
         get_interface_lang(),
@@ -474,7 +474,7 @@ void Articles::translate(const std::string slug) {
  */
 void Articles::translate_treat() {
     TREAT_PAGE();
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     forms::articles::Translate form;
     form.load(context());

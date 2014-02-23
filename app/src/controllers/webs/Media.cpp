@@ -80,7 +80,7 @@ Media::~Media() {
  */
 void Media::upload_image() {
 
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     contents::media::UploadImage c;
     init_content(c);
@@ -95,7 +95,7 @@ void Media::upload_image() {
  */
 void Media::upload_image_treat() {
 
-    CHECK_PERMISSION_OR_GO_TO_LOGIN();
+    LOGIN_REQUIRED();
 
     forms::media::UploadImage form;
     form.load(context());
@@ -137,7 +137,7 @@ void Media::upload_image_ajax() {
 
     response().content_type("application/json");
 
-    if (!check_permission()) {
+    if (!is_logged()) {
         c.add_error(
             MEDIA_NOT_LOGIN_ERROR_CODE,
             MEDIA_NOT_LOGIN_ERROR_TEXT
