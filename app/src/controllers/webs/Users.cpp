@@ -110,15 +110,22 @@ void Users::login_treat() {
         return;
     }
 
+    // TODO instead of doing several SQL request, we may
+    // better retrieve the user once for all
     if (
         usersModel->is_login_correct(
             username,
             form.password.value()
         )
     ) {
+        int id = usersModel->get_id_from_name<int>(username);
+        cppcmsskel::results::User user = usersModel->by_id(id);
         set_current_username_and_id(
-            username,
-            usersModel->get_id_from_name<int>(username)
+            user.name,
+            user.id
+        );
+        set_current_user_permission_level(
+            user.permission
         );
         // we redirect to the page the user was before going
         // on the login page
