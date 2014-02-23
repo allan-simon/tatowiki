@@ -59,6 +59,18 @@ class Admin : public Controller {
          */
         void change_brand_treat();
 
+        /**
+         * @brief change the password of a given user
+         * @since 23 February 2014
+         */
+        void change_user_password();
+
+        /**
+         * @brief change the password of a given user
+         * @since 23 February 2014
+         */
+        void change_user_password_treat();
+
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };

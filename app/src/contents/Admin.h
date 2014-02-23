@@ -16,6 +16,7 @@
 #include "contents/BaseContent.h"
 
 #include "contents/forms/change_brand.h"
+#include "contents/forms/change_user_password.h"
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
 namespace contents {
@@ -42,6 +43,23 @@ struct ChangeBrand : public Admin {
      * @brief Constructor
      */
     ChangeBrand() {
+    }
+
+};
+
+/**
+ * @struct ChangeUserPassword
+ * @since  23 February 2014
+ * @brief
+ */
+struct ChangeUserPassword : public Admin {
+
+    forms::admin::ChangeUserPassword changeUserPasswordForm;
+
+    /**
+     * @brief Constructor
+     */
+    ChangeUserPassword() {
     }
 
 };

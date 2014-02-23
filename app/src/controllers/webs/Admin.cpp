@@ -29,6 +29,9 @@ Admin::Admin(cppcms::service& serv) :
 
     dispatcher().assign("/change-brand", &Admin::change_brand, this);
     dispatcher().assign("/change-brand_treat", &Admin::change_brand_treat, this);
+
+    dispatcher().assign("/change-user-password", &Admin::change_user_password, this);
+    dispatcher().assign("/change-user-password_treat", &Admin::change_user_password_treat, this);
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
 
@@ -47,6 +50,8 @@ Admin::~Admin() {
  */
 void Admin::change_brand() {
 
+    ADMIN_REQUIRED();
+
     contents::admin::ChangeBrand c;
     init_content(c);
 
@@ -61,6 +66,34 @@ void Admin::change_brand() {
 void Admin::change_brand_treat() {
 
     forms::admin::ChangeBrand form;
+    form.load(context());
+
+    if (!form.validate()) {
+        go_back_to_previous_page();
+    }
+
+}
+
+
+/**
+ *
+ */
+void Admin::change_user_password() {
+
+    contents::admin::ChangeUserPassword c;
+    init_content(c);
+
+
+    render("admin_change_user_password", c);
+}
+
+
+/**
+ *
+ */
+void Admin::change_user_password_treat() {
+
+    forms::admin::ChangeUserPassword form;
     form.load(context());
 
     if (!form.validate()) {
