@@ -70,6 +70,7 @@ struct Translate : public BaseArticleForm {
         add(summary);
         add(saveAndView);
         add(saveAndContinue);
+        add(cancel);
 
 
     }

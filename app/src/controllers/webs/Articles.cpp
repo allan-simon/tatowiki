@@ -515,6 +515,7 @@ void Articles::translate_treat() {
     if (!form.validate()) {
         add_error(_("The form you've submitted is not valid"));
         go_back_to_previous_page();
+        return;
     }
 
     const std::string origLang = get_interface_lang();
