@@ -20,8 +20,11 @@
 //which would have the side effects to require to recompile the
 // controller every time we modify a model. even though it does
 // not affect the controller
+namespace cppcmsskel {
 namespace models {
+    class Users;
     // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%
+}
 }
 
 namespace controllers {
@@ -47,6 +50,12 @@ class Admin : public Controller {
     private:
         // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
+        /**
+         * model to interact with user database
+         * @since 23 February 2014
+         */
+
+        cppcmsskel::models::Users *usersModel;
         /**
          * @brief @TODO add a description
          * @since 14 August 2013
