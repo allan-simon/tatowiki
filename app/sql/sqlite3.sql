@@ -19,7 +19,8 @@ begin;
         "password"    text    not null,                    -- his password hashed
         "since"       integer not null,                    -- his registering date
         "homepage"    text    default "",                  -- his personnal webpage/website
-        "description" text    default ""                   -- his self-written description
+        "description" text    default "",                  -- his self-written description
+        "permission"  integer not null                     -- his permission (admin, normal user etc.)
     );
     CREATE INDEX users_username_idx ON users (username);
 
