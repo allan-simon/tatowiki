@@ -151,6 +151,12 @@ void Articles::edit_treat() {
     forms::articles::Edit form;
     form.load(context());
 
+    // if cancel => go back to previous page
+    if (form.cancel.value()) {
+        go_back_to_previous_page();
+        return;
+    }
+
     if (!form.validate()) {
         //TODO add a more precise message
         add_error(_("The form is not valid."));
@@ -269,12 +275,18 @@ void Articles::create_treat() {
     forms::articles::Create form;
     form.load(context());
 
+    // if cancel => go back to previous page
+    if (form.cancel.value()) {
+        go_back_to_previous_page();
+        return;
+    }
+
     if (!form.validate()) {
         add_error(_("The form is not valid."));
         go_back_to_previous_page();
         return;
     }
-    
+
     const std::string lang = get_interface_lang();
     const std::string slug = form.slug.value();
     const std::string title = form.title.value();
@@ -478,12 +490,18 @@ void Articles::translate_treat() {
 
     forms::articles::Translate form;
     form.load(context());
+
+    // if cancel => go back to previous page
+    if (form.cancel.value()) {
+        go_back_to_previous_page();
+        return;
+    }
+
     if (!form.validate()) {
         add_error(_("The form you've submitted is not valid"));
         go_back_to_previous_page();
     }
 
-    
     const std::string origLang = get_interface_lang();
     const std::string origSlug = form.slug.value();
     const std::string translationSlug = form.translationSlug.value();

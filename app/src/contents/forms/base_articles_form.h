@@ -63,6 +63,15 @@ struct BaseArticleForm : public cppcms::form {
     cppcms::widgets::submit saveAndContinue;
 
     /**
+     * @brief button to cancel and go back to previous page
+     *
+     * @since  24th February 2014
+     */
+    cppcms::widgets::submit cancel;
+
+
+
+    /**
      * @brief Centralize the common instruction between the
      *        constructors of this form, without adding them
      *
@@ -101,6 +110,12 @@ struct BaseArticleForm : public cppcms::form {
         );
         saveAndContinue.name("save_and_continue");
 
+        //
+        cancel.value(
+            cppcms::locale::translate("Cancel")
+        );
+        cancel.name("cancel");
+
     }
 
     /**
@@ -118,6 +133,7 @@ struct BaseArticleForm : public cppcms::form {
         add(summary);
         add(saveAndView);
         add(saveAndContinue);
+        add(cancel);
     }
 
 
