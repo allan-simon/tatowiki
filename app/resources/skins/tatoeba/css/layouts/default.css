@@ -16,12 +16,58 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 
+
+/*
+ * Fonts
+ */
+
+body, select, input, textarea {
+  font-family: "Average Sans", sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Overlock", sans-serif;
+}
+
+pre, code {
+    font-family: "Droid Sans Mono", monospace;
+}
+
+
+/*
+ * Generic
+ */
+
 body {
     padding: 0px;
     margin: 0px;
-    font-family: Trebuchet MS, sans;
     color: #222222;
     background: #e5e3da;
+}
+
+h1 {
+    font-size: 2em;
+    color: #000;
+}
+
+h2 {
+    font-size: 1.6em;
+    color: #333;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: #666;
+}
+
+h4 {
+    font-size: 1.2em;
+    margin-bottom: -10px;
+    color: #999;
+}
+
+h1 {
+    text-shadow: 0px 1px 0px #aaa;
 }
 
 a img {
@@ -29,33 +75,13 @@ a img {
 }
 
 a {
-    color: #849684;
+    color: #08F;
     text-decoration: none;
 }
 
 a:hover {
     cursor: pointer;
-    color: #EAA315;
-}
-
-
-h2, h3, h4 {
-    font-variant: small-caps;
-}
-
-
-h3 {
-    border-bottom: 1px dotted;
-    color: #555;
-    padding-left: 10px;
-    font-size: 1.3em;
-    margin-top: 30px;
-}
-
-h4 {
-    margin: 10px 0px 5px 20px;
-    color: #555;
-    font-size: 1.1em;
+    color: #F80;
 }
 
 table {
@@ -71,24 +97,16 @@ dt {
     font-weight: bold;
 }
 
-/* User Menu : Main Menu */
 
-#top_menu_container {
-    background-color: #414141;
-    border-bottom: 1px solid #000000;
-}
+/*
+ * Menu
+ */
 
 #top_menu {
     height: 30px;
     width: 960px;
     margin: auto;
-    font-size: 0.9em;
     overflow: hidden;
-}
-
-#top_menu .whatsNewItem {
-    font-weight: bold;
-    color: #FFCC00;
 }
 
 #top_menu a {
@@ -96,13 +114,29 @@ dt {
 }
 
 #top_menu a:hover {
-    color: #FB6B10;
+    color: #F80;
+}
+
+
+
+/* 
+ * Login
+ */
+
+#user_menu {
+    float: right;
+}
+
+#top_menu_container {
+    background-color: #414141;
+    border-bottom: 1px solid #000000;
 }
 
 
 /*
- * Menu (Home, Browse, etc)
+ * Menu items
  */
+
 #top_menu ul {
     list-style: none;
     margin: 0;
@@ -169,7 +203,6 @@ dt {
 }
 
 #top_menu .show {
-    font-size: 1.2em;
     font-weight: bold;
 }
 
@@ -179,157 +212,121 @@ dt {
 
 
 /* 
- * Interface Language Selector
+ * Header
  */
-#languageSelectionContainer {
-    padding-top: 2px;
-    float: right;
-}
-
-#languageSelection {
-    margin-left: 10px;
-    margin-top: 2px;
-    height: 20px; /* need to specify height otherwise in Firefox and Opera it's too big */
-}
-
-/* 
- * User Menu 
- */
-#user_menu {
-    float: right;
-}
-
-#profile img {
-    position: relative;
-    top: 2px;
-    margin-right: 2px;
-}
-
-#log_out img {
-    position: relative;
-    top: 2px;
-}
-
-#inbox img {
-    position: relative;
-    top: 3px;
-}
-
-.newMessage {
-    font-weight: bold;
-}
-
-
-
-/* HEADER */
 
 #header {
-    text-align: right;
-    float: left;
-    padding: 10px;
+    display: none;
 }
 
 
-/* Container */
+/*
+ * Container
+ */
 
 #container1 {
     width: 960px;
     margin: auto;
-    padding: 0px 10px;
-    background: url(/img/skins/tatoeba/img/bg_main.png) repeat-y;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 #container {
-    width: 850px;
-    margin-left: 100px;
-    background: #FFFFFF;
+    width: 100%;
     min-height: 550px;
 }
 
-/* Content : when a page is not split into 2 parts*/
 
-#content {
-    font-size: 0.8em;
-    /* border: 1px dotted #D1D1D1; */
-}
-
-/* Module : when a page is split into 2 main parts */
-
-#annexe_content {
-    float: right;
-    width: 250px;
-    font-size: 0.8em;
-}
-
-#main_content {
-    float: left;
-    width: 550px;
-    margin-right: 0px;
-    margin-left: 10px;
-    font-size: 0.8em;
-}
+/*
+ * Modules
+ */
 
 .module {
     padding: 10px 10px 5px 10px;
     margin: 0px 0px 20px 0px;
-    background: url(/img/skins/tatoeba/img/module_background.png) repeat-x bottom left;
+    color: #333;
     overflow: hidden;
 }
+
+
+/* 
+ * Main content
+ */
+
+#main_content {
+    float: left;
+    width: 70%;
+}
+
+#main_content h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+#main_content h3 {
+    margin-top: 30px;
+}
+
+#main_content .module {
+    padding: 10px 30px;
+}
+
+
+/* 
+ * Annexe content
+ */
+
+#annexe_content {
+    float: right;
+    width: 30%;
+}
+
 #annexe_content .module {
-    margin-left: 5px;
+    background-color: #f1f1f1;
+    margin: 20px 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
-.module h2 {
-    background: url(/img/skins/tatoeba/img/title.png) no-repeat top left;
-    padding-left: 28px;
-    margin: 0 0 15px -8px;
-    font-size: 1.5em;
-    color: #000;
+#annexe_content h2 {
+    margin: 0px;
+    padding: 0px;
 }
-
-.module h2 .annexe {
-    font-variant: normal;
-    font-weight: normal;
-    font-size: 0.8em;
-}
-
-.main_module {
-    font-size: 1.25em;
-    padding: 10px 10px 5px 10px;
-    background: url(/img/skins/tatoeba/img/module_background.png) repeat-x bottom left;
-    margin-bottom: 20px;
-}
-
-.main_module h2 {
-    background: url(/img/skins/tatoeba/img/title_main.png) no-repeat top left;
-    padding-left: 32px;
-    font-size: 1.5em;
-    border-bottom: none;
-    margin: 0 0 0 -8px;
-}
-
 
 #annexe_content ul {
     margin: 5px 0px;
-    padding-left: 20px;
+    padding-left: 0px;
+    list-style-type: none;
 }
 
-#annexe_content ul li {
-    list-style-type: none;
+#annexe_content ul ul {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+#annexe_content ul ul ul {
+    padding-left: 20px;
+    list-style-type: circle;
+}
+
+#annexe_content ul ul li a {
+    position: relative;
+}
+.annexeMenu {
+   text-indent: 0px;
 }
 
 
 /*
  * Footer 
  */
+
 #footer {
     background: #e3e0d6;
-    height: 18px;
     clear: both;
 }
 
 #footer_container {
-    background: url(/img/skins/tatoeba/img/bg_footer.png) bottom left;
     width: 960px;
     height: 24px;
     margin: auto;
@@ -345,7 +342,6 @@ dt {
 #footer ul {
     margin: 0;
     display: block;
-    float: right;
     font-size: 80%;
 }
 
@@ -353,8 +349,7 @@ dt {
     display: block;
     height: 30px;
     line-height: 30px;
-    text-align: center;
-    float: left;
+    text-align: right;
     list-style: none;
     padding-left: 10px;
     padding-right: 10px;
@@ -362,36 +357,22 @@ dt {
 
 
 /*
- * HTML Elements
- */
-.more_link {
-    text-align: right;
-}
-
-
-/*
- * ">>"
- */
-.ToLanguage {
-    font-family: Arial, Sans-serif;
-    font-size: 1.3em;
-    margin: 0 5px;
-}
-
-/*
  * Flash message
  */
+
 #flashMessage, #authMessage {
     margin: 20px 10px;
     padding: 10px;
-    color: #E05900;
-    background: #EDE0B8;
+    background: #FE8;
     text-align: center;
+    border-radius: 5px;
 }
+
 
 /*
  * Warning
  */
+
 .warning {
     font-size: 15px;
     padding: 10px;
@@ -401,56 +382,46 @@ dt {
     color: #D1523C;
 }
 
-/* 
- * Important 
- */
-.important {
-    color: red;
-}
 
-#session_expired {
-    color: red;
-    padding: 10px;
-    background-color: #F1F1F1;
-    border: #E1E1E1 1px solid;
-}
-
-/**
+/*
  * Temp for the search input in the nav bar
  */
+
 .search-query {
     float: right;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     border-radius: 15px 15px 15px 15px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1;
-    margin-bottom: 10px;
-    padding: 4px 14px;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-    margin-top: 2px;
+    margin-top: 4px;
+    padding: 1px 10px;
 }
 
 
 /*
- * Other
+ * Code
  */
-.annexeMenu {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 1em;
-    text-indent: -1em;
+
+pre {
+    color: #ddd;
+    background: #444;
+    border-left: 5px solid #777;
+    padding: 10px;
+    white-space: pre-wrap;
+    font-size: 12px;
 }
 
-.annexeMenu .item {
-    margin: 5px 0px;
+pre code {
+    padding: 0px;
+    background: none;
+    color: #ddd;
 }
 
-.annexeMenu .item:before {
-    content: "\00BB \0020";
+code {
+    color: #fff;
+    background: #666;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 12px;
 }
-
-
