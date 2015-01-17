@@ -16,18 +16,27 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 
-@import url(http://fonts.googleapis.com/css?family=Average+Sans&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic,devanagari,vietnamese);
-@import url(http://fonts.googleapis.com/css?family=Overlock:900&subset=vietnamese,cyrillic-ext,greek-ext,greek,cyrillic,latin-ext,latin);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin,greek,greek-ext,latin-ext,cyrillic);
 
+/*
+ * Fonts
+ */
 
 body, select, input, textarea {
   font-family: "Average Sans", sans-serif;
 }
 
 h1, h2, h3, h4 {
-    font-family: "Overlock";
+    font-family: "Overlock", sans-serif;
 }
+
+pre, code {
+    font-family: "Droid Sans Mono", monospace;
+}
+
+
+/*
+ * Generic
+ */
 
 body {
     padding: 0px;
@@ -38,26 +47,27 @@ body {
 
 h1 {
     font-size: 2em;
+    color: #000;
 }
 
 h2 {
     font-size: 1.6em;
+    color: #333;
 }
 
 h3 {
     font-size: 1.4em;
+    color: #666;
 }
 
 h4 {
     font-size: 1.2em;
+    margin-bottom: -10px;
+    color: #999;
 }
 
-h1, h3, h4 {
+h1 {
     text-shadow: 0px 1px 0px #aaa;
-}
-
-h2, h4 {
-    color: #555;
 }
 
 a img {
@@ -91,6 +101,7 @@ dt {
 /*
  * Menu
  */
+
 #top_menu {
     height: 30px;
     width: 960px;
@@ -111,6 +122,7 @@ dt {
 /* 
  * Login
  */
+
 #user_menu {
     float: right;
 }
@@ -124,6 +136,7 @@ dt {
 /*
  * Menu items
  */
+
 #top_menu ul {
     list-style: none;
     margin: 0;
@@ -215,8 +228,6 @@ dt {
     width: 960px;
     margin: auto;
     background-color: #fff;
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(50, 50, 50, 0.3);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(50, 50, 50, 0.3);
     box-shadow: 0px 0px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
@@ -274,8 +285,6 @@ dt {
     background-color: #f1f1f1;
     margin: 20px 15px;
     padding: 5px 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
 }
 
@@ -311,6 +320,7 @@ dt {
 /*
  * Footer 
  */
+
 #footer {
     background: #e3e0d6;
     clear: both;
@@ -349,13 +359,12 @@ dt {
 /*
  * Flash message
  */
+
 #flashMessage, #authMessage {
     margin: 20px 10px;
     padding: 10px;
     background: #FE8;
     text-align: center;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -363,6 +372,7 @@ dt {
 /*
  * Warning
  */
+
 .warning {
     font-size: 15px;
     padding: 10px;
@@ -376,6 +386,7 @@ dt {
 /*
  * Temp for the search input in the nav bar
  */
+
 .search-query {
     float: right;
     background-color: #FFFFFF;
@@ -391,8 +402,8 @@ dt {
 /*
  * Code
  */
+
 pre {
-    font-family: "Droid Sans Mono";
     color: #ddd;
     background: #444;
     border-left: 5px solid #777;
@@ -408,12 +419,9 @@ pre code {
 }
 
 code {
-    font-family: "Droid Sans Mono";
     color: #fff;
     background: #666;
     padding: 2px 4px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 12px;
 }
