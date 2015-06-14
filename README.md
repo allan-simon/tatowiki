@@ -13,18 +13,20 @@ To run it you need:
   * cppcms
   * cppcms-skeleton
   * sqlite3 
+  * discount (libmarkdown)
 
 To compile it you need a little more
 
   * python3 
   * cmake 
   * a compiler that supports c++11
+  * clang
 
 #Installation instruction
     
 
-    git clone git://github.com/allan-simon/tatowiki.git
-    cd tatowiki
+    git clone https://github.com/allan-simon/tatowiki.git
+    cd tatowiki/app
     mkdir build ; cd build ; cmake .. ; make
 
 After this you need to create the dabatase schema, note for the moment we
@@ -37,6 +39,40 @@ if you're in the 'build' directory, simply do
 **Note:** Of course the name and path for the database (sqlite6.db) is purely
 arbitrary and can be changed without problems (you simply need to adapt your
 config.js)
+
+#Configuration
+
+Edit `app/config.js` according to your needs (change YOURHOST by your
+hostname). On a local installation, you can use a local domain such as
+.tato.wiki.local and define it your `/etc/hosts` like this.
+
+```
+127.0.0.1       tato.wiki.test ja.tato.wiki.test en.tato.wiki.test de.tato.wiki.test ...
+```
+
+If you’re using a port different than 80, make sure to specify it
+in the `baseHost` option too, like this.
+
+```js
+{
+    "service" : {
+            "api" : "http",
+            "port" : 8081,
+            "ip" : "0.0.0.0"
+    },
+
+    /* ... */
+
+    "baseHost" : "tato.wiki.test:8081",
+
+    /* ... */
+}
+```
+
+Tatowiki needs to have write access to the following directories and files:
+* The sqlite database (`app/data/sqlite6.db`)
+* `app/data/`
+* `app/upload/`
 
 
 #Running it 
